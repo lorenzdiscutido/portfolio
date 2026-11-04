@@ -8,48 +8,44 @@ export default function Footer() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-  const recipientEmail = "lorenzdiscutido@gmail.com";
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!message.trim() || !senderEmail.trim()) return;
+    if (!message.trim() || !senderEmail.trim() || !name.trim()) return;
 
     setStatus("sending");
+    setErrorMessage("");
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          name: name || "Portfolio Visitor",
-          email: senderEmail,
-          _subject: subject || `Portfolio Inquiry from ${name || senderEmail}`,
-          message,
+          name: name.trim(),
+          email: senderEmail.trim(),
+          subject: subject.trim(),
+          message: message.trim(),
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setStatus("sent");
         setName("");
         setSenderEmail("");
         setSubject("");
         setMessage("");
       } else {
-        throw new Error("Form submission fallback");
+        setStatus("error");
+        setErrorMessage(result.error || "Failed to send message. Please try again.");
       }
     } catch {
-      const mailtoSubject = encodeURIComponent(
-        subject || `Portfolio Inquiry from ${name || senderEmail}`
-      );
-      const mailtoBody = encodeURIComponent(
-        `Name: ${name}\nEmail: ${senderEmail}\n\n${message}`
-      );
-      window.location.href = `mailto:${recipientEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
-      setStatus("sent");
+      setStatus("error");
+      setErrorMessage("Network error: Could not reach the server. Please try again.");
     }
   };
 
@@ -60,7 +56,7 @@ export default function Footer() {
           Let&apos;s <span className="text-orange">Connect</span>
         </h2>
         <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
-          Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, my inbox is always open.
+          Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 
         <form
@@ -146,12 +142,18 @@ export default function Footer() {
               disabled={status === "sending"}
               className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-primary font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
-              {status === "sending" ? "Sending..." : "Send Email"}
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "sent" && (
               <span className="text-sm font-medium text-orange">
                 ✓ Message sent! I&apos;ll get back to you soon.
+              </span>
+            )}
+
+            {status === "error" && (
+              <span className="text-sm font-medium text-red-400">
+                {errorMessage}
               </span>
             )}
           </div>
