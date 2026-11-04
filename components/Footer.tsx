@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         
         <a 
-          href="mailto:your.email@example.com" 
+          href="mailto:lorenzdiscutido@gmail.com" 
           className="inline-block px-8 py-3 rounded-lg bg-blue text-primary font-medium hover:opacity-90 transition-opacity mb-16"
         >
           Say Hello
@@ -18,7 +18,7 @@ export default function Footer() {
 
         <div className="flex justify-center gap-8 mb-12">
           <a 
-            href="https://github.com/yourgithub" 
+            href="https://github.com/lorenzdiscutido" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-muted hover:text-blue transition-colors font-medium tracking-wide"
