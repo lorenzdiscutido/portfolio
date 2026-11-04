@@ -10,8 +10,20 @@ import Terminal from "@/components/Terminal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jose Lorenzo Discutido | Systems Engineer",
-  description: "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
+  metadataBase: new URL("https://your-custom-domain.com"),
+  title: {
+    default: "Jose Lorenzo Discutido | Systems Engineer",
+    template: "%s | Jose Lorenzo Discutido",
+  },
+  description:
+    "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
+  openGraph: {
+    type: "website",
+    title: "Jose Lorenzo Discutido | Systems Engineer",
+    description:
+      "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({

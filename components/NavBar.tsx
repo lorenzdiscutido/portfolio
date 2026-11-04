@@ -1,42 +1,46 @@
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import ResumeDownload from "@/components/ResumeDownload";
 
 export default function NavBar() {
   return (
-    <header className="sticky top-0 z-40 w-full bg-base/90 backdrop-blur border-b border-[#2d313a] transition-colors duration-300">
+    <header className="sticky top-0 z-50 w-full bg-base/90 backdrop-blur-md border-b border-[#2d313a] transition-colors duration-300">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-primary font-extrabold text-lg tracking-tight hover:text-blue transition-colors"
+          className="text-primary font-extrabold text-xl tracking-tight hover:text-blue transition-colors"
         >
-          JLD<span className="text-orange">.sys</span>
+          JLD
         </Link>
 
         <div className="flex items-center gap-6">
-          <a
+          <Link
             href="/#about"
-            className="text-sm font-medium text-muted hover:text-primary transition-colors"
+            className="text-sm font-medium text-muted hover:text-blue transition-colors"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#projects"
-            className="text-sm font-medium text-muted hover:text-primary transition-colors"
+            className="text-sm font-medium text-muted hover:text-blue transition-colors"
           >
             Projects
-          </a>
-          <a
-            href="/#workspace"
-            className="text-sm font-medium text-muted hover:text-primary transition-colors hidden sm:inline"
+          </Link>
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-muted hover:text-blue transition-colors"
           >
-            Workspace
-          </a>
-          <a
+            Blog
+          </Link>
+          <Link
             href="/#contact"
-            className="text-sm font-medium text-muted hover:text-primary transition-colors"
+            className="text-sm font-medium text-muted hover:text-blue transition-colors"
           >
             Contact
-          </a>
+          </Link>
+          <div className="hidden md:block">
+            <ResumeDownload />
+          </div>
           <ThemeToggle />
         </div>
       </nav>
