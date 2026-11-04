@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { caseStudies } from "@/lib/caseStudyData";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -60,11 +61,7 @@ export default async function CaseStudyPage({
           {study.overview}
         </p>
 
-        <div className="w-full h-96 bg-surface border-2 border-dashed border-[#2d313a] rounded-xl flex items-center justify-center mb-8">
-          <span className="text-muted font-mono">
-            {" [ Insert System Architecture Diagram / SVG Here ] "}
-          </span>
-        </div>
+        <ArchitectureDiagram slug={study.slug} />
 
         <p className="text-muted leading-relaxed">
           {study.architectureDetails}

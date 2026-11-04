@@ -65,6 +65,15 @@ export default function Terminal() {
               <span className="text-blue">skills</span> — List core technical capabilities
             </p>
             <p>
+              <span className="text-blue">neofetch</span> — Display stealth workstation telemetry
+            </p>
+            <p>
+              <span className="text-blue">tailscale</span> — Inspect active Tailnet mesh nodes
+            </p>
+            <p>
+              <span className="text-blue">zzz</span> — View action RPG anomaly &amp; synergy analytics
+            </p>
+            <p>
               <span className="text-blue">sudo</span> — Execute with superuser privileges
             </p>
             <p>
@@ -89,6 +98,70 @@ export default function Terminal() {
             <span className="text-blue">Microcontrollers</span>,{" "}
             <span className="text-blue">Tailscale</span>
           </span>
+        );
+        break;
+      case "neofetch":
+      case "fastfetch":
+        output = (
+          <div className="space-y-0.5 py-1">
+            <p className="text-orange font-bold">guest@jld-stealth-rig</p>
+            <p>-------------------------</p>
+            <p>
+              <span className="text-blue">OS:</span> Linux / Windows 11 Pro (WSL2)
+            </p>
+            <p>
+              <span className="text-blue">Chassis:</span> Stealth All-Black / Zero-RGB Build
+            </p>
+            <p>
+              <span className="text-blue">Acoustics:</span> &lt; 22 dBA Silent Fan Curve
+            </p>
+            <p>
+              <span className="text-blue">Role:</span> Digital Data &amp; Systems Engineer @ Vonotec
+            </p>
+            <p>
+              <span className="text-blue">Education:</span> BS Computer Engineering (PUP)
+            </p>
+            <p>
+              <span className="text-blue">Tailnet:</span> 4 Nodes Online (WireGuard Mesh OK)
+            </p>
+          </div>
+        );
+        break;
+      case "tailscale":
+      case "tailscale status":
+        output = (
+          <div className="space-y-1 py-1 text-xs">
+            <p className="text-orange">IPv4         HOSTNAME           ROLE                 STATUS</p>
+            <p>
+              <span className="text-blue">100.64.0.1</span>   node-alpha-db      MySQL Master (Odd)   online, direct
+            </p>
+            <p>
+              <span className="text-blue">100.64.0.2</span>   node-beta-db       MySQL Master (Even)  online, direct
+            </p>
+            <p>
+              <span className="text-blue">100.64.0.10</span>  iskiosk-unit-01    MCU / Kiosk Host     online, relay
+            </p>
+            <p>
+              <span className="text-blue">100.64.0.99</span>  jld-stealth-rig    Operator Workstation active
+            </p>
+          </div>
+        );
+        break;
+      case "zzz":
+      case "synergy":
+        output = (
+          <div className="space-y-1 py-1">
+            <p className="text-orange font-bold">[Zenless Zone Zero // Combat Analytics Log]</p>
+            <p>
+              • <span className="text-blue">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
+            </p>
+            <p>
+              • <span className="text-blue">Stun Daze Window</span> ↔ Burst throughput window during low-contention locks
+            </p>
+            <p>
+              • <span className="text-blue">Quick Assist Rotations</span> ↔ Zero-downtime node handoffs in distributed pipelines
+            </p>
+          </div>
         );
         break;
       case "sudo":
