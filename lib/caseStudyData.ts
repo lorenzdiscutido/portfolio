@@ -9,6 +9,27 @@ export interface ProjectScreenshot {
   caption: string;
 }
 
+export interface IsoMetric {
+  characteristic: string;
+  score: string;
+  interpretation: string;
+}
+
+export interface FinancialMetric {
+  totalCost: string;
+  annualSavings: string;
+  roi: string;
+  paybackPeriod: string;
+}
+
+export interface AcademicAttribution {
+  authors: string[];
+  institution: string;
+  advisers: string[];
+  panel: string;
+  defenseDate: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -25,6 +46,9 @@ export interface CaseStudy {
   githubUrl?: string;
   liveUrl?: string;
   screenshots?: ProjectScreenshot[];
+  academic?: AcademicAttribution;
+  isoEvaluation?: IsoMetric[];
+  financials?: FinancialMetric;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -71,47 +95,95 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "iskiosk-terminal",
     title: "IsKiosk IoT Document Terminal",
-    role: "Systems Engineer / Hardware Integrator",
-    lastModified: "2024-11-20",
+    role: "Systems Engineer & Hardware Integrator",
+    lastModified: "2026-05-15",
     overview:
-      "Architected an automated hardware document management terminal. Integrated physical components including barcode sticker printing and 12V DC solenoid drawer locks. Evaluated and validated the complete cyber-physical system for ISO/IEC 25010 software quality compliance.",
+      "A robust Cyber-Physical System engineered for low-resource academic settings, balancing local-first hardware integration with an offline-first server environment. Reduced document cycle time from 315s down to 27s (91.4% throughput increase) and achieved a 3.70/4.00 'Highly Acceptable' rating in ISO/IEC 25010 software quality evaluation.",
     problem:
-      "Document management and retrieval lacked physical automation and secure tracking mechanisms.",
+      "Academic document management and clearance retrieval relied on manual logbooks and physical queuing, taking an average of 315 seconds per document transaction with frequent tracking errors and custodial bottlenecks.",
     architecture:
-      "Architected a cyber-physical terminal integrating C/C++ microcontrollers, barcode sticker printing, and 12V DC solenoid drawer locks. Engineered the hardware interlocks and backend database management system to track document custody securely.",
+      "Engineered an offline-first Cyber-Physical Terminal combining a local-first software stack with dedicated embedded hardware. Powered by a Dell Wyse 5070 Mini PC running PHP & Laravel with Laragon local database logging, a Node.js real-time serial hardware bridge to an Arduino Uno R3, 2-channel relay modules actuating 12V solenoid dropboxes, HC-SR04 ultrasonic capacity sensors, and a GOOJPRT thermal receipt printer. Outbound security tokens and notifications are dispatched asynchronously via Python and FastAPI hosted on Render.",
     outcome:
-      "Delivered a fully automated hardware kiosk that successfully passed rigorous ISO/IEC 25010 software quality compliance testing for reliability and performance.",
+      "Achieved a 91.4% increase in processing throughput (reducing cycle times from 315s to 27s), an annualized net administrative savings of ₱77,800.00 (159.3% ROI with 4.63-month capital payback), and passed ISO/IEC 25010 software quality compliance with an overall weighted mean of 3.70 / 4.00 ('Highly Acceptable').",
     architectureDetails:
-      "The terminal architecture links a local user interface to a microcontroller hardware abstraction layer over serial UART. The transaction sequence issues an on-demand Code-128 barcode sticker via thermal printer, drives a 12V relay to actuate a fail-secure solenoid drawer latch, and verifies physical closure via magnetic reed-switch feedback sensors. The system was validated against ISO/IEC 25010 criteria for functional suitability and reliability.",
+      "Core transaction flows (user credentials, barcode generation, local SQL logging, and physical drawer actuation) execute 100% locally on a Dell Wyse 5070 Mini PC via Laragon, ensuring continuous operation even during campus ISP outages. The Node.js hardware daemon bridges Laravel user actions to an Arduino Uno R3 over serial UART. When a document submission is validated, the Arduino commands a GOOJPRT thermal printer to dispense a Code-128 barcode sticker, trips an opto-isolated relay to energize a 12V solenoid lock, and samples HC-SR04 ultrasonic sensors to audit physical compartment capacity before re-locking.",
     techStack: [
-      "C/C++",
-      "Microcontrollers",
-      "IoT Relays",
-      "Hardware Testing",
+      "PHP & Laravel",
+      "Node.js (Serial Bridge)",
+      "Arduino Uno (C/C++)",
+      "Python & FastAPI",
+      "Laragon Local SQL",
+      "Tailwind CSS & Blade",
     ],
     outcomes: [
-      "Conducted full ISO/IEC 25010 compliance evaluation for software and hardware reliability.",
-      "Automated paper document submission with thermal barcode generation and compartment dispatch.",
-      "Engineered fail-secure hardware interlock with optocoupler isolation and watchdog timeout protection.",
-      "Maintained custodial integrity in local relational database with zero lock failure incidents.",
+      "Conducted rigorous ISO/IEC 25010 software quality evaluation with students and faculty, scoring 3.70/4.00 across 5 core dimensions.",
+      "Reduced document submission cycle time from 315 seconds to 27 seconds, achieving a verified 91.4% throughput gain in comparative time-motion studies.",
+      "Engineered 100% offline-first local server reliability via Laragon, keeping kiosk operations fully functional during campus internet downtime.",
+      "Designed economic model projecting ₱77,800.00 annual savings, 159.3% ROI, and 4.63-month amortized capital payback on a ₱30,000.00 project budget.",
     ],
     metrics: [
       {
-        value: "< 1.8s",
-        label: "Dispense Cycle",
-        detail: "Barcode print to drawer lock release",
+        value: "91.4%",
+        label: "Throughput Gain",
+        detail: "Cycle reduced from 315s (manual) to 27s",
       },
       {
-        value: "0.0%",
-        label: "Lock Failure Rate",
-        detail: "Opto-isolated relay and reed switch verification",
+        value: "3.70 / 4.0",
+        label: "ISO/IEC 25010 Score",
+        detail: "Overall weighted mean ('Highly Acceptable')",
       },
       {
-        value: "ISO 25010",
-        label: "Compliance Standard",
-        detail: "Certified software and hardware quality evaluation",
+        value: "159.3%",
+        label: "Projected ROI",
+        detail: "4.63-month payback on ₱30k total budget",
       },
     ],
+    academic: {
+      authors: [
+        "Jose Lorenzo Miguel P. Discutido",
+        "Derick Carlo S. Herrera",
+        "Yuan Gaebriel A. Marquez",
+        "Jiro Ivan C. Ybanez",
+      ],
+      institution:
+        "Bachelor of Science in Computer Engineering, Polytechnic University of the Philippines (PUP) - Manila",
+      advisers: ["Dr. Arvin R. De La Cruz", "Engr. Julius S. Cansino"],
+      panel: "Chaired by Engr. Cherry D. Casuat",
+      defenseDate: "May 2026",
+    },
+    isoEvaluation: [
+      {
+        characteristic: "Functional Suitability",
+        score: "3.74 / 4.00",
+        interpretation: "Highly Acceptable",
+      },
+      {
+        characteristic: "Usability",
+        score: "3.73 / 4.00",
+        interpretation: "Highly Acceptable",
+      },
+      {
+        characteristic: "Performance Efficiency",
+        score: "3.71 / 4.00",
+        interpretation: "Highly Acceptable",
+      },
+      {
+        characteristic: "Security",
+        score: "3.71 / 4.00",
+        interpretation: "Highly Acceptable",
+      },
+      {
+        characteristic: "Reliability",
+        score: "3.63 / 4.00",
+        interpretation: "Highly Acceptable",
+      },
+    ],
+    financials: {
+      totalCost: "₱30,000.00",
+      annualSavings: "₱77,800.00",
+      roi: "159.3%",
+      paybackPeriod: "4.63 Months",
+    },
   },
   {
     slug: "komunikonek",

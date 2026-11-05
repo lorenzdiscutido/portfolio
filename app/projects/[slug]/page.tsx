@@ -126,6 +126,43 @@ export default async function CaseStudyPage({
           )}
         </header>
 
+        {/* Academic Attribution & Committee Panel */}
+        {study.academic && (
+          <div className="mb-12 p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg text-xs font-mono space-y-3">
+            <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-3 flex-wrap gap-2">
+              <span className="font-bold uppercase tracking-wider text-orange-700 dark:text-orange">
+                Academic Research Attribution &amp; Defense
+              </span>
+              <span className="text-slate-500 font-medium">Evaluated: {study.academic.defenseDate}</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+              <div>
+                <p className="text-slate-500 dark:text-slate-400 font-bold uppercase mb-1">Project Authors / Engineering Team:</p>
+                <p className="text-slate-800 dark:text-slate-200 font-semibold leading-relaxed">
+                  {study.academic.authors.join(", ")}
+                </p>
+                <p className="text-slate-600 dark:text-slate-400 mt-2 font-medium">
+                  {study.academic.institution}
+                </p>
+              </div>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase mb-0.5">Advisers:</p>
+                  <p className="text-slate-800 dark:text-slate-200 font-semibold">
+                    {study.academic.advisers.join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase mb-0.5">Evaluation Panel:</p>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                    {study.academic.panel}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Quantified Metrics Highlight Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {study.metrics.map((metric, idx) => (
@@ -258,6 +295,79 @@ export default async function CaseStudyPage({
             </ul>
           </div>
         </section>
+
+        {/* ISO/IEC 25010 Quality Benchmark Table */}
+        {study.isoEvaluation && (
+          <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-400" />
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
+                  ISO/IEC 25010 Empirical Quality Evaluation
+                </h2>
+              </div>
+              <span className="text-xs font-mono font-bold px-3 py-1 rounded bg-blue-600/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 border border-blue-600/30 dark:border-blue-400/30">
+                Overall Weighted Mean: 3.70 / 4.00 (Highly Acceptable)
+              </span>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Empirical quality evaluation conducted across student and administrative staff respondent cohorts utilizing a 4-point Likert compliance instrument across five core ISO/IEC 25010 software quality characteristics:
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-black/10 dark:border-white/10">
+              <table className="w-full text-left text-xs font-mono">
+                <thead className="bg-slate-100 dark:bg-black/40 text-slate-700 dark:text-slate-300 border-b border-black/10 dark:border-white/10">
+                  <tr>
+                    <th className="py-2.5 px-3">Quality Characteristic</th>
+                    <th className="py-2.5 px-3">Weighted Mean Score</th>
+                    <th className="py-2.5 px-3">Descriptive Rating</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-black/20">
+                  {study.isoEvaluation.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-blue-600/5 dark:hover:bg-blue-400/5 transition-colors">
+                      <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-white">{row.characteristic}</td>
+                      <td className="py-2.5 px-3 font-bold text-blue-600 dark:text-blue-400">{row.score}</td>
+                      <td className="py-2.5 px-3 font-medium text-emerald-600 dark:text-emerald-400">{row.interpretation}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {/* Economic Feasibility & ROI Analysis */}
+        {study.financials && (
+          <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-12">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="h-2 w-2 rounded-full bg-orange" />
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
+                Financial &amp; Economic Feasibility Analysis
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+              <div className="p-4 rounded-lg bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/10">
+                <span className="block text-xs font-mono text-slate-500 uppercase">Total CapEx Cost</span>
+                <span className="block text-xl font-mono font-bold text-slate-900 dark:text-white mt-1">{study.financials.totalCost}</span>
+              </div>
+              <div className="p-4 rounded-lg bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/10">
+                <span className="block text-xs font-mono text-slate-500 uppercase">Annualized Net Savings</span>
+                <span className="block text-xl font-mono font-bold text-emerald-600 dark:text-emerald-400 mt-1">{study.financials.annualSavings}</span>
+              </div>
+              <div className="p-4 rounded-lg bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/10">
+                <span className="block text-xs font-mono text-slate-500 uppercase">Projected ROI</span>
+                <span className="block text-xl font-mono font-bold text-blue-600 dark:text-blue-400 mt-1">{study.financials.roi}</span>
+              </div>
+              <div className="p-4 rounded-lg bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/10">
+                <span className="block text-xs font-mono text-slate-500 uppercase">Payback Period</span>
+                <span className="block text-xl font-mono font-bold text-orange-700 dark:text-orange mt-1">{study.financials.paybackPeriod}</span>
+              </div>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400 font-mono">
+              Empirical cost modeling projects total capital cost recovery within 4.63 months through administrative labor redeployment and physical paper reduction.
+            </p>
+          </section>
+        )}
 
         {/* Bottom Navigation */}
         <div className="pt-8 border-t border-black/10 dark:border-white/10 flex justify-between items-center">

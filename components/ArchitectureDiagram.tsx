@@ -77,57 +77,67 @@ token = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.defau
     ],
   },
   "iskiosk-terminal": {
-    topologyTitle: "Hardware-Software Co-Design & Solenoid Interlock Loop",
-    subtitle: "Click any hardware or software module to inspect its signal interface",
+    topologyTitle: "Offline-First Cyber-Physical Pipeline & Actuation Flow",
+    subtitle: "Click any hardware module or software service to inspect its data contract",
     nodes: [
       {
         id: "kiosk-ui",
-        label: "1. Kiosk Terminal UI",
-        sublabel: "Document Validation & Queue",
-        protocol: "Local Process / IPC",
+        label: "1. Dell Wyse Mini PC",
+        sublabel: "Laravel MVC & Laragon Local Server",
+        protocol: "Localhost / Offline-First SQL",
         summary:
-          "Touchscreen interface validates user credentials, assigns a physical compartment ID, and initiates barcode generation under ISO/IEC 25010 usability controls.",
-        configSnippet: `// Transaction state machine
-TxPayload tx = createDocumentTransaction(userId, docType);
-printer.printBarcodeSticker(tx.trackingCode);
-serialBus.sendUnlockCommand(tx.compartmentId, tx.checksum);`,
+          "Runs 100% locally on a Dell Wyse 5070 Mini PC driving a 15-inch capacitive touchscreen. Handles form validations, barcode generation, and transaction state machines even during campus ISP outages.",
+        configSnippet: `// Laravel Document Transaction Engine (Localhost Laragon)
+$tx = DocumentTransaction::create([
+    'tracking_code' => Str::upper(Str::random(10)),
+    'compartment_id' => $assignedDrawer,
+    'status' => 'PENDING_PHYSICAL_DISPATCH',
+]);
+$hardwareDaemon->dispatchPrintAndActuate($tx);`,
       },
       {
         id: "printer",
-        label: "2. Thermal Barcode Unit",
-        sublabel: "On-Demand Label Printing",
-        protocol: "ESC/POS over Serial/USB",
+        label: "2. GOOJPRT Thermal Printer",
+        sublabel: "Code-128 Barcode & 2D Scanner",
+        protocol: "ESC/POS over USB-HID",
         summary:
-          "Generates scannable Code-128 barcode labels with human-readable tracking metadata prior to unlocking the physical submission drawer.",
-        configSnippet: `// ESC/POS command sequence for Code-128 barcode
-uint8_t cmd[] = { 0x1D, 0x68, 0x50, 0x1D, 0x77, 0x02, 0x1D, 0x6B, 0x49 };
-serialWrite(PRINTER_PORT, cmd, sizeof(cmd));`,
+          "Generates on-demand Code-128 barcode stickers containing human-readable tracking identifiers before drawer release. USB-HID scanner verifies returned tokens.",
+        configSnippet: `// GOOJPRT Thermal Barcode Command Stream
+const escpos = require('escpos');
+const device = new escpos.USB(0x0483, 0x5743);
+printer.barcode(trackingCode, "CODE128", { width: 2, height: 60 })
+       .feed(2)
+       .cut();`,
       },
       {
         id: "mcu",
-        label: "3. Microcontroller (MCU)",
-        sublabel: "Serial Command & Watchdog",
-        protocol: "UART (115200 baud, 8N1)",
+        label: "3. Arduino Uno R3 & Relays",
+        sublabel: "Node.js Serial Bridge & 12V Solenoid",
+        protocol: "UART Serial (115200 baud)",
         summary:
-          "Parses checksum-verified packets from the kiosk host, drives opto-isolated relay channels, and enforces a hardware watchdog timer against stuck-open faults.",
-        configSnippet: `if (verifyPacketChecksum(rxBuffer)) {
-  digitalWrite(RELAY_PIN[drawerId], HIGH); // Energize 12V solenoid
-  unlockTimestamp = millis();
-  state = AWAITING_DRAWER_CLOSURE;
+          "Node.js serial bridge dispatches actuation packets to the Arduino Uno R3. Optocoupled 2-channel relay energizes the 12V solenoid lock with watchdog cutoff protection.",
+        configSnippet: `// Arduino Uno R3 Relay Actuation Routine
+if (Serial.available()) {
+  String cmd = Serial.readStringUntil('\\n');
+  if (cmd.startsWith("UNLOCK:D7")) {
+    digitalWrite(RELAY_CH1_PIN, HIGH); // Energize 12V Solenoid
+    delay(2500);
+    digitalWrite(RELAY_CH1_PIN, LOW);  // Return to Fail-Secure
+  }
 }`,
       },
       {
-        id: "solenoid",
-        label: "4. 12V Solenoid & Sensors",
-        sublabel: "Physical Drawer Interlock",
-        protocol: "12V DC Relay + Reed Switch GPIO",
+        id: "sensors-cloud",
+        label: "4. HC-SR04 & FastAPI Cloud",
+        sublabel: "Ultrasonic Audit & Email Dispatch",
+        protocol: "Pulse Timing & HTTPS (Render)",
         summary:
-          "Fail-secure 12V solenoid latch releases the assigned drawer while magnetic reed switches report physical closure back to the MCU to commit the transaction.",
-        configSnippet: `// Hardware feedback verification loop
-if (digitalRead(REED_SWITCH_PIN[drawerId]) == LOW && elapsed > MIN_OPEN_MS) {
-  digitalWrite(RELAY_PIN[drawerId], LOW); // Re-engage mechanical lock
-  Serial.println("ACK:LOCKED:" + String(drawerId));
-}`,
+          "HC-SR04 ultrasonic sensors measure physical compartment fill depth to prevent overflow. Outbound security tokens and email receipts are dispatched asynchronously via Python FastAPI on Render.",
+        configSnippet: `# FastAPI Async Notification Dispatch (Hosted on Render)
+@app.post("/api/v1/notify-transaction")
+async def send_receipt(payload: TransactionReceipt, background_tasks: BackgroundTasks):
+    background_tasks.add_task(dispatch_smtp_email, payload)
+    return {"status": "ENQUEUED", "tracking_code": payload.tracking_code}`,
       },
     ],
   },

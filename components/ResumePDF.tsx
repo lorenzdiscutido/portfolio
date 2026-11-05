@@ -264,12 +264,18 @@ export default function ResumePDF() {
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
               <Text style={styles.itemTitle}>IsKiosk IoT Document Terminal</Text>
-              <Text style={styles.itemDate}>Systems Engineer / Hardware Integrator</Text>
+              <Text style={styles.itemDate}>Systems Engineer &amp; Hardware Integrator</Text>
             </View>
             <View style={styles.bulletRow}>
               <Text style={styles.bullet}>•</Text>
               <Text style={styles.bulletText}>
-                Architected automated document management terminal integrating thermal barcode printing and 12V DC solenoid locks, validated for ISO/IEC 25010 software quality standards.
+                Architected an offline-first Cyber-Physical Terminal combining a Dell Wyse 5070 Mini PC (Laravel, Laragon local SQL), Arduino Uno R3, 12V solenoid locks, and GOOJPRT thermal printer.
+              </Text>
+            </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Achieved 91.4% throughput increase (reducing cycle from 315s to 27s) and 3.70/4.00 (&quot;Highly Acceptable&quot;) in empirical ISO/IEC 25010 software quality evaluation.
               </Text>
             </View>
           </View>

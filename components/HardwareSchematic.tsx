@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 
 export default function HardwareSchematic() {
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [pulseCount, setPulseCount] = useState(0);
 
   const triggerUnlock = () => {
     setIsUnlocked(true);
-    setPulseCount((c) => c + 1);
     setTimeout(() => {
       setIsUnlocked(false);
     }, 2800);
@@ -17,34 +14,40 @@ export default function HardwareSchematic() {
 
   const pinouts = [
     {
-      pin: "GPIO 16 (TX2)",
-      target: "Thermal Printer RX",
-      voltage: "3.3V Logic (TTL)",
-      role: "Transmits ESC/POS barcode generation & print streams",
+      pin: "USB-UART (COM)",
+      target: "Dell Wyse 5070 Mini PC ↔ Arduino Uno R3",
+      voltage: "5V USB / 115200 Baud",
+      role: "Node.js serial communication bridge exchanging transaction payloads",
     },
     {
-      pin: "GPIO 17 (RX2)",
-      target: "Thermal Printer TX",
-      voltage: "3.3V Logic (TTL)",
-      role: "Receives paper-out and buffer readiness status codes",
+      pin: "Digital Pin D7",
+      target: "2-Channel Relay IN1 (Optocoupler)",
+      voltage: "5V TTL Logic",
+      role: "Galvanically isolated trigger energizing primary 12V solenoid lock",
     },
     {
-      pin: "GPIO 22 (DO)",
-      target: "Optocoupler IN (PC817)",
-      voltage: "3.3V -> 5V Opto",
-      role: "Galvanically isolated drive signal to energize 12V relay",
+      pin: "Digital Pin D8",
+      target: "2-Channel Relay IN2 (Optocoupler)",
+      voltage: "5V TTL Logic",
+      role: "Secondary relay channel for auxiliary compartment actuation",
     },
     {
-      pin: "GPIO 23 (DI)",
-      target: "Magnetic Reed Switch",
-      voltage: "3.3V Internal Pull-Up",
-      role: "Hardware interrupt sensing drawer physical closure state",
+      pin: "Pins D9 / D10",
+      target: "HC-SR04 Ultrasonic Sensor (TRIG/ECHO)",
+      voltage: "5V VCC / Ultrasonic Pulse",
+      role: "Measures physical drawer fill depth to audit storage capacity",
     },
     {
-      pin: "12V VCC Rail",
-      target: "Solenoid Coil + 1N4007",
-      voltage: "12.0V DC (2.0A peak)",
-      role: "Inductive solenoid latch with reverse flyback diode protection",
+      pin: "USB-HID / ESC/POS",
+      target: "GOOJPRT Thermal Receipt Printer",
+      voltage: "9V DC / USB Interface",
+      role: "Generates Code-128 barcode tracking sticker prior to drawer actuation",
+    },
+    {
+      pin: "12V Rail + UPS",
+      target: "12V Solenoids + 1N4007 Diode + Fan",
+      voltage: "12.0V DC (UPS-backed)",
+      role: "Inductive solenoid latch with reverse flyback protection and thermal fan",
     },
   ];
 
@@ -53,10 +56,10 @@ export default function HardwareSchematic() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/10">
         <div>
           <span className="text-orange-700 dark:text-orange font-mono text-xs uppercase tracking-widest block mb-1">
-            Physical Hardware Co-Design
+            Cyber-Physical Hardware Architecture
           </span>
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
-            MCU Hardware Interlock &amp; Solenoid Circuit
+            IsKiosk Embedded Actuation &amp; Sensor Subsystem
           </h3>
         </div>
         <button
@@ -69,8 +72,33 @@ export default function HardwareSchematic() {
       </div>
 
       {/* Visual Interlock State Diagram */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        {/* Module 1: Logic Control */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        {/* Module 1: Dell Wyse Mini PC */}
+        <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
+                Host Controller
+              </span>
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+            </div>
+            <p className="font-bold text-slate-900 dark:text-white text-sm">
+              Dell Wyse 5070 Mini PC
+            </p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+              Drives 15&quot; capacitive touchscreen. Runs Laravel MVC, Laragon local database, and Node.js serial bridge.
+            </p>
+          </div>
+          <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
+            <span>Offline-First</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">100% LOCAL</span>
+          </div>
+        </div>
+
+        {/* Module 2: Arduino Uno Controller */}
         <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -78,28 +106,28 @@ export default function HardwareSchematic() {
                 MCU Controller
               </span>
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-600 dark:bg-blue-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-600 dark:bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-400"></span>
               </span>
             </div>
             <p className="font-bold text-slate-900 dark:text-white text-sm">
-              Watchdog &amp; UART Engine
+              Arduino Uno R3
             </p>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-              Enforces 3000ms stuck-open safety cutoff and verifies CRC-16 command signatures.
+              Processes serial packets, enforces watchdog timers, trips 2-channel relay, and samples HC-SR04 ultrasonic sensors.
             </p>
           </div>
           <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
-            <span>Core Logic: 3.3V</span>
-            <span className="text-blue-600 dark:text-blue-400 font-bold">ARMED</span>
+            <span>UART 115200</span>
+            <span className="text-blue-600 dark:text-blue-400 font-bold">SYNC OK</span>
           </div>
         </div>
 
-        {/* Module 2: Galvanic Isolation Relay */}
+        {/* Module 3: 2-Channel Relay & Solenoid */}
         <div
           className={`p-4 rounded-lg border transition-all duration-300 flex flex-col justify-between ${
             isUnlocked
-              ? "bg-orange/10 border-orange shadow-md"
+              ? "bg-orange-500/10 border-orange shadow-md"
               : "bg-white/70 dark:bg-black/30 border-black/10 dark:border-white/10"
           }`}
         >
@@ -107,10 +135,10 @@ export default function HardwareSchematic() {
             <div className="flex items-center justify-between mb-2">
               <span
                 className={`text-xs font-mono font-bold uppercase ${
-                  isUnlocked ? "text-orange" : "text-slate-500"
+                  isUnlocked ? "text-orange-700 dark:text-orange" : "text-slate-500"
                 }`}
               >
-                Opto Relay Stage
+                2-Ch Relay &amp; Solenoid
               </span>
               <span
                 className={`h-2.5 w-2.5 rounded-full ${
@@ -119,63 +147,43 @@ export default function HardwareSchematic() {
               />
             </div>
             <p className="font-bold text-slate-900 dark:text-white text-sm">
-              PC817 + 5V Coil Driver
+              12V Solenoid DropBox
             </p>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-              Provides galvanic isolation protecting the digital MCU rail from 12V inductive spikes.
+              Opto-isolated 5V coil triggers heavy-duty 12V fail-secure latch with 1N4007 inductive flyback diode protection.
             </p>
           </div>
           <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <span className="text-slate-500">Relay State:</span>
+            <span className="text-slate-500">Lock State:</span>
             <span
               className={`font-bold ${
-                isUnlocked ? "text-orange" : "text-slate-600 dark:text-slate-400"
+                isUnlocked ? "text-orange-700 dark:text-orange" : "text-slate-600 dark:text-slate-400"
               }`}
             >
-              {isUnlocked ? "CLOSED (TRIGGERED)" : "OPEN (DISARMED)"}
+              {isUnlocked ? "ENERGIZED (OPEN)" : "LATCHED (SECURE)"}
             </span>
           </div>
         </div>
 
-        {/* Module 3: Physical Actuator */}
-        <div
-          className={`p-4 rounded-lg border transition-all duration-300 flex flex-col justify-between ${
-            isUnlocked
-              ? "bg-emerald-500/10 border-emerald-500 shadow-md"
-              : "bg-white/70 dark:bg-black/30 border-black/10 dark:border-white/10"
-          }`}
-        >
+        {/* Module 4: Peripherals & Power */}
+        <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span
-                className={`text-xs font-mono font-bold uppercase ${
-                  isUnlocked ? "text-emerald-500" : "text-slate-500"
-                }`}
-              >
-                Solenoid Drawer
+              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
+                Peripherals &amp; UPS
               </span>
-              <span
-                className={`h-2.5 w-2.5 rounded-full ${
-                  isUnlocked ? "bg-emerald-500" : "bg-slate-400"
-                }`}
-              />
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </div>
             <p className="font-bold text-slate-900 dark:text-white text-sm">
-              12V Heavy-Duty Solenoid
+              GOOJPRT &amp; 1000VA UPS
             </p>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-              Spring-loaded latch retracts upon 12V energization. Reed sensor confirms return stroke.
+              GOOJPRT thermal receipt printer, USB 2D QR scanner, 12V cooling fan, and 650–1000 VA battery backup.
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <span className="text-slate-500">Latch Status:</span>
-            <span
-              className={`font-bold ${
-                isUnlocked ? "text-emerald-500" : "text-slate-600 dark:text-slate-400"
-              }`}
-            >
-              {isUnlocked ? "UNLOCKED (REED OPEN)" : "LOCKED (SECURED)"}
-            </span>
+          <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
+            <span>Thermal + Power</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">REGULATED</span>
           </div>
         </div>
       </div>
@@ -189,10 +197,10 @@ export default function HardwareSchematic() {
           <table className="w-full text-left text-xs font-mono">
             <thead className="bg-slate-100 dark:bg-black/40 text-slate-700 dark:text-slate-300 border-b border-black/10 dark:border-white/10">
               <tr>
-                <th className="py-2.5 px-3">Pin / Terminal</th>
+                <th className="py-2.5 px-3">Pin / Bus Interface</th>
                 <th className="py-2.5 px-3">Target Subsystem</th>
                 <th className="py-2.5 px-3">Signal / Voltage</th>
-                <th className="py-2.5 px-3">Interlock Function</th>
+                <th className="py-2.5 px-3">Function in Cyber-Physical Architecture</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-black/20">
