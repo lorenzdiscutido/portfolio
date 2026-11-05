@@ -31,49 +31,68 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 bg-base px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <div className="mb-12 text-left">
+          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+            Selected Works
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary">
             Featured <span className="text-blue">Projects</span>
           </h2>
-          <div className="h-1 w-20 bg-orange mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-surface rounded-xl p-8 border border-transparent hover:border-orange transition-colors duration-300 flex flex-col"
-            >
-              <h3 className="text-2xl font-bold text-primary mb-1">
-                {project.title}
-              </h3>
-              <p className="text-orange text-sm font-semibold tracking-wide uppercase mb-4">
-                {project.role}
-              </p>
-
-              <p className="text-muted leading-relaxed mb-8 flex-grow">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                {project.stack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="text-xs font-semibold text-primary bg-base px-3 py-1 rounded-full border border-[#2d313a]"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <Link
-                href={`/projects/${project.slug}`}
-                className="inline-flex items-center text-sm font-semibold text-blue hover:text-orange transition-colors"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => {
+            const isFeatured = index === 0;
+            return (
+              <div
+                key={index}
+                className={`rounded-xl p-8 border transition-all duration-300 flex flex-col ${
+                  isFeatured
+                    ? "md:col-span-2 bg-surface border-blue/30 bg-blue/[0.04] hover:border-orange shadow-lg"
+                    : "bg-surface border-[#2d313a] hover:border-orange"
+                }`}
               >
-                View Architecture &amp; Case Study →
-              </Link>
-            </div>
-          ))}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <h3 className="text-2xl font-bold text-primary">
+                    {project.title}
+                  </h3>
+                  {isFeatured && (
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-0.5 rounded border border-blue/30 self-start sm:self-auto">
+                      Primary Case Study
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-orange text-sm font-semibold tracking-wide uppercase mb-4">
+                  {project.role}
+                </p>
+
+                <p className="text-muted leading-relaxed mb-8 flex-grow">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                  {project.stack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="font-mono text-xs font-medium text-primary bg-base px-3 py-1 rounded-full border border-[#2d313a]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center text-sm font-semibold text-blue hover:text-orange transition-colors"
+                  >
+                    View Architecture &amp; Case Study →
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
