@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 interface HistoryEntry {
+  id: string;
   command: string;
   output: React.ReactNode;
 }
@@ -11,15 +12,58 @@ export default function Terminal() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState<string>("");
+  const [isExecuting, setIsExecuting] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const timerIdsRef = useRef<NodeJS.Timeout[]>([]);
+  const isExecutingRef = useRef<boolean>(false);
+  const activeExecutionRef = useRef<{
+    entryId: string;
+    currentLines: { text: string; isStats?: boolean }[];
+    targetIP: string;
+  } | null>(null);
+
+  const renderPingOutput = (lines: { text: string; isStats?: boolean }[]) => (
+    <div className="space-y-0.5 font-mono text-xs py-1">
+      {lines.map((item, idx) => (
+        <p key={idx} className={item.isStats ? "pt-2" : ""}>
+          {item.text}
+        </p>
+      ))}
+    </div>
+  );
+
+  const cancelExecution = () => {
+    timerIdsRef.current.forEach((t) => clearTimeout(t));
+    timerIdsRef.current = [];
+    if (activeExecutionRef.current) {
+      const { entryId, currentLines } = activeExecutionRef.current;
+      currentLines.push({ text: "^C" });
+      setHistory((prev) =>
+        prev.map((entry) =>
+          entry.id === entryId
+            ? { ...entry, output: renderPingOutput([...currentLines]) }
+            : entry
+        )
+      );
+      activeExecutionRef.current = null;
+    }
+    setIsExecuting(false);
+    isExecutingRef.current = false;
+    setTimeout(() => inputRef.current?.focus(), 50);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === "`") {
         e.preventDefault();
         setIsOpen((prev) => !prev);
+      } else if (e.ctrlKey && (e.key === "c" || e.key === "C")) {
+        if (isExecutingRef.current) {
+          e.preventDefault();
+          cancelExecution();
+        }
       }
     };
 
@@ -32,20 +76,87 @@ export default function Terminal() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("open-terminal", handleCustomOpen);
+      timerIdsRef.current.forEach((t) => clearTimeout(t));
+      timerIdsRef.current = [];
     };
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !isExecuting) {
       inputRef.current?.focus();
     }
-  }, [isOpen]);
+  }, [isOpen, isExecuting]);
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [history, isOpen]);
+  }, [history, isOpen, isExecuting]);
+
+  const startPing = (rawCmd: string, targetIP: string) => {
+    const validIPs = ["100.64.0.1", "100.64.0.2", "100.64.0.3", "100.64.0.4"];
+    const isValid = validIPs.includes(targetIP);
+
+    setIsExecuting(true);
+    isExecutingRef.current = true;
+
+    const headerLine = `PING ${targetIP} (${targetIP}) 56(84) bytes of data.`;
+    const sequence: { text: string; delay: number; isStats?: boolean }[] = isValid
+      ? [
+          { text: `64 bytes from ${targetIP}: icmp_seq=1 ttl=64 time=18.4 ms`, delay: 550 },
+          { text: `64 bytes from ${targetIP}: icmp_seq=2 ttl=64 time=19.1 ms`, delay: 1100 },
+          { text: `64 bytes from ${targetIP}: icmp_seq=3 ttl=64 time=18.8 ms`, delay: 1650 },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
+          { text: `3 packets transmitted, 3 received, 0% packet loss, time 2003ms`, delay: 2200 },
+        ]
+      : [
+          { text: `From ${targetIP} icmp_seq=1 Destination Host Unreachable`, delay: 550 },
+          { text: `From ${targetIP} icmp_seq=2 Destination Host Unreachable`, delay: 1100 },
+          { text: `From ${targetIP} icmp_seq=3 Destination Host Unreachable`, delay: 1650 },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
+          { text: `3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms`, delay: 2200 },
+        ];
+
+    const currentLines: { text: string; isStats?: boolean }[] = [{ text: headerLine }];
+    const entryId = `ping-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+
+    activeExecutionRef.current = {
+      entryId,
+      currentLines,
+      targetIP,
+    };
+
+    setHistory((prev) => [
+      ...prev,
+      {
+        id: entryId,
+        command: rawCmd,
+        output: renderPingOutput(currentLines),
+      },
+    ]);
+
+    sequence.forEach((item, index) => {
+      const timer = setTimeout(() => {
+        currentLines.push(item);
+        setHistory((prev) =>
+          prev.map((entry) =>
+            entry.id === entryId
+              ? { ...entry, output: renderPingOutput([...currentLines]) }
+              : entry
+          )
+        );
+
+        if (index === sequence.length - 1) {
+          activeExecutionRef.current = null;
+          setIsExecuting(false);
+          isExecutingRef.current = false;
+          setTimeout(() => inputRef.current?.focus(), 50);
+        }
+      }, item.delay);
+
+      timerIdsRef.current.push(timer);
+    });
+  };
 
   const handleCommand = (rawCmd: string) => {
     const trimmed = rawCmd.trim();
@@ -216,32 +327,8 @@ export default function Terminal() {
           );
           break;
         }
-        const validIPs = ["100.64.0.1", "100.64.0.2", "100.64.0.3", "100.64.0.4"];
-        const targetIP = arg;
-        if (validIPs.includes(targetIP)) {
-          output = (
-            <div className="space-y-0.5 font-mono text-xs py-1">
-              <p>PING {targetIP} ({targetIP}) 56(84) bytes of data.</p>
-              <p>64 bytes from {targetIP}: icmp_seq=1 ttl=64 time=18.4 ms</p>
-              <p>64 bytes from {targetIP}: icmp_seq=2 ttl=64 time=19.1 ms</p>
-              <p>64 bytes from {targetIP}: icmp_seq=3 ttl=64 time=18.8 ms</p>
-              <p className="pt-2">--- {targetIP} ping statistics ---</p>
-              <p>3 packets transmitted, 3 received, 0% packet loss, time 2003ms</p>
-            </div>
-          );
-        } else {
-          output = (
-            <div className="space-y-0.5 font-mono text-xs py-1">
-              <p>PING {targetIP} ({targetIP}) 56(84) bytes of data.</p>
-              <p>From {targetIP} icmp_seq=1 Destination Host Unreachable</p>
-              <p>From {targetIP} icmp_seq=2 Destination Host Unreachable</p>
-              <p>From {targetIP} icmp_seq=3 Destination Host Unreachable</p>
-              <p className="pt-2">--- {targetIP} ping statistics ---</p>
-              <p>3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms</p>
-            </div>
-          );
-        }
-        break;
+        startPing(rawCmd, arg);
+        return;
       }
       case "zzz":
       case "synergy":
@@ -276,11 +363,12 @@ export default function Terminal() {
         break;
     }
 
-    setHistory((prev) => [...prev, { command: rawCmd, output }]);
+    const entryId = `cmd-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    setHistory((prev) => [...prev, { id: entryId, command: rawCmd, output }]);
   };
 
   const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !isExecuting) {
       handleCommand(input);
       setInput("");
     }
@@ -309,7 +397,7 @@ export default function Terminal() {
   return (
     <div
       ref={containerRef}
-      onClick={() => inputRef.current?.focus()}
+      onClick={() => !isExecuting && inputRef.current?.focus()}
       className="fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-white/95 dark:bg-[#15181e]/95 backdrop-blur-xl border border-black/10 dark:border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
     >
       <div className="mb-3 pb-2 border-b border-black/10 dark:border-white/10 flex justify-between items-center text-xs">
@@ -333,8 +421,8 @@ export default function Terminal() {
       </div>
 
       <div className="space-y-3">
-        {history.map((entry, index) => (
-          <div key={index} className="space-y-1">
+        {history.map((entry) => (
+          <div key={entry.id} className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="text-orange font-bold">guest@jld-sys:~$</span>
               <span className="text-slate-900 dark:text-white">{entry.command}</span>
@@ -343,20 +431,27 @@ export default function Terminal() {
           </div>
         ))}
 
-        <div className="flex items-center gap-2">
-          <span className="text-orange font-bold">guest@jld-sys:~$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDownInput}
-            className="flex-1 bg-transparent text-slate-900 dark:text-white outline-none border-none caret-orange font-mono"
-            aria-label="Terminal command input"
-            autoComplete="off"
-            spellCheck={false}
-          />
-        </div>
+        {isExecuting ? (
+          <div className="flex items-center gap-2 pt-1 pl-2">
+            <span className="inline-block w-2 h-3.5 bg-orange animate-pulse" />
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span className="text-orange font-bold">guest@jld-sys:~$</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDownInput}
+              className="flex-1 bg-transparent text-slate-900 dark:text-white outline-none border-none caret-orange font-mono"
+              aria-label="Terminal command input"
+              autoComplete="off"
+              spellCheck={false}
+              disabled={isExecuting}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
