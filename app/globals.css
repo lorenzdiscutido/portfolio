@@ -63,13 +63,16 @@ html.dark .theme-text-secondary {
 
 /* White / Tactile Button Dual-Theme styling */
 html.light .theme-btn-white,
-html:not(.dark) .theme-btn-white {
+html:not(.dark) .theme-btn-white,
+html.light .theme-btn-white *,
+html:not(.dark) .theme-btn-white * {
   background-color: #ffffff !important;
   color: #000000 !important;
   border-color: #000000 !important;
 }
 
-html.dark .theme-btn-white {
+html.dark .theme-btn-white,
+html.dark .theme-btn-white * {
   background-color: #1e2128 !important;
   color: #ffffff !important;
   border-color: rgba(255, 255, 255, 0.3) !important;

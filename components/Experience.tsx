@@ -60,7 +60,7 @@ export default function Experience() {
           <h2 className="theme-text-primary text-3xl md:text-4xl font-bold mb-2">
             Experience &amp; <span className="text-blue">Education</span>
           </h2>
-          <p className="theme-text-secondary font-semibold text-sm md:text-base mt-2 max-w-xl">
+          <p className="theme-text-secondary text-slate-800 dark:text-slate-300 font-semibold text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>

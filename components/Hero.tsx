@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import TelemetryBar from "@/components/TelemetryBar";
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
@@ -23,8 +24,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-6 pt-28 lg:pt-36 pb-20">
+    <section className="min-h-[85vh] flex flex-col justify-center px-6 pt-24 lg:pt-32 pb-20">
       <div className="max-w-6xl mx-auto w-full">
+        {/* Edge Telemetry HUD Bar */}
+        <TelemetryBar />
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Text Layout */}
           <motion.div
@@ -70,20 +74,24 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
               className="flex flex-wrap gap-4 items-center justify-start"
             >
-              <a
+              <motion.a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer"
+                whileHover={{ x: 2, y: 2 }}
+                whileTap={{ x: 4, y: 4, scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer"
               >
                 <span className="!text-black font-bold">View Projects</span>
                 <span aria-hidden="true" className="!text-black font-bold">&rarr;</span>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
                 href="#contact"
-                className="theme-btn-white inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue dark:hover:!text-blue hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
+                whileHover={{ x: 2, y: 2 }}
+                whileTap={{ x: 4, y: 4, scale: 0.98 }}
+                className="theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue dark:hover:!text-blue hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
               >
-                <span>Contact Me</span>
-              </a>
+                <span className="text-black dark:text-white font-bold">Contact Me</span>
+              </motion.a>
             </motion.div>
           </motion.div>
 
