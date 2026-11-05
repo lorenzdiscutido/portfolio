@@ -1,18 +1,23 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { validateContact } from "@/lib/contact";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, subject, message } = await req.json();
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Name, email, and message are required." },
-        { status: 400 }
-      );
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
     }
 
-    const emailSubject = subject?.trim() || `Portfolio Inquiry from ${name}`;
+    const result = validateContact(body);
+    if (!result.ok) {
+      return NextResponse.json({ error: result.error }, { status: 400 });
+    }
+
+    const { name, email, message } = result.data;
+    const emailSubject = result.data.subject || `Portfolio Inquiry from ${name}`;
     const emailBody = `New portfolio contact submission:\n\nName: ${name}\nEmail: ${email}\nSubject: ${emailSubject}\n\nMessage:\n${message}`;
 
     // Option 1: Resend (Recommended Vercel Integration)
@@ -62,7 +67,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, method: "web3forms" });
     }
 
-    // Fallback: Log directly to server logs without triggering external mail apps
+    // No delivery provider configured.
+    // In production, fail visibly: reporting success here would silently drop the message.
+    if (process.env.NODE_ENV === "production") {
+      console.error(
+        "Contact form: no delivery provider configured (set RESEND_API_KEY or WEB3FORMS_ACCESS_KEY)."
+      );
+      return NextResponse.json(
+        { error: "The contact form is temporarily unavailable. Please try again later." },
+        { status: 503 }
+      );
+    }
+
+    // Development: log to the server console so the form can be tried without API keys.
     console.log("=== [NEW PORTFOLIO INQUIRY] ===");
     console.log(`From: ${name} <${email}>`);
     console.log(`Subject: ${emailSubject}`);
@@ -72,7 +89,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       method: "server-log",
-      note: "Submission received cleanly on server.",
+      note: "Development mode: submission logged to the server console only.",
     });
   } catch (error) {
     console.error("Contact API error:", error);
