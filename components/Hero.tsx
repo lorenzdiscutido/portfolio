@@ -44,11 +44,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.12] mb-6"
+              className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6"
             >
               Hi, I&apos;m Jose Lorenzo Discutido.
               <br />
-              <span className="text-slate-900 dark:text-white">
+              <span className="theme-text-primary">
                 I build hardware integrations and automate enterprise cloud.
               </span>
             </motion.h1>
@@ -58,7 +58,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-base sm:text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-xl leading-relaxed"
+              className="theme-text-secondary text-base sm:text-lg mb-8 max-w-xl leading-relaxed"
             >
               I build hardware integrations and automate enterprise cloud environments. With a background in Big Data Analytics, I focus on eliminating bottlenecks—from master-master database networks to automated defect logging. Currently architecting systems at Vonotec.
             </motion.p>
@@ -72,17 +72,17 @@ export default function Hero() {
             >
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer"
               >
-                <span>View Projects</span>
-                <span aria-hidden="true">&rarr;</span>
+                <span className="!text-black font-bold">View Projects</span>
+                <span aria-hidden="true" className="!text-black font-bold">&rarr;</span>
               </a>
 
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white text-slate-950 border-2 border-black dark:bg-[#1e2128] dark:text-white dark:border-white/30 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:text-blue dark:hover:text-blue hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
+                className="theme-btn-white inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue dark:hover:!text-blue hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
               >
-                Contact Me
+                <span>Contact Me</span>
               </a>
             </motion.div>
           </motion.div>
@@ -114,11 +114,11 @@ export default function Hero() {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center text-slate-900 dark:text-white bg-slate-100 dark:bg-surface p-6">
+                  <div className="w-full h-full flex flex-col items-center justify-center theme-text-primary bg-slate-100 dark:bg-surface p-6">
                     <span className="font-extrabold text-3xl tracking-tighter text-blue">
                       JL<span className="text-orange">D</span>
                     </span>
-                    <span className="text-xs uppercase font-mono text-slate-600 dark:text-muted tracking-widest mt-2">
+                    <span className="text-xs uppercase font-mono theme-text-secondary tracking-widest mt-2">
                       Jose Lorenzo Discutido
                     </span>
                   </div>
@@ -137,7 +137,7 @@ export default function Hero() {
               </div>
 
               {/* Tilted "aka @lorenzdiscutido" pill badge at bottom-left */}
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 bg-white text-slate-950 dark:bg-[#1e2128] dark:text-white px-4 py-1.5 rounded-xl border-2 border-black dark:border-white/20 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
+              <div className="theme-badge absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 px-4 py-1.5 rounded-xl border-2 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
                 <span className="text-orange font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>

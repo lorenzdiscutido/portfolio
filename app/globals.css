@@ -3,18 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme colors are stored as space-separated RGB channels so Tailwind
-     opacity modifiers (e.g. bg-blue/10, bg-base/80) compile via <alpha-value>. */
   :root,
   .light,
-  html.light {
+  html.light,
+  html:not(.dark) {
     --base: 255 255 255;    /* #ffffff */
     --surface: 248 250 252; /* #f8fafc */
     --primary: 15 23 42;    /* #0f172a - deep slate */
     --muted: 71 85 105;     /* #475569 - slate-600 */
     --blue: 0 82 255;       /* #0052FF */
     --orange: 255 122 0;    /* #FF7A00 */
+    color-scheme: light;
   }
+
   .dark,
   html.dark {
     --base: 15 17 21;       /* #0f1115 */
@@ -23,12 +24,72 @@
     --muted: 148 163 184;   /* #94a3b8 */
     --blue: 0 82 255;       /* #0052FF */
     --orange: 255 122 0;    /* #FF7A00 */
+    color-scheme: dark;
   }
+
   body {
-    @apply bg-base text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300;
+    @apply bg-base antialiased transition-colors duration-300;
   }
 }
 
+/* Bulletproof Dual-Theme Utility Classes */
+html.light body,
+html:not(.dark) body {
+  color: #0f172a;
+}
+
+html.dark body {
+  color: #f1f5f9;
+}
+
+/* Explicit high-contrast text helpers */
+html.light .theme-text-primary,
+html:not(.dark) .theme-text-primary {
+  color: #0f172a !important;
+}
+
+html.dark .theme-text-primary {
+  color: #ffffff !important;
+}
+
+html.light .theme-text-secondary,
+html:not(.dark) .theme-text-secondary {
+  color: #334155 !important;
+}
+
+html.dark .theme-text-secondary {
+  color: #cbd5e1 !important;
+}
+
+/* White / Tactile Button Dual-Theme styling */
+html.light .theme-btn-white,
+html:not(.dark) .theme-btn-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.dark .theme-btn-white {
+  background-color: #1e2128 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Tilted badge Dual-Theme styling */
+html.light .theme-badge,
+html:not(.dark) .theme-badge {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.dark .theme-badge {
+  background-color: #1e2128 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ambient Dot Grid */
 .bg-dot-pattern {
   background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;

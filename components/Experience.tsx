@@ -57,10 +57,10 @@ export default function Experience() {
           <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Career Timeline
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
+          <h2 className="theme-text-primary text-3xl md:text-4xl font-bold mb-2">
             Experience &amp; <span className="text-blue">Education</span>
           </h2>
-          <p className="text-slate-700 dark:text-slate-200 font-medium text-sm md:text-base mt-2 max-w-xl">
+          <p className="theme-text-secondary font-semibold text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -87,19 +87,19 @@ export default function Experience() {
                         ? "bg-blue/10 border-blue text-blue font-semibold"
                         : item.type === "Internship"
                         ? "bg-orange/10 border-orange text-orange font-semibold"
-                        : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 text-slate-900 dark:text-white font-semibold"
+                        : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 theme-text-primary font-semibold"
                     }`}
                   >
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-1">
+                <h3 className="theme-text-primary text-xl md:text-2xl font-bold mb-1">
                   {item.role}
                 </h3>
 
-                <p className="text-slate-700 dark:text-slate-300 text-sm font-medium mb-4">
-                  <strong className="text-slate-900 dark:text-white">{item.organization}</strong>{" "}
+                <p className="theme-text-secondary text-sm font-medium mb-4">
+                  <strong className="theme-text-primary">{item.organization}</strong>{" "}
                   • {item.location}
                 </p>
 
@@ -107,7 +107,7 @@ export default function Experience() {
                   {item.highlights.map((point, i) => (
                     <li
                       key={i}
-                      className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed flex items-start gap-2.5"
+                      className="theme-text-secondary text-sm leading-relaxed flex items-start gap-2.5"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-blue shrink-0 mt-2" />
                       <span>{point}</span>
