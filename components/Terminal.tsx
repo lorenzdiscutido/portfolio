@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 interface HistoryEntry {
   id: string;
@@ -9,6 +10,7 @@ interface HistoryEntry {
 }
 
 export default function Terminal() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState<string>("");
@@ -198,6 +200,12 @@ export default function Terminal() {
               &gt; <span className="text-blue">ping &lt;ip&gt;</span> — Test ICMP echo reachability
             </p>
             <p>
+              &gt; <span className="text-blue">cd &lt;dir&gt;</span> — Navigate to projects (komunikonek, iskiosk, vonotec, ~)
+            </p>
+            <p>
+              &gt; <span className="text-blue">ls</span> — List navigable project directories
+            </p>
+            <p>
               &gt; <span className="text-blue">clear</span> — Clear terminal output
             </p>
           </div>
@@ -330,6 +338,89 @@ export default function Terminal() {
         startPing(rawCmd, arg);
         return;
       }
+      case "cd": {
+        const rawTarget = (arg || "").trim();
+        const target = rawTarget.toLowerCase().replace(/\/+$/, "");
+
+        if (!target || target === "~" || rawTarget === "/") {
+          output = (
+            <p className="font-mono text-xs text-blue">&gt; Navigating to /home...</p>
+          );
+          setTimeout(() => {
+            router.push("/");
+          }, 500);
+          break;
+        }
+
+        if (target === "..") {
+          output = (
+            <p className="font-mono text-xs text-blue">&gt; Navigating back...</p>
+          );
+          setTimeout(() => {
+            router.push("/");
+          }, 500);
+          break;
+        }
+
+        if (target === "komunikonek" || target === "projects/komunikonek") {
+          output = (
+            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/komunikonek...</p>
+          );
+          setTimeout(() => {
+            router.push("/projects/komunikonek");
+          }, 500);
+          break;
+        }
+
+        if (
+          target === "iskiosk" ||
+          target === "iskiosk-terminal" ||
+          target === "projects/iskiosk-terminal"
+        ) {
+          output = (
+            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/iskiosk-terminal...</p>
+          );
+          setTimeout(() => {
+            router.push("/projects/iskiosk-terminal");
+          }, 500);
+          break;
+        }
+
+        if (
+          target === "vonotec" ||
+          target === "vonotec-defect-logger" ||
+          target === "gemini" ||
+          target === "gemini-defect-logger" ||
+          target === "projects/vonotec-defect-logger"
+        ) {
+          output = (
+            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/vonotec-defect-logger...</p>
+          );
+          setTimeout(() => {
+            router.push("/projects/vonotec-defect-logger");
+          }, 500);
+          break;
+        }
+
+        output = (
+          <p className="font-mono text-xs text-orange">cd: {arg}: No such file or directory</p>
+        );
+        break;
+      }
+      case "ls":
+      case "dir":
+        output = (
+          <div className="space-y-1 font-mono text-xs py-0.5">
+            <p className="text-blue font-bold">drwxr-xr-x  projects/</p>
+            <div className="pl-4 space-y-0.5 text-slate-800 dark:text-slate-200">
+              <p>&gt; <span className="text-orange font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
+              <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk IoT Document Terminal</p>
+              <p>&gt; <span className="text-orange font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
+            </div>
+            <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-blue">cd &lt;dir&gt;</span>&apos; to navigate.</p>
+          </div>
+        );
+        break;
       case "zzz":
       case "synergy":
         output = (

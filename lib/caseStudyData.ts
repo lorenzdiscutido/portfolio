@@ -21,7 +21,7 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "gemini-defect-logger",
+    slug: "vonotec-defect-logger",
     title: "Vonotec Automated Defect Logger",
     role: "Lead Developer",
     description:

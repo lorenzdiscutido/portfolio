@@ -5,8 +5,12 @@ import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import HardwareSchematic from "@/components/HardwareSchematic";
 
 export function generateStaticParams() {
-  return caseStudies.map((study) => ({
-    slug: study.slug,
+  const slugs = caseStudies.map((study) => study.slug);
+  if (!slugs.includes("gemini-defect-logger")) {
+    slugs.push("gemini-defect-logger");
+  }
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
@@ -16,7 +20,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const study = caseStudies.find((item) => item.slug === slug);
+  const normalizedSlug = slug === "gemini-defect-logger" ? "vonotec-defect-logger" : slug;
+  const study = caseStudies.find(
+    (item) => item.slug === normalizedSlug || item.slug === slug
+  );
 
   if (!study) {
     return {
@@ -36,7 +43,10 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study = caseStudies.find((item) => item.slug === slug);
+  const normalizedSlug = slug === "gemini-defect-logger" ? "vonotec-defect-logger" : slug;
+  const study = caseStudies.find(
+    (item) => item.slug === normalizedSlug || item.slug === slug
+  );
 
   if (!study) {
     return (

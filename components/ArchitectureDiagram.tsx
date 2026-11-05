@@ -315,7 +315,8 @@ mysql -e "SHOW REPLICA STATUS\\G" | grep -E "Replica_IO_Running|Replica_SQL_Runn
 };
 
 export default function ArchitectureDiagram({ slug }: { slug: string }) {
-  const diagram = DIAGRAMS[slug] ?? DIAGRAMS["tailscale-db-cluster"];
+  const normalizedSlug = slug === "vonotec-defect-logger" ? "gemini-defect-logger" : slug;
+  const diagram = DIAGRAMS[normalizedSlug] ?? DIAGRAMS["tailscale-db-cluster"];
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
 
