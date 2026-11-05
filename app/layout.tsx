@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeProvider from "@/components/ThemeProvider";
 import NavBar from "@/components/NavBar";
 import Terminal from "@/components/Terminal";
+import AmbientBackground from "@/components/AmbientBackground";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,13 +36,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {/* Ambient Cyber-Physical Background */}
-          <div className="fixed inset-0 z-[-1] bg-base bg-dot-pattern pointer-events-none">
-            {/* Ambient Blue Glow (Top Left) */}
-            <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue/10 blur-[120px]" />
-            {/* Ambient Orange Glow (Bottom Right) */}
-            <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-orange/10 blur-[120px]" />
-          </div>
+          {/* Ambient Cyber-Physical Background (animated) */}
+          <AmbientBackground />
           <NavBar />
           {children}
           <Terminal />
