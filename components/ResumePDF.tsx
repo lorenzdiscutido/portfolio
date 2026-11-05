@@ -98,7 +98,7 @@ export default function ResumePDF() {
               <Text style={styles.itemTitle}>Vonotec</Text>
             </View>
             <Text style={styles.itemSubheading}>
-              Digital Data &amp; Systems Engineer / AI &amp; IoT Data Officer
+              Digital Data &amp; Systems Engineer / AI &amp; IoT Data Officer (2024 – Present)
             </Text>
             <Text style={styles.bodyText}>
               • Architected and deployed enterprise identity, device management, and collaboration workflows across Microsoft Entra ID, Microsoft Intune, SharePoint Online, and Odoo ERP.
@@ -110,6 +110,21 @@ export default function ResumePDF() {
               • Engineered multi-node master-master MySQL database replication clusters secured over zero-trust Tailscale mesh networks.
             </Text>
           </View>
+
+          <View style={styles.itemBlock}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.itemTitle}>PHINMA Property Holdings Corporation</Text>
+            </View>
+            <Text style={styles.itemSubheading}>
+              IT Intern
+            </Text>
+            <Text style={styles.bodyText}>
+              • Administered and configured enterprise cloud infrastructure across Microsoft Intune device enrollment and Microsoft Entra ID identity governance.
+            </Text>
+            <Text style={styles.bodyText}>
+              • Provided frontline corporate IT operations, workstation management, and directory access controls.
+            </Text>
+          </View>
         </View>
 
         <View style={styles.section}>
@@ -119,10 +134,10 @@ export default function ResumePDF() {
               Polytechnic University of the Philippines (PUP)
             </Text>
             <Text style={styles.itemSubheading}>
-              Bachelor of Science in Computer Engineering
+              Bachelor of Science in Computer Engineering (Major in Big Data Analytics)
             </Text>
             <Text style={styles.bodyText}>
-              Focused on embedded systems, hardware-software co-design, computer networking, and enterprise systems engineering.
+              Focused on Big Data Analytics, distributed systems, embedded microcontrollers, hardware-software co-design, and ISO/IEC 25010 software quality compliance.
             </Text>
           </View>
         </View>

@@ -9,18 +9,18 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-base px-6 pt-24 pb-16">
       <div className="max-w-4xl mx-auto text-center">
-        {/* Profile Avatar / Headshot Placeholder */}
+        {/* Profile Avatar / Headshot */}
         <div className="flex flex-col items-center justify-center mb-6">
           <div className="relative group">
-            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full p-1 bg-gradient-to-tr from-blue to-orange shadow-xl transition-transform duration-300 group-hover:scale-105">
-              <div className="w-full h-full rounded-full overflow-hidden bg-surface flex items-center justify-center border-2 border-base relative">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-tr from-blue via-orange to-blue shadow-2xl transition-transform duration-300 group-hover:scale-105">
+              <div className="w-full h-full rounded-full overflow-hidden bg-surface flex items-center justify-center border-2 border-base relative shadow-inner">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
                     alt="Jose Lorenzo Discutido"
-                    width={144}
-                    height={144}
-                    className="w-full h-full object-cover"
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover object-top"
                     onError={() => setImageError(true)}
                     priority
                   />
@@ -38,7 +38,7 @@ export default function Hero() {
             </div>
 
             {/* Availability status beacon */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-base border border-[#2d313a] px-3 py-1 rounded-full flex items-center gap-2 shadow-lg">
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-base border border-[#2d313a] px-3.5 py-1 rounded-full flex items-center gap-2 shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -59,7 +59,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg md:text-xl text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
-          With a foundation in Computer Engineering, I design and deploy comprehensive technical solutions. Whether I am managing Microsoft Entra ID environments, integrating the Gemini API for automated defect logging, or assembling master-master Tailscale networks, my focus is on building resilient, high-efficiency infrastructure.
+          With a foundation in Computer Engineering (Big Data Analytics), I design and deploy comprehensive technical solutions. Whether I am managing Microsoft Entra ID environments, integrating the Gemini API for automated defect logging, or assembling master-master Tailscale networks, my focus is on building resilient, high-efficiency infrastructure.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

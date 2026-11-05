@@ -123,15 +123,16 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-lg text-muted leading-relaxed">
               <p>
-                I graduated with a Bachelor of Science in Computer Engineering from the{" "}
+                I graduated with a Bachelor of Science in Computer Engineering Major in Big Data Analytics from the{" "}
                 <strong className="text-primary font-semibold">
                   Polytechnic University of the Philippines (PUP)
                 </strong>
-                . My academic foundation instilled a deep understanding of how software interfaces with physical hardware, which I apply to architecting resilient, end-to-end systems.
+                . My academic foundation instilled a deep understanding of how software interfaces with physical hardware and large-scale data workflows.
               </p>
               <p>
-                Currently, I work as a Digital Data and Systems Engineer &amp; AI/IoT Data Officer at{" "}
-                <strong className="text-primary font-semibold">Vonotec</strong>. I specialize in bridging the gap between physical deployments—like automated kiosks and hardware locks—and enterprise cloud environments.
+                My foundation in enterprise cloud infrastructure began during my IT internship at{" "}
+                <strong className="text-primary font-semibold">PHINMA Property Holdings Corporation</strong>, where I worked with Microsoft Intune and Entra ID (Azure AD). Today, as a Digital Data and Systems Engineer &amp; AI/IoT Data Officer at{" "}
+                <strong className="text-primary font-semibold">Vonotec</strong>, I specialize in bridging the gap between physical deployments—like automated kiosks and hardware locks—and enterprise cloud environments.
               </p>
               <p>
                 From deploying master-master Tailscale networks to optimizing Odoo ERP approval workflows and managing device enrollments via Intune, I focus on eliminating bottlenecks through pragmatic system design.
