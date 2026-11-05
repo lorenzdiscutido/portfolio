@@ -21,6 +21,12 @@ export default function NavBar() {
             About
           </Link>
           <Link
+            href="/#experience"
+            className="text-sm font-medium text-muted hover:text-blue transition-colors hidden sm:inline"
+          >
+            Experience
+          </Link>
+          <Link
             href="/#projects"
             className="text-sm font-medium text-muted hover:text-blue transition-colors"
           >
