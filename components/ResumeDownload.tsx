@@ -10,7 +10,7 @@ export default function ResumeDownload() {
 
   if (!mounted) {
     return (
-      <span className="px-6 py-2 rounded-lg bg-surface border border-[#2d313a] text-muted text-sm font-medium inline-block">
+      <span className="px-6 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 text-slate-500 dark:text-slate-400 text-sm font-medium inline-block">
         Resume PDF
       </span>
     );
@@ -20,7 +20,7 @@ export default function ResumeDownload() {
     <PDFDownloadLink
       document={<ResumePDF />}
       fileName="Jose_Lorenzo_Discutido_Resume.pdf"
-      className="px-6 py-2 rounded-lg bg-surface border border-[#2d313a] hover:border-orange text-primary transition-colors text-sm font-medium inline-block"
+      className="px-6 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-block"
     >
       {({ loading }) => (loading ? "Generating PDF..." : "Download Resume")}
     </PDFDownloadLink>

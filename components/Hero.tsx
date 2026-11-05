@@ -44,11 +44,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-[1.12] mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.12] mb-6"
             >
               Hi, I&apos;m Jose Lorenzo Discutido.
               <br />
-              <span className="text-primary">
+              <span className="text-slate-900 dark:text-white">
                 I build hardware integrations and automate enterprise cloud.
               </span>
             </motion.h1>
@@ -58,7 +58,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl leading-relaxed"
+              className="text-base sm:text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-xl leading-relaxed"
             >
               I build hardware integrations and automate enterprise cloud environments. With a background in Big Data Analytics, I focus on eliminating bottlenecks—from master-master database networks to automated defect logging. Currently architecting systems at Vonotec.
             </motion.p>
@@ -114,11 +114,11 @@ export default function Hero() {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center text-primary bg-surface p-6">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-slate-900 dark:text-white bg-slate-100 dark:bg-surface p-6">
                     <span className="font-extrabold text-3xl tracking-tighter text-blue">
                       JL<span className="text-orange">D</span>
                     </span>
-                    <span className="text-xs uppercase font-mono text-muted tracking-widest mt-2">
+                    <span className="text-xs uppercase font-mono text-slate-600 dark:text-muted tracking-widest mt-2">
                       Jose Lorenzo Discutido
                     </span>
                   </div>

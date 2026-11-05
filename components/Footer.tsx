@@ -50,9 +50,9 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-[#2d313a]/50">
+    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-black/10 dark:border-white/10">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
           Let&apos;s <span className="text-orange">Connect</span>
         </h2>
         <p className="text-slate-700 dark:text-slate-300 text-lg mb-10 max-w-xl mx-auto">
@@ -67,7 +67,7 @@ export default function Footer() {
             <div>
               <label
                 htmlFor="contact-name"
-                className="block text-xs font-semibold uppercase tracking-wider text-muted mb-2"
+                className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
               >
                 Your Name
               </label>
@@ -78,14 +78,14 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
               />
             </div>
 
             <div>
               <label
                 htmlFor="contact-email"
-                className="block text-xs font-semibold uppercase tracking-wider text-muted mb-2"
+                className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
               >
                 Your Email
               </label>
@@ -96,7 +96,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
               />
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function Footer() {
           <div>
             <label
               htmlFor="contact-subject"
-              className="block text-xs font-semibold uppercase tracking-wider text-muted mb-2"
+              className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
             >
               Subject
             </label>
@@ -114,14 +114,14 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
             />
           </div>
 
           <div>
             <label
               htmlFor="contact-message"
-              className="block text-xs font-semibold uppercase tracking-wider text-muted mb-2"
+              className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
             >
               Message
             </label>
@@ -132,7 +132,7 @@ export default function Footer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message here..."
-              className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm resize-y"
+              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm resize-y"
             />
           </div>
 
@@ -140,7 +140,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer shadow-md"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
@@ -152,7 +152,7 @@ export default function Footer() {
             )}
 
             {status === "error" && (
-              <span className="text-sm font-medium text-red-400">
+              <span className="text-sm font-medium text-red-500 dark:text-red-400">
                 {errorMessage}
               </span>
             )}
@@ -164,7 +164,7 @@ export default function Footer() {
             href="https://github.com/lorenzdiscutido"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-blue transition-colors font-medium tracking-wide"
+            className="text-slate-600 dark:text-slate-400 hover:text-blue dark:hover:text-blue transition-colors font-medium tracking-wide"
           >
             GitHub
           </a>
@@ -172,13 +172,13 @@ export default function Footer() {
             href="https://www.linkedin.com/in/discutido-lorenzo/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-blue transition-colors font-medium tracking-wide"
+            className="text-slate-600 dark:text-slate-400 hover:text-blue dark:hover:text-blue transition-colors font-medium tracking-wide"
           >
             LinkedIn
           </a>
         </div>
 
-        <p className="text-muted text-sm">
+        <p className="text-slate-500 dark:text-slate-400 text-sm">
           © {new Date().getFullYear()} Jose Lorenzo Discutido. Built with Next.js and Tailwind CSS.
         </p>
       </div>

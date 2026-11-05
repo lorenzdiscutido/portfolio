@@ -124,7 +124,7 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
               Engineering <span className="text-blue">Background</span>
             </h2>
             <div className="space-y-6 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -148,8 +148,8 @@ export default function About() {
             className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl"
           >
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-primary">Technical Stack</h3>
-              <span className="text-xs font-mono text-muted bg-base/60 backdrop-blur-sm px-2.5 py-1 rounded border border-[#2d313a]/50">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Technical Stack</h3>
+              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded border border-black/10 dark:border-white/10">
                 Hover or click for context
               </span>
             </div>
@@ -174,8 +174,8 @@ export default function About() {
                           onMouseLeave={() => setActiveSkill(null)}
                           className={`text-left text-sm font-medium px-4 py-2 rounded-md border transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-base text-primary border-orange shadow-md"
-                              : "bg-base/70 backdrop-blur-sm text-primary border-[#2d313a]/60 hover:border-blue"
+                              ? "bg-blue/10 text-slate-900 dark:text-white border-orange shadow-md font-semibold"
+                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/10 hover:border-blue dark:hover:border-blue"
                           }`}
                         >
                           {skill.name}
@@ -188,9 +188,9 @@ export default function About() {
             </div>
 
             {/* Context Tooltip / Callout Panel */}
-            <div className="mt-8 pt-6 border-t border-[#2d313a]/50 min-h-[72px] flex items-center">
+            <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 min-h-[72px] flex items-center">
               {activeSkill ? (
-                <div className="w-full bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-4 rounded-lg transition-all">
+                <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-4 rounded-lg transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <span className="text-xs font-bold font-mono text-orange uppercase">
                       Production Application
@@ -199,12 +199,12 @@ export default function About() {
                       {activeSkill.name}
                     </span>
                   </div>
-                  <p className="text-xs md:text-sm text-muted leading-relaxed">
+                  <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                     {activeSkill.context}
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-muted/70 italic text-center w-full">
+                <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center w-full">
                   Click or hover any technology above to inspect its real-world implementation in my engineering workflow.
                 </p>
               )}

@@ -4,18 +4,21 @@ import { useTheme } from "next-themes";
 import { useMounted } from "@/lib/useMounted";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const mounted = useMounted();
 
   if (!mounted) return null;
 
+  const currentTheme = resolvedTheme || theme;
+  const isDark = currentTheme === "dark";
+
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-md bg-surface border border-[#2d313a] text-muted hover:text-blue transition-colors"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="p-2 rounded-md bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-blue dark:hover:text-blue transition-colors cursor-pointer"
       aria-label="Toggle Dark/Light Theme"
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

@@ -38,7 +38,7 @@ export default function Projects() {
           <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Selected Works
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
             Featured <span className="text-blue">Projects</span>
           </h2>
         </div>
@@ -61,11 +61,11 @@ export default function Projects() {
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                  <h3 className="text-2xl font-bold text-primary">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                     {project.title}
                   </h3>
                   {isFeatured && (
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-0.5 rounded border border-blue/30 self-start sm:self-auto">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-0.5 rounded border border-blue/30 self-start sm:self-auto font-semibold">
                       Primary Case Study
                     </span>
                   )}
@@ -83,7 +83,7 @@ export default function Projects() {
                   {project.stack.map((tech, i) => (
                     <span
                       key={i}
-                      className="font-mono text-xs font-medium text-primary bg-base/70 backdrop-blur-sm px-3 py-1 rounded-full border border-[#2d313a]/60"
+                      className="font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/10"
                     >
                       {tech}
                     </span>

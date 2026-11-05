@@ -5,15 +5,18 @@
 @layer base {
   /* Theme colors are stored as space-separated RGB channels so Tailwind
      opacity modifiers (e.g. bg-blue/10, bg-base/80) compile via <alpha-value>. */
-  :root {
+  :root,
+  .light,
+  html.light {
     --base: 255 255 255;    /* #ffffff */
-    --surface: 241 245 249; /* #f1f5f9 */
-    --primary: 15 17 21;    /* #0f1115 */
-    --muted: 71 85 105;     /* #475569 */
+    --surface: 248 250 252; /* #f8fafc */
+    --primary: 15 23 42;    /* #0f172a - deep slate */
+    --muted: 71 85 105;     /* #475569 - slate-600 */
     --blue: 0 82 255;       /* #0052FF */
     --orange: 255 122 0;    /* #FF7A00 */
   }
-  .dark {
+  .dark,
+  html.dark {
     --base: 15 17 21;       /* #0f1115 */
     --surface: 30 33 40;    /* #1e2128 */
     --primary: 248 250 252; /* #f8fafc */
@@ -22,11 +25,16 @@
     --orange: 255 122 0;    /* #FF7A00 */
   }
   body {
-    @apply bg-base text-primary antialiased transition-colors duration-300;
+    @apply bg-base text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300;
   }
 }
 
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+.dark .bg-dot-pattern,
+html.dark .bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }

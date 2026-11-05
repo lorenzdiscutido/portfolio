@@ -51,13 +51,13 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 border-t border-[#2d313a]/50">
+    <section id="experience" className="py-20 px-6 border-t border-black/10 dark:border-white/10">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 text-left">
           <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Career Timeline
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
             Experience &amp; <span className="text-blue">Education</span>
           </h2>
           <p className="text-slate-700 dark:text-slate-200 font-medium text-sm md:text-base mt-2 max-w-xl">
@@ -84,22 +84,22 @@ export default function Experience() {
                   <span
                     className={`text-xs font-mono px-2.5 py-0.5 rounded border self-start sm:self-auto ${
                       item.type === "Work"
-                        ? "bg-blue/10 border-blue text-blue"
+                        ? "bg-blue/10 border-blue text-blue font-semibold"
                         : item.type === "Internship"
-                        ? "bg-orange/10 border-orange text-orange"
-                        : "bg-primary/10 border-primary/30 text-primary"
+                        ? "bg-orange/10 border-orange text-orange font-semibold"
+                        : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 text-slate-900 dark:text-white font-semibold"
                     }`}
                   >
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-bold text-primary mb-1">
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-1">
                   {item.role}
                 </h3>
 
-                <p className="text-slate-600 dark:text-slate-300 text-sm font-medium mb-4">
-                  <strong className="text-primary">{item.organization}</strong>{" "}
+                <p className="text-slate-700 dark:text-slate-300 text-sm font-medium mb-4">
+                  <strong className="text-slate-900 dark:text-white">{item.organization}</strong>{" "}
                   • {item.location}
                 </p>
 
@@ -107,7 +107,7 @@ export default function Experience() {
                   {item.highlights.map((point, i) => (
                     <li
                       key={i}
-                      className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex items-start gap-2.5"
+                      className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed flex items-start gap-2.5"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-blue shrink-0 mt-2" />
                       <span>{point}</span>
