@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jose Lorenzo Discutido – Systems Engineering Portfolio
 
-## Getting Started
+A modern, high-performance web portfolio built to showcase end-to-end software architecture, hardware integrations, and enterprise cloud workflows. 
 
-First, run the development server:
+Designed and engineered from the ground up using **Next.js 14 (App Router)**, **TypeScript**, and **Tailwind CSS**.
 
+## 🏗 System Architecture & Stack
+
+*   **Framework:** Next.js 14 (App Router)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS (Custom Dark/Light CSS Variables)
+*   **Animations:** Framer Motion (Scroll reveals & micro-interactions)
+*   **Testing:** Jest & React Testing Library
+*   **CI/CD:** GitHub Actions (Automated testing on `main` pushes)
+*   **Deployment & Analytics:** Vercel, Vercel Web Analytics, Speed Insights
+
+## ⚡ Core Features
+
+*   **Asymmetrical UI & Typography:** Custom design system utilizing Slate, Blue (`#0052FF`), and Orange (`#FF7A00`) palettes, strictly avoiding generic AI symmetries.
+*   **Interactive Tech Stack:** Built-in contextual tooltips detailing real-world engineering implementations (e.g., master-master Tailscale DB networks, Microsoft Entra ID deployments, Solenoid relay integrations).
+*   **Dynamic Case Studies:** Dynamic routing system (`/projects/[slug]`) mapping out system architecture diagrams, tech stacks, and outcome metrics.
+*   **Hidden Terminal Subsystem:** An interactive command-line interface built in React state. *(Hint: press `Ctrl + \``).*
+*   **Client-Side PDF Generator:** Utilizes `@react-pdf/renderer` to dynamically generate a printable engineering resume directly from the browser.
+
+## 🚀 Local Deployment
+
+To run this repository locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lorenzdiscutido/portfolio.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🧪 Testing
+
+The repository maintains a foundational testing suite for core components. To run tests interactively:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run test
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
