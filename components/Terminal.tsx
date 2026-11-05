@@ -90,9 +90,9 @@ export default function Terminal() {
       case "whoami":
         output = (
           <div className="space-y-0.5 font-mono py-0.5">
-            <p className="text-blue font-bold">&gt; Jose Lorenzo Discutido</p>
+            <p className="text-blue font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
             <p className="text-slate-700 dark:text-slate-300">
-              &gt; Data and Systems Engineer (AI and IoT)
+              &gt; Data and Systems Engineer
             </p>
           </div>
         );
