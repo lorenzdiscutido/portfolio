@@ -73,7 +73,7 @@ A modern, high-performance web portfolio built to showcase end-to-end software a
 
 Designed and engineered from the ground up using **Next.js 14 (App Router)**, **TypeScript**, and **Tailwind CSS**.
 
-## 🏗 System Architecture & Stack
+##  System Architecture & Stack
 
 *   **Framework:** Next.js 14 (App Router)
 *   **Language:** TypeScript
@@ -83,7 +83,7 @@ Designed and engineered from the ground up using **Next.js 14 (App Router)**, **
 *   **CI/CD:** GitHub Actions (Automated testing on `main` pushes)
 *   **Deployment & Analytics:** Vercel, Vercel Web Analytics, Speed Insights
 
-## ⚡ Core Features
+##  Core Features
 
 *   **Asymmetrical UI & Typography:** Custom design system utilizing Slate, Blue (`#0052FF`), and Orange (`#FF7A00`) palettes, strictly avoiding generic AI symmetries.
 *   **Interactive Tech Stack:** Built-in contextual tooltips detailing real-world engineering implementations (e.g., master-master Tailscale DB networks, Microsoft Entra ID deployments, Solenoid relay integrations).
@@ -91,7 +91,7 @@ Designed and engineered from the ground up using **Next.js 14 (App Router)**, **
 *   **Hidden Terminal Subsystem:** An interactive command-line interface built in React state. *(Hint: press `Ctrl + \``).*
 *   **Client-Side PDF Generator:** Utilizes `@react-pdf/renderer` to dynamically generate a printable engineering resume directly from the browser.
 
-## 🚀 Local Deployment
+##  Local Deployment
 
 To run this repository locally:
 
@@ -109,7 +109,7 @@ To run this repository locally:
    ```
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🧪 Testing
+##  Testing
 
 The repository maintains a foundational testing suite for core components. To run tests interactively:
 ```bash
