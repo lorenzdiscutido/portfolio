@@ -4,201 +4,280 @@ import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 const styles = StyleSheet.create({
   page: {
     backgroundColor: "#FFFFFF",
-    color: "#1e293b",
-    padding: 40,
+    color: "#0f172a",
+    paddingTop: 36,
+    paddingBottom: 36,
+    paddingHorizontal: 40,
     fontFamily: "Helvetica",
-    fontSize: 10,
-    lineHeight: 1.5,
+    fontSize: 9.5,
+    lineHeight: 1.45,
   },
   header: {
-    marginBottom: 20,
-    borderBottomWidth: 2,
+    marginBottom: 14,
+    borderBottomWidth: 1.5,
     borderBottomColor: "#0052FF",
-    paddingBottom: 12,
+    paddingBottom: 10,
   },
   name: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "Helvetica-Bold",
-    color: "#0052FF",
-    marginBottom: 4,
+    color: "#0f172a",
+    marginBottom: 3,
+    letterSpacing: 0.5,
   },
   roleTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: "Helvetica-Bold",
-    color: "#FF7A00",
-    marginBottom: 6,
+    color: "#0052FF",
+    marginBottom: 5,
   },
   contactRow: {
-    fontSize: 9,
+    fontSize: 8.5,
     color: "#475569",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
   },
   section: {
-    marginBottom: 16,
+    marginBottom: 12,
   },
   sectionHeading: {
-    fontSize: 13,
+    fontSize: 10.5,
     fontFamily: "Helvetica-Bold",
     color: "#0052FF",
     textTransform: "uppercase",
-    marginBottom: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e2e8f0",
-    paddingBottom: 3,
+    letterSpacing: 0.8,
+    marginBottom: 6,
+    borderBottomWidth: 0.75,
+    borderBottomColor: "#cbd5e1",
+    paddingBottom: 2,
   },
   itemBlock: {
-    marginBottom: 10,
+    marginBottom: 8,
   },
   itemHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 2,
   },
   itemTitle: {
-    fontSize: 11,
+    fontSize: 10,
     fontFamily: "Helvetica-Bold",
     color: "#0f172a",
   },
+  itemDate: {
+    fontSize: 8.5,
+    fontFamily: "Helvetica",
+    color: "#64748b",
+  },
   itemSubheading: {
-    fontSize: 10,
+    fontSize: 9,
     fontFamily: "Helvetica-Bold",
-    color: "#FF7A00",
+    color: "#334155",
     marginBottom: 3,
   },
-  bodyText: {
-    fontSize: 10,
+  bulletRow: {
+    flexDirection: "row",
+    marginBottom: 2.5,
+    paddingLeft: 4,
+  },
+  bullet: {
+    width: 10,
+    fontSize: 9,
+    color: "#0052FF",
+  },
+  bulletText: {
+    flex: 1,
+    fontSize: 9,
     color: "#334155",
+    lineHeight: 1.4,
   },
-  skillGroup: {
-    marginBottom: 4,
+  skillsTable: {
+    marginTop: 2,
   },
-  skillLabel: {
+  skillRow: {
+    flexDirection: "row",
+    marginBottom: 3.5,
+  },
+  skillCategory: {
+    width: 135,
+    fontSize: 9,
     fontFamily: "Helvetica-Bold",
-    color: "#FF7A00",
+    color: "#0f172a",
+  },
+  skillValues: {
+    flex: 1,
+    fontSize: 9,
+    color: "#334155",
   },
 });
 
 export default function ResumePDF() {
   return (
-    <Document title="Jose Lorenzo Discutido - Resume">
+    <Document
+      title="Jose Lorenzo Discutido - Resume"
+      author="Jose Lorenzo Discutido"
+      subject="Data and Systems Engineer Resume"
+    >
       <Page size="A4" style={styles.page}>
+        {/* Header Section */}
         <View style={styles.header}>
           <Text style={styles.name}>Jose Lorenzo Discutido</Text>
           <Text style={styles.roleTitle}>
-            Digital Data &amp; Systems Engineer | AI/IoT Data Officer
+            Data and Systems Engineer (AI and IoT)
           </Text>
-          <Text style={styles.contactRow}>
-            Email: lorenzdiscutido@gmail.com | GitHub: github.com/lorenzdiscutido | LinkedIn: linkedin.com/in/discutido-lorenzo
-          </Text>
+          <View style={styles.contactRow}>
+            <Text>Email: [lorenzdiscutido@gmail.com]</Text>
+            <Text>•</Text>
+            <Text>Phone: [+63 9XX XXX XXXX]</Text>
+            <Text>•</Text>
+            <Text>LinkedIn: [linkedin.com/in/discutido-lorenzo]</Text>
+            <Text>•</Text>
+            <Text>Location: Manila, Philippines</Text>
+          </View>
         </View>
 
+        {/* Professional Experience */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeading}>Experience</Text>
+          <Text style={styles.sectionHeading}>Professional Experience</Text>
+
+          {/* Current Role */}
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
               <Text style={styles.itemTitle}>Vonotec</Text>
+              <Text style={styles.itemDate}>2024 – Present</Text>
             </View>
             <Text style={styles.itemSubheading}>
-              Digital Data &amp; Systems Engineer / AI &amp; IoT Data Officer (2024 – Present)
+              Digital Data &amp; Systems Engineer and AI/IoT Data Officer
             </Text>
-            <Text style={styles.bodyText}>
-              • Architected and deployed enterprise identity, device management, and collaboration workflows across Microsoft Entra ID, Microsoft Intune, SharePoint Online, and Odoo ERP.
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Orchestrating enterprise cloud identity using Microsoft Entra ID and Intune for automated device enrollment and security compliance.
+              </Text>
+            </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Architecting automated defect logging pipelines via Python, Streamlit, and the Gemini API to streamline enterprise operations.
+              </Text>
+            </View>
+          </View>
+
+          {/* Previous Role */}
+          <View style={styles.itemBlock}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.itemTitle}>PHINMA Properties</Text>
+              <Text style={styles.itemDate}>Internship</Text>
+            </View>
+            <Text style={styles.itemSubheading}>
+              IT Systems &amp; Network Intern
             </Text>
-            <Text style={styles.bodyText}>
-              • Developed automated field defect logging pipelines integrating Python, Streamlit, and the Google Gemini API with SharePoint Online workbooks.
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Managed hardware diagnostics, server configurations, LAN cabling, and subnetting protocols.
+              </Text>
+            </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Administered remote support and Azure Active Directory deployment.
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Education */}
+        <View style={styles.section}>
+          <Text style={styles.sectionHeading}>Education</Text>
+          <View style={styles.itemBlock}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.itemTitle}>
+                Polytechnic University of the Philippines (PUP)
+              </Text>
+              <Text style={styles.itemDate}>Manila, Philippines</Text>
+            </View>
+            <Text style={styles.itemSubheading}>
+              Bachelor of Science in Computer Engineering (BSCPE)
             </Text>
-            <Text style={styles.bodyText}>
-              • Engineered multi-node master-master MySQL database replication clusters secured over zero-trust Tailscale mesh networks.
-            </Text>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Specialization in Big Data Analytics, distributed data processing, embedded hardware systems, and ISO/IEC 25010 software compliance.
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Engineering Projects */}
+        <View style={styles.section}>
+          <Text style={styles.sectionHeading}>Key Engineering Projects</Text>
+
+          <View style={styles.itemBlock}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.itemTitle}>Vonotec Automated Defect Logger</Text>
+              <Text style={styles.itemDate}>Lead Developer</Text>
+            </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Leveraged Google Gemini API to analyze inspection photographs and extract defect dimensions, streaming structured data into SharePoint Excel workbooks via Python and Streamlit.
+              </Text>
+            </View>
           </View>
 
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
-              <Text style={styles.itemTitle}>PHINMA Property Holdings Corporation</Text>
+              <Text style={styles.itemTitle}>IsKiosk IoT Document Terminal</Text>
+              <Text style={styles.itemDate}>Systems Engineer / Hardware Integrator</Text>
             </View>
-            <Text style={styles.itemSubheading}>
-              IT Intern
-            </Text>
-            <Text style={styles.bodyText}>
-              • Administered and configured enterprise cloud infrastructure across Microsoft Intune device enrollment and Microsoft Entra ID identity governance.
-            </Text>
-            <Text style={styles.bodyText}>
-              • Provided frontline corporate IT operations, workstation management, and directory access controls.
-            </Text>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Architected automated document management terminal integrating thermal barcode printing and 12V DC solenoid locks, validated for ISO/IEC 25010 software quality standards.
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemBlock}>
+            <View style={styles.itemHeader}>
+              <Text style={styles.itemTitle}>Komunikonek Mobile Dashboard</Text>
+              <Text style={styles.itemDate}>Mobile Developer</Text>
+            </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Migrated barangay management workflows to a mobile-first Flutter app with real-time feedback loops and administrative statistical dashboards powered by Firebase.
+              </Text>
+            </View>
           </View>
         </View>
 
+        {/* Core Skills */}
         <View style={styles.section}>
-          <Text style={styles.sectionHeading}>Education</Text>
-          <View style={styles.itemBlock}>
-            <Text style={styles.itemTitle}>
-              Polytechnic University of the Philippines (PUP)
-            </Text>
-            <Text style={styles.itemSubheading}>
-              Bachelor of Science in Computer Engineering (Major in Big Data Analytics)
-            </Text>
-            <Text style={styles.bodyText}>
-              Focused on Big Data Analytics, distributed systems, embedded microcontrollers, hardware-software co-design, and ISO/IEC 25010 software quality compliance.
-            </Text>
+          <Text style={styles.sectionHeading}>Core Technical Skills</Text>
+          <View style={styles.skillsTable}>
+            <View style={styles.skillRow}>
+              <Text style={styles.skillCategory}>Languages &amp; Frameworks:</Text>
+              <Text style={styles.skillValues}>
+                Python, Next.js, TypeScript, C/C++, Dart, Flutter
+              </Text>
+            </View>
+            <View style={styles.skillRow}>
+              <Text style={styles.skillCategory}>Cloud &amp; Systems:</Text>
+              <Text style={styles.skillValues}>
+                Microsoft 365, Entra ID, Intune, Odoo ERP, Firebase, Tailscale
+              </Text>
+            </View>
+            <View style={styles.skillRow}>
+              <Text style={styles.skillCategory}>Hardware &amp; Data:</Text>
+              <Text style={styles.skillValues}>
+                IoT Microcontrollers, MySQL, PostgreSQL, Streamlit, Pandas
+              </Text>
+            </View>
           </View>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionHeading}>Key Projects</Text>
-          <View style={styles.itemBlock}>
-            <Text style={styles.itemTitle}>Gemini Defect Logger</Text>
-            <Text style={styles.itemSubheading}>
-              Lead Developer — Python, Streamlit, Gemini API, SharePoint
-            </Text>
-            <Text style={styles.bodyText}>
-              Automated multimodal inspection photo analysis to extract defect dimensions and log structured telemetry directly into enterprise SharePoint Excel sheets.
-            </Text>
-          </View>
-          <View style={styles.itemBlock}>
-            <Text style={styles.itemTitle}>IsKiosk Terminal</Text>
-            <Text style={styles.itemSubheading}>
-              Systems Engineer / Hardware Integrator — C/C++, Microcontrollers, Solenoid Locks
-            </Text>
-            <Text style={styles.bodyText}>
-              Built an ISO/IEC 25010 validated automated document terminal featuring thermal barcode sticker printing and microcontroller-actuated solenoid drawer locks.
-            </Text>
-          </View>
-          <View style={styles.itemBlock}>
-            <Text style={styles.itemTitle}>Tailscale DB Cluster</Text>
-            <Text style={styles.itemSubheading}>
-              Network &amp; Database Engineer — MySQL, Linux, Tailscale
-            </Text>
-            <Text style={styles.bodyText}>
-              Designed a distributed master-master MySQL GTID replication cluster over private WireGuard/Tailscale tunnels with deterministic key partitioning.
-            </Text>
-          </View>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionHeading}>Technical Skills</Text>
-          <Text style={styles.skillGroup}>
-            <Text style={styles.skillLabel}>Languages &amp; Frameworks: </Text>
-            <Text style={styles.bodyText}>
-              Python (Streamlit, Pandas), Dart / Flutter, Next.js / TypeScript, C / C++
-            </Text>
-          </Text>
-          <Text style={styles.skillGroup}>
-            <Text style={styles.skillLabel}>Cloud &amp; Enterprise Identity: </Text>
-            <Text style={styles.bodyText}>
-              Microsoft Entra ID, Microsoft Intune, SharePoint Online, Odoo ERP
-            </Text>
-          </Text>
-          <Text style={styles.skillGroup}>
-            <Text style={styles.skillLabel}>Databases &amp; Networking: </Text>
-            <Text style={styles.bodyText}>
-              MySQL (Master-Master Replication), PostgreSQL, Prisma ORM, Tailscale Mesh VPN, Linux
-            </Text>
-          </Text>
-          <Text style={styles.skillGroup}>
-            <Text style={styles.skillLabel}>Hardware &amp; IoT: </Text>
-            <Text style={styles.bodyText}>
-              Microcontrollers, Solenoid Lock Integration, Thermal Printers, Hardware Diagnostics
-            </Text>
-          </Text>
         </View>
       </Page>
     </Document>
