@@ -55,7 +55,7 @@ export default function Footer() {
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
           Let&apos;s <span className="text-orange">Connect</span>
         </h2>
-        <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
+        <p className="text-slate-700 dark:text-slate-300 text-lg mb-10 max-w-xl mx-auto">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 
@@ -140,7 +140,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-primary font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>

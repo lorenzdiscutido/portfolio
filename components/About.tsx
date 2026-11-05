@@ -127,7 +127,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
               Engineering <span className="text-blue">Background</span>
             </h2>
-            <div className="space-y-6 text-lg text-muted leading-relaxed">
+            <div className="space-y-6 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
               <p>
                 Graduated with a BS in Computer Engineering (Big Data Analytics) from the Polytechnic University of the Philippines (PUP).
               </p>

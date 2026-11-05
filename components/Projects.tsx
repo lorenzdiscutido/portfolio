@@ -75,7 +75,7 @@ export default function Projects() {
                   {project.role}
                 </p>
 
-                <p className="text-muted leading-relaxed mb-8 flex-grow">
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8 flex-grow">
                   {project.description}
                 </p>
 

@@ -60,7 +60,7 @@ export default function Experience() {
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
             Experience &amp; <span className="text-blue">Education</span>
           </h2>
-          <p className="text-muted text-sm md:text-base mt-2 max-w-xl">
+          <p className="text-slate-700 dark:text-slate-200 font-medium text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function Experience() {
                   {item.role}
                 </h3>
 
-                <p className="text-muted text-sm font-medium mb-4">
+                <p className="text-slate-600 dark:text-slate-300 text-sm font-medium mb-4">
                   <strong className="text-primary">{item.organization}</strong>{" "}
                   • {item.location}
                 </p>
@@ -107,7 +107,7 @@ export default function Experience() {
                   {item.highlights.map((point, i) => (
                     <li
                       key={i}
-                      className="text-muted text-sm leading-relaxed flex items-start gap-2.5"
+                      className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex items-start gap-2.5"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-blue shrink-0 mt-2" />
                       <span>{point}</span>

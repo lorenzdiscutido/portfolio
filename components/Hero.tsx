@@ -58,7 +58,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-base sm:text-lg text-muted mb-8 max-w-xl leading-relaxed"
+              className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl leading-relaxed"
             >
               I build hardware integrations and automate enterprise cloud environments. With a background in Big Data Analytics, I focus on eliminating bottlenecks—from master-master database networks to automated defect logging. Currently architecting systems at Vonotec.
             </motion.p>
@@ -80,7 +80,7 @@ export default function Hero() {
 
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white dark:bg-[#1e2128] text-primary font-bold text-sm sm:text-base border-2 border-black dark:border-white/20 shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white text-slate-950 border-2 border-black dark:bg-[#1e2128] dark:text-white dark:border-white/30 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:text-blue dark:hover:text-blue hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
               >
                 Contact Me
               </a>
@@ -137,9 +137,9 @@ export default function Hero() {
               </div>
 
               {/* Tilted "aka @lorenzdiscutido" pill badge at bottom-left */}
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 bg-white dark:bg-[#1e2128] text-primary px-4 py-1.5 rounded-xl border-2 border-black dark:border-white/20 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 bg-white text-slate-950 dark:bg-[#1e2128] dark:text-white px-4 py-1.5 rounded-xl border-2 border-black dark:border-white/20 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
                 <span className="text-orange font-semibold">aka</span>
-                <span className="text-primary">@lorenzdiscutido</span>
+                <span>@lorenzdiscutido</span>
               </div>
             </div>
           </motion.div>
