@@ -36,7 +36,7 @@ export default function TelemetryBar() {
             GTID Lag: <span className="text-emerald-500 font-semibold">0ms</span>
           </span>
           <span className="hidden lg:inline">
-            Interlocks: <span className="text-orange font-semibold">Armed</span>
+            Interlocks: <span className="text-orange-700 dark:text-orange font-semibold">Armed</span>
           </span>
           <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
             {expanded ? "▲ Hide Mesh Details" : "▼ Inspect Topology"}
@@ -68,7 +68,7 @@ export default function TelemetryBar() {
                 <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 03: Identity Proxy</p>
                   <p className="font-bold text-slate-900 dark:text-white">entra-id-governance</p>
-                  <p className="text-[11px] text-orange">MSAL OAuth 2.0 Client Flow</p>
+                  <p className="text-[11px] text-orange-700 dark:text-orange">MSAL OAuth 2.0 Client Flow</p>
                 </div>
                 <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 04: Workstation</p>

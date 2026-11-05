@@ -19,7 +19,7 @@ export default async function BlogPostPage({
     return (
       <main className="bg-base min-h-screen text-primary flex items-center justify-center px-6">
         <div className="max-w-xl text-center">
-          <p className="text-orange font-semibold tracking-wide uppercase mb-2">
+          <p className="text-orange-700 dark:text-orange font-semibold tracking-wide uppercase mb-2">
             Error 404
           </p>
           <h1 className="text-4xl font-extrabold text-primary mb-4">
@@ -46,7 +46,7 @@ export default async function BlogPostPage({
           ← Back to Blog
         </Link>
 
-        <p className="text-orange text-sm font-semibold tracking-widest uppercase mb-2">
+        <p className="text-orange-700 dark:text-orange text-sm font-semibold tracking-widest uppercase mb-2">
           {post.date}
         </p>
         <h1 className="text-3xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">

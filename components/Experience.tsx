@@ -54,7 +54,7 @@ export default function Experience() {
     <section id="experience" className="py-20 px-6 border-t border-black/10 dark:border-white/10">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Career Timeline
           </p>
           <h2 className="theme-text-primary text-3xl md:text-4xl font-bold mb-2">
@@ -78,7 +78,7 @@ export default function Experience() {
 
               <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono font-bold text-orange uppercase tracking-wider">
+                  <span className="text-xs font-mono font-bold text-orange-700 dark:text-orange uppercase tracking-wider">
                     {item.period}
                   </span>
                   <span
@@ -86,7 +86,7 @@ export default function Experience() {
                       item.type === "Work"
                         ? "bg-blue/10 border-blue text-blue font-semibold"
                         : item.type === "Internship"
-                        ? "bg-orange/10 border-orange text-orange font-semibold"
+                        ? "bg-orange-50 dark:bg-orange/10 border-orange-200 dark:border-orange text-orange-700 dark:text-orange font-semibold"
                         : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 theme-text-primary font-semibold"
                     }`}
                   >

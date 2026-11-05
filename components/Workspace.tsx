@@ -3,7 +3,7 @@ export default function Workspace() {
     <section id="workspace" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Off-Duty Mechanics
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">

@@ -334,7 +334,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
     <div className="w-full bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-xl p-6 md:p-8 mb-12 shadow-lg">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/10">
         <div>
-          <span className="text-orange font-mono text-xs uppercase tracking-widest block mb-1">
+          <span className="text-orange-700 dark:text-orange font-mono text-xs uppercase tracking-widest block mb-1">
             Interactive Signal Flow &amp; Architecture
           </span>
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
@@ -430,7 +430,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
         {/* Animated Glowing Packet Flow Visualizer */}
         <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">
-            <span className="text-orange font-bold">Active Signal:</span>
+            <span className="text-orange-700 dark:text-orange font-bold">Active Signal:</span>
             <span className="text-blue font-semibold">{activeNode.protocol}</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -459,7 +459,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                 </span>
               </h4>
             </div>
-            <span className="text-xs font-mono text-orange bg-orange/10 px-3 py-1 rounded border border-orange/30 self-start md:self-auto font-semibold">
+            <span className="text-xs font-mono text-orange-700 dark:text-orange bg-orange-50 dark:bg-white/5 px-3 py-1 rounded border border-orange-200 dark:border-white/10 self-start md:self-auto font-semibold">
               Protocol: {activeNode.protocol}
             </span>
           </div>

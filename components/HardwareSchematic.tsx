@@ -52,7 +52,7 @@ export default function HardwareSchematic() {
     <div className="w-full my-12 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/10">
         <div>
-          <span className="text-orange font-mono text-xs uppercase tracking-widest block mb-1">
+          <span className="text-orange-700 dark:text-orange font-mono text-xs uppercase tracking-widest block mb-1">
             Physical Hardware Co-Design
           </span>
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
@@ -198,7 +198,7 @@ export default function HardwareSchematic() {
             <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-black/20">
               {pinouts.map((p, idx) => (
                 <tr key={idx} className="hover:bg-blue/5 transition-colors">
-                  <td className="py-2.5 px-3 font-bold text-orange">{p.pin}</td>
+                  <td className="py-2.5 px-3 font-bold text-orange-700 dark:text-orange">{p.pin}</td>
                   <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-white">
                     {p.target}
                   </td>

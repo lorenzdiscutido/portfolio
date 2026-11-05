@@ -19,7 +19,7 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               className="bg-surface rounded-xl p-8 border border-transparent hover:border-orange transition-colors duration-300 flex flex-col"
             >
-              <p className="text-orange text-xs font-semibold tracking-widest uppercase mb-2">
+              <p className="text-orange-700 dark:text-orange text-xs font-semibold tracking-widest uppercase mb-2">
                 {post.date}
               </p>
               <h2 className="text-2xl font-bold text-primary mb-4">

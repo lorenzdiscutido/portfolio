@@ -52,7 +52,7 @@ export default async function CaseStudyPage({
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="max-w-xl text-center">
-          <p className="text-orange font-semibold tracking-wide uppercase mb-2 font-mono text-sm">
+          <p className="text-orange-700 dark:text-orange font-semibold tracking-wide uppercase mb-2 font-mono text-sm">
             Error 404
           </p>
           <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
@@ -88,7 +88,7 @@ export default async function CaseStudyPage({
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             {study.title}
           </h1>
-          <p className="text-orange font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
+          <p className="text-orange-700 dark:text-orange font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
             {study.role}
           </p>
 

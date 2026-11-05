@@ -53,7 +53,7 @@ export default function Footer() {
     <footer id="contact" className="pt-20 pb-10 px-6 border-t border-black/10 dark:border-white/10">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-          Let&apos;s <span className="text-orange">Connect</span>
+          Let&apos;s <span className="text-orange-600 dark:text-orange">Connect</span>
         </h2>
         <p className="text-slate-700 dark:text-slate-300 text-lg mb-10 max-w-xl mx-auto">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
@@ -146,7 +146,7 @@ export default function Footer() {
             </button>
 
             {status === "sent" && (
-              <span className="text-sm font-medium text-orange">
+              <span className="text-sm font-medium text-orange-700 dark:text-orange">
                 ✓ Message sent! I&apos;ll get back to you soon.
               </span>
             )}

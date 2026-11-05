@@ -9,7 +9,7 @@ export default function Projects() {
     <section id="projects" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Selected Works
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
@@ -45,7 +45,7 @@ export default function Projects() {
                   )}
                 </div>
 
-                <p className="text-orange text-sm font-semibold tracking-wide uppercase mb-4">
+                <p className="text-orange-700 dark:text-orange text-sm font-semibold tracking-wide uppercase mb-4">
                   {project.role}
                 </p>
 
@@ -81,7 +81,7 @@ export default function Projects() {
                 <div>
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-flex items-center text-sm font-semibold text-blue hover:text-orange transition-colors"
+                    className="inline-flex items-center text-sm font-semibold text-blue hover:text-orange-600 dark:hover:text-orange transition-colors"
                   >
                     View Architecture &amp; Case Study →
                   </Link>

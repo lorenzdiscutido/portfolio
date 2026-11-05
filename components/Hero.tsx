@@ -38,9 +38,9 @@ export default function Hero() {
             className="lg:col-span-7 text-left order-2 lg:order-1"
           >
             {/* Terminal Boot Sequence Prompt */}
-            <div className="inline-flex items-center gap-1.5 font-mono text-xs md:text-sm text-orange font-semibold tracking-wider bg-black/[0.04] dark:bg-white/5 border border-black/10 dark:border-white/10 px-3 py-1 rounded-md mb-4">
+            <div className="inline-flex items-center gap-1.5 font-mono text-xs md:text-sm text-orange-700 dark:text-orange font-semibold tracking-wider bg-orange-50 dark:bg-white/5 border border-orange-200/70 dark:border-white/10 px-3 py-1 rounded-md mb-4">
               <span>{typedText}</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange"></span>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange-600 dark:bg-orange"></span>
             </div>
 
             {/* Primary Headline */}
@@ -124,7 +124,7 @@ export default function Hero() {
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center theme-text-primary bg-slate-100 dark:bg-surface p-6">
                     <span className="font-extrabold text-3xl tracking-tighter text-blue">
-                      JL<span className="text-orange">D</span>
+                      JL<span className="text-orange-600 dark:text-orange">D</span>
                     </span>
                     <span className="text-xs uppercase font-mono theme-text-secondary tracking-widest mt-2">
                       Jose Lorenzo Discutido
@@ -146,7 +146,7 @@ export default function Hero() {
 
               {/* Tilted "aka @lorenzdiscutido" pill badge at bottom-left */}
               <div className="theme-badge absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 px-4 py-1.5 rounded-xl border-2 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
-                <span className="text-orange font-semibold">aka</span>
+                <span className="text-orange-700 dark:text-orange font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>
             </div>

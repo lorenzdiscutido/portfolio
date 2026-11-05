@@ -157,7 +157,7 @@ export default function About() {
             <div className="space-y-8">
               {techStack.map((group, index) => (
                 <div key={index}>
-                  <h4 className="text-orange text-sm font-bold tracking-wide uppercase mb-3">
+                  <h4 className="text-orange-700 dark:text-orange text-sm font-bold tracking-wide uppercase mb-3">
                     {group.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -192,7 +192,7 @@ export default function About() {
               {activeSkill ? (
                 <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-4 rounded-lg transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-xs font-bold font-mono text-orange uppercase">
+                    <span className="text-xs font-bold font-mono text-orange-700 dark:text-orange uppercase">
                       Production Application
                     </span>
                     <span className="text-xs font-mono text-blue font-semibold">
