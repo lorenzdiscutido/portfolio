@@ -6,11 +6,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeProvider from "@/components/ThemeProvider";
 import NavBar from "@/components/NavBar";
 import Terminal from "@/components/Terminal";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-custom-domain.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Jose Lorenzo Discutido | Systems Engineer",
     template: "%s | Jose Lorenzo Discutido",
@@ -22,7 +23,6 @@ export const metadata: Metadata = {
     title: "Jose Lorenzo Discutido | Systems Engineer",
     description:
       "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
-    images: ["/opengraph-image.png"],
   },
 };
 
