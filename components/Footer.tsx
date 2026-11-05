@@ -50,7 +50,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-surface/30 backdrop-blur-md pt-20 pb-10 px-6 border-t border-[#2d313a]/50">
+    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-[#2d313a]/50">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
           Let&apos;s <span className="text-orange">Connect</span>
@@ -61,7 +61,7 @@ export default function Footer() {
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto mb-16 text-left bg-base/70 backdrop-blur-md p-6 md:p-8 rounded-xl border border-[#2d313a]/60 space-y-4 shadow-xl"
+          className="max-w-xl mx-auto mb-16 text-left bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl space-y-4"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -78,7 +78,7 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-lg bg-surface border border-[#2d313a] focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
               />
             </div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-lg bg-surface border border-[#2d313a] focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
               />
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-lg bg-surface border border-[#2d313a] focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
+              className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm"
             />
           </div>
 
@@ -132,7 +132,7 @@ export default function Footer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message here..."
-              className="w-full px-4 py-3 rounded-lg bg-surface border border-[#2d313a] focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm resize-y"
+              className="w-full px-4 py-3 rounded-lg bg-white/70 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-primary placeholder:text-muted/60 outline-none transition-colors text-sm resize-y"
             />
           </div>
 

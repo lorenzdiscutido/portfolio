@@ -65,13 +65,18 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="relative border-l-2 border-[#2d313a] ml-4 md:ml-8 pl-6 md:pl-10 space-y-12">
+        <div className="relative ml-4 md:ml-8 space-y-12">
+          {/* Vertical rail: anchored at left-0 and centered on that coordinate */}
+          <div
+            aria-hidden="true"
+            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-black/10 dark:bg-white/10"
+          />
           {timeline.map((item, index) => (
-            <div key={index} className="relative group">
-              {/* Timeline node marker */}
-              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-base bg-blue group-hover:bg-orange transition-all group-hover:scale-125" />
+            <div key={index} className="relative group pl-8 md:pl-12">
+              {/* Timeline node marker: shares left-0 with the rail, centered via -translate-x-1/2 */}
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base bg-blue group-hover:bg-orange transition-all group-hover:scale-125" />
 
-              <div className="bg-surface/40 backdrop-blur-md p-6 md:p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
+              <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-mono font-bold text-orange uppercase tracking-wider">
                     {item.period}

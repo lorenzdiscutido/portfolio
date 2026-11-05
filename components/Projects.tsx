@@ -56,8 +56,8 @@ export default function Projects() {
                 whileHover={{ y: -5 }}
                 className={`rounded-xl p-8 border transition-all duration-300 flex flex-col ${
                   isFeatured
-                    ? "md:col-span-2 bg-surface/40 backdrop-blur-md border-blue/30 bg-blue/[0.04] hover:border-orange shadow-lg"
-                    : "bg-surface/40 backdrop-blur-md border-[#2d313a]/50 hover:border-orange shadow-md"
+                    ? "md:col-span-2 bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border-blue/40 hover:border-orange shadow-lg"
+                    : "bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange shadow-lg"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">

@@ -3,21 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme colors are stored as space-separated RGB channels so Tailwind
+     opacity modifiers (e.g. bg-blue/10, bg-base/80) compile via <alpha-value>. */
   :root {
-    --base: #ffffff;
-    --surface: #f1f5f9;
-    --primary: #0f1115;
-    --muted: #475569;
-    --blue: #0052FF;
-    --orange: #FF7A00;
+    --base: 255 255 255;    /* #ffffff */
+    --surface: 241 245 249; /* #f1f5f9 */
+    --primary: 15 17 21;    /* #0f1115 */
+    --muted: 71 85 105;     /* #475569 */
+    --blue: 0 82 255;       /* #0052FF */
+    --orange: 255 122 0;    /* #FF7A00 */
   }
   .dark {
-    --base: #0f1115;
-    --surface: #1e2128;
-    --primary: #f8fafc;
-    --muted: #94a3b8;
-    --blue: #0052FF;
-    --orange: #FF7A00;
+    --base: 15 17 21;       /* #0f1115 */
+    --surface: 30 33 40;    /* #1e2128 */
+    --primary: 248 250 252; /* #f8fafc */
+    --muted: 148 163 184;   /* #94a3b8 */
+    --blue: 0 82 255;       /* #0052FF */
+    --orange: 255 122 0;    /* #FF7A00 */
   }
   body {
     @apply bg-base text-primary antialiased transition-colors duration-300;

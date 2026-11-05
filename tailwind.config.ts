@@ -10,12 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "var(--base)",
-        surface: "var(--surface)",
-        primary: "var(--primary)",
-        muted: "var(--muted)",
-        blue: "var(--blue)",
-        orange: "var(--orange)",
+        base: "rgb(var(--base) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        blue: "rgb(var(--blue) / <alpha-value>)",
+        orange: "rgb(var(--orange) / <alpha-value>)",
       },
     },
   },

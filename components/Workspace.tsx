@@ -12,7 +12,7 @@ export default function Workspace() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-surface/40 backdrop-blur-md p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
+          <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
             <h3 className="text-primary text-2xl font-bold mb-4">
               The Hardware Loadout
             </h3>
@@ -21,7 +21,7 @@ export default function Workspace() {
             </p>
           </div>
 
-          <div className="bg-surface/40 backdrop-blur-md p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
+          <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
             <h3 className="text-primary text-2xl font-bold mb-4">
               System Mechanics &amp; Analytics
             </h3>
