@@ -61,51 +61,100 @@ export default function Terminal() {
     switch (cmd) {
       case "help":
         output = (
-          <div className="space-y-1">
-            <p>Available commands:</p>
+          <div className="space-y-1 font-mono text-xs">
+            <p className="text-orange font-bold">&gt; Available commands:</p>
             <p>
-              <span className="text-blue">help</span> — Show available commands
+              &gt; <span className="text-blue">whoami</span> — Display operator identity &amp; title
             </p>
             <p>
-              <span className="text-blue">whoami</span> — Display operator identity
+              &gt; <span className="text-blue">skills</span> — Categorized technical capabilities
             </p>
             <p>
-              <span className="text-blue">skills</span> — List core technical capabilities
+              &gt; <span className="text-blue">experience</span> — Current &amp; previous engineering roles
             </p>
             <p>
-              <span className="text-blue">neofetch</span> — Display stealth workstation telemetry
+              &gt; <span className="text-blue">education</span> — Academic degree &amp; institution
             </p>
             <p>
-              <span className="text-blue">tailscale</span> — Inspect active Tailnet mesh nodes
+              &gt; <span className="text-blue">neofetch</span> — Display workstation telemetry
             </p>
             <p>
-              <span className="text-blue">zzz</span> — View action RPG anomaly &amp; synergy analytics
+              &gt; <span className="text-blue">tailscale</span> — Inspect active Tailnet mesh nodes
             </p>
             <p>
-              <span className="text-blue">sudo</span> — Execute with superuser privileges
-            </p>
-            <p>
-              <span className="text-blue">clear</span> — Clear terminal output
+              &gt; <span className="text-blue">clear</span> — Clear terminal output
             </p>
           </div>
         );
         break;
       case "whoami":
         output = (
-          <span>
-            <span className="text-blue">Jose Lorenzo Discutido</span> - Digital Data &amp; Systems Engineer
-          </span>
+          <div className="space-y-0.5 font-mono py-0.5">
+            <p className="text-blue font-bold">&gt; Jose Lorenzo Discutido</p>
+            <p className="text-slate-700 dark:text-slate-300">
+              &gt; Data and Systems Engineer (AI and IoT)
+            </p>
+          </div>
         );
         break;
       case "skills":
         output = (
-          <span>
-            <span className="text-blue">Python</span>,{" "}
-            <span className="text-blue">Next.js</span>,{" "}
-            <span className="text-blue">Entra ID</span>,{" "}
-            <span className="text-blue">Microcontrollers</span>,{" "}
-            <span className="text-blue">Tailscale</span>
-          </span>
+          <div className="space-y-1 font-mono py-1 text-xs">
+            <p>
+              <span className="text-blue font-bold">&gt; Core &amp; Web:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                Python, Next.js, TypeScript, Tailwind CSS
+              </span>
+            </p>
+            <p>
+              <span className="text-blue font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                C/C++, Dart, Flutter
+              </span>
+            </p>
+            <p>
+              <span className="text-blue font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                Microsoft Entra ID, Microsoft Intune, SharePoint, Odoo ERP, Firebase
+              </span>
+            </p>
+            <p>
+              <span className="text-blue font-bold">&gt; Database &amp; Network:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                MySQL, PostgreSQL, Prisma ORM, Tailscale
+              </span>
+            </p>
+          </div>
+        );
+        break;
+      case "experience":
+        output = (
+          <div className="space-y-1 font-mono py-1 text-xs">
+            <p>
+              <span className="text-orange font-bold">&gt; Current:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                Digital Data &amp; Systems Engineer and AI/IoT Data Officer @ Vonotec
+              </span>
+            </p>
+            <p>
+              <span className="text-blue font-bold">&gt; Previous:</span>{" "}
+              <span className="text-slate-800 dark:text-slate-200">
+                IT Systems &amp; Network Intern @ PHINMA Properties
+              </span>
+            </p>
+          </div>
+        );
+        break;
+      case "education":
+        output = (
+          <div className="space-y-0.5 font-mono py-1 text-xs">
+            <p className="text-slate-900 dark:text-white font-bold">
+              &gt; Bachelor of Science in Computer Engineering
+            </p>
+            <p className="text-blue font-semibold">
+              &gt; Polytechnic University of the Philippines (PUP)
+            </p>
+          </div>
         );
         break;
       case "neofetch":
@@ -138,19 +187,19 @@ export default function Terminal() {
       case "tailscale":
       case "tailscale status":
         output = (
-          <div className="space-y-1 py-1 text-xs">
-            <p className="text-orange">IPv4         HOSTNAME           ROLE                 STATUS</p>
+          <div className="space-y-1 py-1 text-xs font-mono">
+            <p className="text-orange font-bold">IPv4         HOSTNAME               ROLE                  STATUS</p>
             <p>
-              <span className="text-blue">100.64.0.1</span>   node-alpha-db      MySQL Master (Odd)   online, direct
+              <span className="text-blue">100.64.0.1</span>   vonotec-cluster-alpha  MySQL Master A (Odd)  online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.2</span>   node-beta-db       MySQL Master (Even)  online, direct
+              <span className="text-blue">100.64.0.2</span>   iskiosk-mcu-gateway    MCU Hardware Interlock online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.10</span>  iskiosk-unit-01    MCU / Kiosk Host     online, relay
+              <span className="text-blue">100.64.0.3</span>   entra-id-governance    Identity Proxy (MSAL) online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.99</span>  jld-stealth-rig    Operator Workstation active
+              <span className="text-blue">100.64.0.4</span>   jld-stealth-rig        Workstation (Linux)   active, local
             </p>
           </div>
         );
@@ -236,10 +285,10 @@ export default function Terminal() {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="p-1 hover:text-orange text-slate-500 dark:text-slate-400 transition-colors cursor-pointer"
+            className="p-1 hover:text-orange text-slate-500 dark:text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
             aria-label="Close Terminal"
           >
-            ✕
+            [x]
           </button>
         </div>
       </div>
