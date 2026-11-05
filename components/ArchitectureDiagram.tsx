@@ -131,6 +131,124 @@ if (digitalRead(REED_SWITCH_PIN[drawerId]) == LOW && elapsed > MIN_OPEN_MS) {
       },
     ],
   },
+  "komunikonek": {
+    topologyTitle: "Mobile-First Barangay Management & Real-Time Sync Pipeline",
+    subtitle: "Click any architecture stage below to inspect its data flow and configuration",
+    nodes: [
+      {
+        id: "client-ui",
+        label: "1. Flutter Mobile Client",
+        sublabel: "Resident Feedback & Admin Views",
+        protocol: "Dart / Flutter Reactive UI",
+        summary:
+          "Cross-platform mobile client provides dedicated interfaces for resident feedback and high-level administrative dashboards for community statistics.",
+        configSnippet: `// Flutter reactive state stream provider
+final residentFeedbackStream = FirebaseFirestore.instance
+    .collection('barangay_reports')
+    .orderBy('timestamp', descending: true)
+    .snapshots();`,
+      },
+      {
+        id: "auth-guard",
+        label: "2. Firebase Authentication",
+        sublabel: "Role-Based Access Control",
+        protocol: "OAuth / JWT Token Verification",
+        summary:
+          "Enforces secure role differentiation (resident vs barangay officer) with fine-grained custom claims and security rule verification.",
+        configSnippet: `// Firebase Auth token claims inspection
+final user = FirebaseAuth.instance.currentUser;
+final idTokenResult = await user?.getIdTokenResult();
+final isOfficer = idTokenResult?.claims?['role'] == 'administrator';`,
+      },
+      {
+        id: "firestore-db",
+        label: "3. Cloud Firestore",
+        sublabel: "Real-Time Document Database",
+        protocol: "gRPC Streaming / HTTPS",
+        summary:
+          "Maintains low-latency synchronized collections for resident feedback, status tracking, and statistical aggregations across mobile clients.",
+        configSnippet: `rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /barangay_reports/{reportId} {
+      allow read, create: if request.auth != null;
+      allow update: if request.auth.token.role == 'administrator';
+    }
+  }
+}`,
+      },
+      {
+        id: "analytics",
+        label: "4. Real-Time Admin Dashboard",
+        sublabel: "Demographics & Statistical Stream",
+        protocol: "Reactive Query Aggregations",
+        summary:
+          "Aggregates community feedback trends, resolved ticket volumes, and emergency alerts into responsive administrative visualization charts.",
+        configSnippet: `// Real-time metric tally aggregation
+int pendingReports = snapshot.docs.where((d) => d['status'] == 'pending').length;
+int resolvedReports = snapshot.docs.where((d) => d['status'] == 'resolved').length;`,
+      },
+    ],
+  },
+  "komunikonek-mobile-dashboard": {
+    topologyTitle: "Mobile-First Barangay Management & Real-Time Sync Pipeline",
+    subtitle: "Click any architecture stage below to inspect its data flow and configuration",
+    nodes: [
+      {
+        id: "client-ui",
+        label: "1. Flutter Mobile Client",
+        sublabel: "Resident Feedback & Admin Views",
+        protocol: "Dart / Flutter Reactive UI",
+        summary:
+          "Cross-platform mobile client provides dedicated interfaces for resident feedback and high-level administrative dashboards for community statistics.",
+        configSnippet: `// Flutter reactive state stream provider
+final residentFeedbackStream = FirebaseFirestore.instance
+    .collection('barangay_reports')
+    .orderBy('timestamp', descending: true)
+    .snapshots();`,
+      },
+      {
+        id: "auth-guard",
+        label: "2. Firebase Authentication",
+        sublabel: "Role-Based Access Control",
+        protocol: "OAuth / JWT Token Verification",
+        summary:
+          "Enforces secure role differentiation (resident vs barangay officer) with fine-grained custom claims and security rule verification.",
+        configSnippet: `// Firebase Auth token claims inspection
+final user = FirebaseAuth.instance.currentUser;
+final idTokenResult = await user?.getIdTokenResult();
+final isOfficer = idTokenResult?.claims?['role'] == 'administrator';`,
+      },
+      {
+        id: "firestore-db",
+        label: "3. Cloud Firestore",
+        sublabel: "Real-Time Document Database",
+        protocol: "gRPC Streaming / HTTPS",
+        summary:
+          "Maintains low-latency synchronized collections for resident feedback, status tracking, and statistical aggregations across mobile clients.",
+        configSnippet: `rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /barangay_reports/{reportId} {
+      allow read, create: if request.auth != null;
+      allow update: if request.auth.token.role == 'administrator';
+    }
+  }
+}`,
+      },
+      {
+        id: "analytics",
+        label: "4. Real-Time Admin Dashboard",
+        sublabel: "Demographics & Statistical Stream",
+        protocol: "Reactive Query Aggregations",
+        summary:
+          "Aggregates community feedback trends, resolved ticket volumes, and emergency alerts into responsive administrative visualization charts.",
+        configSnippet: `// Real-time metric tally aggregation
+int pendingReports = snapshot.docs.where((d) => d['status'] == 'pending').length;
+int resolvedReports = snapshot.docs.where((d) => d['status'] == 'resolved').length;`,
+      },
+    ],
+  },
   "tailscale-db-cluster": {
     topologyTitle: "Zero-Trust WireGuard Mesh & Circular GTID Replication",
     subtitle: "Click any cluster node or mesh layer to inspect its replication config",

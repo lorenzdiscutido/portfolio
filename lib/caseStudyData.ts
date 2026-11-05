@@ -19,14 +19,15 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "gemini-defect-logger",
-    title: "Vonotec Whiteboard & Automated Defect Logger",
-    role: "Lead Developer / Systems Engineer",
-    description: "An AI-integrated Streamlit application for field inspections.",
+    title: "Vonotec Automated Defect Logger",
+    role: "Lead Developer",
+    description:
+      "Leveraged the Google Gemini API to process field inspection photographs and extract defect dimensions. Engineered a Python and Streamlit pipeline to automatically log this structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
     overview:
-      "An AI-integrated Streamlit application for field inspections. Leverages the Google Gemini API to process field inspection photographs, extract defect dimensions, and automatically log structured data into SharePoint Excel workbooks.",
+      "Leveraged the Google Gemini API to process field inspection photographs and extract defect dimensions. Engineered a Python and Streamlit pipeline to automatically log this structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
     architectureDetails:
       "Field engineers capture inspection frames via a Streamlit interface. The ingestion service preprocesses raw imagery and submits structured extraction prompts to the Gemini API with a strict JSON schema. The model extracts defect types, metric dimensions, and severity ratings. The service authenticates via Microsoft Entra ID and logs rows directly into enterprise SharePoint Excel tables through the Microsoft Graph API, removing manual entry bottlenecks.",
-    techStack: ["Python", "Streamlit", "Gemini API", "SharePoint", "Pandas"],
+    techStack: ["Python", "Streamlit", "Gemini API", "SharePoint"],
     outcomes: [
       "Eliminated manual transcription between field inspection imagery and enterprise SharePoint spreadsheets.",
       "Standardized dimensional defect classification using structured JSON output from Gemini API.",
@@ -54,16 +55,17 @@ export const caseStudies: CaseStudy[] = [
     slug: "iskiosk-terminal",
     title: "IsKiosk IoT Document Terminal",
     role: "Systems Engineer / Hardware Integrator",
-    description: "Automated hardware document management system.",
+    description:
+      "Architected an automated hardware document management terminal. Integrated physical components including barcode sticker printing and 12V DC solenoid drawer locks. Evaluated and validated the complete cyber-physical system for ISO/IEC 25010 software quality compliance.",
     overview:
-      "Automated hardware document management system. Designed and evaluated a physical kiosk integrating barcode sticker printing and solenoid drawer locks. Conducted full ISO/IEC 25010 compliance testing for system reliability.",
+      "Architected an automated hardware document management terminal. Integrated physical components including barcode sticker printing and 12V DC solenoid drawer locks. Evaluated and validated the complete cyber-physical system for ISO/IEC 25010 software quality compliance.",
     architectureDetails:
       "The terminal architecture links a local user interface to a microcontroller hardware abstraction layer over serial UART. The transaction sequence issues an on-demand Code-128 barcode sticker via thermal printer, drives a 12V relay to actuate a fail-secure solenoid drawer latch, and verifies physical closure via magnetic reed-switch feedback sensors. The system was validated against ISO/IEC 25010 criteria for functional suitability and reliability.",
     techStack: [
       "C/C++",
       "Microcontrollers",
       "IoT Relays",
-      "Database Management",
+      "Hardware Testing",
     ],
     outcomes: [
       "Conducted full ISO/IEC 25010 compliance evaluation for software and hardware reliability.",
@@ -89,35 +91,36 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "tailscale-db-cluster",
-    title: "Distributed Database Replication Network",
-    role: "Network & Database Engineer",
-    description: "Secure multi-node database architecture.",
+    slug: "komunikonek",
+    title: "Komunikonek Mobile Dashboard",
+    role: "Mobile Developer",
+    description:
+      "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
     overview:
-      "Secure multi-node database architecture. Implemented a multi-node, master-master MySQL database replication cluster across Linux devices utilizing Tailscale for encrypted peer-to-peer networking.",
+      "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
     architectureDetails:
-      "Each Linux node is meshed over Tailscale WireGuard point-to-point tunnels, binding MySQL replication traffic exclusively to private Tailnet IP addresses (100.64.0.0/10) with zero open public ports. Master-master GTID replication is configured with distinct auto_increment_increment and auto_increment_offset values to avoid write collisions across distributed nodes. Systemd timers and bash monitoring scripts verify replication lag and connection health.",
-    techStack: ["MySQL", "Linux", "Tailscale", "Networking"],
+      "The mobile architecture establishes a reactive client layer in Flutter connecting to Firebase Cloud Firestore. Residents authenticate and submit localized service requests and community incident reports through intuitive multi-step forms. Real-time document streams hydrate administrator dashboards that display demographic metrics, ticket resolution states, and community analytics, protected by strict Firebase Security Rules.",
+    techStack: ["Dart", "Flutter", "Firebase", "Mobile UI"],
     outcomes: [
-      "Deployed active-active database replication across geographically distributed Linux nodes.",
-      "Isolated replication traffic over encrypted WireGuard peer-to-peer mesh with zero public internet port exposure.",
-      "Prevented primary key collisions during concurrent multi-master writes using deterministic auto-increment partitioning.",
+      "Migrated legacy barangay web management workflows to a performant, responsive cross-platform Flutter mobile client.",
+      "Engineered real-time resident feedback loops and localized administrative reporting dashboards.",
+      "Implemented secure Firebase role-based authentication and real-time database synchronization.",
     ],
     metrics: [
       {
-        value: "0 Ports",
-        label: "Public Exposure",
-        detail: "Zero public internet ports exposed",
+        value: "100%",
+        label: "Mobile-First Migration",
+        detail: "Complete feature parity from legacy web application",
       },
       {
-        value: "< 18ms",
-        label: "Replication Lag",
-        detail: "Encrypted peer-to-peer WireGuard sync",
+        value: "< 200ms",
+        label: "Real-time Sync",
+        detail: "Live Firestore document updates and statistics",
       },
       {
-        value: "Active-Active",
-        label: "Cluster Topology",
-        detail: "Multi-node circular GTID replication",
+        value: "RBAC",
+        label: "Role-Based Access",
+        detail: "Resident vs administrator security rules",
       },
     ],
   },
