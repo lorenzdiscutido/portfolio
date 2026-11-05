@@ -3,13 +3,22 @@ import { SITE_URL } from "@/lib/site";
 import { blogPosts } from "@/lib/blogData";
 import { caseStudies } from "@/lib/caseStudyData";
 
-function parseDate(value: string, fallback: Date): Date {
-  const parsed = new Date(value);
-  return Number.isNaN(parsed.getTime()) ? fallback : parsed;
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  const projectRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
+    url: `${SITE_URL}/projects/${study.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   return [
     {
@@ -18,23 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
+    ...projectRoutes,
     {
       url: `${SITE_URL}/blog`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    ...blogPosts.map((post) => ({
-      url: `${SITE_URL}/blog/${post.slug}`,
-      lastModified: parseDate(post.date, now),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
-    })),
-    ...caseStudies.map((study) => ({
-      url: `${SITE_URL}/projects/${study.slug}`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
       priority: 0.7,
-    })),
+    },
+    ...blogRoutes,
   ];
 }

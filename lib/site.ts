@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://portfolio-eosin-xi-16.vercel.app";
+const DEFAULT_SITE_URL = "https://my-portfolio-ten-zeta-56.vercel.app";
 
 /**
  * Canonical site URL used for metadata, sitemap and robots.

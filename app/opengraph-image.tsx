@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Jose Lorenzo Discutido | Systems Engineer";
+export const alt = "Jose Lorenzo Discutido | Data and Systems Engineer";
 export const size = {
   width: 1200,
   height: 630,

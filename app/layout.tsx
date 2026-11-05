@@ -14,16 +14,34 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Jose Lorenzo Discutido | Systems Engineer",
+    default: "Jose Lorenzo Discutido | Data and Systems Engineer",
     template: "%s | Jose Lorenzo Discutido",
   },
   description:
-    "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
+    "Portfolio of Jose Lorenzo Discutido, a Data and Systems Engineer specializing in AI, IoT, and enterprise cloud infrastructure.",
+  keywords: [
+    "Systems Engineer",
+    "Data Engineer",
+    "IoT",
+    "Next.js",
+    "Python",
+    "Streamlit",
+    "Hardware Integration",
+    "Philippines",
+  ],
   openGraph: {
     type: "website",
-    title: "Jose Lorenzo Discutido | Systems Engineer",
+    locale: "en_US",
+    title: "Jose Lorenzo Discutido | Data and Systems Engineer",
     description:
-      "Portfolio of Jose Lorenzo Discutido, Digital Data & Systems Engineer and AI/IoT Data Officer.",
+      "Portfolio showcasing end-to-end data pipelines, IoT hardware integrations, and distributed database architectures.",
+    siteName: "Jose Lorenzo Discutido Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jose Lorenzo Discutido | Data and Systems Engineer",
+    description:
+      "Portfolio showcasing end-to-end data pipelines, IoT hardware integrations, and distributed database architectures.",
   },
 };
 
