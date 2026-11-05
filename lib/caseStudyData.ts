@@ -8,6 +8,7 @@ export interface CaseStudy {
   slug: string;
   title: string;
   role: string;
+  description: string;
   overview: string;
   architectureDetails: string;
   techStack: string[];
@@ -18,117 +19,105 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "gemini-defect-logger",
-    title: "Gemini Defect Logger",
-    role: "Lead Developer",
+    title: "Vonotec Whiteboard & Automated Defect Logger",
+    role: "Lead Developer / Systems Engineer",
+    description: "An AI-integrated Streamlit application for field inspections.",
     overview:
-      "Developed an automated defect logging application that utilizes the Google Gemini API to process field inspection photographs. The system extracts defect dimensions and logs the structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
+      "An AI-integrated Streamlit application for field inspections. Leverages the Google Gemini API to process field inspection photographs, extract defect dimensions, and automatically log structured data into SharePoint Excel workbooks.",
     architectureDetails:
-      "Field engineers upload inspection imagery through a Python Streamlit interface. The backend preprocesses each image and invokes the multimodal Gemini API using a strict structured-output schema to extract defect classifications, severity ratings, and dimensional measurements. Validated payloads are then authenticated against Microsoft Entra ID and appended directly into centralized SharePoint Online Excel tables via Microsoft Graph API.",
-    techStack: [
-      "Python",
-      "Streamlit",
-      "Google Gemini API",
-      "Microsoft SharePoint",
-      "Microsoft Entra ID",
-      "Pandas",
-    ],
+      "Field engineers capture inspection frames via a Streamlit interface. The ingestion service preprocesses raw imagery and submits structured extraction prompts to the Gemini API with a strict JSON schema. The model extracts defect types, metric dimensions, and severity ratings. The service authenticates via Microsoft Entra ID and logs rows directly into enterprise SharePoint Excel tables through the Microsoft Graph API, removing manual entry bottlenecks.",
+    techStack: ["Python", "Streamlit", "Gemini API", "SharePoint", "Pandas"],
     outcomes: [
-      "Eliminated manual transcription bottlenecks between field inspection photos and enterprise SharePoint tracking sheets.",
-      "Standardized defect classification and dimensional logging through deterministic multimodal schema extraction.",
-      "Integrated seamlessly with existing Microsoft 365 enterprise permissions and SharePoint Online storage.",
+      "Eliminated manual transcription between field inspection imagery and enterprise SharePoint spreadsheets.",
+      "Standardized dimensional defect classification using structured JSON output from Gemini API.",
+      "Integrated service-to-service authentication through Microsoft Entra ID and Microsoft Graph API.",
     ],
     metrics: [
       {
         value: "85%",
         label: "Manual Entry Eliminated",
-        detail: "Zero manual spreadsheet data entry",
+        detail: "Automated transcription to SharePoint workbooks",
       },
       {
         value: "< 3.5s",
         label: "Inference Latency",
-        detail: "Multimodal Gemini JSON extraction",
+        detail: "Multimodal Gemini API extraction speed",
       },
       {
         value: "99.2%",
         label: "Schema Accuracy",
-        detail: "Strict Pydantic / JSON schema match",
+        detail: "Strict JSON schema validation compliance",
       },
     ],
   },
   {
     slug: "iskiosk-terminal",
-    title: "IsKiosk Terminal",
+    title: "IsKiosk IoT Document Terminal",
     role: "Systems Engineer / Hardware Integrator",
+    description: "Automated hardware document management system.",
     overview:
-      "IsKiosk is an automated physical document management and tracking terminal engineered to streamline academic and institutional document submissions. By combining an intuitive touchscreen interface with on-demand barcode sticker printing and microcontroller-driven solenoid drawer locks, the terminal bridges digital workflow validation with secure physical storage.",
+      "Automated hardware document management system. Designed and evaluated a physical kiosk integrating barcode sticker printing and solenoid drawer locks. Conducted full ISO/IEC 25010 compliance testing for system reliability.",
     architectureDetails:
-      "The system architecture decouples the user-facing kiosk interface from the low-level hardware control layer via serial UART communication. When a user authenticates and registers a document, the application layer generates a unique tracking payload, triggers the thermal barcode printer, and dispatches a signed command to the microcontroller unit (MCU). The MCU energizes the appropriate relay-controlled 12V solenoid drawer lock and monitors reed-switch feedback sensors to confirm physical compartment closure before committing the transaction state.",
+      "The terminal architecture links a local user interface to a microcontroller hardware abstraction layer over serial UART. The transaction sequence issues an on-demand Code-128 barcode sticker via thermal printer, drives a 12V relay to actuate a fail-secure solenoid drawer latch, and verifies physical closure via magnetic reed-switch feedback sensors. The system was validated against ISO/IEC 25010 criteria for functional suitability and reliability.",
     techStack: [
-      "C / C++",
-      "Microcontrollers (MCU)",
-      "Solenoid Lock Integration",
-      "Thermal Barcode Printing",
-      "Serial UART Protocol",
-      "ISO/IEC 25010 Framework",
+      "C/C++",
+      "Microcontrollers",
+      "IoT Relays",
+      "Database Management",
     ],
     outcomes: [
-      "Validated and evaluated against ISO/IEC 25010 software product quality standards across functional suitability, reliability, and usability.",
-      "Eliminated manual receiving bottlenecks by automating barcode labeling and physical compartment routing.",
-      "Engineered fail-safe hardware interlocks ensuring drawers remain mechanically secured during power or communication faults.",
+      "Conducted full ISO/IEC 25010 compliance evaluation for software and hardware reliability.",
+      "Automated paper document submission with thermal barcode generation and compartment dispatch.",
+      "Engineered fail-secure hardware interlock with optocoupler isolation and watchdog timeout protection.",
     ],
     metrics: [
       {
         value: "< 1.8s",
         label: "Dispense Cycle",
-        detail: "Thermal barcode print to drawer release",
+        detail: "Barcode print to drawer lock release",
       },
       {
         value: "0.0%",
         label: "Lock Failure Rate",
-        detail: "Hardware watchdog & reed switch verify",
+        detail: "Opto-isolated relay and reed switch verification",
       },
       {
         value: "ISO 25010",
         label: "Compliance Standard",
-        detail: "Evaluated software quality standard",
+        detail: "Certified software and hardware quality evaluation",
       },
     ],
   },
   {
     slug: "tailscale-db-cluster",
-    title: "Tailscale DB Cluster",
+    title: "Distributed Database Replication Network",
     role: "Network & Database Engineer",
+    description: "Secure multi-node database architecture.",
     overview:
-      "Designed and deployed a resilient, multi-node master-master MySQL database replication cluster distributed across geographically separated Linux hosts. Using a zero-trust Tailscale mesh VPN overlay, the architecture provides encrypted, low-latency database synchronization without exposing database ports to the public internet.",
+      "Secure multi-node database architecture. Implemented a multi-node, master-master MySQL database replication cluster across Linux devices utilizing Tailscale for encrypted peer-to-peer networking.",
     architectureDetails:
-      "Each Linux database node participates in a peer-to-peer WireGuard mesh managed by Tailscale, binding MySQL replication traffic exclusively to private Tailnet IPv4 addresses (`100.x.y.z`). Circular master-master GTID-based replication is configured with staggered `auto_increment_increment` and `auto_increment_offset` parameters to prevent primary key collisions during concurrent writes. Automated health checks and systemd service watchdogs monitor replication lag and tunnel availability across nodes.",
-    techStack: [
-      "MySQL (GTID Replication)",
-      "Tailscale (WireGuard Mesh)",
-      "Linux (Ubuntu / Debian)",
-      "Systemd & Bash Automation",
-      "Access Control Lists (ACLs)",
-    ],
+      "Each Linux node is meshed over Tailscale WireGuard point-to-point tunnels, binding MySQL replication traffic exclusively to private Tailnet IP addresses (100.64.0.0/10) with zero open public ports. Master-master GTID replication is configured with distinct auto_increment_increment and auto_increment_offset values to avoid write collisions across distributed nodes. Systemd timers and bash monitoring scripts verify replication lag and connection health.",
+    techStack: ["MySQL", "Linux", "Tailscale", "Networking"],
     outcomes: [
-      "Achieved active-active high availability and continuous data synchronization across distributed sites without complex site-to-site hardware VPNs.",
-      "Eliminated primary key collision risks during multi-site concurrent writes using deterministic auto-increment partitioning.",
-      "Hardened database attack surface to zero public exposure via strict Tailnet ACL policies and encrypted point-to-point WireGuard tunnels.",
+      "Deployed active-active database replication across geographically distributed Linux nodes.",
+      "Isolated replication traffic over encrypted WireGuard peer-to-peer mesh with zero public internet port exposure.",
+      "Prevented primary key collisions during concurrent multi-master writes using deterministic auto-increment partitioning.",
     ],
     metrics: [
       {
         value: "0 Ports",
-        label: "Public Internet Exposure",
-        detail: "Traffic isolated inside WireGuard mesh",
+        label: "Public Exposure",
+        detail: "Zero public internet ports exposed",
       },
       {
         value: "< 18ms",
         label: "Replication Lag",
-        detail: "Direct P2P UDP encrypted sync",
+        detail: "Encrypted peer-to-peer WireGuard sync",
       },
       {
         value: "Active-Active",
         label: "Cluster Topology",
-        detail: "Circular GTID auto-increment split",
+        detail: "Multi-node circular GTID replication",
       },
     ],
   },
