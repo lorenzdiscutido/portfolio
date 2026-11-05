@@ -27,7 +27,7 @@ export default function TelemetryBar() {
           </span>
           <span className="hidden sm:inline text-slate-400 dark:text-slate-500">|</span>
           <span className="text-slate-700 dark:text-slate-300">
-            Tailnet: <span className="text-blue font-bold">4 Nodes Meshed</span>
+            Tailnet: <span className="text-blue-600 dark:text-blue-400 font-bold">4 Nodes Meshed</span>
           </span>
         </div>
 
@@ -58,7 +58,7 @@ export default function TelemetryBar() {
                 <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 01: Database</p>
                   <p className="font-bold text-slate-900 dark:text-white">vonotec-cluster-alpha</p>
-                  <p className="text-[11px] text-blue">100.64.0.1 (MySQL Master A)</p>
+                  <p className="text-[11px] text-blue-600 dark:text-blue-400">100.64.0.1 (MySQL Master A)</p>
                 </div>
                 <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 02: IoT Gateway</p>
@@ -73,7 +73,7 @@ export default function TelemetryBar() {
                 <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 04: Workstation</p>
                   <p className="font-bold text-slate-900 dark:text-white">jld-stealth-rig</p>
-                  <p className="text-[11px] text-blue">100.64.0.4 (Local Linux Node)</p>
+                  <p className="text-[11px] text-blue-600 dark:text-blue-400">100.64.0.4 (Local Linux Node)</p>
                 </div>
               </div>
 

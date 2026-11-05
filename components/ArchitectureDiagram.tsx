@@ -379,14 +379,14 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                 className={`text-left p-4 rounded-xl border transition-all duration-300 relative flex flex-col justify-between cursor-pointer ${
                   isSelected
                     ? "bg-white dark:bg-[#1e2128] border-orange shadow-[4px_4px_0px_0px_#FF7A00]"
-                    : "bg-white/70 dark:bg-black/30 border-black/10 dark:border-white/10 hover:border-blue"
+                    : "bg-white/70 dark:bg-black/30 border-black/10 dark:border-white/10 hover:border-blue-600 dark:hover:border-blue-400"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-xs font-mono font-bold uppercase ${
-                        isSelected ? "text-orange" : "text-blue"
+                        isSelected ? "text-orange" : "text-blue-600 dark:text-blue-400"
                       }`}
                     >
                       Stage 0{index + 1}
@@ -398,7 +398,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
                         </>
                       ) : (
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue/40"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600/40 dark:bg-blue-400/40"></span>
                       )}
                     </span>
                   </div>
@@ -416,7 +416,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                   </span>
                   <span
                     className={`text-xs font-mono font-bold transition-transform ${
-                      isSelected ? "text-orange translate-x-1" : "text-blue"
+                      isSelected ? "text-orange translate-x-1" : "text-blue-600 dark:text-blue-400"
                     }`}
                   >
                     →
@@ -431,7 +431,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
         <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">
             <span className="text-orange-700 dark:text-orange font-bold">Active Signal:</span>
-            <span className="text-blue font-semibold">{activeNode.protocol}</span>
+            <span className="text-blue-600 dark:text-blue-400 font-semibold">{activeNode.protocol}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -471,7 +471,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
           <div className="bg-slate-950 text-slate-100 rounded-lg border border-black/20 dark:border-white/10 p-4 overflow-x-auto shadow-inner">
             <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 pb-2 border-b border-white/10">
               <span className="text-emerald-400 font-semibold">// Implementation / Config Excerpt</span>
-              <span className="text-blue font-mono">readonly</span>
+              <span className="text-blue-600 dark:text-blue-400 font-mono">readonly</span>
             </div>
             <pre className="font-mono text-xs leading-relaxed text-slate-200">
               <code>{activeNode.configSnippet}</code>

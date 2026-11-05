@@ -7,7 +7,7 @@ export default function Workspace() {
             Off-Duty Mechanics
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-            Beyond the <span className="text-blue">Screen</span>
+            Beyond the <span className="text-blue-600 dark:text-blue-400">Screen</span>
           </h2>
         </div>
 

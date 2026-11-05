@@ -13,7 +13,7 @@ export default function Projects() {
             Selected Works
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-            Featured <span className="text-blue">Projects</span>
+            Featured <span className="text-blue-600 dark:text-blue-400">Projects</span>
           </h2>
         </div>
 
@@ -39,7 +39,7 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   {isFeatured && (
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue bg-blue/10 px-2.5 py-0.5 rounded border border-blue/30 self-start sm:self-auto font-semibold">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-600/10 dark:bg-blue-400/10 px-2.5 py-0.5 rounded border border-blue-600/30 dark:border-blue-400/30 self-start sm:self-auto font-semibold">
                       Primary Case Study
                     </span>
                   )}
@@ -57,7 +57,7 @@ export default function Projects() {
                 <div className="grid grid-cols-3 gap-2 mb-6 p-3.5 rounded-xl bg-white/70 dark:bg-black/30 backdrop-blur-sm border border-black/10 dark:border-white/10">
                   {project.metrics.map((m, mi) => (
                     <div key={mi} className="text-center sm:text-left">
-                      <span className="block text-sm sm:text-base font-extrabold text-blue dark:text-blue tracking-tight font-mono">
+                      <span className="block text-sm sm:text-base font-extrabold text-blue-600 dark:text-blue-400 tracking-tight font-mono">
                         {m.value}
                       </span>
                       <span className="block text-[10px] sm:text-[11px] font-mono text-slate-600 dark:text-slate-400 font-medium leading-tight">
@@ -81,7 +81,7 @@ export default function Projects() {
                 <div>
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-flex items-center text-sm font-semibold text-blue hover:text-orange-600 dark:hover:text-orange transition-colors"
+                    className="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-orange-600 dark:hover:text-orange transition-colors"
                   >
                     View Architecture &amp; Case Study →
                   </Link>

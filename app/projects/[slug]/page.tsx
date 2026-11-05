@@ -78,7 +78,7 @@ export default async function CaseStudyPage({
         {/* Navigation */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-400 hover:text-blue dark:hover:text-blue transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
@@ -116,7 +116,7 @@ export default async function CaseStudyPage({
               className="p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg flex flex-col justify-between"
             >
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-blue dark:text-blue font-mono block tracking-tight mb-1">
+                <span className="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 font-mono block tracking-tight mb-1">
                   {metric.value}
                 </span>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 block mb-2">
@@ -146,7 +146,7 @@ export default async function CaseStudyPage({
         {/* The Architecture & Solution Section */}
         <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-2 w-2 rounded-full bg-blue" />
+            <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500" />
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
               The Architecture &amp; Solution
             </h2>
@@ -181,7 +181,7 @@ export default async function CaseStudyPage({
         {/* The Outcome Section */}
         <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-12">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-2 w-2 rounded-full bg-blue" />
+            <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500" />
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
               The Outcome
             </h2>

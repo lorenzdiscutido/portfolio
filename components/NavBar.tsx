@@ -8,7 +8,7 @@ export default function NavBar() {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-slate-900 dark:text-white font-extrabold text-xl tracking-tight hover:text-blue dark:hover:text-blue transition-colors"
+          className="text-slate-900 dark:text-white font-extrabold text-xl tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
         >
           JLD
         </Link>
@@ -16,31 +16,31 @@ export default function NavBar() {
         <div className="flex items-center gap-6">
           <Link
             href="/#about"
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue dark:hover:text-blue transition-colors"
+            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             About
           </Link>
           <Link
             href="/#experience"
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue dark:hover:text-blue transition-colors hidden sm:inline"
+            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hidden sm:inline"
           >
             Experience
           </Link>
           <Link
             href="/#projects"
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue dark:hover:text-blue transition-colors"
+            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             Projects
           </Link>
           <Link
             href="/blog"
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue dark:hover:text-blue transition-colors"
+            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             Blog
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue dark:hover:text-blue transition-colors"
+            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             Contact
           </Link>

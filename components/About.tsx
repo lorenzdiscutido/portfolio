@@ -125,7 +125,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              Engineering <span className="text-blue">Background</span>
+              Engineering <span className="text-blue-600 dark:text-blue-400">Background</span>
             </h2>
             <div className="space-y-6 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
               <p>
@@ -174,8 +174,8 @@ export default function About() {
                           onMouseLeave={() => setActiveSkill(null)}
                           className={`text-left text-sm font-medium px-4 py-2 rounded-md border transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-blue/10 text-slate-900 dark:text-white border-orange shadow-md font-semibold"
-                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/10 hover:border-blue dark:hover:border-blue"
+                              ? "bg-blue-600/10 dark:bg-blue-400/10 text-slate-900 dark:text-white border-orange shadow-md font-semibold"
+                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/10 hover:border-blue-600 dark:hover:border-blue-400"
                           }`}
                         >
                           {skill.name}
@@ -195,7 +195,7 @@ export default function About() {
                     <span className="text-xs font-bold font-mono text-orange-700 dark:text-orange uppercase">
                       Production Application
                     </span>
-                    <span className="text-xs font-mono text-blue font-semibold">
+                    <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold">
                       {activeSkill.name}
                     </span>
                   </div>

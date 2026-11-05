@@ -41,7 +41,7 @@ export default async function BlogPostPage({
       <article className="max-w-3xl mx-auto">
         <Link
           href="/blog"
-          className="inline-block text-muted hover:text-blue transition-colors mb-8"
+          className="inline-block text-muted hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8"
         >
           ← Back to Blog
         </Link>

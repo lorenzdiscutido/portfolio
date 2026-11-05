@@ -132,7 +132,7 @@ export default function Footer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message here..."
-              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm resize-y"
+              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue-600 dark:focus:border-blue-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm resize-y"
             />
           </div>
 
@@ -140,7 +140,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer shadow-md"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue-600 dark:bg-blue-500 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer shadow-md"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
@@ -164,7 +164,7 @@ export default function Footer() {
             href="https://github.com/lorenzdiscutido"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 dark:text-slate-400 hover:text-blue dark:hover:text-blue transition-colors font-medium tracking-wide"
+            className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium tracking-wide"
           >
             GitHub
           </a>
@@ -172,7 +172,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/discutido-lorenzo/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 dark:text-slate-400 hover:text-blue dark:hover:text-blue transition-colors font-medium tracking-wide"
+            className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium tracking-wide"
           >
             LinkedIn
           </a>

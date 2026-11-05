@@ -88,7 +88,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ x: 2, y: 2 }}
                 whileTap={{ x: 4, y: 4, scale: 0.98 }}
-                className="theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue dark:hover:!text-blue hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
+                className="theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue-600 dark:hover:!text-blue-400 hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
               >
                 <span className="text-black dark:text-white font-bold">Contact Me</span>
               </motion.a>
@@ -123,7 +123,7 @@ export default function Hero() {
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center theme-text-primary bg-slate-100 dark:bg-surface p-6">
-                    <span className="font-extrabold text-3xl tracking-tighter text-blue">
+                    <span className="font-extrabold text-3xl tracking-tighter text-blue-600 dark:text-blue-400">
                       JL<span className="text-orange-600 dark:text-orange">D</span>
                     </span>
                     <span className="text-xs uppercase font-mono theme-text-secondary tracking-widest mt-2">

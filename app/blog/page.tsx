@@ -7,7 +7,7 @@ export default function BlogPage() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Technical <span className="text-blue">Blog</span>
+            Technical <span className="text-blue-600 dark:text-blue-400">Blog</span>
           </h1>
           <div className="h-1 w-20 bg-orange mx-auto rounded-full"></div>
         </div>

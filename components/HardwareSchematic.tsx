@@ -74,12 +74,12 @@ export default function HardwareSchematic() {
         <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono font-bold text-blue uppercase">
+              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
                 MCU Controller
               </span>
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-600 dark:bg-blue-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-500"></span>
               </span>
             </div>
             <p className="font-bold text-slate-900 dark:text-white text-sm">
@@ -91,7 +91,7 @@ export default function HardwareSchematic() {
           </div>
           <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
             <span>Core Logic: 3.3V</span>
-            <span className="text-blue font-bold">ARMED</span>
+            <span className="text-blue-600 dark:text-blue-400 font-bold">ARMED</span>
           </div>
         </div>
 
@@ -197,12 +197,12 @@ export default function HardwareSchematic() {
             </thead>
             <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-black/20">
               {pinouts.map((p, idx) => (
-                <tr key={idx} className="hover:bg-blue/5 transition-colors">
+                <tr key={idx} className="hover:bg-blue-600/5 dark:hover:bg-blue-400/5 transition-colors">
                   <td className="py-2.5 px-3 font-bold text-orange-700 dark:text-orange">{p.pin}</td>
                   <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-white">
                     {p.target}
                   </td>
-                  <td className="py-2.5 px-3 text-blue">{p.voltage}</td>
+                  <td className="py-2.5 px-3 text-blue-600 dark:text-blue-400">{p.voltage}</td>
                   <td className="py-2.5 px-3 text-slate-600 dark:text-slate-400">
                     {p.role}
                   </td>

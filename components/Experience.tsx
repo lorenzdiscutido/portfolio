@@ -58,7 +58,7 @@ export default function Experience() {
             Career Timeline
           </p>
           <h2 className="theme-text-primary text-3xl md:text-4xl font-bold mb-2">
-            Experience &amp; <span className="text-blue">Education</span>
+            Experience &amp; <span className="text-blue-600 dark:text-blue-400">Education</span>
           </h2>
           <p className="theme-text-secondary text-slate-800 dark:text-slate-300 font-semibold text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
@@ -74,7 +74,7 @@ export default function Experience() {
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
               {/* Timeline node marker: shares left-0 with the rail, centered via -translate-x-1/2 */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base bg-blue group-hover:bg-orange transition-all group-hover:scale-125" />
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base bg-blue-600 dark:bg-blue-500 group-hover:bg-orange transition-all group-hover:scale-125" />
 
               <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
@@ -84,7 +84,7 @@ export default function Experience() {
                   <span
                     className={`text-xs font-mono px-2.5 py-0.5 rounded border self-start sm:self-auto ${
                       item.type === "Work"
-                        ? "bg-blue/10 border-blue text-blue font-semibold"
+                        ? "bg-blue-600/10 dark:bg-blue-400/10 border-blue-600/30 dark:border-blue-400/30 text-blue-600 dark:text-blue-400 font-semibold"
                         : item.type === "Internship"
                         ? "bg-orange-50 dark:bg-orange/10 border-orange-200 dark:border-orange text-orange-700 dark:text-orange font-semibold"
                         : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 theme-text-primary font-semibold"
@@ -109,7 +109,7 @@ export default function Experience() {
                       key={i}
                       className="theme-text-secondary text-sm leading-relaxed flex items-start gap-2.5"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue shrink-0 mt-2" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-500 shrink-0 mt-2" />
                       <span>{point}</span>
                     </li>
                   ))}

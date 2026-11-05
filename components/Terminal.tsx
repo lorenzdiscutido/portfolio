@@ -179,34 +179,34 @@ export default function Terminal() {
           <div className="space-y-1 font-mono text-xs">
             <p className="text-orange font-bold">&gt; Available commands:</p>
             <p>
-              &gt; <span className="text-blue">whoami</span> — Display operator identity &amp; title
+              &gt; <span className="text-blue-600 dark:text-blue-400">whoami</span> — Display operator identity &amp; title
             </p>
             <p>
-              &gt; <span className="text-blue">skills</span> — Categorized technical capabilities
+              &gt; <span className="text-blue-600 dark:text-blue-400">skills</span> — Categorized technical capabilities
             </p>
             <p>
-              &gt; <span className="text-blue">experience</span> — Current &amp; previous engineering roles
+              &gt; <span className="text-blue-600 dark:text-blue-400">experience</span> — Current &amp; previous engineering roles
             </p>
             <p>
-              &gt; <span className="text-blue">education</span> — Academic degree &amp; institution
+              &gt; <span className="text-blue-600 dark:text-blue-400">education</span> — Academic degree &amp; institution
             </p>
             <p>
-              &gt; <span className="text-blue">neofetch</span> — Display workstation telemetry
+              &gt; <span className="text-blue-600 dark:text-blue-400">neofetch</span> — Display workstation telemetry
             </p>
             <p>
-              &gt; <span className="text-blue">tailscale</span> — Inspect active Tailnet mesh nodes
+              &gt; <span className="text-blue-600 dark:text-blue-400">tailscale</span> — Inspect active Tailnet mesh nodes
             </p>
             <p>
-              &gt; <span className="text-blue">ping &lt;ip&gt;</span> — Test ICMP echo reachability
+              &gt; <span className="text-blue-600 dark:text-blue-400">ping &lt;ip&gt;</span> — Test ICMP echo reachability
             </p>
             <p>
-              &gt; <span className="text-blue">cd &lt;dir&gt;</span> — Navigate to projects (komunikonek, iskiosk, vonotec, ~)
+              &gt; <span className="text-blue-600 dark:text-blue-400">cd &lt;dir&gt;</span> — Navigate to projects (komunikonek, iskiosk, vonotec, ~)
             </p>
             <p>
-              &gt; <span className="text-blue">ls</span> — List navigable project directories
+              &gt; <span className="text-blue-600 dark:text-blue-400">ls</span> — List navigable project directories
             </p>
             <p>
-              &gt; <span className="text-blue">clear</span> — Clear terminal output
+              &gt; <span className="text-blue-600 dark:text-blue-400">clear</span> — Clear terminal output
             </p>
           </div>
         );
@@ -214,7 +214,7 @@ export default function Terminal() {
       case "whoami":
         output = (
           <div className="space-y-0.5 font-mono py-0.5">
-            <p className="text-blue font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
+            <p className="text-blue-600 dark:text-blue-400 font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
             <p className="text-slate-300">
               &gt; Data and Systems Engineer
             </p>
@@ -225,25 +225,25 @@ export default function Terminal() {
         output = (
           <div className="space-y-1 font-mono py-1 text-xs">
             <p>
-              <span className="text-blue font-bold">&gt; Core &amp; Web:</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Core &amp; Web:</span>{" "}
               <span className="text-slate-200">
                 Python, Next.js, TypeScript, Tailwind CSS
               </span>
             </p>
             <p>
-              <span className="text-blue font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
               <span className="text-slate-200">
                 C/C++, Dart, Flutter
               </span>
             </p>
             <p>
-              <span className="text-blue font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
               <span className="text-slate-200">
                 Microsoft Entra ID, Microsoft Intune, SharePoint, Odoo ERP, Firebase
               </span>
             </p>
             <p>
-              <span className="text-blue font-bold">&gt; Database &amp; Network:</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Database &amp; Network:</span>{" "}
               <span className="text-slate-200">
                 MySQL, PostgreSQL, Prisma ORM, Tailscale
               </span>
@@ -261,7 +261,7 @@ export default function Terminal() {
               </span>
             </p>
             <p>
-              <span className="text-blue font-bold">&gt; Previous:</span>{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Previous:</span>{" "}
               <span className="text-slate-200">
                 IT Systems &amp; Network Intern @ PHINMA Properties
               </span>
@@ -275,7 +275,7 @@ export default function Terminal() {
             <p className="text-white font-bold">
               &gt; Bachelor of Science in Computer Engineering
             </p>
-            <p className="text-blue font-semibold">
+            <p className="text-blue-600 dark:text-blue-400 font-semibold">
               &gt; Polytechnic University of the Philippines (PUP)
             </p>
           </div>
@@ -288,22 +288,22 @@ export default function Terminal() {
             <p className="text-orange font-bold">guest@jld-stealth-rig</p>
             <p>-------------------------</p>
             <p>
-              <span className="text-blue">OS:</span> Linux / Windows 11 Pro (WSL2)
+              <span className="text-blue-600 dark:text-blue-400">OS:</span> Linux / Windows 11 Pro (WSL2)
             </p>
             <p>
-              <span className="text-blue">Chassis:</span> Stealth All-Black / Zero-RGB Build
+              <span className="text-blue-600 dark:text-blue-400">Chassis:</span> Stealth All-Black / Zero-RGB Build
             </p>
             <p>
-              <span className="text-blue">Acoustics:</span> &lt; 22 dBA Silent Fan Curve
+              <span className="text-blue-600 dark:text-blue-400">Acoustics:</span> &lt; 22 dBA Silent Fan Curve
             </p>
             <p>
-              <span className="text-blue">Role:</span> Digital Data &amp; Systems Engineer @ Vonotec
+              <span className="text-blue-600 dark:text-blue-400">Role:</span> Digital Data &amp; Systems Engineer @ Vonotec
             </p>
             <p>
-              <span className="text-blue">Education:</span> BS Computer Engineering (PUP)
+              <span className="text-blue-600 dark:text-blue-400">Education:</span> BS Computer Engineering (PUP)
             </p>
             <p>
-              <span className="text-blue">Tailnet:</span> 4 Nodes Online (WireGuard Mesh OK)
+              <span className="text-blue-600 dark:text-blue-400">Tailnet:</span> 4 Nodes Online (WireGuard Mesh OK)
             </p>
           </div>
         );
@@ -314,16 +314,16 @@ export default function Terminal() {
           <div className="space-y-1 py-1 text-xs font-mono">
             <p className="text-orange font-bold">IPv4         HOSTNAME               ROLE                  STATUS</p>
             <p>
-              <span className="text-blue">100.64.0.1</span>   vonotec-cluster-alpha  MySQL Master A (Odd)  online, direct
+              <span className="text-blue-600 dark:text-blue-400">100.64.0.1</span>   vonotec-cluster-alpha  MySQL Master A (Odd)  online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.2</span>   iskiosk-mcu-gateway    MCU Hardware Interlock online, direct
+              <span className="text-blue-600 dark:text-blue-400">100.64.0.2</span>   iskiosk-mcu-gateway    MCU Hardware Interlock online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.3</span>   entra-id-governance    Identity Proxy (MSAL) online, direct
+              <span className="text-blue-600 dark:text-blue-400">100.64.0.3</span>   entra-id-governance    Identity Proxy (MSAL) online, direct
             </p>
             <p>
-              <span className="text-blue">100.64.0.4</span>   jld-stealth-rig        Workstation (Linux)   active, local
+              <span className="text-blue-600 dark:text-blue-400">100.64.0.4</span>   jld-stealth-rig        Workstation (Linux)   active, local
             </p>
           </div>
         );
@@ -344,7 +344,7 @@ export default function Terminal() {
 
         if (!target || target === "~" || rawTarget === "/") {
           output = (
-            <p className="font-mono text-xs text-blue">&gt; Navigating to /home...</p>
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /home...</p>
           );
           setTimeout(() => {
             router.push("/");
@@ -354,7 +354,7 @@ export default function Terminal() {
 
         if (target === "..") {
           output = (
-            <p className="font-mono text-xs text-blue">&gt; Navigating back...</p>
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating back...</p>
           );
           setTimeout(() => {
             router.push("/");
@@ -364,7 +364,7 @@ export default function Terminal() {
 
         if (target === "komunikonek" || target === "projects/komunikonek") {
           output = (
-            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/komunikonek...</p>
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
           );
           setTimeout(() => {
             router.push("/projects/komunikonek");
@@ -378,7 +378,7 @@ export default function Terminal() {
           target === "projects/iskiosk-terminal"
         ) {
           output = (
-            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/iskiosk-terminal...</p>
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/iskiosk-terminal...</p>
           );
           setTimeout(() => {
             router.push("/projects/iskiosk-terminal");
@@ -394,7 +394,7 @@ export default function Terminal() {
           target === "projects/vonotec-defect-logger"
         ) {
           output = (
-            <p className="font-mono text-xs text-blue">&gt; Navigating to /projects/vonotec-defect-logger...</p>
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/vonotec-defect-logger...</p>
           );
           setTimeout(() => {
             router.push("/projects/vonotec-defect-logger");
@@ -411,13 +411,13 @@ export default function Terminal() {
       case "dir":
         output = (
           <div className="space-y-1 font-mono text-xs py-0.5">
-            <p className="text-blue font-bold">drwxr-xr-x  projects/</p>
+            <p className="text-blue-600 dark:text-blue-400 font-bold">drwxr-xr-x  projects/</p>
             <div className="pl-4 space-y-0.5 text-slate-200">
               <p>&gt; <span className="text-orange font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
               <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk IoT Document Terminal</p>
               <p>&gt; <span className="text-orange font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
             </div>
-            <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-blue">cd &lt;dir&gt;</span>&apos; to navigate.</p>
+            <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-blue-600 dark:text-blue-400">cd &lt;dir&gt;</span>&apos; to navigate.</p>
           </div>
         );
         break;
@@ -427,13 +427,13 @@ export default function Terminal() {
           <div className="space-y-1 py-1">
             <p className="text-orange font-bold">[Zenless Zone Zero // Combat Analytics Log]</p>
             <p>
-              • <span className="text-blue">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
+              • <span className="text-blue-600 dark:text-blue-400">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
             </p>
             <p>
-              • <span className="text-blue">Stun Daze Window</span> ↔ Burst throughput window during low-contention locks
+              • <span className="text-blue-600 dark:text-blue-400">Stun Daze Window</span> ↔ Burst throughput window during low-contention locks
             </p>
             <p>
-              • <span className="text-blue">Quick Assist Rotations</span> ↔ Zero-downtime node handoffs in distributed pipelines
+              • <span className="text-blue-600 dark:text-blue-400">Quick Assist Rotations</span> ↔ Zero-downtime node handoffs in distributed pipelines
             </p>
           </div>
         );
@@ -441,14 +441,14 @@ export default function Terminal() {
       case "sudo":
         output = (
           <span>
-            <span className="text-blue">Permission denied.</span> This incident will be reported.
+            <span className="text-blue-600 dark:text-blue-400">Permission denied.</span> This incident will be reported.
           </span>
         );
         break;
       default:
         output = (
           <span>
-            Command not found. Type &apos;<span className="text-blue">help</span>&apos; for available commands.
+            Command not found. Type &apos;<span className="text-blue-600 dark:text-blue-400">help</span>&apos; for available commands.
           </span>
         );
         break;
@@ -489,14 +489,14 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
+      className="dark fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
     >
       <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
         <span className="text-slate-300 font-bold">
           jld-sys terminal (Ctrl + ` to toggle)
         </span>
         <div className="flex items-center gap-3">
-          <span className="text-blue font-bold">bash</span>
+          <span className="text-blue-600 dark:text-blue-400 font-bold">bash</span>
           <button
             type="button"
             onClick={(e) => {
