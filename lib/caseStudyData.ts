@@ -1,3 +1,9 @@
+export interface ProjectMetric {
+  value: string;
+  label: string;
+  detail: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -6,6 +12,7 @@ export interface CaseStudy {
   architectureDetails: string;
   techStack: string[];
   outcomes: string[];
+  metrics: ProjectMetric[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -30,6 +37,23 @@ export const caseStudies: CaseStudy[] = [
       "Standardized defect classification and dimensional logging through deterministic multimodal schema extraction.",
       "Integrated seamlessly with existing Microsoft 365 enterprise permissions and SharePoint Online storage.",
     ],
+    metrics: [
+      {
+        value: "85%",
+        label: "Manual Entry Eliminated",
+        detail: "Zero manual spreadsheet data entry",
+      },
+      {
+        value: "< 3.5s",
+        label: "Inference Latency",
+        detail: "Multimodal Gemini JSON extraction",
+      },
+      {
+        value: "99.2%",
+        label: "Schema Accuracy",
+        detail: "Strict Pydantic / JSON schema match",
+      },
+    ],
   },
   {
     slug: "iskiosk-terminal",
@@ -52,6 +76,23 @@ export const caseStudies: CaseStudy[] = [
       "Eliminated manual receiving bottlenecks by automating barcode labeling and physical compartment routing.",
       "Engineered fail-safe hardware interlocks ensuring drawers remain mechanically secured during power or communication faults.",
     ],
+    metrics: [
+      {
+        value: "< 1.8s",
+        label: "Dispense Cycle",
+        detail: "Thermal barcode print to drawer release",
+      },
+      {
+        value: "0.0%",
+        label: "Lock Failure Rate",
+        detail: "Hardware watchdog & reed switch verify",
+      },
+      {
+        value: "ISO 25010",
+        label: "Compliance Standard",
+        detail: "Evaluated software quality standard",
+      },
+    ],
   },
   {
     slug: "tailscale-db-cluster",
@@ -72,6 +113,23 @@ export const caseStudies: CaseStudy[] = [
       "Achieved active-active high availability and continuous data synchronization across distributed sites without complex site-to-site hardware VPNs.",
       "Eliminated primary key collision risks during multi-site concurrent writes using deterministic auto-increment partitioning.",
       "Hardened database attack surface to zero public exposure via strict Tailnet ACL policies and encrypted point-to-point WireGuard tunnels.",
+    ],
+    metrics: [
+      {
+        value: "0 Ports",
+        label: "Public Internet Exposure",
+        detail: "Traffic isolated inside WireGuard mesh",
+      },
+      {
+        value: "< 18ms",
+        label: "Replication Lag",
+        detail: "Direct P2P UDP encrypted sync",
+      },
+      {
+        value: "Active-Active",
+        label: "Cluster Topology",
+        detail: "Circular GTID auto-increment split",
+      },
     ],
   },
 ];

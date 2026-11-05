@@ -2,35 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { caseStudies } from "@/lib/caseStudyData";
 
 export default function Projects() {
-  const projects = [
-    {
-      slug: "gemini-defect-logger",
-      title: "Gemini Defect Logger",
-      role: "Lead Developer",
-      stack: ["Python", "Streamlit", "Gemini API", "SharePoint"],
-      description:
-        "Developed an automated defect logging application that utilizes the Google Gemini API to process field inspection photographs. The system extracts defect dimensions and logs the structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
-    },
-    {
-      slug: "iskiosk-terminal",
-      title: "IsKiosk Terminal",
-      role: "Systems Engineer / Hardware Integrator",
-      stack: ["C/C++", "Microcontrollers", "UI Design"],
-      description:
-        "Architected an automated document management terminal featuring integrated barcode sticker printing and hardware-level solenoid drawer locks. The complete system was evaluated and validated for ISO/IEC 25010 software quality compliance.",
-    },
-    {
-      slug: "tailscale-db-cluster",
-      title: "Tailscale DB Cluster",
-      role: "Network & Database Engineer",
-      stack: ["MySQL", "Linux", "Tailscale"],
-      description:
-        "Designed and deployed a multi-node, master-master MySQL database replication cluster. Leveraged Tailscale to establish secure, low-latency network routing across distributed Linux devices for continuous enterprise data synchronization.",
-    },
-  ];
-
   return (
     <section id="projects" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -44,7 +18,7 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => {
+          {caseStudies.map((project, index) => {
             const isFeatured = index === 0;
             return (
               <motion.div
@@ -75,12 +49,26 @@ export default function Projects() {
                   {project.role}
                 </p>
 
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8 flex-grow">
-                  {project.description}
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6 flex-grow">
+                  {project.overview}
                 </p>
 
+                {/* Quantified Metrics Highlight Bar */}
+                <div className="grid grid-cols-3 gap-2 mb-6 p-3.5 rounded-xl bg-white/70 dark:bg-black/30 backdrop-blur-sm border border-black/10 dark:border-white/10">
+                  {project.metrics.map((m, mi) => (
+                    <div key={mi} className="text-center sm:text-left">
+                      <span className="block text-sm sm:text-base font-extrabold text-blue dark:text-blue tracking-tight font-mono">
+                        {m.value}
+                      </span>
+                      <span className="block text-[10px] sm:text-[11px] font-mono text-slate-600 dark:text-slate-400 font-medium leading-tight">
+                        {m.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                  {project.stack.map((tech, i) => (
+                  {project.techStack.map((tech, i) => (
                     <span
                       key={i}
                       className="font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/10"
