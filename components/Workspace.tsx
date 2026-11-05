@@ -1,14 +1,18 @@
 export default function Workspace() {
   return (
-    <section id="workspace" className="py-20 bg-base px-6">
+    <section id="workspace" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-16 text-center">
-          Beyond the <span className="text-blue">Screen</span>
-          <div className="h-1 w-20 bg-orange mx-auto rounded-full mt-4"></div>
-        </h2>
+        <div className="mb-12 text-left">
+          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+            Off-Duty Mechanics
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary">
+            Beyond the <span className="text-blue">Screen</span>
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-surface p-8 rounded-xl border border-transparent hover:border-orange transition-colors">
+          <div className="bg-surface/40 backdrop-blur-md p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
             <h3 className="text-primary text-2xl font-bold mb-4">
               The Hardware Loadout
             </h3>
@@ -17,9 +21,9 @@ export default function Workspace() {
             </p>
           </div>
 
-          <div className="bg-surface p-8 rounded-xl border border-transparent hover:border-orange transition-colors">
+          <div className="bg-surface/40 backdrop-blur-md p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
             <h3 className="text-primary text-2xl font-bold mb-4">
-              System Mechanics & Analytics
+              System Mechanics &amp; Analytics
             </h3>
             <p className="text-muted leading-relaxed">
               Off-duty, I gravitate toward dissecting complex combat systems in action RPGs like Zenless Zone Zero—analyzing core skill passives, attribute anomaly buildup, frame windows, and team rotation synergies. Theorycrafting optimal squad compositions and resource loops exercises the exact same analytical mindset required to eliminate bottlenecks and tune high-efficiency enterprise workflows.

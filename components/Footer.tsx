@@ -50,7 +50,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-surface pt-20 pb-10 px-6 border-t border-[#2d313a]">
+    <footer id="contact" className="bg-surface/30 backdrop-blur-md pt-20 pb-10 px-6 border-t border-[#2d313a]/50">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
           Let&apos;s <span className="text-orange">Connect</span>
@@ -61,7 +61,7 @@ export default function Footer() {
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto mb-16 text-left bg-base p-6 md:p-8 rounded-xl border border-[#2d313a] space-y-4"
+          className="max-w-xl mx-auto mb-16 text-left bg-base/70 backdrop-blur-md p-6 md:p-8 rounded-xl border border-[#2d313a]/60 space-y-4 shadow-xl"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

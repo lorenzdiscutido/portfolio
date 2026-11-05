@@ -32,7 +32,7 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-base px-6">
+    <section id="projects" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
           <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
@@ -54,10 +54,10 @@ export default function Projects() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ y: -5 }}
-                className={`rounded-xl p-8 border transition-colors duration-300 flex flex-col ${
+                className={`rounded-xl p-8 border transition-all duration-300 flex flex-col ${
                   isFeatured
-                    ? "md:col-span-2 bg-surface border-blue/30 bg-blue/[0.04] hover:border-orange shadow-lg"
-                    : "bg-surface border-[#2d313a] hover:border-orange"
+                    ? "md:col-span-2 bg-surface/40 backdrop-blur-md border-blue/30 bg-blue/[0.04] hover:border-orange shadow-lg"
+                    : "bg-surface/40 backdrop-blur-md border-[#2d313a]/50 hover:border-orange shadow-md"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
@@ -83,7 +83,7 @@ export default function Projects() {
                   {project.stack.map((tech, i) => (
                     <span
                       key={i}
-                      className="font-mono text-xs font-medium text-primary bg-base px-3 py-1 rounded-full border border-[#2d313a]"
+                      className="font-mono text-xs font-medium text-primary bg-base/70 backdrop-blur-sm px-3 py-1 rounded-full border border-[#2d313a]/60"
                     >
                       {tech}
                     </span>

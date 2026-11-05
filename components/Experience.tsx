@@ -51,14 +51,16 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-base px-6 border-t border-[#2d313a]/50">
+    <section id="experience" className="py-20 px-6 border-t border-[#2d313a]/50">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <div className="mb-12 text-left">
+          <p className="text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+            Career Timeline
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
             Experience &amp; <span className="text-blue">Education</span>
           </h2>
-          <div className="h-1 w-20 bg-orange mx-auto rounded-full"></div>
-          <p className="text-muted text-sm md:text-base mt-4 max-w-xl mx-auto">
+          <p className="text-muted text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -69,7 +71,7 @@ export default function Experience() {
               {/* Timeline node marker */}
               <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 border-base bg-blue group-hover:bg-orange transition-all group-hover:scale-125" />
 
-              <div className="bg-surface p-6 md:p-8 rounded-xl border border-[#2d313a] hover:border-orange transition-all">
+              <div className="bg-surface/40 backdrop-blur-md p-6 md:p-8 rounded-xl border border-[#2d313a]/50 hover:border-orange transition-all shadow-md">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-mono font-bold text-orange uppercase tracking-wider">
                     {item.period}

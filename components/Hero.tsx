@@ -1,14 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
+  const fullText = "> guest@jld-sys:~$ initiating profile...";
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i <= fullText.length) {
+        setTypedText(fullText.slice(0, i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 35);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="min-h-[90vh] flex flex-col justify-start bg-base px-6 pt-32 pb-20">
+    <section className="min-h-[90vh] flex flex-col justify-start px-6 pt-32 pb-20">
       <div className="max-w-5xl mx-auto w-full text-left">
         {/* Profile Avatar / Headshot (Left-Aligned) */}
         <motion.div
@@ -44,7 +59,7 @@ export default function Hero() {
             </div>
 
             {/* Availability status beacon */}
-            <div className="absolute -bottom-2.5 left-0 whitespace-nowrap bg-base border border-[#2d313a] px-3 py-0.5 rounded-full flex items-center gap-2 shadow-lg">
+            <div className="absolute -bottom-2.5 left-0 whitespace-nowrap bg-base/80 backdrop-blur-md border border-[#2d313a] px-3 py-0.5 rounded-full flex items-center gap-2 shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -56,19 +71,34 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.h2
+        {/* Boot Sequence Typewriter & Name */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-          className="text-orange font-semibold tracking-widest uppercase mb-4 text-sm md:text-base"
+          className="mb-4"
         >
-          Jose Lorenzo Discutido
-        </motion.h2>
+          <div className="font-mono text-xs md:text-sm text-orange font-semibold tracking-wider flex items-center gap-1">
+            <span>{typedText}</span>
+            <span className="animate-pulse inline-block w-2 h-4 bg-orange"></span>
+          </div>
+          <h2 className="text-sm md:text-base font-semibold tracking-widest uppercase text-muted mt-2">
+            Jose Lorenzo Discutido
+          </h2>
+        </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          initial={{
+            opacity: 0,
+            y: 20,
+            textShadow: "0px 0px 14px rgba(0,82,255,0.8)",
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            textShadow: "0px 0px 0px rgba(0,82,255,0)",
+          }}
+          transition={{ duration: 1.2, delay: 0.1, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-extrabold text-primary mb-6 tracking-tight"
         >
           Digital Data &amp; <span className="text-blue">Systems Engineer</span>
@@ -97,7 +127,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 rounded-lg bg-surface border border-[#2d313a] hover:border-orange text-primary font-medium transition-colors text-center sm:text-left"
+            className="px-8 py-3 rounded-lg bg-surface/60 backdrop-blur-md border border-[#2d313a] hover:border-orange text-primary font-medium transition-colors text-center sm:text-left"
           >
             Contact Me
           </a>

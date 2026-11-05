@@ -23,3 +23,8 @@
     @apply bg-base text-primary antialiased transition-colors duration-300;
   }
 }
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

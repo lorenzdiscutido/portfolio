@@ -115,7 +115,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-base px-6">
+    <section id="about" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
@@ -145,11 +145,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="bg-surface p-8 rounded-xl border border-[#2d313a]"
+            className="bg-surface/40 backdrop-blur-md p-8 rounded-xl border border-[#2d313a]/50 shadow-lg"
           >
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-bold text-primary">Technical Stack</h3>
-              <span className="text-xs font-mono text-muted bg-base px-2.5 py-1 rounded border border-[#2d313a]">
+              <span className="text-xs font-mono text-muted bg-base/60 backdrop-blur-sm px-2.5 py-1 rounded border border-[#2d313a]/50">
                 Hover or click for context
               </span>
             </div>
@@ -175,7 +175,7 @@ export default function About() {
                           className={`text-left text-sm font-medium px-4 py-2 rounded-md border transition-all cursor-pointer ${
                             isSelected
                               ? "bg-base text-primary border-orange shadow-md"
-                              : "bg-base text-primary border-[#2d313a] hover:border-blue"
+                              : "bg-base/70 backdrop-blur-sm text-primary border-[#2d313a]/60 hover:border-blue"
                           }`}
                         >
                           {skill.name}
@@ -188,9 +188,9 @@ export default function About() {
             </div>
 
             {/* Context Tooltip / Callout Panel */}
-            <div className="mt-8 pt-6 border-t border-[#2d313a] min-h-[72px] flex items-center">
+            <div className="mt-8 pt-6 border-t border-[#2d313a]/50 min-h-[72px] flex items-center">
               {activeSkill ? (
-                <div className="w-full bg-base p-4 rounded-lg border border-[#2d313a] transition-all">
+                <div className="w-full bg-surface/40 backdrop-blur-md p-4 rounded-lg border border-[#2d313a]/50 transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <span className="text-xs font-bold font-mono text-orange uppercase">
                       Production Application
