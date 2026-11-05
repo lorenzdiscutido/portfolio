@@ -1,6 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies } from "@/lib/caseStudyData";
+import { SITE_URL } from "@/lib/site";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import HardwareSchematic from "@/components/HardwareSchematic";
 
@@ -34,6 +37,15 @@ export async function generateMetadata({
   return {
     title: `${study.title} | Case Study`,
     description: study.problem,
+    alternates: {
+      canonical: `${SITE_URL}/projects/${study.slug}`,
+    },
+    openGraph: {
+      title: `${study.title} | Jose Lorenzo Discutido`,
+      description: study.overview,
+      url: `${SITE_URL}/projects/${study.slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -49,27 +61,7 @@ export default async function CaseStudyPage({
   );
 
   if (!study) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-xl text-center">
-          <p className="text-orange-700 dark:text-orange font-semibold tracking-wide uppercase mb-2 font-mono text-sm">
-            Error 404
-          </p>
-          <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
-            Case Study Not Found
-          </h1>
-          <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-            The requested engineering case study could not be located in the system index.
-          </p>
-          <Link
-            href="/#projects"
-            className="inline-block px-6 py-3 rounded-lg bg-white dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange text-slate-900 dark:text-white font-medium transition-colors font-mono text-sm"
-          >
-            ← Back to Portfolio
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
@@ -93,7 +85,7 @@ export default async function CaseStudyPage({
           </p>
 
           {/* Tech Stack Tags in font-mono */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mr-2">
               Tech Stack:
             </span>
@@ -106,6 +98,32 @@ export default async function CaseStudyPage({
               </span>
             ))}
           </div>
+
+          {/* Optional External Links (GitHub / Live Deployment) */}
+          {(study.githubUrl || study.liveUrl) && (
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              {study.githubUrl && (
+                <a
+                  href={study.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white font-mono text-xs font-semibold transition-colors"
+                >
+                  Source Repository →
+                </a>
+              )}
+              {study.liveUrl && (
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-orange text-black font-mono text-xs font-bold hover:opacity-90 transition-opacity"
+                >
+                  Live System Demo →
+                </a>
+              )}
+            </div>
+          )}
         </header>
 
         {/* Quantified Metrics Highlight Bar */}
@@ -129,6 +147,39 @@ export default async function CaseStudyPage({
             </div>
           ))}
         </div>
+
+        {/* Optional System Screenshots / Hardware Photos Gallery */}
+        {study.screenshots && study.screenshots.length > 0 && (
+          <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="h-2 w-2 rounded-full bg-orange" />
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
+                System Captures &amp; Hardware Verification
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {study.screenshots.map((shot, idx) => (
+                <figure
+                  key={idx}
+                  className="rounded-lg overflow-hidden border border-black/10 dark:border-white/10 bg-white/50 dark:bg-black/30"
+                >
+                  <div className="relative aspect-video w-full">
+                    <Image
+                      src={shot.src}
+                      alt={shot.caption}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="p-3 text-xs font-mono text-slate-600 dark:text-slate-400 border-t border-black/10 dark:border-white/10">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* The Problem Section */}
         <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">

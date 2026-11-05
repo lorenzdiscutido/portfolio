@@ -14,7 +14,9 @@ interface SkillCategory {
 }
 
 export default function About() {
-  const [activeSkill, setActiveSkill] = useState<SkillItem | null>(null);
+  const [pinnedSkill, setPinnedSkill] = useState<SkillItem | null>(null);
+  const [hoveredSkill, setHoveredSkill] = useState<SkillItem | null>(null);
+  const activeSkill = hoveredSkill ?? pinnedSkill;
 
   const techStack: SkillCategory[] = [
     {
@@ -163,15 +165,17 @@ export default function About() {
                   <div className="flex flex-wrap gap-2">
                     {group.skills.map((skill, i) => {
                       const isSelected = activeSkill?.name === skill.name;
+                      const isPinned = pinnedSkill?.name === skill.name;
                       return (
                         <button
                           key={i}
                           type="button"
+                          aria-pressed={isPinned}
                           onClick={() =>
-                            setActiveSkill(isSelected ? null : skill)
+                            setPinnedSkill(isPinned ? null : skill)
                           }
-                          onMouseEnter={() => setActiveSkill(skill)}
-                          onMouseLeave={() => setActiveSkill(null)}
+                          onMouseEnter={() => setHoveredSkill(skill)}
+                          onMouseLeave={() => setHoveredSkill(null)}
                           className={`text-left text-sm font-medium px-4 py-2 rounded-md border transition-all cursor-pointer ${
                             isSelected
                               ? "bg-blue-600/10 dark:bg-blue-400/10 text-slate-900 dark:text-white border-orange shadow-md font-semibold"

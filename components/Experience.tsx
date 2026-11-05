@@ -26,7 +26,7 @@ export default function Experience() {
     },
     {
       period: "Internship",
-      role: "IT Intern",
+      role: "IT Systems & Network Intern",
       organization: "PHINMA Property Holdings Corporation",
       location: "Metro Manila, Philippines",
       type: "Internship",

@@ -95,6 +95,17 @@ describe("validateContact", () => {
       },
     });
   });
+
+  it("rejects submissions when the honeypot website field is populated", () => {
+    const result = validateContact({
+      ...valid,
+      website: "https://spam-bot.example.com",
+    });
+    expect(result).toEqual({
+      ok: false,
+      error: "Spam submission rejected.",
+    });
+  });
 });
 
 describe("toSingleLine", () => {

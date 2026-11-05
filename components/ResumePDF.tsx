@@ -1,5 +1,15 @@
 import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, Text, View, Link, StyleSheet } from "@react-pdf/renderer";
+
+export const RESUME_CONTACT = {
+  email: "lorenzdiscutido@gmail.com",
+  phone: "", // Set phone number here (e.g., "+63 917 XXX XXXX") to display on PDF
+  linkedinLabel: "linkedin.com/in/discutido-lorenzo",
+  linkedinUrl: "https://www.linkedin.com/in/discutido-lorenzo/",
+  githubLabel: "github.com/lorenzdiscutido",
+  githubUrl: "https://github.com/lorenzdiscutido",
+  location: "Manila, Philippines",
+};
 
 const styles = StyleSheet.create({
   page: {
@@ -36,7 +46,12 @@ const styles = StyleSheet.create({
     color: "#475569",
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 8,
+    gap: 6,
+    alignItems: "center",
+  },
+  contactLink: {
+    color: "#0052FF",
+    textDecoration: "none",
   },
   section: {
     marginBottom: 12,
@@ -128,13 +143,25 @@ export default function ResumePDF() {
             Data and Systems Engineer (AI and IoT)
           </Text>
           <View style={styles.contactRow}>
-            <Text>Email: [lorenzdiscutido@gmail.com]</Text>
+            <Link src={`mailto:${RESUME_CONTACT.email}`} style={styles.contactLink}>
+              {RESUME_CONTACT.email}
+            </Link>
+            {RESUME_CONTACT.phone ? (
+              <>
+                <Text>•</Text>
+                <Text>{RESUME_CONTACT.phone}</Text>
+              </>
+            ) : null}
             <Text>•</Text>
-            <Text>Phone: [+63 9XX XXX XXXX]</Text>
+            <Link src={RESUME_CONTACT.linkedinUrl} style={styles.contactLink}>
+              {RESUME_CONTACT.linkedinLabel}
+            </Link>
             <Text>•</Text>
-            <Text>LinkedIn: [linkedin.com/in/discutido-lorenzo]</Text>
+            <Link src={RESUME_CONTACT.githubUrl} style={styles.contactLink}>
+              {RESUME_CONTACT.githubLabel}
+            </Link>
             <Text>•</Text>
-            <Text>Location: Manila, Philippines</Text>
+            <Text>{RESUME_CONTACT.location}</Text>
           </View>
         </View>
 
@@ -163,12 +190,18 @@ export default function ResumePDF() {
                 Architecting automated defect logging pipelines via Python, Streamlit, and the Gemini API to streamline enterprise operations.
               </Text>
             </View>
+            <View style={styles.bulletRow}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>
+                Engineering active-active MySQL GTID replication clusters across distributed Linux nodes interconnected via a zero-trust Tailscale WireGuard mesh.
+              </Text>
+            </View>
           </View>
 
           {/* Previous Role */}
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
-              <Text style={styles.itemTitle}>PHINMA Properties</Text>
+              <Text style={styles.itemTitle}>PHINMA Property Holdings Corporation</Text>
               <Text style={styles.itemDate}>Internship</Text>
             </View>
             <Text style={styles.itemSubheading}>
@@ -183,7 +216,7 @@ export default function ResumePDF() {
             <View style={styles.bulletRow}>
               <Text style={styles.bullet}>•</Text>
               <Text style={styles.bulletText}>
-                Administered remote support and Azure Active Directory deployment.
+                Administered remote endpoint support, Microsoft Intune enrollment, and Microsoft Entra ID (Azure AD) deployment.
               </Text>
             </View>
           </View>
@@ -197,15 +230,15 @@ export default function ResumePDF() {
               <Text style={styles.itemTitle}>
                 Polytechnic University of the Philippines (PUP)
               </Text>
-              <Text style={styles.itemDate}>Manila, Philippines</Text>
+              <Text style={styles.itemDate}>Sta. Mesa, Manila</Text>
             </View>
             <Text style={styles.itemSubheading}>
-              Bachelor of Science in Computer Engineering (BSCPE)
+              Bachelor of Science in Computer Engineering (Major in Big Data Analytics)
             </Text>
             <View style={styles.bulletRow}>
               <Text style={styles.bullet}>•</Text>
               <Text style={styles.bulletText}>
-                Specialization in Big Data Analytics, distributed data processing, embedded hardware systems, and ISO/IEC 25010 software compliance.
+                Specialization in Big Data Analytics, distributed data processing, embedded hardware systems, and ISO/IEC 25010 software quality compliance.
               </Text>
             </View>
           </View>
@@ -274,7 +307,7 @@ export default function ResumePDF() {
             <View style={styles.skillRow}>
               <Text style={styles.skillCategory}>Hardware &amp; Data:</Text>
               <Text style={styles.skillValues}>
-                IoT Microcontrollers, MySQL, PostgreSQL, Streamlit, Pandas
+                IoT Microcontrollers, MySQL, PostgreSQL, Prisma ORM, Streamlit, Pandas
               </Text>
             </View>
           </View>

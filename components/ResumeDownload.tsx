@@ -3,13 +3,21 @@
 import React, { useState } from "react";
 import { useMounted } from "@/lib/useMounted";
 
-export default function ResumeDownload() {
+interface ResumeDownloadProps {
+  className?: string;
+}
+
+export default function ResumeDownload({ className }: ResumeDownloadProps) {
   const mounted = useMounted();
   const [generating, setGenerating] = useState(false);
+  const [error, setError] = useState(false);
+
+  const defaultClasses =
+    "px-5 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60";
 
   if (!mounted) {
     return (
-      <span className="px-6 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 text-slate-400 text-sm font-medium inline-block">
+      <span className={className || defaultClasses}>
         Download Resume
       </span>
     );
@@ -18,6 +26,7 @@ export default function ResumeDownload() {
   const handleDownload = async () => {
     if (generating) return;
     setGenerating(true);
+    setError(false);
     try {
       const { pdf } = await import("@react-pdf/renderer");
       const { default: ResumePDF } = await import("@/components/ResumePDF");
@@ -32,6 +41,7 @@ export default function ResumeDownload() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error("Failed to generate PDF", err);
+      setError(true);
     } finally {
       setGenerating(false);
     }
@@ -42,7 +52,7 @@ export default function ResumeDownload() {
       type="button"
       onClick={handleDownload}
       disabled={generating}
-      className="px-6 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center gap-2 cursor-pointer disabled:opacity-60"
+      className={className || defaultClasses}
       aria-label="Download Resume PDF"
     >
       {generating ? (
@@ -50,6 +60,8 @@ export default function ResumeDownload() {
           <span className="inline-block w-3.5 h-3.5 border-2 border-orange border-t-transparent rounded-full animate-spin" />
           <span>Generating PDF...</span>
         </>
+      ) : error ? (
+        <span className="text-red-500 dark:text-red-400">Retry Resume PDF</span>
       ) : (
         <span>Download Resume</span>
       )}

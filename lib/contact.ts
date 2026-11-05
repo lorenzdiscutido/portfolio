@@ -33,6 +33,12 @@ export function validateContact(body: unknown): ContactValidation {
   }
 
   const input = body as Record<string, unknown>;
+
+  // Honeypot trap: bots auto-fill hidden fields like "website"
+  if (clean(input.website).length > 0) {
+    return { ok: false, error: "Spam submission rejected." };
+  }
+
   const name = clean(input.name);
   const email = clean(input.email);
   const subject = clean(input.subject);

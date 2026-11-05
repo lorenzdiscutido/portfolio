@@ -2,8 +2,47 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { validateContact } from "@/lib/contact";
 
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+const ipRequestLog = new Map<string, number[]>();
+
+export function resetContactRateLimit(): void {
+  ipRequestLog.clear();
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = ipRequestLog.get(ip) || [];
+  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+
+  if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
+    ipRequestLog.set(ip, recent);
+    return true;
+  }
+
+  recent.push(now);
+  ipRequestLog.set(ip, recent);
+  return false;
+}
+
 export async function POST(req: Request) {
   try {
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const realIp = req.headers.get("x-real-ip");
+    const clientIp = forwardedFor?.split(",")[0]?.trim() || realIp?.trim();
+
+    // Enforce IP rate limiting when client IP is present (or in production)
+    if (clientIp || process.env.NODE_ENV === "production") {
+      const ipKey = clientIp || "unknown-ip";
+      if (isRateLimited(ipKey)) {
+        return NextResponse.json(
+          { error: "Too many messages sent. Please wait a few minutes before trying again." },
+          { status: 429 }
+        );
+      }
+    }
+
     let body: unknown;
     try {
       body = await req.json();
@@ -20,12 +59,17 @@ export async function POST(req: Request) {
     const emailSubject = result.data.subject || `Portfolio Inquiry from ${name}`;
     const emailBody = `New portfolio contact submission:\n\nName: ${name}\nEmail: ${email}\nSubject: ${emailSubject}\n\nMessage:\n${message}`;
 
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
+    const toAddress =
+      process.env.CONTACT_RECIPIENT_EMAIL || "lorenzdiscutido@gmail.com";
+
     // Option 1: Resend (Recommended Vercel Integration)
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const { error } = await resend.emails.send({
-        from: "Portfolio Contact <onboarding@resend.dev>",
-        to: "lorenzdiscutido@gmail.com",
+        from: fromAddress,
+        to: toAddress,
         replyTo: email,
         subject: emailSubject,
         text: emailBody,

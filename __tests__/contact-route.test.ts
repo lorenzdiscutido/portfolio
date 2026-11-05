@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { POST } from "@/app/api/contact/route";
+import { POST, resetContactRateLimit } from "@/app/api/contact/route";
 
 const mockSend = jest.fn();
 jest.mock("resend", () => ({
@@ -19,11 +19,15 @@ const validBody = {
   message: "Hello there",
 };
 
-function post(body: unknown, rawBody?: string) {
+function post(body: unknown, rawBody?: string, ip?: string) {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (ip) {
+    headers["x-forwarded-for"] = ip;
+  }
   return POST(
     new Request("http://localhost/api/contact", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: rawBody ?? JSON.stringify(body),
     })
   );
@@ -31,6 +35,7 @@ function post(body: unknown, rawBody?: string) {
 
 beforeEach(() => {
   mockSend.mockReset();
+  resetContactRateLimit();
   delete env.RESEND_API_KEY;
   delete env.WEB3FORMS_ACCESS_KEY;
   env.NODE_ENV = "test";
@@ -45,7 +50,7 @@ afterEach(() => {
   Object.assign(process.env, originalEnv);
 });
 
-describe("POST /api/contact - validation", () => {
+describe("POST /api/contact - validation & rate limiting", () => {
   it("returns 400 for malformed JSON", async () => {
     const res = await post(null, "{not json");
     expect(res.status).toBe(400);
@@ -59,6 +64,19 @@ describe("POST /api/contact - validation", () => {
     expect(res.status).toBe(400);
     expect(await res.json()).toEqual({ error: "Please enter a valid email address." });
     expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("returns 429 when a single IP exceeds 5 requests within the window", async () => {
+    for (let i = 0; i < 5; i++) {
+      const okRes = await post(validBody, undefined, "203.0.113.50");
+      expect(okRes.status).toBe(200);
+    }
+
+    const blockedRes = await post(validBody, undefined, "203.0.113.50");
+    expect(blockedRes.status).toBe(429);
+    expect(await blockedRes.json()).toEqual({
+      error: "Too many messages sent. Please wait a few minutes before trying again.",
+    });
   });
 });
 

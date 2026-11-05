@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TelemetryBar from "@/components/TelemetryBar";
+import ResumeDownload from "@/components/ResumeDownload";
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
@@ -64,7 +65,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               className="theme-text-secondary text-base sm:text-lg mb-8 max-w-xl leading-relaxed"
             >
-              I build hardware integrations and automate enterprise cloud environments. With a background in Big Data Analytics, I focus on eliminating bottlenecks—from master-master database networks to automated defect logging. Currently architecting systems at Vonotec.
+              Computer Engineering graduate specializing in Big Data Analytics and cyber-physical systems. I focus on eliminating operational bottlenecks—from active-active MySQL database meshes over Tailscale to multimodal AI defect logging and microcontroller-driven kiosk terminals. Currently architecting enterprise systems at Vonotec.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -92,6 +93,10 @@ export default function Hero() {
               >
                 <span className="text-black dark:text-white font-bold">Contact Me</span>
               </motion.a>
+
+              <div className="md:hidden">
+                <ResumeDownload className="px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-[#1e2128] border-2 border-black dark:border-white/30 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+              </div>
             </motion.div>
           </motion.div>
 

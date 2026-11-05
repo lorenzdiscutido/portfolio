@@ -4,11 +4,16 @@ export interface ProjectMetric {
   detail: string;
 }
 
+export interface ProjectScreenshot {
+  src: string;
+  caption: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
   role: string;
-  description: string;
+  lastModified: string;
   overview: string;
   problem: string;
   architecture: string;
@@ -17,6 +22,9 @@ export interface CaseStudy {
   techStack: string[];
   outcomes: string[];
   metrics: ProjectMetric[];
+  githubUrl?: string;
+  liveUrl?: string;
+  screenshots?: ProjectScreenshot[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -24,8 +32,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "vonotec-defect-logger",
     title: "Vonotec Automated Defect Logger",
     role: "Lead Developer",
-    description:
-      "Leveraged the Google Gemini API to process field inspection photographs and extract defect dimensions. Engineered a Python and Streamlit pipeline to automatically log this structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
+    lastModified: "2025-02-15",
     overview:
       "Leveraged the Google Gemini API to process field inspection photographs and extract defect dimensions. Engineered a Python and Streamlit pipeline to automatically log this structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
     problem:
@@ -65,8 +72,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "iskiosk-terminal",
     title: "IsKiosk IoT Document Terminal",
     role: "Systems Engineer / Hardware Integrator",
-    description:
-      "Architected an automated hardware document management terminal. Integrated physical components including barcode sticker printing and 12V DC solenoid drawer locks. Evaluated and validated the complete cyber-physical system for ISO/IEC 25010 software quality compliance.",
+    lastModified: "2024-11-20",
     overview:
       "Architected an automated hardware document management terminal. Integrated physical components including barcode sticker printing and 12V DC solenoid drawer locks. Evaluated and validated the complete cyber-physical system for ISO/IEC 25010 software quality compliance.",
     problem:
@@ -111,8 +117,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "komunikonek",
     title: "Komunikonek Mobile Dashboard",
     role: "Mobile Developer",
-    description:
-      "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
+    lastModified: "2024-09-10",
     overview:
       "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
     problem:

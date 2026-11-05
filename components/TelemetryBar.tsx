@@ -14,8 +14,18 @@ export default function TelemetryBar() {
   return (
     <div className="w-full mb-6">
       <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        aria-label="Toggle Tailnet Mesh Topology Details"
         onClick={() => setExpanded(!expanded)}
-        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-white/70 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 text-xs font-mono shadow-sm hover:border-orange dark:hover:border-orange transition-all cursor-pointer select-none"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setExpanded((prev) => !prev);
+          }
+        }}
+        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-white/70 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 text-xs font-mono shadow-sm hover:border-orange dark:hover:border-orange focus-visible:border-blue-600 dark:focus-visible:border-blue-400 outline-none transition-all cursor-pointer select-none"
       >
         <div className="flex items-center gap-2.5">
           <span className="flex h-2 w-2 relative">

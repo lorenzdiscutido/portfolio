@@ -13,6 +13,8 @@ export default function Terminal() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [cmdHistory, setCmdHistory] = useState<string[]>([]);
+  const [historyIdx, setHistoryIdx] = useState<number>(-1);
   const [input, setInput] = useState<string>("");
   const [isExecuting, setIsExecuting] = useState<boolean>(false);
 
@@ -160,8 +162,19 @@ export default function Terminal() {
     });
   };
 
+  const scheduleNavigation = (path: string) => {
+    const timer = setTimeout(() => {
+      router.push(path);
+    }, 500);
+    timerIdsRef.current.push(timer);
+  };
+
   const handleCommand = (rawCmd: string) => {
     const trimmed = rawCmd.trim();
+    if (trimmed) {
+      setCmdHistory((prev) => [...prev, trimmed]);
+      setHistoryIdx(-1);
+    }
     const parts = trimmed.split(/\s+/);
     const primaryCmd = parts[0]?.toLowerCase() || "";
     const arg = parts[1];
@@ -346,9 +359,7 @@ export default function Terminal() {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /home...</p>
           );
-          setTimeout(() => {
-            router.push("/");
-          }, 500);
+          scheduleNavigation("/");
           break;
         }
 
@@ -356,9 +367,7 @@ export default function Terminal() {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating back...</p>
           );
-          setTimeout(() => {
-            router.push("/");
-          }, 500);
+          scheduleNavigation("/");
           break;
         }
 
@@ -366,9 +375,7 @@ export default function Terminal() {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
           );
-          setTimeout(() => {
-            router.push("/projects/komunikonek");
-          }, 500);
+          scheduleNavigation("/projects/komunikonek");
           break;
         }
 
@@ -380,9 +387,7 @@ export default function Terminal() {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/iskiosk-terminal...</p>
           );
-          setTimeout(() => {
-            router.push("/projects/iskiosk-terminal");
-          }, 500);
+          scheduleNavigation("/projects/iskiosk-terminal");
           break;
         }
 
@@ -396,9 +401,7 @@ export default function Terminal() {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/vonotec-defect-logger...</p>
           );
-          setTimeout(() => {
-            router.push("/projects/vonotec-defect-logger");
-          }, 500);
+          scheduleNavigation("/projects/vonotec-defect-logger");
           break;
         }
 
@@ -459,9 +462,67 @@ export default function Terminal() {
   };
 
   const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !isExecuting) {
+    if (isExecuting) return;
+
+    if (e.key === "Enter") {
       handleCommand(input);
       setInput("");
+      return;
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (cmdHistory.length === 0) return;
+      const nextIdx =
+        historyIdx === -1 ? cmdHistory.length - 1 : Math.max(0, historyIdx - 1);
+      setHistoryIdx(nextIdx);
+      setInput(cmdHistory[nextIdx] || "");
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (cmdHistory.length === 0 || historyIdx === -1) return;
+      if (historyIdx >= cmdHistory.length - 1) {
+        setHistoryIdx(-1);
+        setInput("");
+      } else {
+        const nextIdx = historyIdx + 1;
+        setHistoryIdx(nextIdx);
+        setInput(cmdHistory[nextIdx] || "");
+      }
+      return;
+    }
+
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const raw = input.trimStart().toLowerCase();
+      if (!raw) return;
+
+      const commands = [
+        "help",
+        "whoami",
+        "skills",
+        "experience",
+        "education",
+        "neofetch",
+        "tailscale",
+        "ping ",
+        "cd ",
+        "ls",
+        "clear",
+      ];
+
+      if (raw.startsWith("cd ")) {
+        const sub = raw.slice(3).trim();
+        const dirs = ["vonotec", "iskiosk", "komunikonek", "~"];
+        const match = dirs.find((d) => d.startsWith(sub));
+        if (match) setInput(`cd ${match}`);
+        return;
+      }
+
+      const match = commands.find((c) => c.startsWith(raw));
+      if (match) setInput(match);
     }
   };
 
@@ -512,6 +573,10 @@ export default function Terminal() {
       </div>
 
       <div className="space-y-3">
+        <p className="text-xs text-slate-400">
+          &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-blue-600 dark:text-blue-400 font-semibold">help</span>&apos; for available commands.
+        </p>
+
         {history.map((entry) => (
           <div key={entry.id} className="space-y-1">
             <div className="flex items-center gap-2">

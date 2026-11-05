@@ -7,6 +7,7 @@ export default function Footer() {
   const [senderEmail, setSenderEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // Honeypot field
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -28,6 +29,7 @@ export default function Footer() {
           email: senderEmail.trim(),
           subject: subject.trim(),
           message: message.trim(),
+          website: website.trim(),
         }),
       });
 
@@ -39,6 +41,7 @@ export default function Footer() {
         setSenderEmail("");
         setSubject("");
         setMessage("");
+        setWebsite("");
       } else {
         setStatus("error");
         setErrorMessage(result.error || "Failed to send message. Please try again.");
@@ -63,6 +66,20 @@ export default function Footer() {
           onSubmit={handleSubmit}
           className="max-w-xl mx-auto mb-16 text-left bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl space-y-4"
         >
+          {/* Honeypot field to trap automated bots */}
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="contact-website">Website</label>
+            <input
+              id="contact-website"
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label
@@ -78,7 +95,7 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue-600 dark:focus:border-blue-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
               />
             </div>
 
@@ -96,7 +113,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue-600 dark:focus:border-blue-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
               />
             </div>
           </div>
@@ -114,7 +131,7 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+              className="w-full px-4 py-3 rounded-lg bg-white/80 dark:bg-black/40 border border-black/10 dark:border-white/10 focus:border-blue-600 dark:focus:border-blue-400 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
             />
           </div>
 
