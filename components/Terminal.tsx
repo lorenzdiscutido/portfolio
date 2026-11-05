@@ -9,6 +9,15 @@ interface HistoryEntry {
   output: React.ReactNode;
 }
 
+function djb2(str: string): string {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) + hash) + str.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return (hash >>> 0).toString(16);
+}
+
 export default function Terminal() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -371,7 +380,11 @@ export default function Terminal() {
           break;
         }
 
-        if (target === "komunikonek" || target === "projects/komunikonek") {
+        if (
+          target === "komunikonek" ||
+          target === "projects/komunikonek" ||
+          djb2(target) === "66b43384"
+        ) {
           output = (
             <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
           );
@@ -449,6 +462,13 @@ export default function Terminal() {
         );
         break;
       default:
+        if (djb2(primaryCmd) === "66b43384") {
+          output = (
+            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
+          );
+          scheduleNavigation("/projects/komunikonek");
+          break;
+        }
         output = (
           <span>
             Command not found. Type &apos;<span className="text-blue-600 dark:text-blue-400">help</span>&apos; for available commands.

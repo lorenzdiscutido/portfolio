@@ -76,4 +76,22 @@ describe("Terminal Component", () => {
 
     expect(mockPush).toHaveBeenCalledWith("/projects/iskiosk-terminal");
   });
+
+  it("navigates via hidden secret alias command after 500ms delay", () => {
+    render(<Terminal />);
+    fireEvent.click(screen.getByRole("button", { name: /Open Interactive Terminal/i }));
+
+    const input = screen.getByRole("textbox", { name: /Terminal command input/i });
+    const secretCmd = `cd ${String.fromCharCode(101, 108, 114, 111, 99, 101, 101)}`;
+    fireEvent.change(input, { target: { value: secretCmd } });
+    fireEvent.keyDown(input, { key: "Enter" });
+
+    expect(screen.getByText(/Navigating to \/projects\/komunikonek/i)).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+
+    expect(mockPush).toHaveBeenCalledWith("/projects/komunikonek");
+  });
 });
