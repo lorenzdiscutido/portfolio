@@ -430,7 +430,7 @@ export default function Terminal() {
             <p className="text-blue-600 dark:text-blue-400 font-bold">drwxr-xr-x  projects/</p>
             <div className="pl-4 space-y-0.5 text-slate-200">
               <p>&gt; <span className="text-orange font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
-              <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk IoT Document Terminal</p>
+              <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk: Document Management System</p>
               <p>&gt; <span className="text-orange font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
             </div>
             <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-blue-600 dark:text-blue-400">cd &lt;dir&gt;</span>&apos; to navigate.</p>

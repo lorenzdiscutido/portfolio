@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "iskiosk-terminal",
-    title: "IsKiosk IoT Document Terminal",
+    title: "IsKiosk: Document Management System",
     role: "Systems Engineer & Hardware Integrator",
     lastModified: "2026-05-15",
     overview:

@@ -263,7 +263,7 @@ export default function ResumePDF() {
 
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
-              <Text style={styles.itemTitle}>IsKiosk IoT Document Terminal</Text>
+              <Text style={styles.itemTitle}>IsKiosk: Document Management System</Text>
               <Text style={styles.itemDate}>Systems Engineer &amp; Hardware Integrator</Text>
             </View>
             <View style={styles.bulletRow}>
