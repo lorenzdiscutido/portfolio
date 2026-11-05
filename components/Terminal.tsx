@@ -215,7 +215,7 @@ export default function Terminal() {
         output = (
           <div className="space-y-0.5 font-mono py-0.5">
             <p className="text-blue font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
-            <p className="text-slate-700 dark:text-slate-300">
+            <p className="text-slate-300">
               &gt; Data and Systems Engineer
             </p>
           </div>
@@ -226,25 +226,25 @@ export default function Terminal() {
           <div className="space-y-1 font-mono py-1 text-xs">
             <p>
               <span className="text-blue font-bold">&gt; Core &amp; Web:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 Python, Next.js, TypeScript, Tailwind CSS
               </span>
             </p>
             <p>
               <span className="text-blue font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 C/C++, Dart, Flutter
               </span>
             </p>
             <p>
               <span className="text-blue font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 Microsoft Entra ID, Microsoft Intune, SharePoint, Odoo ERP, Firebase
               </span>
             </p>
             <p>
               <span className="text-blue font-bold">&gt; Database &amp; Network:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 MySQL, PostgreSQL, Prisma ORM, Tailscale
               </span>
             </p>
@@ -256,13 +256,13 @@ export default function Terminal() {
           <div className="space-y-1 font-mono py-1 text-xs">
             <p>
               <span className="text-orange font-bold">&gt; Current:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 Digital Data &amp; Systems Engineer and AI/IoT Data Officer @ Vonotec
               </span>
             </p>
             <p>
               <span className="text-blue font-bold">&gt; Previous:</span>{" "}
-              <span className="text-slate-800 dark:text-slate-200">
+              <span className="text-slate-200">
                 IT Systems &amp; Network Intern @ PHINMA Properties
               </span>
             </p>
@@ -272,7 +272,7 @@ export default function Terminal() {
       case "education":
         output = (
           <div className="space-y-0.5 font-mono py-1 text-xs">
-            <p className="text-slate-900 dark:text-white font-bold">
+            <p className="text-white font-bold">
               &gt; Bachelor of Science in Computer Engineering
             </p>
             <p className="text-blue font-semibold">
@@ -412,7 +412,7 @@ export default function Terminal() {
         output = (
           <div className="space-y-1 font-mono text-xs py-0.5">
             <p className="text-blue font-bold">drwxr-xr-x  projects/</p>
-            <div className="pl-4 space-y-0.5 text-slate-800 dark:text-slate-200">
+            <div className="pl-4 space-y-0.5 text-slate-200">
               <p>&gt; <span className="text-orange font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
               <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk IoT Document Terminal</p>
               <p>&gt; <span className="text-orange font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
@@ -470,7 +470,7 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-40 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-[#1e2128]/90 backdrop-blur-md border border-black/10 dark:border-white/20 shadow-lg text-xs font-mono text-slate-800 dark:text-slate-200 hover:border-orange dark:hover:border-orange hover:text-orange dark:hover:text-orange transition-all cursor-pointer flex items-center gap-2 group"
+        className="fixed bottom-4 right-4 z-40 px-3.5 py-2 rounded-xl bg-[#1e2128]/90 text-slate-200 backdrop-blur-md border border-white/20 shadow-lg text-xs font-mono hover:border-orange hover:text-orange transition-all cursor-pointer flex items-center gap-2 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
@@ -478,7 +478,7 @@ export default function Terminal() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
         </span>
         <span className="font-bold">&gt;_ Terminal</span>
-        <span className="hidden sm:inline text-[10px] text-slate-500 dark:text-slate-400 bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded">
+        <span className="hidden sm:inline text-[10px] text-slate-400 bg-white/10 px-1.5 py-0.5 rounded">
           Ctrl+`
         </span>
       </button>
@@ -489,10 +489,10 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-white/95 dark:bg-[#15181e]/95 backdrop-blur-xl border border-black/10 dark:border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
+      className="fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
     >
-      <div className="mb-3 pb-2 border-b border-black/10 dark:border-white/10 flex justify-between items-center text-xs">
-        <span className="text-slate-600 dark:text-slate-300 font-bold">
+      <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
+        <span className="text-slate-300 font-bold">
           jld-sys terminal (Ctrl + ` to toggle)
         </span>
         <div className="flex items-center gap-3">
@@ -503,7 +503,7 @@ export default function Terminal() {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="p-1 hover:text-orange text-slate-500 dark:text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
+            className="p-1 hover:text-orange text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
             aria-label="Close Terminal"
           >
             [x]
@@ -516,9 +516,9 @@ export default function Terminal() {
           <div key={entry.id} className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="text-orange font-bold">guest@jld-sys:~$</span>
-              <span className="text-slate-900 dark:text-white">{entry.command}</span>
+              <span className="text-white">{entry.command}</span>
             </div>
-            <div className="text-slate-700 dark:text-slate-300 pl-2">{entry.output}</div>
+            <div className="text-slate-300 pl-2">{entry.output}</div>
           </div>
         ))}
 
@@ -535,7 +535,7 @@ export default function Terminal() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDownInput}
-              className="flex-1 bg-transparent text-slate-900 dark:text-white outline-none border-none caret-orange font-mono"
+              className="flex-1 bg-transparent text-white outline-none border-none caret-orange font-mono"
               aria-label="Terminal command input"
               autoComplete="off"
               spellCheck={false}
