@@ -49,16 +49,18 @@ export default function Terminal() {
 
   const handleCommand = (rawCmd: string) => {
     const trimmed = rawCmd.trim();
-    const cmd = trimmed.toLowerCase();
+    const parts = trimmed.split(/\s+/);
+    const primaryCmd = parts[0]?.toLowerCase() || "";
+    const arg = parts[1];
 
-    if (cmd === "clear") {
+    if (primaryCmd === "clear") {
       setHistory([]);
       return;
     }
 
     let output: React.ReactNode;
 
-    switch (cmd) {
+    switch (primaryCmd) {
       case "help":
         output = (
           <div className="space-y-1 font-mono text-xs">
@@ -80,6 +82,9 @@ export default function Terminal() {
             </p>
             <p>
               &gt; <span className="text-blue">tailscale</span> — Inspect active Tailnet mesh nodes
+            </p>
+            <p>
+              &gt; <span className="text-blue">ping &lt;ip&gt;</span> — Test ICMP echo reachability
             </p>
             <p>
               &gt; <span className="text-blue">clear</span> — Clear terminal output
@@ -204,6 +209,40 @@ export default function Terminal() {
           </div>
         );
         break;
+      case "ping": {
+        if (!arg) {
+          output = (
+            <p className="font-mono text-xs text-orange">Usage: ping &lt;ip_address&gt;</p>
+          );
+          break;
+        }
+        const validIPs = ["100.64.0.1", "100.64.0.2", "100.64.0.3", "100.64.0.4"];
+        const targetIP = arg;
+        if (validIPs.includes(targetIP)) {
+          output = (
+            <div className="space-y-0.5 font-mono text-xs py-1">
+              <p>PING {targetIP} ({targetIP}) 56(84) bytes of data.</p>
+              <p>64 bytes from {targetIP}: icmp_seq=1 ttl=64 time=18.4 ms</p>
+              <p>64 bytes from {targetIP}: icmp_seq=2 ttl=64 time=19.1 ms</p>
+              <p>64 bytes from {targetIP}: icmp_seq=3 ttl=64 time=18.8 ms</p>
+              <p className="pt-2">--- {targetIP} ping statistics ---</p>
+              <p>3 packets transmitted, 3 received, 0% packet loss, time 2003ms</p>
+            </div>
+          );
+        } else {
+          output = (
+            <div className="space-y-0.5 font-mono text-xs py-1">
+              <p>PING {targetIP} ({targetIP}) 56(84) bytes of data.</p>
+              <p>From {targetIP} icmp_seq=1 Destination Host Unreachable</p>
+              <p>From {targetIP} icmp_seq=2 Destination Host Unreachable</p>
+              <p>From {targetIP} icmp_seq=3 Destination Host Unreachable</p>
+              <p className="pt-2">--- {targetIP} ping statistics ---</p>
+              <p>3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms</p>
+            </div>
+          );
+        }
+        break;
+      }
       case "zzz":
       case "synergy":
         output = (
