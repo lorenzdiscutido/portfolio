@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   const projects = [
@@ -44,9 +47,14 @@ export default function Projects() {
           {projects.map((project, index) => {
             const isFeatured = index === 0;
             return (
-              <div
+              <motion.div
                 key={index}
-                className={`rounded-xl p-8 border transition-all duration-300 flex flex-col ${
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -5 }}
+                className={`rounded-xl p-8 border transition-colors duration-300 flex flex-col ${
                   isFeatured
                     ? "md:col-span-2 bg-surface border-blue/30 bg-blue/[0.04] hover:border-orange shadow-lg"
                     : "bg-surface border-[#2d313a] hover:border-orange"
@@ -90,7 +98,7 @@ export default function Projects() {
                     View Architecture &amp; Case Study →
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
