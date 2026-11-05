@@ -69,12 +69,12 @@ export default function Experience() {
           {/* Vertical rail: anchored at left-0 and centered on that coordinate */}
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-black/10 dark:bg-white/10"
+            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-slate-300 dark:bg-white/20"
           />
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
               {/* Timeline node marker: shares left-0 with the rail, centered via -translate-x-1/2 */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base bg-blue-600 dark:bg-blue-500 group-hover:bg-orange transition-all group-hover:scale-125" />
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base ring-2 ring-blue-600/30 dark:ring-blue-400/30 bg-blue-600 dark:bg-blue-400 group-hover:bg-orange group-hover:ring-orange/40 transition-all group-hover:scale-125" />
 
               <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
@@ -109,7 +109,7 @@ export default function Experience() {
                       key={i}
                       className="theme-text-secondary text-sm leading-relaxed flex items-start gap-2.5"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-500 shrink-0 mt-2" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0 mt-2" />
                       <span>{point}</span>
                     </li>
                   ))}

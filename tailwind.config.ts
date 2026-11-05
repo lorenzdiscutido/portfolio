@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   darkMode: "class",
@@ -9,13 +10,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
+      backgroundColor: {
         base: "rgb(var(--base) / <alpha-value>)",
+      },
+      borderColor: {
+        base: "rgb(var(--base) / <alpha-value>)",
+      },
+      colors: {
         surface: "rgb(var(--surface) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
-        blue: "rgb(var(--blue) / <alpha-value>)",
-        orange: "rgb(var(--orange) / <alpha-value>)",
+        blue: {
+          ...colors.blue,
+          DEFAULT: "rgb(var(--blue) / <alpha-value>)",
+        },
+        orange: {
+          ...colors.orange,
+          DEFAULT: "rgb(var(--orange) / <alpha-value>)",
+        },
       },
       // Ambient background motion: slow, transform-only drifts so the
       // browser composites them on the GPU without repainting the blur.
