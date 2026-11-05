@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
@@ -10,7 +11,12 @@ export default function Hero() {
     <section className="min-h-[90vh] flex flex-col justify-start bg-base px-6 pt-32 pb-20">
       <div className="max-w-5xl mx-auto w-full text-left">
         {/* Profile Avatar / Headshot (Left-Aligned) */}
-        <div className="flex items-center justify-start mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex items-center justify-start mb-8"
+        >
           <div className="relative group">
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full p-1 bg-gradient-to-tr from-blue via-orange to-blue shadow-2xl transition-transform duration-300 group-hover:scale-105">
               <div className="w-full h-full rounded-full overflow-hidden bg-surface flex items-center justify-center border-2 border-base relative shadow-inner">
@@ -48,21 +54,41 @@ export default function Hero() {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <h2 className="text-orange font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
+          className="text-orange font-semibold tracking-widest uppercase mb-4 text-sm md:text-base"
+        >
           Jose Lorenzo Discutido
-        </h2>
+        </motion.h2>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-6 tracking-tight">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="text-5xl md:text-7xl font-extrabold text-primary mb-6 tracking-tight"
+        >
           Digital Data &amp; <span className="text-blue">Systems Engineer</span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-lg md:text-xl text-muted mb-10 max-w-3xl leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="text-lg md:text-xl text-muted mb-10 max-w-3xl leading-relaxed"
+        >
           I build hardware integrations and automate enterprise cloud environments. With a background in Big Data Analytics, I focus on eliminating bottlenecks—from master-master database networks to automated defect logging. Currently architecting systems at Vonotec.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-start">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-4 justify-start"
+        >
           <a
             href="#projects"
             className="px-8 py-3 rounded-lg bg-blue text-primary font-medium hover:opacity-90 transition-opacity text-center sm:text-left"
@@ -75,7 +101,7 @@ export default function Hero() {
           >
             Contact Me
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
