@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 describe("Hero Component", () => {
   it("renders the user's name", () => {
     render(<Hero />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Hi, I'm Lorenz\./i);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Jose Lorenzo Discutido/i);
   });
 
   it("renders the CTA links for View Projects and Contact Me", () => {

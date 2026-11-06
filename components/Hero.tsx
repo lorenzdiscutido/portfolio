@@ -44,29 +44,52 @@ export default function Hero() {
               <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange-600 dark:bg-orange"></span>
             </div>
 
-            {/* Primary Headline */}
-            <motion.h1
+            {/* Primary Headline & Role */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6"
+              className="mb-4"
             >
-              Hi, I&apos;m Lorenz.
-              <br />
-              <span className="theme-text-primary">
-                I automate enterprise cloud and engineer resilient systems.
-              </span>
-            </motion.h1>
+              <h1 className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-3">
+                Jose Lorenzo Discutido
+              </h1>
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
+                <span className="text-orange-600 dark:text-orange">Systems &amp; Data Engineer</span>
+              </p>
+            </motion.div>
 
-            {/* Description Paragraph */}
+            {/* Value Proposition (Body Text) */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="theme-text-secondary text-base sm:text-lg mb-8 max-w-xl leading-relaxed"
+              className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-6 max-w-xl leading-relaxed"
             >
-              Computer Engineering graduate specializing in Big Data Analytics from PUP Manila. I engineer reliable systems that eliminate operational bottlenecks—from multimodal AI defect extraction pipelines and active-active MySQL replication to enterprise cloud governance. Currently working as a Digital Data &amp; Systems Engineer at Vonotec.
+              I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
+
+            {/* Tech Stack Quick-Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
+              className="flex flex-wrap items-center gap-2 mb-8"
+            >
+              {[
+                "[ Python / Next.js ]",
+                "[ Dart / Flutter ]",
+                "[ Firebase / MySQL ]",
+                "[ C++ / IoT ]",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 shadow-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
