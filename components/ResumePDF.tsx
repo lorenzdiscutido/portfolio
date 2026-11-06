@@ -264,7 +264,7 @@ export default function ResumePDF() {
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
               <Text style={styles.itemTitle}>IsKiosk: Document Management System</Text>
-              <Text style={styles.itemDate}>Systems Engineer &amp; Hardware Integrator</Text>
+              <Text style={styles.itemDate}>QA Tester</Text>
             </View>
             <View style={styles.bulletRow}>
               <Text style={styles.bullet}>•</Text>
@@ -282,7 +282,7 @@ export default function ResumePDF() {
 
           <View style={styles.itemBlock}>
             <View style={styles.itemHeader}>
-              <Text style={styles.itemTitle}>Komunikonek Mobile Dashboard</Text>
+              <Text style={styles.itemTitle}>Komunikonek: Barangay Digital Hub</Text>
               <Text style={styles.itemDate}>Mobile Developer</Text>
             </View>
             <View style={styles.bulletRow}>

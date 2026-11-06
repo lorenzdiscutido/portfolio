@@ -44,7 +44,7 @@ export default function Experience() {
       type: "Education",
       highlights: [
         "Graduated with specialization in Big Data Analytics, bridging distributed data processing with low-level physical hardware co-design.",
-        "Architect and Systems Engineer for the IsKiosk: Document Management System, verified for ISO/IEC 25010 software quality compliance.",
+        "QA Tester and Systems Evaluator for the IsKiosk: Document Management System, conducting ISO/IEC 25010 software quality audits and time-motion studies.",
         "Rigorous foundation in microcontroller firmware (C/C++), discrete systems, data structures, and computer networking.",
       ],
     },

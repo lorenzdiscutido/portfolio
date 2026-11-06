@@ -116,10 +116,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "iskiosk-terminal",
     title: "IsKiosk: Document Management System",
-    role: "Systems Engineer & Hardware Integrator",
+    role: "QA Tester",
     lastModified: "2026-05-15",
     overview:
-      "A robust Cyber-Physical System engineered for low-resource academic settings, balancing local-first hardware integration with an offline-first server environment. Reduced document cycle time from 315s down to 27s (91.4% throughput increase) and achieved a 3.70/4.00 'Highly Acceptable' rating in ISO/IEC 25010 software quality evaluation.",
+      "A robust Cyber-Physical System engineered for low-resource academic settings, balancing local-first hardware integration with an offline-first server environment. As QA Tester, led end-to-end system validation, automated test cases, and ISO/IEC 25010 empirical software quality evaluation across student and faculty cohorts, validating a 91.4% throughput increase (reducing document cycle time from 315s down to 27s) and achieving an overall 3.70/4.00 'Highly Acceptable' rating.",
     problem:
       "Academic document management and clearance retrieval relied on manual logbooks and physical queuing, taking an average of 315 seconds per document transaction with frequent tracking errors and custodial bottlenecks.",
     architecture:
@@ -137,10 +137,10 @@ export const caseStudies: CaseStudy[] = [
       "Tailwind CSS & Blade",
     ],
     outcomes: [
-      "Conducted rigorous ISO/IEC 25010 software quality evaluation with students and faculty, scoring 3.70/4.00 across 5 core dimensions.",
-      "Reduced document submission cycle time from 315 seconds to 27 seconds, achieving a verified 91.4% throughput gain in comparative time-motion studies.",
-      "Engineered 100% offline-first local server reliability via Laragon, keeping kiosk operations fully functional during campus internet downtime.",
-      "Designed economic model projecting ₱77,800.00 annual savings, 159.3% ROI, and 4.63-month amortized capital payback on a ₱30,000.00 project budget.",
+      "Led comprehensive ISO/IEC 25010 software quality evaluation with students and faculty, scoring 3.70/4.00 across 5 core dimensions.",
+      "Conducted comparative time-motion QA studies validating a 91.4% throughput gain (reducing transaction cycle from 315s to 27s).",
+      "Designed and executed end-to-end QA test cases covering barcode scanner intake, offline Laragon SQL synchronization, and thermal printer reliability.",
+      "Validated physical actuator reliability, opto-isolated relay fail-safes, and ultrasonic capacity detection to eliminate drawer jamming.",
     ],
     metrics: [
       {

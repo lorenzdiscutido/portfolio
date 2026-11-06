@@ -51,7 +51,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
               className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6"
             >
-              Hi, I&apos;m Jose Lorenzo Discutido.
+              Hi, I&apos;m Lorenz.
               <br />
               <span className="theme-text-primary">
                 I build hardware integrations and automate enterprise cloud.
