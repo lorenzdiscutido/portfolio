@@ -26,6 +26,7 @@ export default function Terminal() {
   const [historyIdx, setHistoryIdx] = useState<number>(-1);
   const [input, setInput] = useState<string>("");
   const [isExecuting, setIsExecuting] = useState<boolean>(false);
+  const [showMobileInput, setShowMobileInput] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -178,6 +179,24 @@ export default function Terminal() {
     timerIdsRef.current.push(timer);
   };
 
+  const triggerResumeDownload = async () => {
+    try {
+      const { pdf } = await import("@react-pdf/renderer");
+      const { default: ResumePDF } = await import("@/components/ResumePDF");
+      const blob = await pdf(<ResumePDF />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Jose_Lorenzo_Discutido_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Failed to generate PDF from terminal", err);
+    }
+  };
+
   const handleCommand = (rawCmd: string) => {
     const trimmed = rawCmd.trim();
     if (trimmed) {
@@ -196,6 +215,28 @@ export default function Terminal() {
     let output: React.ReactNode;
 
     switch (primaryCmd) {
+      case "resume":
+      case "cv":
+        output = (
+          <div className="space-y-0.5 font-mono py-0.5 text-xs">
+            <p className="text-blue-600 dark:text-blue-400 font-bold">&gt; Compiling Jose_Lorenzo_Discutido_Resume.pdf...</p>
+            <p className="text-slate-300">&gt; Download dispatched to browser.</p>
+          </div>
+        );
+        triggerResumeDownload();
+        break;
+      case "projects":
+        output = (
+          <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /#projects...</p>
+        );
+        scheduleNavigation("/#projects");
+        break;
+      case "contact":
+        output = (
+          <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /#contact...</p>
+        );
+        scheduleNavigation("/#contact");
+        break;
       case "help":
         output = (
           <div className="space-y-1 font-mono text-xs">
@@ -551,7 +592,7 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-40 px-3.5 py-2 rounded-xl bg-[#1e2128]/90 text-slate-200 backdrop-blur-md border border-white/20 shadow-lg text-xs font-mono hover:border-orange hover:text-orange transition-all cursor-pointer flex items-center gap-2 group"
+        className="fixed bottom-4 right-4 z-40 min-h-[44px] px-4 py-2.5 rounded-xl bg-[#1e2128]/95 text-slate-200 backdrop-blur-md border border-white/20 shadow-xl text-xs font-mono hover:border-orange hover:text-orange transition-all cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
@@ -570,7 +611,7 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg h-80 bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-y-auto font-mono text-sm p-4 z-50 cursor-text transition-all"
+      className="dark fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all"
     >
       <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
         <span className="text-slate-300 font-bold">
@@ -584,7 +625,7 @@ export default function Terminal() {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="p-1 hover:text-orange text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 hover:text-orange text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
             aria-label="Close Terminal"
           >
             [x]
@@ -592,7 +633,7 @@ export default function Terminal() {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3 overflow-y-auto max-h-56 pr-1">
         <p className="text-xs text-slate-400">
           &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-blue-600 dark:text-blue-400 font-semibold">help</span>&apos; for available commands.
         </p>
@@ -606,13 +647,56 @@ export default function Terminal() {
             <div className="text-slate-300 pl-2">{entry.output}</div>
           </div>
         ))}
+      </div>
 
+      {/* Quick Commands Touch Grid (Mobile Overhaul & GUI Fallback) */}
+      <div className="pt-3 border-t border-white/10 mt-3">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+            Quick Commands
+          </span>
+          <button
+            type="button"
+            onClick={() => setShowMobileInput((prev) => !prev)}
+            className="md:hidden text-[11px] font-mono text-slate-400 hover:text-blue-400 min-h-[44px] flex items-center px-1"
+          >
+            {showMobileInput ? "[ Hide CLI ]" : "[ Type CLI ]"}
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <button
+            type="button"
+            onClick={() => handleCommand("projects")}
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+          >
+            <span>📁</span> View Projects
+          </button>
+          <button
+            type="button"
+            onClick={() => handleCommand("resume")}
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-blue-400/20 border border-white/15 hover:border-blue-400 text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+          >
+            <span>📄</span> Read Resume
+          </button>
+          <button
+            type="button"
+            onClick={() => handleCommand("contact")}
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+          >
+            <span>✉️</span> Contact Me
+          </button>
+        </div>
+      </div>
+
+      {/* CLI Command Line Input (Visible on Desktop, Minimized on Mobile unless toggled) */}
+      <div className={`${showMobileInput ? "flex" : "hidden md:flex"} items-center gap-2 pt-3`}>
         {isExecuting ? (
-          <div className="flex items-center gap-2 pt-1 pl-2">
+          <div className="flex items-center gap-2 pl-2">
             <span className="inline-block w-2 h-3.5 bg-orange animate-pulse" />
           </div>
         ) : (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full">
             <span className="text-orange font-bold">guest@jld-sys:~$</span>
             <input
               ref={inputRef}

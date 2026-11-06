@@ -94,4 +94,20 @@ describe("Terminal Component", () => {
 
     expect(mockPush).toHaveBeenCalledWith("/projects/komunikonek");
   });
+
+  it("executes Quick Command touch buttons without requiring manual keyboard typing", () => {
+    render(<Terminal />);
+    fireEvent.click(screen.getByRole("button", { name: /Open Interactive Terminal/i }));
+
+    const projectsBtn = screen.getByRole("button", { name: /View Projects/i });
+    fireEvent.click(projectsBtn);
+
+    expect(screen.getByText(/Navigating to \/#projects/i)).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+
+    expect(mockPush).toHaveBeenCalledWith("/#projects");
+  });
 });

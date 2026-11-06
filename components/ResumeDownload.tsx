@@ -5,12 +5,14 @@ import { useMounted } from "@/lib/useMounted";
 
 interface ResumeDownloadProps {
   className?: string;
+  label?: string;
 }
 
-export default function ResumeDownload({ className }: ResumeDownloadProps) {
+export default function ResumeDownload({ className, label }: ResumeDownloadProps) {
   const mounted = useMounted();
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState(false);
+  const displayLabel = label || "Download Resume";
 
   const defaultClasses =
     "px-5 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60";
@@ -18,7 +20,7 @@ export default function ResumeDownload({ className }: ResumeDownloadProps) {
   if (!mounted) {
     return (
       <span className={className || defaultClasses}>
-        Download Resume
+        {displayLabel}
       </span>
     );
   }
@@ -58,12 +60,12 @@ export default function ResumeDownload({ className }: ResumeDownloadProps) {
       {generating ? (
         <>
           <span className="inline-block w-3.5 h-3.5 border-2 border-orange border-t-transparent rounded-full animate-spin" />
-          <span>Generating PDF...</span>
+          <span>{label ? "[ generating... ]" : "Generating PDF..."}</span>
         </>
       ) : error ? (
         <span className="text-red-500 dark:text-red-400">Retry Resume PDF</span>
       ) : (
-        <span>Download Resume</span>
+        <span>{displayLabel}</span>
       )}
     </button>
   );
