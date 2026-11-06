@@ -64,29 +64,7 @@ export async function POST(req: Request) {
     const toAddress =
       process.env.CONTACT_RECIPIENT_EMAIL || "lorenzdiscutido@gmail.com";
 
-    // Option 1: Resend (Recommended Vercel Integration)
-    if (process.env.RESEND_API_KEY) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const { error } = await resend.emails.send({
-        from: fromAddress,
-        to: toAddress,
-        replyTo: email,
-        subject: emailSubject,
-        text: emailBody,
-      });
-
-      if (error) {
-        console.error("Resend delivery error:", error);
-        return NextResponse.json(
-          { error: "Failed to dispatch email via Resend." },
-          { status: 500 }
-        );
-      }
-
-      return NextResponse.json({ success: true, method: "resend" });
-    }
-
-    // Option 2: Web3Forms fallback if key provided
+    // Option 1: Web3Forms (Domainless direct-to-inbox dispatch)
     if (process.env.WEB3FORMS_ACCESS_KEY) {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -109,6 +87,28 @@ export async function POST(req: Request) {
       }
 
       return NextResponse.json({ success: true, method: "web3forms" });
+    }
+
+    // Option 2: Resend (Alternative Integration)
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { error } = await resend.emails.send({
+        from: fromAddress,
+        to: toAddress,
+        replyTo: email,
+        subject: emailSubject,
+        text: emailBody,
+      });
+
+      if (error) {
+        console.error("Resend delivery error:", error);
+        return NextResponse.json(
+          { error: "Failed to dispatch email via Resend." },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({ success: true, method: "resend" });
     }
 
     // No delivery provider configured.
