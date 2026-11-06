@@ -238,14 +238,14 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "komunikonek",
-    title: "Komunikonek Mobile Dashboard",
+    title: "Komunikonek: Barangay Digital Hub",
     role: "Mobile Developer",
     lastModified: "2024-09-10",
     githubUrl: "https://github.com/lorenzdiscutido/Komunikonek-app",
     overview:
-      "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
+      "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.",
     problem:
-      "A barangay management web application suffered from poor mobile accessibility and inefficient resident feedback loops.",
+      "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.",
     architecture:
       "Executed a complete migration to a mobile-first architecture utilizing Dart and Flutter. Engineered real-time resident feedback interfaces and interactive administrator dashboards. Leveraged Firebase for secure user authentication and real-time database state management.",
     outcome:

@@ -8,7 +8,9 @@ import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import HardwareSchematic from "@/components/HardwareSchematic";
 
 export function generateStaticParams() {
-  const slugs = caseStudies.map((study) => study.slug);
+  const slugs = caseStudies
+    .map((study) => study.slug)
+    .filter((slug) => slug !== "komunikonek");
   if (!slugs.includes("gemini-defect-logger")) {
     slugs.push("gemini-defect-logger");
   }
