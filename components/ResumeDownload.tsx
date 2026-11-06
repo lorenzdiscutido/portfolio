@@ -59,11 +59,21 @@ export default function ResumeDownload({ className, label }: ResumeDownloadProps
     >
       {generating ? (
         <>
-          <span className="inline-block w-3.5 h-3.5 border-2 border-orange border-t-transparent rounded-full animate-spin" />
-          <span>{label ? "[ generating... ]" : "Generating PDF..."}</span>
+          <span className="inline-block w-3 h-3 border-2 border-orange border-t-transparent rounded-full animate-spin mr-1" />
+          <span className="text-slate-400 select-none mr-0.5">[</span>
+          <span className="text-orange-600 dark:text-orange">generating...</span>
+          <span className="text-slate-400 select-none ml-0.5">]</span>
         </>
       ) : error ? (
-        <span className="text-red-500 dark:text-red-400">Retry Resume PDF</span>
+        <span className="text-red-500 dark:text-red-400">[ retry ]</span>
+      ) : label ? (
+        <>
+          <span className="text-slate-400 dark:text-slate-500 font-normal select-none mr-0.5">[</span>
+          <span className="text-slate-700 dark:text-slate-300 group-hover:text-orange-600 dark:group-hover:text-orange transition-colors">
+            {displayLabel}
+          </span>
+          <span className="text-slate-400 dark:text-slate-500 font-normal select-none ml-0.5">]</span>
+        </>
       ) : (
         <span>{displayLabel}</span>
       )}
