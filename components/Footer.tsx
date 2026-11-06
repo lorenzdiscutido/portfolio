@@ -176,6 +176,24 @@ export default function Footer() {
           </div>
         </form>
 
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-8 text-xs font-mono text-slate-600 dark:text-slate-400">
+          <a
+            href="mailto:lorenzdiscutido@gmail.com"
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            ✉ lorenzdiscutido@gmail.com
+          </a>
+          <span className="hidden sm:inline">•</span>
+          <a
+            href="tel:+639693399434"
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            ☎ +63 969 339 9434
+          </a>
+          <span className="hidden sm:inline">•</span>
+          <span>📍 Manila, Philippines</span>
+        </div>
+
         <div className="flex justify-center gap-8 mb-12">
           <a
             href="https://github.com/lorenzdiscutido"

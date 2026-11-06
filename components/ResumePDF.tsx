@@ -3,7 +3,7 @@ import { Document, Page, Text, View, Link, StyleSheet } from "@react-pdf/rendere
 
 export const RESUME_CONTACT = {
   email: "lorenzdiscutido@gmail.com",
-  phone: "", // Set phone number here (e.g., "+63 917 XXX XXXX") to display on PDF
+  phone: "+63 969 339 9434",
   linkedinLabel: "linkedin.com/in/discutido-lorenzo",
   linkedinUrl: "https://www.linkedin.com/in/discutido-lorenzo/",
   githubLabel: "github.com/lorenzdiscutido",

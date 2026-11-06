@@ -61,7 +61,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Lead Developer",
     lastModified: "2025-02-15",
     overview:
-      "Leveraged the Google Gemini API to process field inspection photographs and extract defect dimensions. Engineered a Python and Streamlit pipeline to automatically log this structured data directly into enterprise SharePoint Excel workbooks, eliminating manual data entry bottlenecks.",
+      "Engineered a production multimodal AI pipeline leveraging the Google Gemini API to extract defect dimensions from field whiteboard photos. Built with Python and Streamlit, the system automatically logs structured inspection records directly into enterprise SharePoint Excel workbooks, quantifying over 4,750+ facade defects and 5,100+ linear meters of repairs.",
     problem:
       "Field inspections required manual data entry of defect dimensions from photographs into enterprise systems, causing operational bottlenecks and data latency.",
     architecture:
@@ -71,6 +71,7 @@ export const caseStudies: CaseStudy[] = [
     architectureDetails:
       "Field engineers capture inspection frames via a Streamlit interface. The ingestion service preprocesses raw imagery and submits structured extraction prompts to the Gemini API with a strict JSON schema. The model extracts defect types, metric dimensions, and severity ratings. The service authenticates via Microsoft Entra ID and logs rows directly into enterprise SharePoint Excel tables through the Microsoft Graph API, removing manual entry bottlenecks and synchronizing operational status with Odoo ERP.",
     techStack: ["Python", "Streamlit", "Gemini API", "SharePoint"],
+    liveUrl: "https://vonotec-whiteboard-sharepoint-clean.streamlit.app/",
     outcomes: [
       "Eliminated manual transcription between field inspection imagery and enterprise SharePoint spreadsheets.",
       "Standardized dimensional defect classification using structured JSON output from Gemini API.",
@@ -79,19 +80,36 @@ export const caseStudies: CaseStudy[] = [
     ],
     metrics: [
       {
+        value: "4,754",
+        label: "Defects Processed",
+        detail: "104 inspection batches across facade elevations",
+      },
+      {
+        value: "5,102 LM",
+        label: "Linear Repair Vol.",
+        detail: "Quantified crack & sealant repair scope",
+      },
+      {
         value: "85%",
         label: "Manual Entry Eliminated",
-        detail: "Automated transcription to SharePoint workbooks",
+        detail: "Direct sync to enterprise SharePoint Excel master",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/projects/vonotec-defect-extraction-ui.jpg",
+        caption: "Streamlit Ingestion & Extraction UI: Field engineers batch-upload inspection whiteboard photographs with direct SharePoint folder destinations and automated extraction pipelines.",
+        aspect: "standard",
       },
       {
-        value: "< 3.5s",
-        label: "Inference Latency",
-        detail: "Multimodal Gemini API extraction speed",
+        src: "/projects/vonotec-analytics-dashboard.jpg",
+        caption: "Facade Defect Analytics Dashboard: Real-time telemetry monitoring 4,754 total defects, 5,102.50 LM linear repair volume, 672.84 SQM area repairs, and category breakdowns across concrete, bugholes, and sealants.",
+        aspect: "standard",
       },
       {
-        value: "99.2%",
-        label: "Schema Accuracy",
-        detail: "Strict JSON schema validation compliance",
+        src: "/projects/vonotec-sharepoint-excel-log.jpg",
+        caption: "Enterprise SharePoint Online Excel Master: Automated row-level records detailing elevation, drop, floor, damage dimensions, embedded photo thumbnails, possible causes, and structural repair specifications.",
+        aspect: "wide",
       },
     ],
   },
