@@ -241,6 +241,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Komunikonek Mobile Dashboard",
     role: "Mobile Developer",
     lastModified: "2024-09-10",
+    githubUrl: "https://github.com/lorenzdiscutido/Komunikonek-app",
     overview:
       "Migrated a barangay management web application to a mobile-first architecture. Engineered resident feedback interfaces and interactive administrator dashboards for monitoring local statistics, utilizing Firebase for secure authentication and real-time database management.",
     problem:
