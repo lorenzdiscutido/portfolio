@@ -200,13 +200,13 @@ export default async function CaseStudyPage({
                   key={idx}
                   className="rounded-lg overflow-hidden border border-black/10 dark:border-white/10 bg-white/50 dark:bg-black/30"
                 >
-                  <div className="relative aspect-video w-full">
+                  <div className="relative aspect-[3/4] w-full bg-slate-900/10 dark:bg-black/40 overflow-hidden">
                     <Image
                       src={shot.src}
                       alt={shot.caption}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
+                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <figcaption className="p-3 text-xs font-mono text-slate-600 dark:text-slate-400 border-t border-black/10 dark:border-white/10">

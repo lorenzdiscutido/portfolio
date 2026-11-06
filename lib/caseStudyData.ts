@@ -184,6 +184,16 @@ export const caseStudies: CaseStudy[] = [
       roi: "159.3%",
       paybackPeriod: "4.63 Months",
     },
+    screenshots: [
+      {
+        src: "/projects/iskiosk-deployed-chassis.jpg",
+        caption: "IsKiosk DMS deployed at PUP Manila campus, featuring the 15\" touchscreen interface, GOOJPRT thermal barcode printer, 2D scanner intake, and dual solenoid-locked drawers.",
+      },
+      {
+        src: "/projects/iskiosk-internal-controller.jpg",
+        caption: "Internal embedded hardware control unit: Arduino Uno microcontroller, 2-channel relay module, DC-DC step-down buck converter with voltage telemetry readout, and custom harness.",
+      },
+    ],
   },
   {
     slug: "komunikonek",
