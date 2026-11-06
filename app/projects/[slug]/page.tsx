@@ -77,6 +77,18 @@ export default async function CaseStudyPage({
 
         {/* Header Section */}
         <header className="mb-12">
+          {study.logoUrl && (
+            <div className="mb-6 max-w-[280px] p-3 rounded-xl bg-white dark:bg-white/95 border border-black/10 dark:border-white/10 shadow-sm">
+              <Image
+                src={study.logoUrl}
+                alt={`${study.title} Brand Logo`}
+                width={280}
+                height={140}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </div>
+          )}
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             {study.title}
           </h1>
@@ -185,35 +197,88 @@ export default async function CaseStudyPage({
           ))}
         </div>
 
-        {/* Optional System Screenshots / Hardware Photos Gallery */}
+        {/* System Demonstration Video Walkthrough */}
+        {study.demoVideoEmbedUrl && (
+          <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-orange" />
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
+                  Live System Demonstration &amp; Walkthrough
+                </h2>
+              </div>
+              {study.liveUrl && (
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-orange text-black font-mono text-xs font-bold hover:opacity-90 transition-opacity self-start sm:self-auto shadow-sm"
+                >
+                  Open in Google Drive ↗
+                </a>
+              )}
+            </div>
+            <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-black/10 dark:border-white/10 bg-black/90 shadow-inner">
+              <iframe
+                src={study.demoVideoEmbedUrl}
+                title={`${study.title} Video Demonstration`}
+                className="w-full h-full border-0"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        )}
+
+        {/* System Screenshots & Engineering Artifacts Gallery */}
         {study.screenshots && study.screenshots.length > 0 && (
           <section className="p-8 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg mb-10">
             <div className="flex items-center gap-2 mb-6">
               <span className="h-2 w-2 rounded-full bg-orange" />
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-mono uppercase tracking-wide">
-                System Captures &amp; Hardware Verification
+                System Captures &amp; Engineering Artifacts
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {study.screenshots.map((shot, idx) => (
-                <figure
-                  key={idx}
-                  className="rounded-lg overflow-hidden border border-black/10 dark:border-white/10 bg-white/50 dark:bg-black/30"
-                >
-                  <div className="relative aspect-[3/4] w-full bg-slate-900/10 dark:bg-black/40 overflow-hidden">
-                    <Image
-                      src={shot.src}
-                      alt={shot.caption}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <figcaption className="p-3 text-xs font-mono text-slate-600 dark:text-slate-400 border-t border-black/10 dark:border-white/10">
-                    {shot.caption}
-                  </figcaption>
-                </figure>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              {study.screenshots.map((shot, idx) => {
+                const isWide = shot.aspect === "wide";
+                const isTall = shot.aspect === "tall";
+                return (
+                  <figure
+                    key={idx}
+                    className={`rounded-lg overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-black/40 flex flex-col ${
+                      isWide ? "md:col-span-2" : ""
+                    }`}
+                  >
+                    <div
+                      className={`relative w-full overflow-hidden ${
+                        isWide
+                          ? "aspect-[2.4/1] bg-white dark:bg-white/95"
+                          : isTall
+                          ? "aspect-[3/4] bg-slate-900/10 dark:bg-black/40"
+                          : "aspect-[16/10] bg-white dark:bg-white/95"
+                      }`}
+                    >
+                      <Image
+                        src={shot.src}
+                        alt={shot.caption}
+                        fill
+                        sizes={isWide ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                        className={`transition-transform duration-500 hover:scale-105 ${
+                          isWide
+                            ? "object-contain p-4"
+                            : isTall
+                            ? "object-cover object-top"
+                            : "object-contain p-6"
+                        }`}
+                      />
+                    </div>
+                    <figcaption className="p-3.5 text-xs font-mono text-slate-700 dark:text-slate-300 border-t border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] leading-relaxed">
+                      {shot.caption}
+                    </figcaption>
+                  </figure>
+                );
+              })}
             </div>
           </section>
         )}

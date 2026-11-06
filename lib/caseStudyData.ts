@@ -7,6 +7,7 @@ export interface ProjectMetric {
 export interface ProjectScreenshot {
   src: string;
   caption: string;
+  aspect?: "wide" | "tall" | "standard";
 }
 
 export interface IsoMetric {
@@ -45,6 +46,8 @@ export interface CaseStudy {
   metrics: ProjectMetric[];
   githubUrl?: string;
   liveUrl?: string;
+  demoVideoEmbedUrl?: string;
+  logoUrl?: string;
   screenshots?: ProjectScreenshot[];
   academic?: AcademicAttribution;
   isoEvaluation?: IsoMetric[];
@@ -184,14 +187,34 @@ export const caseStudies: CaseStudy[] = [
       roi: "159.3%",
       paybackPeriod: "4.63 Months",
     },
+    liveUrl: "https://drive.google.com/file/d/1YTgg6ct2Wats8rLkGBlsTiJkr8QjnSFy/view?usp=sharing",
+    demoVideoEmbedUrl: "https://drive.google.com/file/d/1YTgg6ct2Wats8rLkGBlsTiJkr8QjnSFy/preview",
+    logoUrl: "/projects/iskiosk-logo.png",
     screenshots: [
       {
+        src: "/projects/iskiosk-flowchart.jpg",
+        caption: "System User Flowchart: Decision tree mapping the student authentication pathway (barcode school ID scan vs manual fallback entry) leading to automated document dispatch.",
+        aspect: "wide",
+      },
+      {
+        src: "/projects/iskiosk-cad-model.jpg",
+        caption: "3D CAD & Dimensional Modeling: Full architectural schematic specifying the 94 cm chassis height, 15\" capacitive touchscreen angled mount (26 cm × 45 cm), and dual 40 cm × 35 cm slide-out compartments.",
+        aspect: "wide",
+      },
+      {
+        src: "/projects/iskiosk-logo.png",
+        caption: "Official IsKiosk: Document Management System project identity & brand emblem.",
+        aspect: "standard",
+      },
+      {
         src: "/projects/iskiosk-deployed-chassis.jpg",
-        caption: "IsKiosk DMS deployed at PUP Manila campus, featuring the 15\" touchscreen interface, GOOJPRT thermal barcode printer, 2D scanner intake, and dual solenoid-locked drawers.",
+        caption: "IsKiosk DMS deployed on PUP Manila campus, featuring the 15\" capacitive touchscreen interface, GOOJPRT thermal barcode printer, 2D scanner intake, and dual solenoid-locked drawers.",
+        aspect: "tall",
       },
       {
         src: "/projects/iskiosk-internal-controller.jpg",
         caption: "Internal embedded hardware control unit: Arduino Uno microcontroller, 2-channel relay module, DC-DC step-down buck converter with voltage telemetry readout, and custom harness.",
+        aspect: "tall",
       },
     ],
   },
