@@ -54,7 +54,7 @@ export default function Hero() {
               Hi, I&apos;m Lorenz.
               <br />
               <span className="theme-text-primary">
-                I build hardware integrations and automate enterprise cloud.
+                I automate enterprise cloud and engineer resilient systems.
               </span>
             </motion.h1>
 
@@ -65,7 +65,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               className="theme-text-secondary text-base sm:text-lg mb-8 max-w-xl leading-relaxed"
             >
-              Computer Engineering graduate specializing in Big Data Analytics and cyber-physical systems. I focus on eliminating operational bottlenecks—from active-active MySQL database meshes over Tailscale to multimodal AI defect logging and microcontroller-driven kiosk terminals. Currently architecting enterprise systems at Vonotec.
+              Computer Engineering graduate specializing in Big Data Analytics from PUP Manila. I engineer reliable systems that eliminate operational bottlenecks—from multimodal AI defect extraction pipelines and active-active MySQL replication to enterprise cloud governance. Currently working as a Digital Data &amp; Systems Engineer at Vonotec.
             </motion.p>
 
             {/* CTA Buttons */}
