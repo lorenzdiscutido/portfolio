@@ -46,7 +46,8 @@ export default function Footer() {
           email: senderEmail.trim(),
           subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
           message: message.trim(),
-          from_name: name.trim(),
+          from_name: "Lorenz Portfolio Contact Form",
+          botcheck: website.trim(),
         }),
       });
 
