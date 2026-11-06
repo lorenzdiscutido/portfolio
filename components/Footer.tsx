@@ -3,6 +3,10 @@
 import React, { useState } from "react";
 
 export default function Footer() {
+  const WEB3FORMS_KEY =
+    process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+    "cd29e663-f247-43a8-9213-58dd39d0449f";
+
   const [name, setName] = useState("");
   const [senderEmail, setSenderEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -15,21 +19,34 @@ export default function Footer() {
     e.preventDefault();
     if (!message.trim() || !senderEmail.trim() || !name.trim()) return;
 
+    // Honeypot silently discards automated spam
+    if (website.trim()) {
+      setStatus("sent");
+      setName("");
+      setSenderEmail("");
+      setSubject("");
+      setMessage("");
+      setWebsite("");
+      return;
+    }
+
     setStatus("sending");
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
           name: name.trim(),
           email: senderEmail.trim(),
-          subject: subject.trim(),
+          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
           message: message.trim(),
-          website: website.trim(),
+          from_name: name.trim(),
         }),
       });
 
@@ -44,7 +61,7 @@ export default function Footer() {
         setWebsite("");
       } else {
         setStatus("error");
-        setErrorMessage(result.error || "Failed to send message. Please try again.");
+        setErrorMessage(result.message || "Failed to send message. Please try again.");
       }
     } catch {
       setStatus("error");
