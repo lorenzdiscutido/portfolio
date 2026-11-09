@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -10,6 +11,7 @@ import AmbientBackground from "@/components/AmbientBackground";
 import CustomCursor from "@/components/CustomCursor";
 import CommandPalette from "@/components/CommandPalette";
 import LiveTelemetryPill from "@/components/LiveTelemetryPill";
+import LiveTelemetryDot from "@/components/LiveTelemetryDot";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -57,13 +59,28 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden min-h-screen relative`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {/* Ambient Cyber-Physical Liquid Background */}
+          {/* Ambient Cyber-Physical Liquid Background (Dynamic Client Component with SSR: false) */}
           <AmbientBackground />
           <CustomCursor />
           <CommandPalette />
           <NavBar />
           {children}
-          <LiveTelemetryPill />
+          <Suspense
+            fallback={
+              <aside
+                aria-label="Live System Telemetry"
+                data-testid="live-telemetry-pill"
+                className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/85 dark:bg-midnight/85 backdrop-blur-md border border-slate-700/50 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-md"
+              >
+                <LiveTelemetryDot />
+                <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">
+                  System: Online | Connecting...
+                </span>
+              </aside>
+            }
+          >
+            <LiveTelemetryPill />
+          </Suspense>
           <Terminal />
         </ThemeProvider>
         <Analytics />

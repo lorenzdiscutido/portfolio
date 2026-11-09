@@ -9,25 +9,32 @@ interface GitHubEvent {
   };
 }
 
-async function fetchTodayCommits(): Promise<number> {
+async function fetchTodayCommits(): Promise<number | null> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+
     const res = await fetch(
       "https://api.github.com/users/lorenzdiscutido/events/public?per_page=30",
       {
+        signal: controller.signal,
         next: { revalidate: 3600 },
         headers: {
           Accept: "application/vnd.github+json",
+          "User-Agent": "LorenzPortfolio-Telemetry",
         },
       }
     );
+    clearTimeout(timeoutId);
 
     if (!res.ok) {
-      return 6;
+      // API rate limit (403/429) or unexpected response
+      return null;
     }
 
     const events = (await res.json()) as GitHubEvent[];
     if (!Array.isArray(events)) {
-      return 6;
+      return null;
     }
 
     const now = new Date();
@@ -53,18 +60,41 @@ async function fetchTodayCommits(): Promise<number> {
 
     return todayCount > 0 ? todayCount : Math.max(recentCount, 4);
   } catch {
-    return 6;
+    // Network failure, abort, or rate limit
+    return null;
   }
 }
 
 export default async function LiveTelemetryPill() {
-  const commitsCount = await fetchTodayCommits();
+  let commitsCount: number | null = null;
+
+  try {
+    commitsCount = await fetchTodayCommits();
+  } catch {
+    commitsCount = null;
+  }
+
+  // Graceful fallback UI when GitHub API fails or rate-limits
+  if (commitsCount === null) {
+    return (
+      <aside
+        aria-label="Live System Telemetry"
+        data-testid="live-telemetry-pill"
+        className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/85 dark:bg-midnight/85 backdrop-blur-md border border-slate-700/50 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-md"
+      >
+        <LiveTelemetryDot />
+        <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">
+          System: Online | Standby
+        </span>
+      </aside>
+    );
+  }
 
   return (
     <aside
       aria-label="Live System Telemetry"
       data-testid="live-telemetry-pill"
-      className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/85 dark:bg-midnight/85 backdrop-blur-md border border-slate-700/50 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto"
+      className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/85 dark:bg-midnight/85 backdrop-blur-md border border-slate-700/50 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-md"
     >
       <LiveTelemetryDot />
       <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">
