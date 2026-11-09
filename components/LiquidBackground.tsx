@@ -62,13 +62,13 @@ export default function LiquidBackground() {
       y: clientY,
       vx: dx * 0.12,
       vy: dy * 0.12,
-      radius: 18 + speed * 0.6,
-      maxRadius: 160 + speed * 2.2,
+      radius: 8 + speed * 0.3,
+      maxRadius: 60 + speed * 1.5,
       alpha: Math.min(0.25, 0.08 + speed * 0.003),
       hueType,
     });
 
-    if (ripplesRef.current.length > 32) {
+    if (ripplesRef.current.length > 120) {
       ripplesRef.current.shift();
     }
   };
@@ -226,30 +226,32 @@ export default function LiquidBackground() {
 
       // Interactive cursor fluid wakes & ripples
       const ripples = ripplesRef.current;
+      ctx.globalCompositeOperation = "screen";
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
         r.x += r.vx * dt;
         r.y += r.vy * dt;
         r.vx *= 1 - 0.06 * dt;
         r.vy *= 1 - 0.06 * dt;
-        r.radius += (r.maxRadius - r.radius) * 0.06 * dt;
-        r.alpha *= 1 - 0.04 * dt;
+        r.radius += 0.5 * dt;
+        r.alpha -= 0.003 * dt;
 
-        if (r.alpha <= 0.004) {
+        if (r.alpha <= 0) {
           ripples.splice(i, 1);
           continue;
         }
 
         const grad = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
         grad.addColorStop(0, getRippleColor(r.hueType, r.alpha, isLight));
-        grad.addColorStop(0.55, getRippleColor(r.hueType, r.alpha * 0.4, isLight));
-        grad.addColorStop(1, fadeColor);
+        grad.addColorStop(0.4, getRippleColor(r.hueType, r.alpha * 0.5, isLight));
+        grad.addColorStop(1, "rgba(0, 0, 0, 0)");
 
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.fill();
       }
+      ctx.globalCompositeOperation = "source-over";
 
       animationFrameId = window.requestAnimationFrame(render);
     };
