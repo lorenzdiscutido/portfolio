@@ -126,8 +126,8 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              Engineering <span className="text-blue-600 dark:text-blue-400">Background</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-frost mb-6">
+              Engineering <span className="text-neonPink dark:text-chartreuse">Background</span>
             </h2>
             <div className="space-y-6 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
               <p>
@@ -147,11 +147,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl"
+            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-8 rounded-2xl"
           >
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Technical Stack</h3>
-              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded border border-black/10 dark:border-white/10">
+              <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-frost">Technical Stack</h3>
+              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/15">
                 Hover or click for context
               </span>
             </div>
@@ -159,7 +159,7 @@ export default function About() {
             <div className="space-y-8">
               {techStack.map((group, index) => (
                 <div key={index}>
-                  <h4 className="text-orange-700 dark:text-orange text-sm font-bold tracking-wide uppercase mb-3">
+                  <h4 className="text-neonPink dark:text-chartreuse text-xs font-mono font-semibold tracking-widest uppercase mb-3">
                     {group.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -176,10 +176,10 @@ export default function About() {
                           }
                           onMouseEnter={() => setHoveredSkill(skill)}
                           onMouseLeave={() => setHoveredSkill(null)}
-                          className={`text-left text-sm font-medium px-4 py-2 rounded-md border transition-all cursor-pointer ${
+                          className={`text-left text-sm font-medium px-4 py-2 rounded-xl border transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-blue-600/10 dark:bg-blue-400/10 text-slate-900 dark:text-white border-orange shadow-md font-semibold"
-                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/10 hover:border-blue-600 dark:hover:border-blue-400"
+                              ? "bg-neonPink/10 dark:bg-chartreuse/10 text-slate-900 dark:text-frost border-neonPink dark:border-chartreuse shadow-md font-semibold"
+                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse"
                           }`}
                         >
                           {skill.name}
@@ -192,14 +192,14 @@ export default function About() {
             </div>
 
             {/* Context Tooltip / Callout Panel */}
-            <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 min-h-[72px] flex items-center">
+            <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/15 min-h-[72px] flex items-center">
               {activeSkill ? (
-                <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-4 rounded-lg transition-all">
+                <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-5 rounded-xl transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-xs font-bold font-mono text-orange-700 dark:text-orange uppercase">
+                    <span className="text-xs font-bold font-mono text-neonPink dark:text-chartreuse uppercase tracking-wider">
                       Production Application
                     </span>
-                    <span className="text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold">
+                    <span className="text-xs font-mono text-slate-900 dark:text-frost font-semibold">
                       {activeSkill.name}
                     </span>
                   </div>

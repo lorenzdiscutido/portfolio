@@ -219,7 +219,7 @@ export default function Terminal() {
       case "cv":
         output = (
           <div className="space-y-0.5 font-mono py-0.5 text-xs">
-            <p className="text-blue-600 dark:text-blue-400 font-bold">&gt; Compiling Jose_Lorenzo_Discutido_Resume.pdf...</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">&gt; Compiling Jose_Lorenzo_Discutido_Resume.pdf...</p>
             <p className="text-slate-300">&gt; Download dispatched to browser.</p>
           </div>
         );
@@ -227,49 +227,49 @@ export default function Terminal() {
         break;
       case "projects":
         output = (
-          <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /#projects...</p>
+          <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /#projects...</p>
         );
         scheduleNavigation("/#projects");
         break;
       case "contact":
         output = (
-          <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /#contact...</p>
+          <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /#contact...</p>
         );
         scheduleNavigation("/#contact");
         break;
       case "help":
         output = (
           <div className="space-y-1 font-mono text-xs">
-            <p className="text-orange font-bold">&gt; Available commands:</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">&gt; Available commands:</p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">whoami</span> — Display operator identity &amp; title
+              &gt; <span className="text-neonPink dark:text-chartreuse">whoami</span> — Display operator identity &amp; title
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">skills</span> — Categorized technical capabilities
+              &gt; <span className="text-neonPink dark:text-chartreuse">skills</span> — Categorized technical capabilities
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">experience</span> — Current &amp; previous engineering roles
+              &gt; <span className="text-neonPink dark:text-chartreuse">experience</span> — Current &amp; previous engineering roles
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">education</span> — Academic degree &amp; institution
+              &gt; <span className="text-neonPink dark:text-chartreuse">education</span> — Academic degree &amp; institution
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">neofetch</span> — Display workstation telemetry
+              &gt; <span className="text-neonPink dark:text-chartreuse">neofetch</span> — Display workstation telemetry
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">tailscale</span> — Inspect active Tailnet mesh nodes
+              &gt; <span className="text-neonPink dark:text-chartreuse">tailscale</span> — Inspect active Tailnet mesh nodes
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">ping &lt;ip&gt;</span> — Test ICMP echo reachability
+              &gt; <span className="text-neonPink dark:text-chartreuse">ping &lt;ip&gt;</span> — Test ICMP echo reachability
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">cd &lt;dir&gt;</span> — Navigate to projects (komunikonek, iskiosk, vonotec, ~)
+              &gt; <span className="text-neonPink dark:text-chartreuse">cd &lt;dir&gt;</span> — Navigate to projects (komunikonek, iskiosk, vonotec, ~)
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">ls</span> — List navigable project directories
+              &gt; <span className="text-neonPink dark:text-chartreuse">ls</span> — List navigable project directories
             </p>
             <p>
-              &gt; <span className="text-blue-600 dark:text-blue-400">clear</span> — Clear terminal output
+              &gt; <span className="text-neonPink dark:text-chartreuse">clear</span> — Clear terminal output
             </p>
           </div>
         );
@@ -277,7 +277,7 @@ export default function Terminal() {
       case "whoami":
         output = (
           <div className="space-y-0.5 font-mono py-0.5">
-            <p className="text-blue-600 dark:text-blue-400 font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
             <p className="text-slate-300">
               &gt; Data and Systems Engineer
             </p>
@@ -288,25 +288,25 @@ export default function Terminal() {
         output = (
           <div className="space-y-1 font-mono py-1 text-xs">
             <p>
-              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Core &amp; Web:</span>{" "}
+              <span className="text-neonPink dark:text-chartreuse font-bold">&gt; Core &amp; Web:</span>{" "}
               <span className="text-slate-200">
                 Python, Next.js, TypeScript, Tailwind CSS
               </span>
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
+              <span className="text-neonPink dark:text-chartreuse font-bold">&gt; Hardware &amp; Mobile:</span>{" "}
               <span className="text-slate-200">
                 C/C++, Dart, Flutter
               </span>
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
+              <span className="text-neonPink dark:text-chartreuse font-bold">&gt; Cloud &amp; Enterprise:</span>{" "}
               <span className="text-slate-200">
                 Microsoft Entra ID, Microsoft Intune, SharePoint, Odoo ERP, Firebase
               </span>
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Database &amp; Network:</span>{" "}
+              <span className="text-neonPink dark:text-chartreuse font-bold">&gt; Database &amp; Network:</span>{" "}
               <span className="text-slate-200">
                 MySQL, PostgreSQL, Prisma ORM, Tailscale
               </span>
@@ -318,13 +318,13 @@ export default function Terminal() {
         output = (
           <div className="space-y-1 font-mono py-1 text-xs">
             <p>
-              <span className="text-orange font-bold">&gt; Current:</span>{" "}
+              <span className="text-neonPink dark:text-chartreuse font-bold">&gt; Current:</span>{" "}
               <span className="text-slate-200">
                 Digital Data &amp; Systems Engineer and AI/IoT Data Officer @ Vonotec
               </span>
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400 font-bold">&gt; Previous:</span>{" "}
+              <span className="text-slate-400 font-bold">&gt; Previous:</span>{" "}
               <span className="text-slate-200">
                 IT Systems &amp; Network Intern @ PHINMA Properties
               </span>
@@ -338,7 +338,7 @@ export default function Terminal() {
             <p className="text-white font-bold">
               &gt; Bachelor of Science in Computer Engineering
             </p>
-            <p className="text-blue-600 dark:text-blue-400 font-semibold">
+            <p className="text-neonPink dark:text-chartreuse font-semibold">
               &gt; Polytechnic University of the Philippines (PUP)
             </p>
           </div>
@@ -348,25 +348,25 @@ export default function Terminal() {
       case "fastfetch":
         output = (
           <div className="space-y-0.5 py-1">
-            <p className="text-orange font-bold">guest@jld-stealth-rig</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">guest@jld-stealth-rig</p>
             <p>-------------------------</p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">OS:</span> Linux / Windows 11 Pro (WSL2)
+              <span className="text-neonPink dark:text-chartreuse">OS:</span> Linux / Windows 11 Pro (WSL2)
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">Chassis:</span> Stealth All-Black / Zero-RGB Build
+              <span className="text-neonPink dark:text-chartreuse">Chassis:</span> Stealth All-Black / Zero-RGB Build
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">Acoustics:</span> &lt; 22 dBA Silent Fan Curve
+              <span className="text-neonPink dark:text-chartreuse">Acoustics:</span> &lt; 22 dBA Silent Fan Curve
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">Role:</span> Digital Data &amp; Systems Engineer @ Vonotec
+              <span className="text-neonPink dark:text-chartreuse">Role:</span> Digital Data &amp; Systems Engineer @ Vonotec
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">Education:</span> BS Computer Engineering (PUP)
+              <span className="text-neonPink dark:text-chartreuse">Education:</span> BS Computer Engineering (PUP)
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">Tailnet:</span> 4 Nodes Online (WireGuard Mesh OK)
+              <span className="text-neonPink dark:text-chartreuse">Tailnet:</span> 4 Nodes Online (WireGuard Mesh OK)
             </p>
           </div>
         );
@@ -375,18 +375,18 @@ export default function Terminal() {
       case "tailscale status":
         output = (
           <div className="space-y-1 py-1 text-xs font-mono">
-            <p className="text-orange font-bold">IPv4         HOSTNAME               ROLE                  STATUS</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">IPv4         HOSTNAME               ROLE                  STATUS</p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">100.64.0.1</span>   vonotec-cluster-alpha  MySQL Master A (Odd)  online, direct
+              <span className="text-neonPink dark:text-chartreuse">100.64.0.1</span>   vonotec-cluster-alpha  MySQL Master A (Odd)  online, direct
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">100.64.0.2</span>   iskiosk-mcu-gateway    MCU Hardware Interlock online, direct
+              <span className="text-neonPink dark:text-chartreuse">100.64.0.2</span>   iskiosk-mcu-gateway    MCU Hardware Interlock online, direct
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">100.64.0.3</span>   entra-id-governance    Identity Proxy (MSAL) online, direct
+              <span className="text-neonPink dark:text-chartreuse">100.64.0.3</span>   entra-id-governance    Identity Proxy (MSAL) online, direct
             </p>
             <p>
-              <span className="text-blue-600 dark:text-blue-400">100.64.0.4</span>   jld-stealth-rig        Workstation (Linux)   active, local
+              <span className="text-neonPink dark:text-chartreuse">100.64.0.4</span>   jld-stealth-rig        Workstation (Linux)   active, local
             </p>
           </div>
         );
@@ -394,7 +394,7 @@ export default function Terminal() {
       case "ping": {
         if (!arg) {
           output = (
-            <p className="font-mono text-xs text-orange">Usage: ping &lt;ip_address&gt;</p>
+            <p className="font-mono text-xs text-rose-400">Usage: ping &lt;ip_address&gt;</p>
           );
           break;
         }
@@ -407,7 +407,7 @@ export default function Terminal() {
 
         if (!target || target === "~" || rawTarget === "/") {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /home...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /home...</p>
           );
           scheduleNavigation("/");
           break;
@@ -415,7 +415,7 @@ export default function Terminal() {
 
         if (target === "..") {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating back...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating back...</p>
           );
           scheduleNavigation("/");
           break;
@@ -427,7 +427,7 @@ export default function Terminal() {
           djb2(target) === "66b43384"
         ) {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /projects/komunikonek...</p>
           );
           scheduleNavigation("/projects/komunikonek");
           break;
@@ -439,7 +439,7 @@ export default function Terminal() {
           target === "projects/iskiosk-terminal"
         ) {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/iskiosk-terminal...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /projects/iskiosk-terminal...</p>
           );
           scheduleNavigation("/projects/iskiosk-terminal");
           break;
@@ -453,14 +453,14 @@ export default function Terminal() {
           target === "projects/vonotec-defect-logger"
         ) {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/vonotec-defect-logger...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /projects/vonotec-defect-logger...</p>
           );
           scheduleNavigation("/projects/vonotec-defect-logger");
           break;
         }
 
         output = (
-          <p className="font-mono text-xs text-orange">cd: {arg}: No such file or directory</p>
+          <p className="font-mono text-xs text-rose-400">cd: {arg}: No such file or directory</p>
         );
         break;
       }
@@ -468,13 +468,13 @@ export default function Terminal() {
       case "dir":
         output = (
           <div className="space-y-1 font-mono text-xs py-0.5">
-            <p className="text-blue-600 dark:text-blue-400 font-bold">drwxr-xr-x  projects/</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">drwxr-xr-x  projects/</p>
             <div className="pl-4 space-y-0.5 text-slate-200">
-              <p>&gt; <span className="text-orange font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
-              <p>&gt; <span className="text-orange font-semibold">iskiosk/</span> — IsKiosk: Document Management System</p>
-              <p>&gt; <span className="text-orange font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
+              <p>&gt; <span className="text-neonPink dark:text-chartreuse font-semibold">vonotec/</span> — Vonotec Automated Defect Logger</p>
+              <p>&gt; <span className="text-neonPink dark:text-chartreuse font-semibold">iskiosk/</span> — IsKiosk: Document Management System</p>
+              <p>&gt; <span className="text-neonPink dark:text-chartreuse font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
             </div>
-            <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-blue-600 dark:text-blue-400">cd &lt;dir&gt;</span>&apos; to navigate.</p>
+            <p className="text-slate-500 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-neonPink dark:text-chartreuse">cd &lt;dir&gt;</span>&apos; to navigate.</p>
           </div>
         );
         break;
@@ -482,15 +482,15 @@ export default function Terminal() {
       case "synergy":
         output = (
           <div className="space-y-1 py-1">
-            <p className="text-orange font-bold">[Zenless Zone Zero // Combat Analytics Log]</p>
+            <p className="text-neonPink dark:text-chartreuse font-bold">[Zenless Zone Zero // Combat Analytics Log]</p>
             <p>
-              • <span className="text-blue-600 dark:text-blue-400">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
+              • <span className="text-neonPink dark:text-chartreuse">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
             </p>
             <p>
-              • <span className="text-blue-600 dark:text-blue-400">Stun Daze Window</span> ↔ Burst throughput window during low-contention locks
+              • <span className="text-neonPink dark:text-chartreuse">Stun Daze Window</span> ↔ Burst throughput window during low-contention locks
             </p>
             <p>
-              • <span className="text-blue-600 dark:text-blue-400">Quick Assist Rotations</span> ↔ Zero-downtime node handoffs in distributed pipelines
+              • <span className="text-neonPink dark:text-chartreuse">Quick Assist Rotations</span> ↔ Zero-downtime node handoffs in distributed pipelines
             </p>
           </div>
         );
@@ -498,21 +498,21 @@ export default function Terminal() {
       case "sudo":
         output = (
           <span>
-            <span className="text-blue-600 dark:text-blue-400">Permission denied.</span> This incident will be reported.
+            <span className="text-rose-400">Permission denied.</span> This incident will be reported.
           </span>
         );
         break;
       default:
         if (djb2(primaryCmd) === "66b43384") {
           output = (
-            <p className="font-mono text-xs text-blue-600 dark:text-blue-400">&gt; Navigating to /projects/komunikonek...</p>
+            <p className="font-mono text-xs text-neonPink dark:text-chartreuse">&gt; Navigating to /projects/komunikonek...</p>
           );
           scheduleNavigation("/projects/komunikonek");
           break;
         }
         output = (
           <span>
-            Command not found. Type &apos;<span className="text-blue-600 dark:text-blue-400">help</span>&apos; for available commands.
+            Command not found. Type &apos;<span className="text-neonPink dark:text-chartreuse">help</span>&apos; for available commands.
           </span>
         );
         break;
@@ -611,7 +611,7 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all overflow-hidden"
+      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-midnight/90 text-slate-200 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all overflow-hidden"
     >
       <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
         <span className="text-slate-300 font-bold">
@@ -628,20 +628,20 @@ export default function Terminal() {
             className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 hover:text-neonPink dark:hover:text-chartreuse text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
             aria-label="Close Terminal"
           >
-            [x]
+            ✕
           </button>
         </div>
       </div>
 
       <div className="space-y-3 overflow-y-auto max-h-56 pr-1">
         <p className="text-xs text-slate-400">
-          &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-blue-600 dark:text-blue-400 font-semibold">help</span>&apos; for available commands.
+          &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-neonPink dark:text-chartreuse font-semibold">help</span>&apos; for available commands.
         </p>
 
         {history.map((entry) => (
           <div key={entry.id} className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-orange font-bold">guest@jld-sys:~$</span>
+              <span className="text-neonPink dark:text-chartreuse font-bold">guest@jld-sys:~$</span>
               <span className="text-white">{entry.command}</span>
             </div>
             <div className="text-slate-300 pl-2">{entry.output}</div>
@@ -658,9 +658,9 @@ export default function Terminal() {
           <button
             type="button"
             onClick={() => setShowMobileInput((prev) => !prev)}
-            className="md:hidden text-[11px] font-mono text-slate-400 hover:text-blue-400 min-h-[44px] flex items-center px-1"
+            className="md:hidden text-[11px] font-mono text-slate-400 hover:text-neonPink dark:hover:text-chartreuse min-h-[44px] flex items-center px-1"
           >
-            {showMobileInput ? "[ Hide CLI ]" : "[ Type CLI ]"}
+            {showMobileInput ? "Hide CLI" : "Type CLI"}
           </button>
         </div>
 
@@ -668,9 +668,9 @@ export default function Terminal() {
           <button
             type="button"
             onClick={() => handleCommand("projects")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-neonPink/20 border border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-neonPink dark:text-chartreuse">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
             </svg>
             <span>View Projects</span>
@@ -678,9 +678,9 @@ export default function Terminal() {
           <button
             type="button"
             onClick={() => handleCommand("resume")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-blue-400/20 border border-white/15 hover:border-blue-400 text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-chartreuse/20 border border-white/15 hover:border-chartreuse text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-chartreuse">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
               <polyline points="14 2 14 8 20 8" />
               <line x1="16" y1="13" x2="8" y2="13" />
@@ -692,9 +692,9 @@ export default function Terminal() {
           <button
             type="button"
             onClick={() => handleCommand("contact")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-neonPink/20 border border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-neonPink dark:text-chartreuse">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
@@ -707,18 +707,18 @@ export default function Terminal() {
       <div className={`${showMobileInput ? "flex" : "hidden md:flex"} items-center gap-2 pt-3`}>
         {isExecuting ? (
           <div className="flex items-center gap-2 pl-2">
-            <span className="inline-block w-2 h-3.5 bg-orange animate-pulse" />
+            <span className="inline-block w-2 h-3.5 bg-neonPink dark:bg-chartreuse animate-pulse" />
           </div>
         ) : (
           <div className="flex items-center gap-2 w-full">
-            <span className="text-orange font-bold">guest@jld-sys:~$</span>
+            <span className="text-neonPink dark:text-chartreuse font-bold">guest@jld-sys:~$</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDownInput}
-              className="flex-1 bg-transparent text-white outline-none border-none caret-orange font-mono"
+              className="flex-1 bg-transparent text-white outline-none border-none caret-neonPink dark:caret-chartreuse font-mono"
               aria-label="Terminal command input"
               autoComplete="off"
               spellCheck={false}

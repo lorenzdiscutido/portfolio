@@ -3,16 +3,16 @@ export default function Workspace() {
     <section id="workspace" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-neonPink dark:text-chartreuse font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Off-Duty Mechanics
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-            Beyond the <span className="text-blue-600 dark:text-blue-400">Screen</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Beyond the <span className="text-neonPink dark:text-chartreuse">Screen</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-8 rounded-2xl hover:border-neonPink dark:hover:border-chartreuse transition-all duration-300">
             <h3 className="text-slate-900 dark:text-white text-2xl font-bold mb-4">
               The Hardware Loadout
             </h3>
@@ -21,7 +21,7 @@ export default function Workspace() {
             </p>
           </div>
 
-          <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-8 rounded-2xl hover:border-neonPink dark:hover:border-chartreuse transition-all duration-300">
             <h3 className="text-slate-900 dark:text-white text-2xl font-bold mb-4">
               System Mechanics &amp; Analytics
             </h3>

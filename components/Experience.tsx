@@ -51,16 +51,16 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 border-t border-black/10 dark:border-white/10">
+    <section id="experience" className="py-20 px-6 border-t border-black/10 dark:border-white/15">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-neonPink dark:text-chartreuse font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Career Timeline
           </p>
-          <h2 className="theme-text-primary text-3xl md:text-4xl font-bold mb-2">
-            Experience &amp; <span className="text-blue-600 dark:text-blue-400">Education</span>
+          <h2 className="theme-text-primary text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
+            Experience &amp; <span className="text-neonPink dark:text-chartreuse">Education</span>
           </h2>
-          <p className="theme-text-secondary text-slate-800 dark:text-slate-300 font-semibold text-sm md:text-base mt-2 max-w-xl">
+          <p className="theme-text-secondary text-slate-800 dark:text-slate-300 font-medium text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -69,32 +69,32 @@ export default function Experience() {
           {/* Vertical rail: anchored at left-0 and centered on that coordinate */}
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-slate-300 dark:bg-white/20"
+            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-slate-300 dark:bg-white/15"
           />
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
-              {/* Timeline node marker: shares left-0 with the rail, centered via -translate-x-1/2 */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base ring-2 ring-blue-600/30 dark:ring-blue-400/30 bg-blue-600 dark:bg-blue-400 group-hover:bg-orange group-hover:ring-orange/40 transition-all group-hover:scale-125" />
+              {/* Timeline node marker */}
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base ring-2 ring-neonPink/30 dark:ring-chartreuse/30 bg-neonPink dark:bg-chartreuse group-hover:bg-chartreuse dark:group-hover:bg-neonPink group-hover:scale-125 transition-all" />
 
-              <div className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8 rounded-xl hover:border-orange dark:hover:border-orange transition-all">
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-6 md:p-8 rounded-2xl hover:border-neonPink dark:hover:border-chartreuse transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono font-bold text-orange-700 dark:text-orange uppercase tracking-wider">
+                  <span className="text-xs font-mono font-bold text-neonPink dark:text-chartreuse uppercase tracking-wider">
                     {item.period}
                   </span>
                   <span
-                    className={`text-xs font-mono px-2.5 py-0.5 rounded border self-start sm:self-auto ${
+                    className={`text-xs font-mono px-2.5 py-0.5 rounded-full border self-start sm:self-auto ${
                       item.type === "Work"
-                        ? "bg-blue-600/10 dark:bg-blue-400/10 border-blue-600/30 dark:border-blue-400/30 text-blue-600 dark:text-blue-400 font-semibold"
+                        ? "bg-chartreuse/10 border-chartreuse/30 text-chartreuse font-semibold"
                         : item.type === "Internship"
-                        ? "bg-orange-50 dark:bg-orange/10 border-orange-200 dark:border-orange text-orange-700 dark:text-orange font-semibold"
-                        : "bg-slate-900/10 dark:bg-white/10 border-slate-900/30 dark:border-white/30 theme-text-primary font-semibold"
+                        ? "bg-neonPink/10 border-neonPink/30 text-neonPink font-semibold"
+                        : "bg-white/10 border-white/20 text-frost font-semibold"
                     }`}
                   >
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="theme-text-primary text-xl md:text-2xl font-bold mb-1">
+                <h3 className="theme-text-primary text-xl md:text-2xl font-extrabold tracking-tight mb-1">
                   {item.role}
                 </h3>
 
@@ -109,7 +109,7 @@ export default function Experience() {
                       key={i}
                       className="theme-text-secondary text-sm leading-relaxed flex items-start gap-2.5"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 shrink-0 mt-2" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-neonPink dark:bg-chartreuse shrink-0 mt-2" />
                       <span>{point}</span>
                     </li>
                   ))}

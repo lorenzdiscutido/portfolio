@@ -52,10 +52,10 @@ export default function HardwareSchematic() {
   ];
 
   return (
-    <div className="w-full my-12 rounded-xl bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-lg p-6 md:p-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/10">
+    <div className="w-full my-12 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-black/10 dark:border-white/15 shadow-2xl p-6 md:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/15">
         <div>
-          <span className="text-orange-700 dark:text-orange font-mono text-xs uppercase tracking-widest block mb-1">
+          <span className="text-neonPink dark:text-chartreuse font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
             Cyber-Physical Hardware Architecture
           </span>
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
@@ -65,7 +65,7 @@ export default function HardwareSchematic() {
         <button
           type="button"
           onClick={triggerUnlock}
-          className="self-start sm:self-auto px-4 py-2 rounded-lg bg-orange text-black font-bold text-xs uppercase tracking-wider font-mono shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer"
+          className="self-start sm:self-auto px-4 py-2 rounded-full bg-neonPink dark:bg-chartreuse text-white dark:text-midnight font-bold text-xs uppercase tracking-wider font-mono shadow-lg hover:shadow-neonPink/25 dark:hover:shadow-chartreuse/25 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
         >
           {isUnlocked ? "⚡ Relay Energized" : "▶ Simulate Drawer Unlock"}
         </button>
@@ -74,10 +74,10 @@ export default function HardwareSchematic() {
       {/* Visual Interlock State Diagram */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         {/* Module 1: Dell Wyse Mini PC */}
-        <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
+              <span className="text-xs font-mono font-bold text-neonPink dark:text-chartreuse uppercase">
                 Host Controller
               </span>
               <span className="flex h-2 w-2 relative">
@@ -99,15 +99,15 @@ export default function HardwareSchematic() {
         </div>
 
         {/* Module 2: Arduino Uno Controller */}
-        <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
+              <span className="text-xs font-mono font-bold text-neonPink dark:text-chartreuse uppercase">
                 MCU Controller
               </span>
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-600 dark:bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600 dark:bg-blue-400"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonPink dark:bg-chartreuse opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-neonPink dark:bg-chartreuse"></span>
               </span>
             </div>
             <p className="font-bold text-slate-900 dark:text-white text-sm">
@@ -119,30 +119,30 @@ export default function HardwareSchematic() {
           </div>
           <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-500">
             <span>UART 115200</span>
-            <span className="text-blue-600 dark:text-blue-400 font-bold">SYNC OK</span>
+            <span className="text-neonPink dark:text-chartreuse font-bold">SYNC OK</span>
           </div>
         </div>
 
         {/* Module 3: 2-Channel Relay & Solenoid */}
         <div
-          className={`p-4 rounded-lg border transition-all duration-300 flex flex-col justify-between ${
+          className={`p-4 rounded-xl border transition-all duration-300 flex flex-col justify-between ${
             isUnlocked
-              ? "bg-orange-500/10 border-orange shadow-md"
-              : "bg-white/70 dark:bg-black/30 border-black/10 dark:border-white/10"
+              ? "bg-neonPink/10 dark:bg-chartreuse/10 border-neonPink dark:border-chartreuse shadow-[0_0_20px_rgba(255,0,127,0.2)] dark:shadow-[0_0_20px_rgba(204,255,0,0.2)]"
+              : "bg-white/70 dark:bg-white/5 border-black/10 dark:border-white/10"
           }`}
         >
           <div>
             <div className="flex items-center justify-between mb-2">
               <span
                 className={`text-xs font-mono font-bold uppercase ${
-                  isUnlocked ? "text-orange-700 dark:text-orange" : "text-slate-500"
+                  isUnlocked ? "text-neonPink dark:text-chartreuse" : "text-slate-500"
                 }`}
               >
                 2-Ch Relay &amp; Solenoid
               </span>
               <span
                 className={`h-2.5 w-2.5 rounded-full ${
-                  isUnlocked ? "bg-orange animate-pulse" : "bg-slate-400"
+                  isUnlocked ? "bg-neonPink dark:bg-chartreuse animate-pulse" : "bg-slate-400"
                 }`}
               />
             </div>
@@ -157,7 +157,7 @@ export default function HardwareSchematic() {
             <span className="text-slate-500">Lock State:</span>
             <span
               className={`font-bold ${
-                isUnlocked ? "text-orange-700 dark:text-orange" : "text-slate-600 dark:text-slate-400"
+                isUnlocked ? "text-neonPink dark:text-chartreuse" : "text-slate-600 dark:text-slate-400"
               }`}
             >
               {isUnlocked ? "ENERGIZED (OPEN)" : "LATCHED (SECURE)"}
@@ -166,10 +166,10 @@ export default function HardwareSchematic() {
         </div>
 
         {/* Module 4: Peripherals & Power */}
-        <div className="p-4 rounded-lg bg-white/70 dark:bg-black/30 border border-black/10 dark:border-white/10 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-white/5 border border-black/10 dark:border-white/10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase">
+              <span className="text-xs font-mono font-bold text-neonPink dark:text-chartreuse uppercase">
                 Peripherals &amp; UPS
               </span>
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -193,9 +193,9 @@ export default function HardwareSchematic() {
         <h4 className="text-xs font-mono uppercase font-bold text-slate-700 dark:text-slate-300 tracking-wider mb-3">
           Hardware Pinout &amp; Electrical Interconnect
         </h4>
-        <div className="overflow-x-auto rounded-lg border border-black/10 dark:border-white/10">
+        <div className="overflow-x-auto rounded-xl border border-black/10 dark:border-white/15">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-slate-100 dark:bg-black/40 text-slate-700 dark:text-slate-300 border-b border-black/10 dark:border-white/10">
+            <thead className="bg-slate-100 dark:bg-midnight/60 text-slate-700 dark:text-slate-300 border-b border-black/10 dark:border-white/15">
               <tr>
                 <th className="py-2.5 px-3">Pin / Bus Interface</th>
                 <th className="py-2.5 px-3">Target Subsystem</th>
@@ -203,14 +203,14 @@ export default function HardwareSchematic() {
                 <th className="py-2.5 px-3">Function in Cyber-Physical Architecture</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-black/20">
+            <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-white/40 dark:bg-white/5">
               {pinouts.map((p, idx) => (
-                <tr key={idx} className="hover:bg-blue-600/5 dark:hover:bg-blue-400/5 transition-colors">
-                  <td className="py-2.5 px-3 font-bold text-orange-700 dark:text-orange">{p.pin}</td>
+                <tr key={idx} className="hover:bg-neonPink/5 dark:hover:bg-chartreuse/5 transition-colors">
+                  <td className="py-2.5 px-3 font-bold text-neonPink dark:text-chartreuse">{p.pin}</td>
                   <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-white">
                     {p.target}
                   </td>
-                  <td className="py-2.5 px-3 text-blue-600 dark:text-blue-400">{p.voltage}</td>
+                  <td className="py-2.5 px-3 text-slate-600 dark:text-slate-300">{p.voltage}</td>
                   <td className="py-2.5 px-3 text-slate-600 dark:text-slate-400">
                     {p.role}
                   </td>

@@ -18,17 +18,17 @@ export default function BlogPage() {
       <div className="max-w-5xl mx-auto">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-400 hover:text-neonPink dark:hover:text-chartreuse transition-colors mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
 
         <div className="mb-12 text-left">
-          <p className="text-orange-700 dark:text-orange font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm font-mono">
+          <p className="text-neonPink dark:text-chartreuse font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm font-mono">
             Engineering Dispatches
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Technical <span className="text-blue-600 dark:text-blue-400">Blog</span>
+            Technical <span className="text-neonPink dark:text-chartreuse">Blog</span>
           </h1>
         </div>
 
@@ -37,10 +37,10 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl rounded-xl p-8 border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange transition-all duration-300 flex flex-col shadow-lg group"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-8 border border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse transition-all duration-300 flex flex-col shadow-2xl group"
             >
               <div className="flex items-center justify-between gap-2 mb-3">
-                <p className="text-orange-700 dark:text-orange text-xs font-mono font-semibold tracking-widest uppercase">
+                <p className="text-neonPink dark:text-chartreuse text-xs font-mono font-semibold tracking-widest uppercase">
                   {post.date}
                 </p>
                 <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
@@ -48,7 +48,7 @@ export default function BlogPage() {
                 </span>
               </div>
 
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-neonPink dark:group-hover:text-chartreuse transition-colors">
                 {post.title}
               </h2>
 
@@ -60,7 +60,7 @@ export default function BlogPage() {
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/10"
+                    className="font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/15"
                   >
                     {tag}
                   </span>

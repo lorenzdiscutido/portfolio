@@ -15,7 +15,7 @@ export default function ResumeDownload({ className, label }: ResumeDownloadProps
   const displayLabel = label || "Download Resume";
 
   const defaultClasses =
-    "whitespace-nowrap px-5 py-2 min-h-[44px] rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
+    "whitespace-nowrap px-5 py-2 min-h-[44px] rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-white transition-all text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse shadow-sm hover:scale-[1.02] active:scale-[0.98]";
 
   if (!mounted) {
     return (
@@ -59,23 +59,15 @@ export default function ResumeDownload({ className, label }: ResumeDownloadProps
     >
       {generating ? (
         <>
-          <span className="inline-block w-3 h-3 border-2 border-orange border-t-transparent rounded-full animate-spin mr-1" />
-          <span className="text-slate-400 select-none mr-0.5">[</span>
-          <span className="text-orange-600 dark:text-orange">generating...</span>
-          <span className="text-slate-400 select-none ml-0.5">]</span>
+          <span className="inline-block w-3.5 h-3.5 border-2 border-neonPink dark:border-chartreuse border-t-transparent rounded-full animate-spin mr-1" />
+          <span className="text-neonPink dark:text-chartreuse font-mono text-xs">generating...</span>
         </>
       ) : error ? (
-        <span className="text-red-500 dark:text-red-400">[ retry ]</span>
-      ) : label ? (
-        <>
-          <span className="text-slate-400 dark:text-slate-500 font-normal select-none mr-0.5">[</span>
-          <span className="text-slate-700 dark:text-slate-300 group-hover:text-orange-600 dark:group-hover:text-orange transition-colors">
-            {displayLabel}
-          </span>
-          <span className="text-slate-400 dark:text-slate-500 font-normal select-none ml-0.5">]</span>
-        </>
+        <span className="text-rose-500 font-mono text-xs">Failed - Retry</span>
       ) : (
-        <span>{displayLabel}</span>
+        <span className="group-hover:text-neonPink dark:group-hover:text-chartreuse transition-colors">
+          {displayLabel}
+        </span>
       )}
     </button>
   );

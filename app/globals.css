@@ -11,8 +11,6 @@
     --surface: 255 255 255; /* #ffffff */
     --primary: 10 15 28;    /* #0a0f1c - midnight slate */
     --muted: 71 85 105;     /* #475569 - slate-600 */
-    --blue: 0 82 255;       /* #0052FF */
-    --orange: 255 122 0;    /* #FF7A00 */
     --accent: 255 0 127;    /* #FF007F - Hyper-Neon Pink for light contrast */
     color-scheme: light;
   }
@@ -23,8 +21,6 @@
     --surface: 17 24 39;    /* #111827 - Oceanic Slate */
     --primary: 248 250 252; /* #f8fafc - Frosty White */
     --muted: 148 163 184;   /* #94a3b8 - Muted Cool Gray */
-    --blue: 0 82 255;       /* #0052FF */
-    --orange: 255 122 0;    /* #FF7A00 */
     --accent: 204 255 0;    /* #CCFF00 - Electric Chartreuse */
     color-scheme: dark;
   }

@@ -25,7 +25,7 @@ export default function TelemetryBar() {
             setExpanded((prev) => !prev);
           }
         }}
-        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-white/70 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 text-xs font-mono shadow-sm hover:border-orange dark:hover:border-orange focus-visible:border-blue-600 dark:focus-visible:border-blue-400 outline-none transition-all cursor-pointer select-none"
+        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 text-xs font-mono shadow-md hover:border-neonPink dark:hover:border-chartreuse focus-visible:ring-2 focus-visible:ring-chartreuse outline-none transition-all cursor-pointer select-none"
       >
         <div className="flex items-center gap-2.5">
           <span className="flex h-2 w-2 relative">
@@ -37,7 +37,7 @@ export default function TelemetryBar() {
           </span>
           <span className="hidden sm:inline text-slate-400 dark:text-slate-500">|</span>
           <span className="text-slate-700 dark:text-slate-300">
-            Tailnet: <span className="text-blue-600 dark:text-blue-400 font-bold">4 Nodes Meshed</span>
+            Tailnet: <span className="text-neonPink dark:text-chartreuse font-bold">4 Nodes Meshed</span>
           </span>
         </div>
 
@@ -46,7 +46,7 @@ export default function TelemetryBar() {
             GTID Lag: <span className="text-emerald-500 font-semibold">0ms</span>
           </span>
           <span className="hidden lg:inline">
-            Interlocks: <span className="text-orange-700 dark:text-orange font-semibold">Armed</span>
+            Interlocks: <span className="text-neonPink dark:text-chartreuse font-semibold">Armed</span>
           </span>
           <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
             {expanded ? "▲ Hide Mesh Details" : "▼ Inspect Topology"}
@@ -63,38 +63,38 @@ export default function TelemetryBar() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="overflow-hidden"
           >
-            <div className="mt-2 p-5 rounded-xl bg-white/90 dark:bg-black/50 backdrop-blur-xl border border-black/10 dark:border-white/10 text-xs font-mono shadow-md">
+            <div className="mt-2 p-5 rounded-xl bg-white/90 dark:bg-midnight/80 backdrop-blur-2xl border border-black/10 dark:border-white/15 text-xs font-mono shadow-2xl">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
+                <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/10 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 01: Database</p>
                   <p className="font-bold text-slate-900 dark:text-white">vonotec-cluster-alpha</p>
-                  <p className="text-[11px] text-blue-600 dark:text-blue-400">100.64.0.1 (MySQL Master A)</p>
+                  <p className="text-[11px] text-neonPink dark:text-chartreuse">100.64.0.1 (MySQL Master A)</p>
                 </div>
-                <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
+                <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/10 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 02: IoT Gateway</p>
                   <p className="font-bold text-slate-900 dark:text-white">iskiosk-mcu-gateway</p>
                   <p className="text-[11px] text-emerald-500">100.64.0.2 (UART Reed Interlock)</p>
                 </div>
-                <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
+                <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/10 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 03: Identity Proxy</p>
                   <p className="font-bold text-slate-900 dark:text-white">entra-id-governance</p>
-                  <p className="text-[11px] text-orange-700 dark:text-orange">MSAL OAuth 2.0 Client Flow</p>
+                  <p className="text-[11px] text-neonPink dark:text-chartreuse">MSAL OAuth 2.0 Client Flow</p>
                 </div>
-                <div className="p-3 rounded-lg bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-1">
+                <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/10 space-y-1">
                   <p className="text-slate-500 dark:text-slate-400 font-medium">Node 04: Workstation</p>
                   <p className="font-bold text-slate-900 dark:text-white">jld-stealth-rig</p>
-                  <p className="text-[11px] text-blue-600 dark:text-blue-400">100.64.0.4 (Local Linux Node)</p>
+                  <p className="text-[11px] text-neonPink dark:text-chartreuse">100.64.0.4 (Local Linux Node)</p>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="pt-3 border-t border-black/10 dark:border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <span className="text-[11px] text-slate-600 dark:text-slate-400">
                   Zero public internet ports exposed. Mesh routing enforced via Tailnet ACL policies.
                 </span>
                 <button
                   type="button"
                   onClick={handleLaunchTerminal}
-                  className="px-3 py-1.5 rounded-lg bg-orange text-black font-bold text-xs uppercase tracking-wider font-mono shadow-[2px_2px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-lg bg-neonPink dark:bg-chartreuse text-white dark:text-midnight font-bold text-xs uppercase tracking-wider font-mono shadow-lg hover:shadow-neonPink/25 dark:hover:shadow-chartreuse/25 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-1.5"
                 >
                   <span>&gt;_ Launch Cluster CLI Terminal</span>
                 </button>
