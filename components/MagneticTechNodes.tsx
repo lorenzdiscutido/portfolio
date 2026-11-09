@@ -100,8 +100,8 @@ function InteractivePlaneNode({
         }}
         className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border shadow-none cursor-pointer ${
           isSnapped
-            ? "bg-[#0052FF]/15 border-[#0052FF] text-[#f8fafc]"
-            : "bg-[#1e2128]/80 border-white/5 text-[#f8fafc] hover:border-[#0052FF]/50"
+            ? "bg-[#0052FF]/15 border-[#0052FF] text-primary"
+            : "bg-surface/80 border-black/10 dark:border-white/5 text-primary hover:border-[#0052FF]/50"
         }`}
       >
         {/* Node Status Dot */}

@@ -57,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-x-hidden min-h-screen relative text-[#f8fafc]`}>
+      <body className={`${inter.className} overflow-x-hidden min-h-screen relative text-primary`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {/* Ambient Cyber-Physical Liquid Background (Dynamic Client Component with SSR: false) */}
           <AmbientBackground />
@@ -70,10 +70,10 @@ export default function RootLayout({
               <aside
                 aria-label="Live System Telemetry"
                 data-testid="live-telemetry-pill"
-                className="fixed bottom-4 right-4 z-50 w-52 h-10 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 flex items-center justify-center gap-2 px-3.5 select-none pointer-events-auto shadow-none transition-all"
+                className="fixed bottom-4 right-4 z-50 w-52 h-10 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 flex items-center justify-center gap-2 px-3.5 select-none pointer-events-auto shadow-none transition-all"
               >
                 <LiveTelemetryDot />
-                <span className="font-mono text-[10px] font-semibold tracking-tight text-[#f8fafc] truncate">
+                <span className="font-mono text-[10px] font-semibold tracking-tight text-primary truncate">
                   System: Online | Connecting...
                 </span>
               </aside>

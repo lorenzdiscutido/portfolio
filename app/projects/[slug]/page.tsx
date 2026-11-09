@@ -91,7 +91,7 @@ export default async function CaseStudyPage({
               />
             </div>
           )}
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f8fafc] tracking-tight mb-4 font-sans">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight mb-4 font-sans">
             {study.title}
           </h1>
           <p className="text-[#0052FF] font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
@@ -100,13 +100,13 @@ export default async function CaseStudyPage({
 
           {/* Tech Stack Tags in font-mono */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mr-2">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-muted mr-2">
               Tech Stack:
             </span>
             {study.techStack.map((tech) => (
               <span
                 key={tech}
-                className="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-[#1e2128] border border-white/5 text-[#f8fafc]"
+                className="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-surface/60 border border-black/10 dark:border-white/5 text-primary"
               >
                 {tech}
               </span>
@@ -121,7 +121,7 @@ export default async function CaseStudyPage({
                   href={study.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold transition-colors duration-200 shadow-none"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/80 border border-black/10 dark:border-white/5 hover:border-[#0052FF]/50 text-primary font-mono text-xs font-semibold transition-colors duration-200 shadow-none"
                 >
                   Source Repository →
                 </a>
@@ -131,7 +131,7 @@ export default async function CaseStudyPage({
                   href={study.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 shadow-none"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0052FF] text-white font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 shadow-none"
                 >
                   Live System Demo →
                 </a>
@@ -142,32 +142,32 @@ export default async function CaseStudyPage({
 
         {/* Academic Attribution & Committee Panel */}
         {study.academic && (
-          <div className="mb-12 p-6 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none text-xs font-mono space-y-3">
-            <div className="flex items-center justify-between border-b border-white/5 pb-3 flex-wrap gap-2">
+          <div className="mb-12 p-6 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none text-xs font-mono space-y-3">
+            <div className="flex items-center justify-between border-b border-black/10 dark:border-white/5 pb-3 flex-wrap gap-2">
               <span className="font-bold uppercase tracking-wider text-[#0052FF]">
                 Academic Research Attribution &amp; Defense
               </span>
-              <span className="text-slate-400 font-medium">Evaluated: {study.academic.defenseDate}</span>
+              <span className="text-muted font-medium">Evaluated: {study.academic.defenseDate}</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
               <div>
-                <p className="text-slate-400 font-bold uppercase mb-1">Project Authors / Engineering Team:</p>
-                <p className="text-[#f8fafc] font-semibold leading-relaxed">
+                <p className="text-muted font-bold uppercase mb-1">Project Authors / Engineering Team:</p>
+                <p className="text-primary font-semibold leading-relaxed">
                   {study.academic.authors.join(", ")}
                 </p>
-                <p className="text-slate-400 mt-2 font-medium">
+                <p className="text-muted mt-2 font-medium">
                   {study.academic.institution}
                 </p>
               </div>
               <div className="space-y-2">
                 <div>
-                  <p className="text-slate-400 font-bold uppercase mb-0.5">Advisers:</p>
-                  <p className="text-[#f8fafc] font-semibold">
+                  <p className="text-muted font-bold uppercase mb-0.5">Advisers:</p>
+                  <p className="text-primary font-semibold">
                     {study.academic.advisers.join(", ")}
                   </p>
                 </div>
                 <div>
-                  <p className="text-slate-400 font-bold uppercase mb-0.5">Evaluation Panel:</p>
+                  <p className="text-muted font-bold uppercase mb-0.5">Evaluation Panel:</p>
                   <p className="text-[#0052FF] font-semibold">
                     {study.academic.panel}
                   </p>
@@ -182,17 +182,17 @@ export default async function CaseStudyPage({
           {study.metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#0052FF] font-mono block tracking-tight mb-1">
                   {metric.value}
                 </span>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#f8fafc] block mb-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary block mb-2">
                   {metric.label}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/5 font-sans">
+              <p className="text-xs text-muted leading-relaxed pt-2 border-t border-black/10 dark:border-white/5 font-sans">
                 {metric.detail}
               </p>
             </div>
@@ -201,11 +201,11 @@ export default async function CaseStudyPage({
 
         {/* System Demonstration Video Walkthrough */}
         {study.demoVideoEmbedUrl && (
-          <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
+          <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
                   Live System Demonstration &amp; Walkthrough
                 </h2>
               </div>
@@ -214,13 +214,13 @@ export default async function CaseStudyPage({
                   href={study.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 self-start sm:self-auto shadow-none"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0052FF] text-white font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 self-start sm:self-auto shadow-none"
                 >
                   Open in Google Drive ↗
                 </a>
               )}
             </div>
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-black/90 shadow-none">
+            <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/90 shadow-none">
               <iframe
                 src={study.demoVideoEmbedUrl}
                 title={`${study.title} Video Demonstration`}
@@ -234,10 +234,10 @@ export default async function CaseStudyPage({
 
         {/* System Screenshots & Engineering Artifacts Gallery */}
         {study.screenshots && study.screenshots.length > 0 && (
-          <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
+          <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
             <div className="flex items-center gap-2 mb-6">
               <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+              <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
                 System Captures &amp; Engineering Artifacts
               </h2>
             </div>
@@ -248,7 +248,7 @@ export default async function CaseStudyPage({
                 return (
                   <figure
                     key={idx}
-                    className={`rounded-xl overflow-hidden border border-white/5 bg-[#0f1115] flex flex-col ${
+                    className={`rounded-xl overflow-hidden border border-black/10 dark:border-white/5 bg-base/40 flex flex-col ${
                       isWide ? "md:col-span-2" : ""
                     }`}
                   >
@@ -275,7 +275,7 @@ export default async function CaseStudyPage({
                         }`}
                       />
                     </div>
-                    <figcaption className="p-3.5 text-xs font-mono text-slate-400 border-t border-white/5 bg-[#1e2128]/40 leading-relaxed">
+                    <figcaption className="p-3.5 text-xs font-mono text-muted border-t border-black/10 dark:border-white/5 bg-surface/40 leading-relaxed">
                       {shot.caption}
                     </figcaption>
                   </figure>
@@ -286,27 +286,27 @@ export default async function CaseStudyPage({
         )}
 
         {/* The Problem Section */}
-        <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
+        <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Problem
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-sans">
+          <p className="text-base sm:text-lg text-muted leading-relaxed font-sans">
             {study.problem}
           </p>
         </section>
 
         {/* The Architecture & Solution Section */}
-        <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
+        <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Architecture &amp; Solution
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 font-sans">
+          <p className="text-base sm:text-lg text-muted leading-relaxed mb-8 font-sans">
             {study.architecture}
           </p>
 
@@ -323,37 +323,37 @@ export default async function CaseStudyPage({
           )}
 
           {/* System Integration Details */}
-          <div className="pt-6 border-t border-white/5">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-[#f8fafc] font-bold mb-3">
+          <div className="pt-6 border-t border-black/10 dark:border-white/5">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-primary font-bold mb-3">
               System Integration Details
             </h3>
-            <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-muted leading-relaxed font-sans">
               {study.architectureDetails}
             </p>
           </div>
         </section>
 
         {/* The Outcome Section */}
-        <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-12">
+        <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-12">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Outcome
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-6 font-sans">
+          <p className="text-base sm:text-lg text-muted leading-relaxed mb-6 font-sans">
             {study.outcome}
           </p>
 
-          <div className="pt-6 border-t border-white/5">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-[#f8fafc] font-bold mb-4">
+          <div className="pt-6 border-t border-black/10 dark:border-white/5">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-primary font-bold mb-4">
               Engineering Deliverables &amp; Verified Results
             </h3>
             <ul className="space-y-3">
               {study.outcomes.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed font-sans"
+                  className="flex items-start gap-3 text-muted text-sm leading-relaxed font-sans"
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0052FF] shrink-0" />
                   <span>{item}</span>
@@ -365,11 +365,11 @@ export default async function CaseStudyPage({
 
         {/* ISO/IEC 25010 Quality Benchmark Table */}
         {study.isoEvaluation && (
-          <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
+          <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
                   ISO/IEC 25010 Empirical Quality Evaluation
                 </h2>
               </div>
@@ -377,24 +377,24 @@ export default async function CaseStudyPage({
                 Overall Weighted Mean: 3.70 / 4.00 (Highly Acceptable)
               </span>
             </div>
-            <p className="text-sm text-slate-400 mb-6 leading-relaxed font-sans">
+            <p className="text-sm text-muted mb-6 leading-relaxed font-sans">
               Empirical quality evaluation conducted across student and administrative staff respondent cohorts utilizing a 4-point Likert compliance instrument across five core ISO/IEC 25010 software quality characteristics:
             </p>
-            <div className="overflow-x-auto rounded-xl border border-white/5">
+            <div className="overflow-x-auto rounded-xl border border-black/10 dark:border-white/5">
               <table className="w-full text-left text-xs font-mono">
-                <thead className="bg-[#0f1115] text-slate-400 border-b border-white/5">
+                <thead className="bg-surface/80 text-muted border-b border-black/10 dark:border-white/5">
                   <tr>
                     <th className="py-2.5 px-3">Quality Characteristic</th>
                     <th className="py-2.5 px-3">Weighted Mean Score</th>
                     <th className="py-2.5 px-3">Descriptive Rating</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 bg-[#0f1115]/40">
+                <tbody className="divide-y divide-black/5 dark:divide-white/5 bg-base/40">
                   {study.isoEvaluation.map((row, idx) => (
                     <tr key={idx} className="hover:bg-[#0052FF]/5 transition-colors duration-200">
-                      <td className="py-2.5 px-3 font-semibold text-[#f8fafc]">{row.characteristic}</td>
+                      <td className="py-2.5 px-3 font-semibold text-primary">{row.characteristic}</td>
                       <td className="py-2.5 px-3 font-bold text-[#0052FF]">{row.score}</td>
-                      <td className="py-2.5 px-3 font-medium text-[#f8fafc]">{row.interpretation}</td>
+                      <td className="py-2.5 px-3 font-medium text-primary">{row.interpretation}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -405,46 +405,46 @@ export default async function CaseStudyPage({
 
         {/* Economic Feasibility & ROI Analysis */}
         {study.financials && (
-          <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-12">
+          <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-12">
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
+              <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
                 Financial &amp; Economic Feasibility Analysis
               </h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-              <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-slate-400 uppercase">Total CapEx Cost</span>
-                <span className="block text-xl font-mono font-bold text-[#f8fafc] mt-1">{study.financials.totalCost}</span>
+              <div className="p-4 rounded-xl bg-base/40 border border-black/10 dark:border-white/5">
+                <span className="block text-xs font-mono text-muted uppercase">Total CapEx Cost</span>
+                <span className="block text-xl font-mono font-bold text-primary mt-1">{study.financials.totalCost}</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-slate-400 uppercase">Annualized Net Savings</span>
+              <div className="p-4 rounded-xl bg-base/40 border border-black/10 dark:border-white/5">
+                <span className="block text-xs font-mono text-muted uppercase">Annualized Net Savings</span>
                 <span className="block text-xl font-mono font-bold text-[#0052FF] mt-1">{study.financials.annualSavings}</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-slate-400 uppercase">Projected ROI</span>
+              <div className="p-4 rounded-xl bg-base/40 border border-black/10 dark:border-white/5">
+                <span className="block text-xs font-mono text-muted uppercase">Projected ROI</span>
                 <span className="block text-xl font-mono font-bold text-[#FF7A00] mt-1">{study.financials.roi}</span>
               </div>
-              <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-slate-400 uppercase">Payback Period</span>
+              <div className="p-4 rounded-xl bg-base/40 border border-black/10 dark:border-white/5">
+                <span className="block text-xs font-mono text-muted uppercase">Payback Period</span>
                 <span className="block text-xl font-mono font-bold text-[#FF7A00] mt-1">{study.financials.paybackPeriod}</span>
               </div>
             </div>
-            <p className="text-xs text-slate-400 font-mono">
+            <p className="text-xs text-muted font-mono">
               Empirical cost modeling projects total capital cost recovery within 4.63 months through administrative labor redeployment and physical paper reduction.
             </p>
           </section>
         )}
 
         {/* Bottom Navigation */}
-        <div className="pt-8 border-t border-white/5 flex justify-between items-center">
+        <div className="pt-8 border-t border-black/10 dark:border-white/5 flex justify-between items-center">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-slate-400 hover:text-[#0052FF] transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-muted hover:text-[#0052FF] transition-colors duration-200"
           >
             ← Back to Portfolio
           </Link>
-          <span className="text-xs font-mono text-slate-400">
+          <span className="text-xs font-mono text-muted">
             Node: {study.slug}
           </span>
         </div>

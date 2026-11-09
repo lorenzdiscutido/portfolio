@@ -592,7 +592,7 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 text-[#f8fafc] text-xs font-mono hover:border-[#0052FF]/50 transition-colors duration-200 shadow-none cursor-pointer flex items-center gap-2.5 group"
+        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary text-xs font-mono hover:border-[#0052FF]/50 transition-colors duration-200 shadow-none cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
@@ -600,7 +600,7 @@ export default function Terminal() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
         </span>
         <span className="font-bold">&gt;_ Terminal</span>
-        <span className="hidden sm:inline text-[10px] text-slate-400 bg-[#0f1115] px-1.5 py-0.5 rounded border border-white/10">
+        <span className="hidden sm:inline text-[10px] text-muted bg-base/80 px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10">
           Ctrl+`
         </span>
       </button>

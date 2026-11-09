@@ -126,10 +126,10 @@ export default function About() {
             viewport={{ once: true, margin: "-48px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <h2 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-[#f8fafc] mb-6">
+            <h2 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-6">
               Engineering <span className="text-[#0052FF]">Background</span>
             </h2>
-            <div className="space-y-6 text-base md:text-lg text-slate-400 leading-relaxed font-sans">
+            <div className="space-y-6 text-base md:text-lg text-muted leading-relaxed font-sans">
               <p>
                 Graduated with a BS in Computer Engineering (Big Data Analytics) from the Polytechnic University of the Philippines (PUP).
               </p>
@@ -147,11 +147,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-48px" }}
             transition={{ duration: 0.4, delay: 0.08, ease: "easeOut" }}
-            className="bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none p-8 rounded-2xl"
+            className="bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none p-8 rounded-2xl"
           >
             <div className="flex items-center justify-between mb-8">
-              <h3 className="font-sans text-2xl font-extrabold tracking-tight text-[#f8fafc]">Technical Stack</h3>
-              <span className="text-xs font-mono text-slate-400 bg-[#0f1115] px-3 py-1 rounded-full border border-white/5">
+              <h3 className="font-sans text-2xl font-extrabold tracking-tight text-primary">Technical Stack</h3>
+              <span className="text-xs font-mono text-muted bg-surface/60 px-3 py-1 rounded-full border border-black/5 dark:border-white/5">
                 Hover or click for context
               </span>
             </div>
@@ -178,8 +178,8 @@ export default function About() {
                           onMouseLeave={() => setHoveredSkill(null)}
                           className={`text-left text-xs font-mono font-medium px-3.5 py-2 rounded-xl border transition-colors duration-200 cursor-pointer ${
                             isSelected
-                              ? "bg-[#0052FF]/15 text-[#f8fafc] border-[#0052FF] font-semibold"
-                              : "bg-[#0f1115]/60 text-[#f8fafc] border-white/5 hover:border-[#0052FF]/50"
+                              ? "bg-[#0052FF]/15 text-primary border-[#0052FF] font-semibold"
+                              : "bg-base/40 text-primary border-black/10 dark:border-white/5 hover:border-[#0052FF]/50"
                           }`}
                         >
                           {skill.name}
@@ -192,23 +192,23 @@ export default function About() {
             </div>
 
             {/* Context Tooltip / Callout Panel */}
-            <div className="mt-8 pt-6 border-t border-white/5 min-h-[72px] flex items-center">
+            <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/5 min-h-[72px] flex items-center">
               {activeSkill ? (
-                <div className="w-full bg-[#0f1115]/80 border border-white/5 p-5 rounded-xl transition-all">
+                <div className="w-full bg-base/60 border border-black/10 dark:border-white/5 p-5 rounded-xl transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <span className="text-xs font-bold font-mono text-[#FF7A00] uppercase tracking-wider">
                       Production Application
                     </span>
-                    <span className="text-xs font-mono text-[#f8fafc] font-semibold">
+                    <span className="text-xs font-mono text-primary font-semibold">
                       {activeSkill.name}
                     </span>
                   </div>
-                  <p className="text-xs md:text-sm text-slate-400 leading-relaxed font-sans">
+                  <p className="text-xs md:text-sm text-muted leading-relaxed font-sans">
                     {activeSkill.context}
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-slate-400 italic text-center w-full font-sans">
+                <p className="text-xs text-muted italic text-center w-full font-sans">
                   Click or hover any technology above to inspect its real-world implementation in my engineering workflow.
                 </p>
               )}

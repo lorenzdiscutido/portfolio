@@ -341,13 +341,13 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
   const activeNode = diagram.nodes[activeIndex];
 
   return (
-    <div className="w-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 md:p-8 mb-12 shadow-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/5">
+    <div className="w-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 rounded-2xl p-6 md:p-8 mb-12 shadow-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/5">
         <div>
           <span className="text-[#0052FF] font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
             Interactive Signal Flow &amp; Architecture
           </span>
-          <h3 className="text-xl md:text-2xl font-bold text-[#f8fafc]">
+          <h3 className="text-xl md:text-2xl font-bold text-primary">
             {diagram.topologyTitle}
           </h3>
         </div>
@@ -357,13 +357,13 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
             onClick={() => setIsSimulating(!isSimulating)}
             className={`px-3.5 py-1.5 rounded-full font-mono text-xs font-bold transition-colors duration-200 cursor-pointer flex items-center gap-2 border border-[#0052FF] shadow-none ${
               isSimulating
-                ? "bg-[#0052FF] text-[#f8fafc]"
-                : "bg-[#0052FF]/10 text-[#f8fafc] hover:bg-[#0052FF]/20"
+                ? "bg-[#0052FF] text-white"
+                : "bg-[#0052FF]/10 text-primary hover:bg-[#0052FF]/20"
             }`}
           >
             <span
               className={`h-2 w-2 rounded-full ${
-                isSimulating ? "bg-[#f8fafc] animate-ping" : "bg-[#0052FF]"
+                isSimulating ? "bg-white animate-ping" : "bg-[#0052FF]"
               }`}
             />
             <span>{isSimulating ? "Pause Signal" : "▶ Simulate Flow"}</span>
@@ -389,15 +389,15 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className={`text-left p-4 rounded-xl border transition-colors duration-200 relative flex flex-col justify-between cursor-pointer shadow-none ${
                   isSelected
-                    ? "bg-[#1e2128] border-[#0052FF]"
-                    : "bg-[#0f1115]/60 border-white/5 hover:border-[#0052FF]/50"
+                    ? "bg-surface border-[#0052FF]"
+                    : "bg-base/40 border-black/10 dark:border-white/5 hover:border-[#0052FF]/50"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-xs font-mono font-bold uppercase ${
-                        isSelected ? "text-[#0052FF]" : "text-slate-400"
+                        isSelected ? "text-[#0052FF]" : "text-muted"
                       }`}
                     >
                       Stage 0{index + 1}
@@ -409,25 +409,25 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF]"></span>
                         </>
                       ) : (
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white/20"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary/20"></span>
                       )}
                     </span>
                   </div>
-                  <p className="text-[#f8fafc] font-bold text-sm mb-1 font-sans">
+                  <p className="text-primary font-bold text-sm mb-1 font-sans">
                     {node.label}
                   </p>
-                  <p className="text-slate-400 text-xs leading-snug font-sans">
+                  <p className="text-muted text-xs leading-snug font-sans">
                     {node.sublabel}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-400 truncate max-w-[120px]">
+                <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/5 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-muted truncate max-w-[120px]">
                     {node.protocol}
                   </span>
                   <span
                     className={`text-xs font-mono font-bold transition-transform ${
-                      isSelected ? "text-[#0052FF] translate-x-1" : "text-slate-400"
+                      isSelected ? "text-[#0052FF] translate-x-1" : "text-muted"
                     }`}
                   >
                     →
@@ -439,14 +439,14 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
         </div>
 
         {/* Blueprint Connection Signal Visualizer */}
-        <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-3 border-t border-[#0052FF]/30 text-[11px] font-mono text-slate-400">
+        <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-3 border-t border-[#0052FF]/30 text-[11px] font-mono text-muted">
           <div className="flex items-center gap-2">
             <span className="text-[#0052FF] font-bold">Active Signal:</span>
-            <span className="text-[#f8fafc] font-semibold">{activeNode.protocol}</span>
+            <span className="text-primary font-semibold">{activeNode.protocol}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-[#0052FF] animate-pulse" />
-            <span className="text-[#f8fafc]">Deterministic State Machine Validated</span>
+            <span className="text-primary">Deterministic State Machine Validated</span>
           </div>
         </div>
       </div>
@@ -459,13 +459,13 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="bg-[#0f1115]/90 rounded-2xl border border-white/5 p-6 shadow-none"
+          className="bg-base/90 rounded-2xl border border-black/10 dark:border-white/5 p-6 shadow-none"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
             <div>
-              <h4 className="text-lg font-bold text-[#f8fafc] font-sans">
+              <h4 className="text-lg font-bold text-primary font-sans">
                 {activeNode.label}{" "}
-                <span className="text-slate-400 font-normal text-sm font-sans">
+                <span className="text-muted font-normal text-sm font-sans">
                   — {activeNode.sublabel}
                 </span>
               </h4>
@@ -475,16 +475,16 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
             </span>
           </div>
 
-          <p className="text-slate-400 text-sm leading-relaxed mb-5 font-sans">
+          <p className="text-muted text-sm leading-relaxed mb-5 font-sans">
             {activeNode.summary}
           </p>
 
-          <div className="bg-[#0f1115] text-[#f8fafc] rounded-lg border border-white/10 p-4 overflow-x-auto shadow-none">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 pb-2 border-b border-white/5">
+          <div className="bg-surface/60 text-primary rounded-lg border border-black/10 dark:border-white/10 p-4 overflow-x-auto shadow-none">
+            <div className="flex items-center justify-between text-xs font-mono text-muted mb-2 pb-2 border-b border-black/5 dark:border-white/5">
               <span className="text-[#0052FF] font-semibold">// Implementation / Config Excerpt</span>
-              <span className="text-slate-400 font-mono">readonly</span>
+              <span className="text-muted font-mono">readonly</span>
             </div>
-            <pre className="font-mono text-xs leading-relaxed text-[#f8fafc]">
+            <pre className="font-mono text-xs leading-relaxed text-primary">
               <code>{activeNode.configSnippet}</code>
             </pre>
           </div>
