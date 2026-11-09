@@ -44,33 +44,48 @@ export default function LiquidBackground() {
 
   const spawnRipple = (clientX: number, clientY: number) => {
     const p = pointerRef.current;
+    if (!p.active) {
+      p.lastX = clientX;
+      p.lastY = clientY;
+      p.x = clientX;
+      p.y = clientY;
+      p.active = true;
+      return;
+    }
+
     const dx = clientX - p.lastX;
     const dy = clientY - p.lastY;
-    const speed = Math.min(Math.hypot(dx, dy), 60);
+    const distance = Math.hypot(dx, dy);
+    const speed = Math.min(distance, 60);
+
+    const steps = Math.min(Math.max(1, Math.floor(distance / 5)), 60); // Spawn a particle every 5px
+    const palette: FluidRipple["hueType"][] = ["electricBlue", "stealthSlate", "electricBlue"];
+    const hueType = speed > 24 ? "vibrantOrange" : speed > 12 ? "electricBlue" : palette[ripplesRef.current.length % 3];
+
+    for (let i = 0; i < steps; i++) {
+      const interpX = p.lastX + (dx * (i / steps));
+      const interpY = p.lastY + (dy * (i / steps));
+
+      ripplesRef.current.push({
+        x: interpX,
+        y: interpY,
+        vx: dx * 0.12,
+        vy: dy * 0.12,
+        radius: 8 + speed * 0.3,
+        maxRadius: 60 + speed * 1.5,
+        alpha: Math.min(0.15, 0.05 + speed * 0.002),
+        hueType,
+      });
+
+      if (ripplesRef.current.length > 180) {
+        ripplesRef.current.shift();
+      }
+    }
 
     p.lastX = clientX;
     p.lastY = clientY;
     p.x = clientX;
     p.y = clientY;
-    p.active = true;
-
-    const palette: FluidRipple["hueType"][] = ["electricBlue", "stealthSlate", "electricBlue"];
-    const hueType = speed > 24 ? "vibrantOrange" : speed > 12 ? "electricBlue" : palette[ripplesRef.current.length % 3];
-
-    ripplesRef.current.push({
-      x: clientX,
-      y: clientY,
-      vx: dx * 0.12,
-      vy: dy * 0.12,
-      radius: 8 + speed * 0.3,
-      maxRadius: 60 + speed * 1.5,
-      alpha: Math.min(0.25, 0.08 + speed * 0.003),
-      hueType,
-    });
-
-    if (ripplesRef.current.length > 120) {
-      ripplesRef.current.shift();
-    }
   };
 
   useEffect(() => {
@@ -226,7 +241,7 @@ export default function LiquidBackground() {
 
       // Interactive cursor fluid wakes & ripples
       const ripples = ripplesRef.current;
-      ctx.globalCompositeOperation = "screen";
+      ctx.globalCompositeOperation = isLight ? "multiply" : "screen";
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
         r.x += r.vx * dt;
@@ -244,7 +259,7 @@ export default function LiquidBackground() {
         const grad = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
         grad.addColorStop(0, getRippleColor(r.hueType, r.alpha, isLight));
         grad.addColorStop(0.4, getRippleColor(r.hueType, r.alpha * 0.5, isLight));
-        grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+        grad.addColorStop(1, isLight ? "rgba(255, 255, 255, 0)" : "rgba(0, 0, 0, 0)");
 
         ctx.fillStyle = grad;
         ctx.beginPath();
