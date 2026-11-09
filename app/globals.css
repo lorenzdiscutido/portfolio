@@ -5,25 +5,24 @@
 @layer base {
   :root,
   .light,
-  html.light,
   html:not(.dark) {
-    --base: 15 17 21;       /* #0f1115 - Slate Black */
-    --surface: 30 33 40;    /* #1e2128 - Surface Dark */
-    --primary: 248 250 252; /* #f8fafc - Crisp Off-White */
-    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Slate */
-    --accent: 0 82 255;     /* #0052FF - Electric Blue */
-    --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
-    color-scheme: dark;
+    --base: 248 250 252;       /* #f8fafc - Blueprint White */
+    --surface: 255 255 255;    /* #ffffff - Pure White Glass */
+    --primary: 15 17 21;       /* #0f1115 - Stealth Ink */
+    --muted: 100 116 139;      /* #64748b - Slate 500 */
+    --electric-blue: 0 82 255; /* #0052FF */
+    --alert-orange: 255 122 0; /* #FF7A00 */
+    color-scheme: light;
   }
 
   .dark,
   html.dark {
-    --base: 15 17 21;       /* #0f1115 - Slate Black */
-    --surface: 30 33 40;    /* #1e2128 - Surface Dark */
-    --primary: 248 250 252; /* #f8fafc - Crisp Off-White */
-    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Slate */
-    --accent: 0 82 255;     /* #0052FF - Electric Blue */
-    --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
+    --base: 15 17 21;          /* #0f1115 - Stealth Black */
+    --surface: 30 33 40;       /* #1e2128 - Surface Dark Glass */
+    --primary: 248 250 252;    /* #f8fafc - Frost White */
+    --muted: 148 163 184;      /* #94a3b8 - Slate 400 */
+    --electric-blue: 0 82 255; /* #0052FF */
+    --alert-orange: 255 122 0; /* #FF7A00 */
     color-scheme: dark;
   }
 
@@ -49,37 +48,37 @@
 
 /* Explicit high-contrast text helpers */
 .theme-text-primary {
-  color: #f8fafc !important;
+  color: rgb(var(--primary)) !important;
 }
 
 .theme-text-secondary {
-  color: #94a3b8 !important;
+  color: rgb(var(--muted)) !important;
 }
 
 /* Matte Frosted Glassmorphism Surface Utilities */
 .glass-surface {
-  background-color: rgba(30, 33, 40, 0.8);
+  background-color: rgba(var(--surface), 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(var(--primary), 0.05);
 }
 
 /* Tactile Stealth Button */
 .theme-btn-white {
-  background-color: rgba(30, 33, 40, 0.8) !important;
-  color: #f8fafc !important;
-  border-color: rgba(255, 255, 255, 0.05) !important;
+  background-color: rgba(var(--surface), 0.8) !important;
+  color: rgb(var(--primary)) !important;
+  border-color: rgba(var(--primary), 0.08) !important;
 }
 
 /* Stealth Badge styling */
 .theme-badge {
-  background-color: rgba(30, 33, 40, 0.88) !important;
-  color: #f8fafc !important;
-  border-color: rgba(0, 82, 255, 0.35) !important;
+  background-color: rgba(var(--surface), 0.88) !important;
+  color: rgb(var(--primary)) !important;
+  border-color: rgba(var(--electric-blue), 0.35) !important;
 }
 
 /* Ambient Dot Grid */
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(248, 250, 252, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(var(--primary), 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
 }
