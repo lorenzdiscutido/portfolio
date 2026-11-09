@@ -80,7 +80,7 @@ export default function KomunikonekPage() {
         {/* Navigation */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-[#94a3b8] hover:text-[#0052FF] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-400 hover:text-[#0052FF] transition-colors duration-200 mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
@@ -90,10 +90,10 @@ export default function KomunikonekPage() {
           <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#0052FF] mb-3">
             // CASE STUDY: 02
           </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f8fafc] tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f8fafc] tracking-tight mb-4 font-sans">
             Komunikonek: Barangay Digital Hub
           </h1>
-          <p className="text-[#94a3b8] font-mono text-sm sm:text-base font-semibold mb-6">
+          <p className="text-slate-400 font-mono text-sm sm:text-base font-semibold mb-6">
             Real-Time Civic Mobile Dashboard | Dart, Flutter, Firebase
           </p>
 
@@ -102,7 +102,7 @@ export default function KomunikonekPage() {
               href="https://github.com/lorenzdiscutido/Komunikonek-app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold transition-all shadow-none"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold transition-colors duration-200 shadow-none"
             >
               Source Repository →
             </a>
@@ -122,7 +122,7 @@ export default function KomunikonekPage() {
                     {item.name}
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-[#f8fafc]">
+                <p className="text-sm font-semibold text-[#f8fafc] font-sans">
                   {item.role}
                 </p>
               </div>
@@ -133,10 +133,10 @@ export default function KomunikonekPage() {
         {/* Civic Tech Objective */}
         <section className="mb-16">
           <div className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none">
-            <h2 className="text-xl sm:text-2xl font-bold font-mono text-[#f8fafc] mb-4 flex items-center gap-2">
-              <span className="text-[#0052FF] font-bold">&gt;</span> The Barangay Problem
+            <h2 className="text-xl sm:text-2xl font-bold font-sans text-[#f8fafc] mb-4 flex items-center gap-2">
+              <span className="text-[#0052FF] font-bold font-mono">&gt;</span> The Barangay Problem
             </h2>
-            <p className="text-[#94a3b8] text-base md:text-lg leading-relaxed">
+            <p className="text-slate-400 text-base md:text-lg leading-relaxed font-sans">
               Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.
             </p>
           </div>
@@ -148,18 +148,18 @@ export default function KomunikonekPage() {
             {features.map((card, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 transition-all duration-300 flex flex-col justify-between shadow-none"
+                className="p-6 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 transition-colors duration-200 flex flex-col justify-between shadow-none"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="font-mono text-xs font-bold text-[#0052FF]">
                       0{idx + 1}.
                     </span>
-                    <h3 className="text-lg font-bold text-[#f8fafc]">
+                    <h3 className="text-lg font-bold text-[#f8fafc] font-sans">
                       {card.title}
                     </h3>
                   </div>
-                  <p className="text-[#94a3b8] text-sm leading-relaxed">
+                  <p className="text-slate-400 text-sm leading-relaxed font-sans">
                     {card.details}
                   </p>
                 </div>
@@ -170,8 +170,8 @@ export default function KomunikonekPage() {
 
         {/* Mobile Interface Gallery */}
         <section className="mb-16">
-          <h2 className="text-xl sm:text-2xl font-bold font-mono text-[#f8fafc] mb-6 flex items-center gap-2">
-            <span className="text-[#0052FF] font-bold">&gt;</span> Mobile Interface Walkthrough
+          <h2 className="text-xl sm:text-2xl font-bold font-sans text-[#f8fafc] mb-6 flex items-center gap-2">
+            <span className="text-[#0052FF] font-bold font-mono">&gt;</span> Mobile Interface Walkthrough
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -180,7 +180,7 @@ export default function KomunikonekPage() {
                 key={idx}
                 className="flex flex-col items-center"
               >
-                <div className="w-full aspect-[9/16] rounded-2xl border border-white/5 bg-[#1e2128]/80 backdrop-blur-md p-4 flex flex-col justify-between shadow-none relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
+                <div className="w-full aspect-[9/16] rounded-2xl border border-white/5 bg-[#1e2128]/80 backdrop-blur-md p-4 flex flex-col justify-between shadow-none relative overflow-hidden group hover:border-[#0052FF]/50 transition-colors duration-200">
                   {/* Smartphone Top Notch */}
                   <div className="w-full flex justify-center">
                     <div className="w-20 h-1.5 rounded-full bg-white/10" />
@@ -194,10 +194,10 @@ export default function KomunikonekPage() {
                     <p className="font-mono text-sm font-bold text-[#f8fafc] mb-2">
                       {screen.title}
                     </p>
-                    <p className="text-xs text-[#94a3b8] leading-relaxed max-w-[200px]">
+                    <p className="text-xs text-slate-400 leading-relaxed max-w-[200px] font-sans">
                       {screen.description}
                     </p>
-                    <span className="mt-4 font-mono text-[10px] uppercase tracking-wider text-[#94a3b8]/60">
+                    <span className="mt-4 font-mono text-[10px] uppercase tracking-wider text-slate-400/60">
                       9:16 Mobile UI Screenshot
                     </span>
                   </div>
@@ -209,7 +209,7 @@ export default function KomunikonekPage() {
                 </div>
 
                 {/* Technical Caption */}
-                <p className="mt-3 text-xs font-mono text-[#94a3b8] text-center px-2">
+                <p className="mt-3 text-xs font-mono text-slate-400 text-center px-2">
                   <span className="font-bold text-[#f8fafc]">UI Screen {screen.screenNumber}:</span> {screen.title}
                 </p>
               </div>

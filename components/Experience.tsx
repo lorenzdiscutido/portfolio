@@ -57,10 +57,10 @@ export default function Experience() {
           <p className="text-[#0052FF] font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Career Timeline
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#f8fafc] mb-2">
+          <h2 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-[#f8fafc] mb-2">
             Experience &amp; <span className="text-[#0052FF]">Education</span>
           </h2>
-          <p className="text-[#94a3b8] font-medium text-sm md:text-base mt-2 max-w-xl">
+          <p className="font-sans text-slate-400 font-medium text-sm md:text-base mt-2 max-w-xl">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -74,9 +74,9 @@ export default function Experience() {
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
               {/* Timeline node marker */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-[#0f1115] ring-2 ring-[#0052FF]/30 bg-[#0052FF] group-hover:bg-[#FF7A00] group-hover:scale-125 transition-all" />
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-[#0f1115] ring-2 ring-[#0052FF]/30 bg-[#0052FF] group-hover:bg-[#FF7A00] group-hover:scale-125 transition-transform duration-200" />
 
-              <div className="bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none p-6 md:p-8 rounded-2xl hover:border-[#0052FF]/50 transition-all">
+              <div className="bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none p-6 md:p-8 rounded-2xl hover:border-[#0052FF]/50 transition-colors duration-200">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-mono font-bold text-[#0052FF] uppercase tracking-wider">
                     {item.period}
@@ -87,18 +87,18 @@ export default function Experience() {
                         ? "bg-[#0052FF]/10 border-[#0052FF]/30 text-[#f8fafc] font-semibold"
                         : item.type === "Internship"
                         ? "bg-[#FF7A00]/10 border-[#FF7A00]/30 text-[#FF7A00] font-semibold"
-                        : "bg-white/5 border-white/10 text-[#94a3b8] font-semibold"
+                        : "bg-white/5 border-white/10 text-slate-400 font-semibold"
                     }`}
                   >
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-extrabold tracking-tight text-[#f8fafc] mb-1">
+                <h3 className="font-sans text-xl md:text-2xl font-extrabold tracking-tight text-[#f8fafc] mb-1">
                   {item.role}
                 </h3>
 
-                <p className="text-[#94a3b8] text-sm font-medium mb-4">
+                <p className="font-sans text-slate-400 text-sm font-medium mb-4">
                   <strong className="text-[#f8fafc]">{item.organization}</strong>{" "}
                   • {item.location}
                 </p>
@@ -107,7 +107,7 @@ export default function Experience() {
                   {item.highlights.map((point, i) => (
                     <li
                       key={i}
-                      className="text-[#94a3b8] text-sm leading-relaxed flex items-start gap-2.5"
+                      className="font-sans text-slate-400 text-sm leading-relaxed flex items-start gap-2.5"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-[#0052FF] shrink-0 mt-2" />
                       <span>{point}</span>

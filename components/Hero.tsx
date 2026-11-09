@@ -13,18 +13,18 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.11,
-      delayChildren: 0.05,
+      staggerChildren: 0.08,
+      delayChildren: 0.04,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { type: "spring", stiffness: 400, damping: 25 },
   },
 };
 
@@ -42,7 +42,7 @@ export default function Hero() {
       } else {
         clearInterval(timer);
       }
-    }, 30);
+    }, 28);
     return () => clearInterval(timer);
   }, []);
 
@@ -53,7 +53,7 @@ export default function Hero() {
         <TelemetryBar />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Staggered Upward Text Reveal */}
+          {/* Left Column: Responsive Spring Reveal */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -84,7 +84,7 @@ export default function Hero() {
 
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
-              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3 text-slate-900 dark:text-[#f8fafc]">
+              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3 text-[#f8fafc]">
                 Jose Lorenzo Discutido
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
@@ -97,7 +97,7 @@ export default function Hero() {
             {/* Value Proposition (Body Text) */}
             <motion.p
               variants={itemVariants}
-              className="font-sans text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
+              className="font-sans text-slate-400 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
             >
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
@@ -129,14 +129,14 @@ export default function Hero() {
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-11 bg-white/80 dark:bg-[#1e2128]/80 backdrop-blur-md text-slate-900 dark:text-[#f8fafc] border border-black/15 dark:border-white/5 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-11 bg-[#1e2128]/80 backdrop-blur-md text-[#f8fafc] border border-white/5 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-colors duration-200 cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>Contact Me</span>
                 </a>
               </MagneticButton>
 
               <div className="md:hidden">
-                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-white/80 dark:bg-[#1e2128]/80 backdrop-blur-md border border-black/15 dark:border-white/5 hover:border-[#0052FF]/50 text-slate-900 dark:text-[#f8fafc] font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200" />
               </div>
             </motion.div>
           </motion.div>
@@ -145,7 +145,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.1 }}
             className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
             <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
@@ -156,7 +156,7 @@ export default function Hero() {
               />
 
               {/* Main Matte Frosted Glass Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/5 bg-[#1e2128]/80 backdrop-blur-md shadow-none z-10">
+              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-white/5 bg-[#1e2128]/80 backdrop-blur-md shadow-none z-10">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -168,7 +168,7 @@ export default function Hero() {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-[#1e2128] p-6 text-[#f8fafc]">
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#1e2128] p-6 text-[#f8fafc]">
                     <span className="font-extrabold text-3xl tracking-tighter text-[#0052FF]">
                       JL<span>D</span>
                     </span>

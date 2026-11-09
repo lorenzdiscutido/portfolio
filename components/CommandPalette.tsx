@@ -172,19 +172,19 @@ export default function CommandPalette() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.15 }}
             onClick={() => setIsOpen(false)}
             className="fixed inset-0 bg-[#0f1115]/75 backdrop-blur-md"
             aria-hidden="true"
           />
 
-          {/* Command Palette Modal Container (Matte frosted glass: bg-[#1e2128]/80 backdrop-blur-md border border-white/5) */}
+          {/* Command Palette Modal Container (Exact: bg-[#1e2128]/80 backdrop-blur-md border border-white/5) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: -12 }}
+            initial={{ opacity: 0, scale: 0.96, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: -12 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="relative z-10 w-full max-w-xl rounded-2xl bg-[#1e2128]/90 backdrop-blur-md border border-white/5 shadow-none overflow-hidden"
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="relative z-10 w-full max-w-xl rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none overflow-hidden"
           >
             {/* Search Header with Electric Blue prompt and Vibrant Orange block cursor */}
             <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5">
@@ -201,7 +201,7 @@ export default function CommandPalette() {
                   placeholder="Type a command or search system nodes..."
                   aria-label="Command Palette Search Input"
                   data-testid="command-palette-input"
-                  className="w-full bg-transparent text-[#f8fafc] placeholder:text-[#94a3b8] font-mono text-sm outline-none border-none caret-[#FF7A00]"
+                  className="w-full bg-transparent text-[#f8fafc] placeholder:text-slate-400 font-mono text-sm outline-none border-none caret-[#FF7A00]"
                 />
                 {/* Vibrant Orange Accent Block Caret Indicator */}
                 <span
@@ -216,7 +216,7 @@ export default function CommandPalette() {
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Command Palette"
-                className="text-xs font-mono text-[#94a3b8] hover:text-[#f8fafc] px-2 py-1 rounded border border-white/10"
+                className="text-xs font-mono text-slate-400 hover:text-[#f8fafc] px-2 py-1 rounded border border-white/10 hover:border-[#0052FF]/50 transition-colors duration-200"
               >
                 ESC
               </button>
@@ -229,7 +229,7 @@ export default function CommandPalette() {
               className="max-h-72 overflow-y-auto py-2 divide-y divide-white/5"
             >
               {filteredCommands.length === 0 ? (
-                <p className="px-4 py-6 text-center font-mono text-xs text-[#94a3b8]">
+                <p className="px-4 py-6 text-center font-mono text-xs text-slate-400">
                   No matching system routes found for &ldquo;{query}&rdquo;
                 </p>
               ) : (
@@ -248,22 +248,22 @@ export default function CommandPalette() {
                         setIsOpen(false);
                         item.action();
                       }}
-                      className={`w-full text-left px-4 py-3 flex items-center justify-between transition-all cursor-pointer ${
+                      className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors duration-200 cursor-pointer ${
                         isActive
                           ? "border-l-2 border-[#0052FF] bg-[#0052FF]/15 text-[#f8fafc]"
-                          : "border-l-2 border-transparent text-[#94a3b8] hover:text-[#f8fafc]"
+                          : "border-l-2 border-transparent text-slate-400 hover:text-[#f8fafc] hover:bg-[#1e2128]/50"
                       }`}
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-[#f8fafc]">
+                        <span className="text-sm font-semibold font-sans text-[#f8fafc]">
                           {item.label}
                         </span>
-                        <span className="text-[11px] font-mono text-[#94a3b8]">
+                        <span className="text-[11px] font-mono text-slate-400">
                           {item.category}
                         </span>
                       </div>
                       {item.shortcut && (
-                        <kbd className="font-mono text-[11px] text-[#94a3b8] bg-[#0f1115] px-2 py-0.5 rounded border border-white/10">
+                        <kbd className="font-mono text-[11px] text-slate-400 bg-[#0f1115] px-2 py-0.5 rounded border border-white/10">
                           {item.shortcut}
                         </kbd>
                       )}

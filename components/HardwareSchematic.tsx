@@ -65,7 +65,7 @@ export default function HardwareSchematic() {
         <button
           type="button"
           onClick={triggerUnlock}
-          className={`self-start sm:self-auto px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider font-mono border transition-all cursor-pointer shadow-none ${
+          className={`self-start sm:self-auto px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider font-mono border transition-colors duration-200 cursor-pointer shadow-none ${
             isUnlocked
               ? "bg-[#FF7A00] text-[#0f1115] border-[#FF7A00]"
               : "bg-[#0052FF] text-[#f8fafc] border-[#0052FF] hover:bg-[#0052FF]/90"
@@ -78,7 +78,7 @@ export default function HardwareSchematic() {
       {/* Visual Interlock State Diagram (Blueprint 1px Lines, Zero Drop Shadows) */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         {/* Module 1: Dell Wyse Mini PC */}
-        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/40 transition-colors">
+        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/50 transition-colors duration-200">
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono font-bold text-[#0052FF] uppercase">
@@ -89,21 +89,21 @@ export default function HardwareSchematic() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF]"></span>
               </span>
             </div>
-            <p className="font-bold text-[#f8fafc] text-sm">
+            <p className="font-bold text-[#f8fafc] text-sm font-sans">
               Dell Wyse 5070 Mini PC
             </p>
-            <p className="text-xs text-[#94a3b8] mt-1 leading-relaxed">
+            <p className="text-xs text-slate-400 mt-1 leading-relaxed font-sans">
               Drives 15&quot; capacitive touchscreen. Runs Laravel MVC, Laragon local database, and Node.js serial bridge.
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#94a3b8]">
+          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>Offline-First</span>
             <span className="text-[#0052FF] font-bold">100% LOCAL</span>
           </div>
         </div>
 
         {/* Module 2: Arduino Uno Controller */}
-        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/40 transition-colors">
+        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/50 transition-colors duration-200">
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono font-bold text-[#0052FF] uppercase">
@@ -114,14 +114,14 @@ export default function HardwareSchematic() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF]"></span>
               </span>
             </div>
-            <p className="font-bold text-[#f8fafc] text-sm">
+            <p className="font-bold text-[#f8fafc] text-sm font-sans">
               Arduino Uno R3
             </p>
-            <p className="text-xs text-[#94a3b8] mt-1 leading-relaxed">
+            <p className="text-xs text-slate-400 mt-1 leading-relaxed font-sans">
               Processes serial packets, enforces watchdog timers, trips 2-channel relay, and samples HC-SR04 ultrasonic sensors.
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#94a3b8]">
+          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>UART 115200</span>
             <span className="text-[#0052FF] font-bold">SYNC OK</span>
           </div>
@@ -129,17 +129,17 @@ export default function HardwareSchematic() {
 
         {/* Module 3: 2-Channel Relay & Solenoid */}
         <div
-          className={`p-4 rounded-xl border transition-all duration-300 flex flex-col justify-between shadow-none ${
+          className={`p-4 rounded-xl border transition-colors duration-200 flex flex-col justify-between shadow-none ${
             isUnlocked
               ? "bg-[#0052FF]/15 border-[#0052FF]"
-              : "bg-[#0f1115]/60 border-white/5 hover:border-[#0052FF]/40"
+              : "bg-[#0f1115]/60 border-white/5 hover:border-[#0052FF]/50"
           }`}
         >
           <div>
             <div className="flex items-center justify-between mb-2">
               <span
                 className={`text-xs font-mono font-bold uppercase ${
-                  isUnlocked ? "text-[#FF7A00]" : "text-[#94a3b8]"
+                  isUnlocked ? "text-[#FF7A00]" : "text-slate-400"
                 }`}
               >
                 2-Ch Relay &amp; Solenoid
@@ -150,18 +150,18 @@ export default function HardwareSchematic() {
                 }`}
               />
             </div>
-            <p className="font-bold text-[#f8fafc] text-sm">
+            <p className="font-bold text-[#f8fafc] text-sm font-sans">
               12V Solenoid DropBox
             </p>
-            <p className="text-xs text-[#94a3b8] mt-1 leading-relaxed">
+            <p className="text-xs text-slate-400 mt-1 leading-relaxed font-sans">
               Opto-isolated 5V coil triggers heavy-duty 12V fail-secure latch with 1N4007 inductive flyback diode protection.
             </p>
           </div>
           <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
-            <span className="text-[#94a3b8]">Lock State:</span>
+            <span className="text-slate-400">Lock State:</span>
             <span
               className={`font-bold ${
-                isUnlocked ? "text-[#FF7A00]" : "text-[#94a3b8]"
+                isUnlocked ? "text-[#FF7A00]" : "text-slate-400"
               }`}
             >
               {isUnlocked ? "ENERGIZED (OPEN)" : "LATCHED (SECURE)"}
@@ -170,7 +170,7 @@ export default function HardwareSchematic() {
         </div>
 
         {/* Module 4: Peripherals & Power */}
-        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/40 transition-colors">
+        <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5 shadow-none flex flex-col justify-between hover:border-[#0052FF]/50 transition-colors duration-200">
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono font-bold text-[#0052FF] uppercase">
@@ -178,14 +178,14 @@ export default function HardwareSchematic() {
               </span>
               <span className="h-2.5 w-2.5 rounded-full bg-[#0052FF]" />
             </div>
-            <p className="font-bold text-[#f8fafc] text-sm">
+            <p className="font-bold text-[#f8fafc] text-sm font-sans">
               GOOJPRT &amp; 1000VA UPS
             </p>
-            <p className="text-xs text-[#94a3b8] mt-1 leading-relaxed">
+            <p className="text-xs text-slate-400 mt-1 leading-relaxed font-sans">
               GOOJPRT thermal receipt printer, USB 2D QR scanner, 12V cooling fan, and 650–1000 VA battery backup.
             </p>
           </div>
-          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#94a3b8]">
+          <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>Thermal + Power</span>
             <span className="text-[#0052FF] font-bold">REGULATED</span>
           </div>
@@ -199,7 +199,7 @@ export default function HardwareSchematic() {
         </h4>
         <div className="overflow-x-auto rounded-xl border border-white/5 shadow-none">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-[#0f1115] text-[#94a3b8] border-b border-white/5">
+            <thead className="bg-[#0f1115] text-slate-400 border-b border-white/5">
               <tr>
                 <th className="py-2.5 px-3">Pin / Bus Interface</th>
                 <th className="py-2.5 px-3">Target Subsystem</th>
@@ -209,13 +209,13 @@ export default function HardwareSchematic() {
             </thead>
             <tbody className="divide-y divide-white/5 bg-[#0f1115]/40">
               {pinouts.map((p, idx) => (
-                <tr key={idx} className="hover:bg-[#0052FF]/5 transition-colors">
+                <tr key={idx} className="hover:bg-[#0052FF]/5 transition-colors duration-200">
                   <td className="py-2.5 px-3 font-bold text-[#0052FF]">{p.pin}</td>
                   <td className="py-2.5 px-3 font-semibold text-[#f8fafc]">
                     {p.target}
                   </td>
-                  <td className="py-2.5 px-3 text-[#94a3b8]">{p.voltage}</td>
-                  <td className="py-2.5 px-3 text-[#94a3b8]">
+                  <td className="py-2.5 px-3 text-slate-400">{p.voltage}</td>
+                  <td className="py-2.5 px-3 text-slate-400">
                     {p.role}
                   </td>
                 </tr>

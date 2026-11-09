@@ -52,18 +52,18 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       data-testid={`bento-card-${index}`}
       onMouseMove={handleMouseMove}
       style={{ rotateX: tiltX, rotateY: tiltY }}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 hover:shadow-[inset_0_0_16px_rgba(0,82,255,0.12)] transition-all duration-300 flex flex-col ${spanClass}`}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 transition-colors duration-200 flex flex-col ${spanClass}`}
     >
       {/* Flashlight Surface Glow Overlay (Visible only on group-hover) */}
       <motion.div
         aria-hidden="true"
         data-testid={`bento-spotlight-${index}`}
         style={{ background: spotlightBackground }}
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"
       />
 
       {/* Flashlight Border Mask (Electric Blue glow along hovered edge) */}
@@ -73,13 +73,13 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           WebkitMaskImage: spotlightBorderMask,
           maskImage: spotlightBorderMask,
         }}
-        className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-[#0052FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-[#0052FF] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
       />
 
       {/* Card Content */}
       <div className="relative z-10 flex flex-col flex-grow">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#f8fafc]">
+          <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#f8fafc]">
             {project.title}
           </h3>
           {isFeatured && (
@@ -93,7 +93,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.role}
         </p>
 
-        <p className="text-[#94a3b8] text-sm sm:text-base leading-relaxed mb-6 flex-grow">
+        <p className="font-sans text-slate-400 text-sm sm:text-base leading-relaxed mb-6 flex-grow">
           {project.overview}
         </p>
 
@@ -104,7 +104,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
               <span className="block text-sm sm:text-base font-extrabold text-[#0052FF] tracking-tight font-mono">
                 {m.value}
               </span>
-              <span className="block text-xs font-mono text-[#94a3b8] font-medium leading-tight">
+              <span className="block text-xs font-mono text-slate-400 font-medium leading-tight">
                 {m.label}
               </span>
             </div>
@@ -115,7 +115,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.techStack.map((tech, i) => (
             <span
               key={i}
-              className="font-mono text-xs font-medium text-[#f8fafc] bg-[#1e2128] px-3 py-1 rounded-full border border-white/5 group-hover:border-[#0052FF]/40 transition-colors"
+              className="font-mono text-xs font-medium text-[#f8fafc] bg-[#1e2128] px-3 py-1 rounded-full border border-white/5 group-hover:border-[#0052FF]/40 transition-colors duration-200"
             >
               {tech}
             </span>
@@ -125,7 +125,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         <div>
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0052FF] hover:text-[#f8fafc] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] rounded-md"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold font-mono text-[#0052FF] hover:text-[#f8fafc] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] rounded-md"
           >
             <span>View Architecture &amp; Case Study</span>
             <span aria-hidden="true">&rarr;</span>
@@ -144,7 +144,7 @@ export default function Projects() {
           <p className="text-[#0052FF] font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
             Selected Works
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#f8fafc] tracking-tight">
+          <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-[#f8fafc] tracking-tight">
             Spotlight <span className="text-[#0052FF]">Bento Grid</span>
           </h2>
         </div>

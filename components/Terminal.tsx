@@ -41,7 +41,7 @@ export default function Terminal() {
   const renderPingOutput = (lines: { text: string; isStats?: boolean }[]) => (
     <div className="space-y-0.5 font-mono text-xs py-1">
       {lines.map((item, idx) => (
-        <p key={idx} className={item.isStats ? "pt-2 text-[#94a3b8]" : "text-[#f8fafc]"}>
+        <p key={idx} className={item.isStats ? "pt-2 text-slate-400" : "text-[#f8fafc]"}>
           {item.text}
         </p>
       ))}
@@ -220,7 +220,7 @@ export default function Terminal() {
         output = (
           <div className="space-y-0.5 font-mono py-0.5 text-xs">
             <p className="text-[#0052FF] font-bold">&gt; Compiling Jose_Lorenzo_Discutido_Resume.pdf...</p>
-            <p className="text-[#94a3b8]">&gt; Download dispatched to browser.</p>
+            <p className="text-slate-400">&gt; Download dispatched to browser.</p>
           </div>
         );
         triggerResumeDownload();
@@ -278,7 +278,7 @@ export default function Terminal() {
         output = (
           <div className="space-y-0.5 font-mono py-0.5">
             <p className="text-[#0052FF] font-bold">&gt; Engr. Jose Lorenzo Miguel Discutido</p>
-            <p className="text-[#94a3b8]">
+            <p className="text-slate-400">
               &gt; Data and Systems Engineer
             </p>
           </div>
@@ -324,7 +324,7 @@ export default function Terminal() {
               </span>
             </p>
             <p>
-              <span className="text-[#94a3b8] font-bold">&gt; Previous:</span>{" "}
+              <span className="text-slate-400 font-bold">&gt; Previous:</span>{" "}
               <span className="text-[#f8fafc]">
                 IT Systems &amp; Network Intern @ PHINMA Properties
               </span>
@@ -347,7 +347,7 @@ export default function Terminal() {
       case "neofetch":
       case "fastfetch":
         output = (
-          <div className="space-y-0.5 py-1 text-xs">
+          <div className="space-y-0.5 py-1 text-xs font-mono">
             <p className="text-[#0052FF] font-bold">guest@jld-stealth-rig</p>
             <p className="text-white/20">-------------------------</p>
             <p>
@@ -474,14 +474,14 @@ export default function Terminal() {
               <p>&gt; <span className="text-[#0052FF] font-semibold">iskiosk/</span> — IsKiosk: Document Management System</p>
               <p>&gt; <span className="text-[#0052FF] font-semibold">komunikonek/</span> — Komunikonek Mobile Dashboard</p>
             </div>
-            <p className="text-[#94a3b8] pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-[#0052FF]">cd &lt;dir&gt;</span>&apos; to navigate.</p>
+            <p className="text-slate-400 pt-1 text-[11px]">&gt; Tip: Use &apos;<span className="text-[#0052FF]">cd &lt;dir&gt;</span>&apos; to navigate.</p>
           </div>
         );
         break;
       case "zzz":
       case "synergy":
         output = (
-          <div className="space-y-1 py-1 text-xs">
+          <div className="space-y-1 py-1 text-xs font-mono">
             <p className="text-[#0052FF] font-bold">Zenless Zone Zero // Combat Analytics Log</p>
             <p>
               • <span className="text-[#0052FF]">Anomaly Buildup &amp; Disorder</span> ↔ Event stream buffer thresholds &amp; state flushes
@@ -497,7 +497,7 @@ export default function Terminal() {
         break;
       case "sudo":
         output = (
-          <span className="text-xs">
+          <span className="text-xs font-mono">
             <span className="text-[#FF7A00]">Permission denied.</span> This incident will be reported.
           </span>
         );
@@ -511,7 +511,7 @@ export default function Terminal() {
           break;
         }
         output = (
-          <span className="text-xs">
+          <span className="text-xs font-mono">
             Command not found. Type &apos;<span className="text-[#0052FF]">help</span>&apos; for available commands.
           </span>
         );
@@ -592,7 +592,7 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 text-[#f8fafc] text-xs font-mono hover:border-[#0052FF]/50 shadow-none transition-all cursor-pointer flex items-center gap-2.5 group"
+        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 text-[#f8fafc] text-xs font-mono hover:border-[#0052FF]/50 transition-colors duration-200 shadow-none cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
@@ -600,7 +600,7 @@ export default function Terminal() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
         </span>
         <span className="font-bold">&gt;_ Terminal</span>
-        <span className="hidden sm:inline text-[10px] text-[#94a3b8] bg-[#0f1115] px-1.5 py-0.5 rounded border border-white/10">
+        <span className="hidden sm:inline text-[10px] text-slate-400 bg-[#0f1115] px-1.5 py-0.5 rounded border border-white/10">
           Ctrl+`
         </span>
       </button>
@@ -629,19 +629,19 @@ export default function Terminal() {
             <span className="w-3 h-3 rounded-full bg-[#eab308]" />
             <span className="w-3 h-3 rounded-full bg-[#22c55e]" />
           </div>
-          <span className="text-[#94a3b8] text-xs font-mono ml-2">
+          <span className="text-slate-400 text-xs font-mono ml-2">
             guest@jld-stealth-rig: ~
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[11px] text-[#94a3b8]">bash</span>
+          <span className="text-[11px] text-slate-400">bash</span>
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="text-[#94a3b8] hover:text-[#f8fafc] text-xs font-mono px-1 transition-colors cursor-pointer"
+            className="text-slate-400 hover:text-[#f8fafc] text-xs font-mono px-1 transition-colors duration-200 cursor-pointer"
             aria-label="Close Terminal"
           >
             ✕
@@ -651,7 +651,7 @@ export default function Terminal() {
 
       <div className="p-4 flex flex-col flex-1 overflow-hidden">
         <div className="space-y-3 overflow-y-auto max-h-56 pr-1">
-          <p className="text-xs text-[#94a3b8]">
+          <p className="text-xs text-slate-400 font-mono">
             &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-[#0052FF] font-semibold">help</span>&apos; for available commands.
           </p>
 
@@ -661,7 +661,7 @@ export default function Terminal() {
                 <span className="text-[#0052FF] font-bold">guest@jld-sys:~$</span>
                 <span className="text-[#f8fafc]">{entry.command}</span>
               </div>
-              <div className="text-[#94a3b8] pl-2">{entry.output}</div>
+              <div className="text-slate-400 pl-2">{entry.output}</div>
             </div>
           ))}
         </div>
@@ -669,13 +669,13 @@ export default function Terminal() {
         {/* Quick Commands Touch Grid */}
         <div className="pt-3 border-t border-white/5 mt-3">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#94a3b8]">
+            <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
               Quick Commands
             </span>
             <button
               type="button"
               onClick={() => setShowMobileInput((prev) => !prev)}
-              className="md:hidden text-[11px] font-mono text-[#94a3b8] hover:text-[#f8fafc] min-h-[36px] flex items-center px-1"
+              className="md:hidden text-[11px] font-mono text-slate-400 hover:text-[#f8fafc] min-h-[36px] flex items-center px-1"
             >
               {showMobileInput ? "Hide CLI" : "Type CLI"}
             </button>
@@ -685,7 +685,7 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("projects")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128] hover:bg-[#1e2128]/90 border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
@@ -695,7 +695,7 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("resume")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128] hover:bg-[#1e2128]/90 border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -709,11 +709,10 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("contact")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128] hover:bg-[#1e2128]/90 border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
               </svg>
               <span>Contact Me</span>
             </button>

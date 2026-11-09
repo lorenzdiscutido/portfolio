@@ -11,11 +11,11 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        base: "rgb(var(--base) / <alpha-value>)",
-        glass: "rgba(255, 255, 255, 0.05)",
+        base: "#0f1115",
+        glass: "rgba(30, 33, 40, 0.8)",
       },
       borderColor: {
-        base: "rgb(var(--base) / <alpha-value>)",
+        base: "rgba(255, 255, 255, 0.05)",
       },
       colors: {
         slateBlack: "#0f1115",
@@ -25,12 +25,12 @@ const config: Config = {
         midnight: "#0f1115",
         oceanic: "#1e2128",
         frost: "#f8fafc",
+        accent: "#0052FF",
+        surface: "#1e2128",
+        primary: "#0052FF",
+        muted: "#94a3b8",
         chartreuse: "#0052FF",
         neonPink: "#FF7A00",
-        accent: "rgb(var(--accent) / <alpha-value>)",
-        surface: "rgb(var(--surface) / <alpha-value>)",
-        primary: "rgb(var(--primary) / <alpha-value>)",
-        muted: "rgb(var(--muted) / <alpha-value>)",
         blue: {
           ...colors.blue,
           DEFAULT: "#0052FF",

@@ -7,22 +7,22 @@ export default function NotFound() {
         <p className="text-[#FF7A00] font-semibold tracking-widest uppercase mb-2 font-mono text-sm">
           HTTP 404 // ROUTE NOT FOUND
         </p>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#f8fafc] mb-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#f8fafc] mb-4 font-sans">
           Resource Not Located
         </h1>
-        <p className="text-[#94a3b8] leading-relaxed mb-8 text-sm sm:text-base">
+        <p className="text-slate-400 leading-relaxed mb-8 text-sm sm:text-base font-sans">
           The requested path or engineering document does not exist in the system index.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/"
-            className="inline-block px-6 py-3 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-semibold transition-all font-mono text-sm shadow-none"
+            className="inline-block px-6 py-3 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-semibold transition-colors duration-200 font-mono text-sm shadow-none"
           >
             ← Return Home
           </Link>
           <Link
             href="/#projects"
-            className="inline-block px-6 py-3 rounded-full bg-[#0052FF] text-[#f8fafc] font-bold transition-all hover:bg-[#0052FF]/90 font-mono text-sm shadow-none hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-block px-6 py-3 rounded-full bg-[#0052FF] text-[#f8fafc] font-bold transition-colors duration-200 hover:bg-[#0052FF]/90 font-mono text-sm shadow-none"
           >
             View Case Studies
           </Link>

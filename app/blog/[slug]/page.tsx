@@ -58,7 +58,7 @@ export default async function BlogPostPage({
       <article className="max-w-3xl mx-auto">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-[#94a3b8] hover:text-[#0052FF] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-400 hover:text-[#0052FF] transition-colors duration-200 mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Blog
         </Link>
@@ -69,12 +69,12 @@ export default async function BlogPostPage({
               {post.date}
             </p>
             <span className="text-white/20">•</span>
-            <span className="text-xs sm:text-sm font-mono text-[#94a3b8]">
+            <span className="text-xs sm:text-sm font-mono text-slate-400">
               {post.readTime}
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#f8fafc] mb-6 leading-tight tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#f8fafc] mb-6 leading-tight tracking-tight font-sans">
             {post.title}
           </h1>
 
@@ -96,11 +96,11 @@ export default async function BlogPostPage({
               key={idx}
               className="p-6 sm:p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none space-y-4"
             >
-              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans">
                 {section.heading}
               </h2>
 
-              <div className="space-y-4 text-[#94a3b8] text-base sm:text-lg leading-relaxed">
+              <div className="space-y-4 text-slate-400 text-base sm:text-lg leading-relaxed font-sans">
                 {section.paragraphs.map((paragraph, pIdx) => (
                   <p key={pIdx}>{paragraph}</p>
                 ))}
@@ -108,11 +108,11 @@ export default async function BlogPostPage({
 
               {section.codeSnippet && (
                 <div className="mt-4 bg-[#0f1115] text-[#f8fafc] rounded-lg border border-white/10 p-4 overflow-x-auto shadow-none">
-                  <div className="flex items-center justify-between text-xs font-mono text-[#94a3b8] mb-2 pb-2 border-b border-white/5">
+                  <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 pb-2 border-b border-white/5">
                     <span className="text-[#0052FF] font-semibold">
                       // {section.codeSnippet.label}
                     </span>
-                    <span className="text-[#94a3b8] font-mono">config</span>
+                    <span className="text-slate-400 font-mono">config</span>
                   </div>
                   <pre className="font-mono text-xs leading-relaxed text-[#f8fafc]">
                     <code>{section.codeSnippet.code}</code>
@@ -126,13 +126,13 @@ export default async function BlogPostPage({
         <footer className="mt-12 pt-8 border-t border-white/5 flex justify-between items-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-[#94a3b8] hover:text-[#0052FF] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-slate-400 hover:text-[#0052FF] transition-colors duration-200"
           >
             ← All Articles
           </Link>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-[#0052FF] hover:underline transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-[#0052FF] hover:underline transition-colors duration-200"
           >
             Discuss this architecture →
           </Link>

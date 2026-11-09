@@ -32,10 +32,10 @@ function InteractivePlaneNode({
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
 
-  const x = useSpring(rawX, { stiffness: 240, damping: 16, mass: 0.25 });
-  const y = useSpring(rawY, { stiffness: 240, damping: 16, mass: 0.25 });
-  const rotateX = useSpring(rawRotateX, { stiffness: 220, damping: 18 });
-  const rotateY = useSpring(rawRotateY, { stiffness: 220, damping: 18 });
+  const x = useSpring(rawX, { stiffness: 400, damping: 25 });
+  const y = useSpring(rawY, { stiffness: 400, damping: 25 });
+  const rotateX = useSpring(rawRotateX, { stiffness: 400, damping: 25 });
+  const rotateY = useSpring(rawRotateY, { stiffness: 400, damping: 25 });
 
   useEffect(() => {
     const handlePointerMove = (e: MouseEvent) => {
@@ -57,8 +57,8 @@ function InteractivePlaneNode({
         rawY.set(dy * pullFactor);
 
         // Tilt plane on X/Y axes based on approach angle
-        rawRotateX.set((-dy / 100) * 22);
-        rawRotateY.set((dx / 100) * 22);
+        rawRotateX.set((-dy / 100) * 20);
+        rawRotateY.set((dx / 100) * 20);
         setIsSnapped(true);
       } else {
         rawX.set(0);
@@ -89,16 +89,16 @@ function InteractivePlaneNode({
           transformStyle: "preserve-3d",
         }}
         animate={{
-          translateY: [0, index % 2 === 0 ? -3 : 3, 0],
+          translateY: [0, index % 2 === 0 ? -2 : 2, 0],
         }}
         transition={{
           translateY: {
-            duration: 3.2 + index * 0.35,
+            duration: 3 + index * 0.3,
             repeat: Infinity,
             ease: "easeInOut",
           },
         }}
-        className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border shadow-none ${
+        className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border shadow-none cursor-pointer ${
           isSnapped
             ? "bg-[#0052FF]/15 border-[#0052FF] text-[#f8fafc]"
             : "bg-[#1e2128]/80 border-white/5 text-[#f8fafc] hover:border-[#0052FF]/50"

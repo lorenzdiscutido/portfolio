@@ -72,7 +72,7 @@ export default async function CaseStudyPage({
         {/* Navigation */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-[#94a3b8] hover:text-[#0052FF] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-400 hover:text-[#0052FF] transition-colors duration-200 mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
@@ -91,7 +91,7 @@ export default async function CaseStudyPage({
               />
             </div>
           )}
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f8fafc] tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f8fafc] tracking-tight mb-4 font-sans">
             {study.title}
           </h1>
           <p className="text-[#0052FF] font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
@@ -100,7 +100,7 @@ export default async function CaseStudyPage({
 
           {/* Tech Stack Tags in font-mono */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#94a3b8] mr-2">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mr-2">
               Tech Stack:
             </span>
             {study.techStack.map((tech) => (
@@ -121,7 +121,7 @@ export default async function CaseStudyPage({
                   href={study.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold transition-all shadow-none"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1e2128] border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold transition-colors duration-200 shadow-none"
                 >
                   Source Repository →
                 </a>
@@ -131,7 +131,7 @@ export default async function CaseStudyPage({
                   href={study.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-all shadow-none hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 shadow-none"
                 >
                   Live System Demo →
                 </a>
@@ -147,27 +147,27 @@ export default async function CaseStudyPage({
               <span className="font-bold uppercase tracking-wider text-[#0052FF]">
                 Academic Research Attribution &amp; Defense
               </span>
-              <span className="text-[#94a3b8] font-medium">Evaluated: {study.academic.defenseDate}</span>
+              <span className="text-slate-400 font-medium">Evaluated: {study.academic.defenseDate}</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
               <div>
-                <p className="text-[#94a3b8] font-bold uppercase mb-1">Project Authors / Engineering Team:</p>
+                <p className="text-slate-400 font-bold uppercase mb-1">Project Authors / Engineering Team:</p>
                 <p className="text-[#f8fafc] font-semibold leading-relaxed">
                   {study.academic.authors.join(", ")}
                 </p>
-                <p className="text-[#94a3b8] mt-2 font-medium">
+                <p className="text-slate-400 mt-2 font-medium">
                   {study.academic.institution}
                 </p>
               </div>
               <div className="space-y-2">
                 <div>
-                  <p className="text-[#94a3b8] font-bold uppercase mb-0.5">Advisers:</p>
+                  <p className="text-slate-400 font-bold uppercase mb-0.5">Advisers:</p>
                   <p className="text-[#f8fafc] font-semibold">
                     {study.academic.advisers.join(", ")}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[#94a3b8] font-bold uppercase mb-0.5">Evaluation Panel:</p>
+                  <p className="text-slate-400 font-bold uppercase mb-0.5">Evaluation Panel:</p>
                   <p className="text-[#0052FF] font-semibold">
                     {study.academic.panel}
                   </p>
@@ -192,7 +192,7 @@ export default async function CaseStudyPage({
                   {metric.label}
                 </span>
               </div>
-              <p className="text-xs text-[#94a3b8] leading-relaxed pt-2 border-t border-white/5">
+              <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/5 font-sans">
                 {metric.detail}
               </p>
             </div>
@@ -205,7 +205,7 @@ export default async function CaseStudyPage({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
                   Live System Demonstration &amp; Walkthrough
                 </h2>
               </div>
@@ -214,7 +214,7 @@ export default async function CaseStudyPage({
                   href={study.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-all self-start sm:self-auto shadow-none"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0052FF] text-[#f8fafc] font-mono text-xs font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 self-start sm:self-auto shadow-none"
                 >
                   Open in Google Drive ↗
                 </a>
@@ -237,7 +237,7 @@ export default async function CaseStudyPage({
           <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
             <div className="flex items-center gap-2 mb-6">
               <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
                 System Captures &amp; Engineering Artifacts
               </h2>
             </div>
@@ -275,7 +275,7 @@ export default async function CaseStudyPage({
                         }`}
                       />
                     </div>
-                    <figcaption className="p-3.5 text-xs font-mono text-[#94a3b8] border-t border-white/5 bg-[#1e2128]/40 leading-relaxed">
+                    <figcaption className="p-3.5 text-xs font-mono text-slate-400 border-t border-white/5 bg-[#1e2128]/40 leading-relaxed">
                       {shot.caption}
                     </figcaption>
                   </figure>
@@ -289,11 +289,11 @@ export default async function CaseStudyPage({
         <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
               The Problem
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-[#94a3b8] leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-sans">
             {study.problem}
           </p>
         </section>
@@ -302,11 +302,11 @@ export default async function CaseStudyPage({
         <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
               The Architecture &amp; Solution
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-[#94a3b8] leading-relaxed mb-8">
+          <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 font-sans">
             {study.architecture}
           </p>
 
@@ -327,7 +327,7 @@ export default async function CaseStudyPage({
             <h3 className="text-sm font-mono uppercase tracking-wider text-[#f8fafc] font-bold mb-3">
               System Integration Details
             </h3>
-            <p className="text-sm sm:text-base text-[#94a3b8] leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
               {study.architectureDetails}
             </p>
           </div>
@@ -337,11 +337,11 @@ export default async function CaseStudyPage({
         <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-12">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
               The Outcome
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-[#94a3b8] leading-relaxed mb-6">
+          <p className="text-base sm:text-lg text-slate-400 leading-relaxed mb-6 font-sans">
             {study.outcome}
           </p>
 
@@ -353,7 +353,7 @@ export default async function CaseStudyPage({
               {study.outcomes.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex items-start gap-3 text-[#94a3b8] text-sm leading-relaxed"
+                  className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed font-sans"
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0052FF] shrink-0" />
                   <span>{item}</span>
@@ -369,7 +369,7 @@ export default async function CaseStudyPage({
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
                   ISO/IEC 25010 Empirical Quality Evaluation
                 </h2>
               </div>
@@ -377,12 +377,12 @@ export default async function CaseStudyPage({
                 Overall Weighted Mean: 3.70 / 4.00 (Highly Acceptable)
               </span>
             </div>
-            <p className="text-sm text-[#94a3b8] mb-6 leading-relaxed">
+            <p className="text-sm text-slate-400 mb-6 leading-relaxed font-sans">
               Empirical quality evaluation conducted across student and administrative staff respondent cohorts utilizing a 4-point Likert compliance instrument across five core ISO/IEC 25010 software quality characteristics:
             </p>
             <div className="overflow-x-auto rounded-xl border border-white/5">
               <table className="w-full text-left text-xs font-mono">
-                <thead className="bg-[#0f1115] text-[#94a3b8] border-b border-white/5">
+                <thead className="bg-[#0f1115] text-slate-400 border-b border-white/5">
                   <tr>
                     <th className="py-2.5 px-3">Quality Characteristic</th>
                     <th className="py-2.5 px-3">Weighted Mean Score</th>
@@ -391,7 +391,7 @@ export default async function CaseStudyPage({
                 </thead>
                 <tbody className="divide-y divide-white/5 bg-[#0f1115]/40">
                   {study.isoEvaluation.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#0052FF]/5 transition-colors">
+                    <tr key={idx} className="hover:bg-[#0052FF]/5 transition-colors duration-200">
                       <td className="py-2.5 px-3 font-semibold text-[#f8fafc]">{row.characteristic}</td>
                       <td className="py-2.5 px-3 font-bold text-[#0052FF]">{row.score}</td>
                       <td className="py-2.5 px-3 font-medium text-[#f8fafc]">{row.interpretation}</td>
@@ -408,29 +408,29 @@ export default async function CaseStudyPage({
           <section className="p-8 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none mb-12">
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-mono uppercase tracking-wide">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#f8fafc] font-sans uppercase tracking-wide">
                 Financial &amp; Economic Feasibility Analysis
               </h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
               <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-[#94a3b8] uppercase">Total CapEx Cost</span>
+                <span className="block text-xs font-mono text-slate-400 uppercase">Total CapEx Cost</span>
                 <span className="block text-xl font-mono font-bold text-[#f8fafc] mt-1">{study.financials.totalCost}</span>
               </div>
               <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-[#94a3b8] uppercase">Annualized Net Savings</span>
+                <span className="block text-xs font-mono text-slate-400 uppercase">Annualized Net Savings</span>
                 <span className="block text-xl font-mono font-bold text-[#0052FF] mt-1">{study.financials.annualSavings}</span>
               </div>
               <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-[#94a3b8] uppercase">Projected ROI</span>
+                <span className="block text-xs font-mono text-slate-400 uppercase">Projected ROI</span>
                 <span className="block text-xl font-mono font-bold text-[#FF7A00] mt-1">{study.financials.roi}</span>
               </div>
               <div className="p-4 rounded-xl bg-[#0f1115]/60 border border-white/5">
-                <span className="block text-xs font-mono text-[#94a3b8] uppercase">Payback Period</span>
+                <span className="block text-xs font-mono text-slate-400 uppercase">Payback Period</span>
                 <span className="block text-xl font-mono font-bold text-[#FF7A00] mt-1">{study.financials.paybackPeriod}</span>
               </div>
             </div>
-            <p className="text-xs text-[#94a3b8] font-mono">
+            <p className="text-xs text-slate-400 font-mono">
               Empirical cost modeling projects total capital cost recovery within 4.63 months through administrative labor redeployment and physical paper reduction.
             </p>
           </section>
@@ -440,11 +440,11 @@ export default async function CaseStudyPage({
         <div className="pt-8 border-t border-white/5 flex justify-between items-center">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-[#94a3b8] hover:text-[#0052FF] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono font-semibold text-slate-400 hover:text-[#0052FF] transition-colors duration-200"
           >
             ← Back to Portfolio
           </Link>
-          <span className="text-xs font-mono text-[#94a3b8]">
+          <span className="text-xs font-mono text-slate-400">
             Node: {study.slug}
           </span>
         </div>

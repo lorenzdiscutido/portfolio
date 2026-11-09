@@ -7,13 +7,13 @@
   .light,
   html.light,
   html:not(.dark) {
-    --base: 248 250 252;    /* #f8fafc */
-    --surface: 255 255 255; /* #ffffff */
-    --primary: 15 17 21;    /* #0f1115 - slate black */
-    --muted: 71 85 105;     /* #475569 - slate-600 */
+    --base: 15 17 21;       /* #0f1115 - Slate Black */
+    --surface: 30 33 40;    /* #1e2128 - Surface Dark */
+    --primary: 248 250 252; /* #f8fafc - Crisp Off-White */
+    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Slate */
     --accent: 0 82 255;     /* #0052FF - Electric Blue */
     --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   .dark,
@@ -21,7 +21,7 @@
     --base: 15 17 21;       /* #0f1115 - Slate Black */
     --surface: 30 33 40;    /* #1e2128 - Surface Dark */
     --primary: 248 250 252; /* #f8fafc - Crisp Off-White */
-    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Gray */
+    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Slate */
     --accent: 0 82 255;     /* #0052FF - Electric Blue */
     --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
     color-scheme: dark;
@@ -29,7 +29,7 @@
 
   html,
   body {
-    @apply bg-[#0f1115] text-[#f8fafc] antialiased transition-colors duration-300 overflow-x-clip;
+    @apply bg-[#0f1115] text-[#f8fafc] antialiased transition-colors duration-200 overflow-x-clip;
     max-width: 100vw;
   }
 }
@@ -46,33 +46,13 @@
   }
 }
 
-/* Bulletproof Dual-Theme Utility Classes */
-html.light body,
-html:not(.dark) body {
-  color: #0a0f1c;
-}
-
-html.dark body {
-  color: #f8fafc;
-}
-
 /* Explicit high-contrast text helpers */
-html.light .theme-text-primary,
-html:not(.dark) .theme-text-primary {
-  color: #0a0f1c !important;
-}
-
-html.dark .theme-text-primary {
+.theme-text-primary {
   color: #f8fafc !important;
 }
 
-html.light .theme-text-secondary,
-html:not(.dark) .theme-text-secondary {
-  color: #334155 !important;
-}
-
-html.dark .theme-text-secondary {
-  color: #cbd5e1 !important;
+.theme-text-secondary {
+  color: #94a3b8 !important;
 }
 
 /* Matte Frosted Glassmorphism Surface Utilities */
@@ -83,50 +63,22 @@ html.dark .theme-text-secondary {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-html.light .glass-surface,
-html:not(.dark) .glass-surface {
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(15, 17, 21, 0.08);
-}
-
-/* White / Tactile Button Dual-Theme styling */
-html.light .theme-btn-white,
-html:not(.dark) .theme-btn-white,
-html.light .theme-btn-white *,
-html:not(.dark) .theme-btn-white * {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  color: #0a0f1c !important;
-  border-color: rgba(10, 15, 28, 0.2) !important;
-}
-
-html.dark .theme-btn-white,
-html.dark .theme-btn-white * {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+/* Tactile Stealth Button */
+.theme-btn-white {
+  background-color: rgba(30, 33, 40, 0.8) !important;
   color: #f8fafc !important;
-  border-color: rgba(248, 250, 252, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Tilted badge Dual-Theme styling */
-html.light .theme-badge,
-html:not(.dark) .theme-badge {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  color: #0a0f1c !important;
-  border-color: rgba(10, 15, 28, 0.2) !important;
-}
-
-html.dark .theme-badge {
-  background-color: rgba(17, 24, 39, 0.88) !important;
+/* Stealth Badge styling */
+.theme-badge {
+  background-color: rgba(30, 33, 40, 0.88) !important;
   color: #f8fafc !important;
-  border-color: rgba(204, 255, 0, 0.35) !important;
+  border-color: rgba(0, 82, 255, 0.35) !important;
 }
 
 /* Ambient Dot Grid */
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(10, 15, 28, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.dark .bg-dot-pattern,
-html.dark .bg-dot-pattern {
   background-image: radial-gradient(rgba(248, 250, 252, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

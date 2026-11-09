@@ -18,7 +18,7 @@ export default function BlogPage() {
       <div className="max-w-5xl mx-auto">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-[#94a3b8] hover:text-[#0052FF] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-400 hover:text-[#0052FF] transition-colors duration-200 mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
@@ -27,7 +27,7 @@ export default function BlogPage() {
           <p className="text-[#0052FF] font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm font-mono">
             Engineering Dispatches
           </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#f8fafc] tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#f8fafc] tracking-tight font-sans">
             Technical <span className="text-[#0052FF]">Blog</span>
           </h1>
         </div>
@@ -37,22 +37,22 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="bg-[#1e2128]/80 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-[#0052FF]/50 transition-all duration-300 flex flex-col shadow-none group"
+              className="bg-[#1e2128]/80 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-[#0052FF]/50 transition-colors duration-200 flex flex-col shadow-none group"
             >
               <div className="flex items-center justify-between gap-2 mb-3">
                 <p className="text-[#0052FF] text-xs font-mono font-semibold tracking-widest uppercase">
                   {post.date}
                 </p>
-                <span className="text-xs font-mono text-[#94a3b8]">
+                <span className="text-xs font-mono text-slate-400">
                   {post.readTime}
                 </span>
               </div>
 
-              <h2 className="text-2xl font-bold text-[#f8fafc] mb-4 group-hover:text-[#0052FF] transition-colors">
+              <h2 className="text-2xl font-bold text-[#f8fafc] mb-4 group-hover:text-[#0052FF] transition-colors duration-200 font-sans">
                 {post.title}
               </h2>
 
-              <p className="text-[#94a3b8] leading-relaxed mb-8 flex-grow text-sm sm:text-base">
+              <p className="text-slate-400 leading-relaxed mb-8 flex-grow text-sm sm:text-base font-sans">
                 {post.excerpt}
               </p>
 
