@@ -17,9 +17,31 @@ if (typeof HTMLCanvasElement !== "undefined") {
 
 if (typeof window !== "undefined" && !("IntersectionObserver" in window)) {
   class MockIntersectionObserver {
+    root: Element | Document | null = null;
+    rootMargin: string = "0px";
+    thresholds: ReadonlyArray<number> = [0];
+
+    constructor(_callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
+      if (options?.rootMargin) {
+        this.rootMargin = options.rootMargin;
+        // Enforce W3C specification: rootMargin must strictly be px or % units
+        const tokens = options.rootMargin.trim().split(/\s+/);
+        for (const token of tokens) {
+          if (!/^-?\d+(\.\d+)?(px|%)$/.test(token)) {
+            throw new SyntaxError(
+              `Failed to construct 'IntersectionObserver': rootMargin must be specified in absolute length units or percent. Got '${token}'`
+            );
+          }
+        }
+      }
+    }
+
     observe() {}
     unobserve() {}
     disconnect() {}
+    takeRecords() {
+      return [];
+    }
   }
   (window as unknown as { IntersectionObserver: typeof MockIntersectionObserver }).IntersectionObserver =
     MockIntersectionObserver;
