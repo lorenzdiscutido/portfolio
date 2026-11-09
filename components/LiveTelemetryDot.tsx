@@ -17,7 +17,7 @@ export default function LiveTelemetryDot() {
         }}
         className="absolute inline-flex w-1.5 h-1.5 rounded-full bg-neonPink dark:bg-chartreuse"
       />
-      <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-neonPink dark:bg-chartreuse shadow-[0_0_8px_#CCFF00]" />
+      <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-neonPink dark:bg-chartreuse shadow-[0_0_8px_#FF007F] dark:shadow-[0_0_8px_#CCFF00]" />
     </span>
   );
 }

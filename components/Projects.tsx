@@ -56,7 +56,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 transition-colors duration-300 flex flex-col ${spanClass}`}
+      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 transition-colors duration-300 flex flex-col ${spanClass}`}
     >
       {/* Flashlight Surface Glow Overlay (Visible only on group-hover) */}
       <motion.div
@@ -98,10 +98,10 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         </p>
 
         {/* Quantified Metrics Highlight Bar */}
-        <div className="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-white/75 dark:bg-midnight/60 backdrop-blur-md border border-black/10 dark:border-white/10">
+        <div className="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-white/75 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15">
           {project.metrics.map((m, mi) => (
             <div key={mi} className="text-center sm:text-left">
-              <span className="block text-sm sm:text-base font-extrabold text-blue-600 dark:text-chartreuse tracking-tight font-mono">
+              <span className="block text-sm sm:text-base font-extrabold text-neonPink dark:text-chartreuse tracking-tight font-mono">
                 {m.value}
               </span>
               <span className="block text-xs font-mono text-slate-600 dark:text-slate-300 font-medium leading-tight">
@@ -115,7 +115,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.techStack.map((tech, i) => (
             <span
               key={i}
-              className="font-mono text-xs font-medium text-slate-800 dark:text-frost bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/10 group-hover:border-neonPink/40 dark:group-hover:border-chartreuse/40 transition-colors"
+              className="font-mono text-xs font-medium text-slate-800 dark:text-frost bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/15 group-hover:border-neonPink/40 dark:group-hover:border-chartreuse/40 transition-colors"
             >
               {tech}
             </span>
@@ -125,7 +125,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         <div>
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 dark:text-chartreuse hover:text-neonPink dark:hover:text-neonPink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse rounded-md"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-neonPink dark:text-chartreuse hover:text-slate-900 dark:hover:text-frost transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse rounded-md"
           >
             <span>View Architecture &amp; Case Study</span>
             <span aria-hidden="true">&rarr;</span>
@@ -145,7 +145,7 @@ export default function Projects() {
             Selected Works
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-frost tracking-tight">
-            Spotlight <span className="text-blue-600 dark:text-chartreuse">Bento Grid</span>
+            Spotlight <span className="text-neonPink dark:text-chartreuse">Bento Grid</span>
           </h2>
         </div>
 

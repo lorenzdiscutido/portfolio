@@ -70,7 +70,7 @@ export default function RootLayout({
               <aside
                 aria-label="Live System Telemetry"
                 data-testid="live-telemetry-pill"
-                className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/85 dark:bg-midnight/85 backdrop-blur-md border border-slate-700/50 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-md"
+                className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-2xl transition-all"
               >
                 <LiveTelemetryDot />
                 <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">

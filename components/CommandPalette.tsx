@@ -250,8 +250,8 @@ export default function CommandPalette() {
                       }}
                       className={`w-full text-left px-4 py-3 flex items-center justify-between transition-all cursor-pointer ${
                         isActive
-                          ? "border-l-4 border-[#FF007F] bg-gradient-to-r from-[#FF007F]/25 via-[#CCFF00]/10 to-transparent text-frost"
-                          : "border-l-4 border-transparent text-slate-300 hover:text-frost"
+                          ? "border-l-2 border-neonPink dark:border-chartreuse bg-neonPink/10 dark:bg-chartreuse/10 text-frost"
+                          : "border-l-2 border-transparent text-slate-300 hover:text-frost"
                       }`}
                     >
                       <div className="flex flex-col">
