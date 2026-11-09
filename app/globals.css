@@ -7,49 +7,65 @@
   .light,
   html.light,
   html:not(.dark) {
-    --base: 255 255 255;    /* #ffffff */
-    --surface: 248 250 252; /* #f8fafc */
-    --primary: 15 23 42;    /* #0f172a - deep slate */
+    --base: 248 250 252;    /* #f8fafc */
+    --surface: 255 255 255; /* #ffffff */
+    --primary: 10 15 28;    /* #0a0f1c - midnight slate */
     --muted: 71 85 105;     /* #475569 - slate-600 */
     --blue: 0 82 255;       /* #0052FF */
     --orange: 255 122 0;    /* #FF7A00 */
+    --accent: 255 0 127;    /* #FF007F - Hyper-Neon Pink for light contrast */
     color-scheme: light;
   }
 
   .dark,
   html.dark {
-    --base: 15 17 21;       /* #0f1115 */
-    --surface: 30 33 40;    /* #1e2128 */
-    --primary: 248 250 252; /* #f8fafc */
-    --muted: 148 163 184;   /* #94a3b8 */
+    --base: 10 15 28;       /* #0a0f1c - Deep Midnight Blue */
+    --surface: 17 24 39;    /* #111827 - Oceanic Slate */
+    --primary: 248 250 252; /* #f8fafc - Frosty White */
+    --muted: 148 163 184;   /* #94a3b8 - Muted Cool Gray */
     --blue: 0 82 255;       /* #0052FF */
     --orange: 255 122 0;    /* #FF7A00 */
+    --accent: 204 255 0;    /* #CCFF00 - Electric Chartreuse */
     color-scheme: dark;
   }
 
+  html,
   body {
-    @apply bg-base antialiased transition-colors duration-300;
+    @apply bg-base antialiased transition-colors duration-300 overflow-x-clip;
+    max-width: 100vw;
+  }
+}
+
+/* Custom Cursor Hide for Desktop Fine Pointers */
+@media (pointer: fine) {
+  html.custom-cursor-enabled,
+  html.custom-cursor-enabled body,
+  html.custom-cursor-enabled a,
+  html.custom-cursor-enabled button,
+  html.custom-cursor-enabled [role="button"],
+  html.custom-cursor-enabled input {
+    cursor: none;
   }
 }
 
 /* Bulletproof Dual-Theme Utility Classes */
 html.light body,
 html:not(.dark) body {
-  color: #0f172a;
+  color: #0a0f1c;
 }
 
 html.dark body {
-  color: #f1f5f9;
+  color: #f8fafc;
 }
 
 /* Explicit high-contrast text helpers */
 html.light .theme-text-primary,
 html:not(.dark) .theme-text-primary {
-  color: #0f172a !important;
+  color: #0a0f1c !important;
 }
 
 html.dark .theme-text-primary {
-  color: #ffffff !important;
+  color: #f8fafc !important;
 }
 
 html.light .theme-text-secondary,
@@ -61,44 +77,58 @@ html.dark .theme-text-secondary {
   color: #cbd5e1 !important;
 }
 
+/* Frosted Glassmorphism Surface Utilities */
+.glass-surface {
+  background-color: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 250, 252, 0.08);
+}
+
+html.light .glass-surface,
+html:not(.dark) .glass-surface {
+  background-color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(10, 15, 28, 0.1);
+}
+
 /* White / Tactile Button Dual-Theme styling */
 html.light .theme-btn-white,
 html:not(.dark) .theme-btn-white,
 html.light .theme-btn-white *,
 html:not(.dark) .theme-btn-white * {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #0a0f1c !important;
+  border-color: rgba(10, 15, 28, 0.2) !important;
 }
 
 html.dark .theme-btn-white,
 html.dark .theme-btn-white * {
-  background-color: #1e2128 !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #f8fafc !important;
+  border-color: rgba(248, 250, 252, 0.15) !important;
 }
 
 /* Tilted badge Dual-Theme styling */
 html.light .theme-badge,
 html:not(.dark) .theme-badge {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #0a0f1c !important;
+  border-color: rgba(10, 15, 28, 0.2) !important;
 }
 
 html.dark .theme-badge {
-  background-color: #1e2128 !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(17, 24, 39, 0.88) !important;
+  color: #f8fafc !important;
+  border-color: rgba(204, 255, 0, 0.35) !important;
 }
 
 /* Ambient Dot Grid */
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(10, 15, 28, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .dark .bg-dot-pattern,
 html.dark .bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(248, 250, 252, 0.04) 1px, transparent 1px);
 }

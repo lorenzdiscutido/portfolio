@@ -12,11 +12,18 @@ const config: Config = {
     extend: {
       backgroundColor: {
         base: "rgb(var(--base) / <alpha-value>)",
+        glass: "rgba(255, 255, 255, 0.05)",
       },
       borderColor: {
         base: "rgb(var(--base) / <alpha-value>)",
       },
       colors: {
+        midnight: "#0a0f1c",
+        oceanic: "#111827",
+        frost: "#f8fafc",
+        chartreuse: "#CCFF00",
+        neonPink: "#FF007F",
+        accent: "rgb(var(--accent) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
@@ -29,8 +36,6 @@ const config: Config = {
           DEFAULT: "rgb(var(--orange) / <alpha-value>)",
         },
       },
-      // Ambient background motion: slow, transform-only drifts so the
-      // browser composites them on the GPU without repainting the blur.
       keyframes: {
         "drift-a": {
           "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },

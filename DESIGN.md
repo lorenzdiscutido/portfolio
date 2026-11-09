@@ -1,48 +1,39 @@
-# Design System & Token Specification: Stealth Terminal CLI
+# Design System & Token Specification: Calm Before the Storm (Fluid & Disruptive)
 
-## 1. Visual Philosophy: "Stealth Terminal CLI"
-The design language reflects a zero-trust network console and high-reliability industrial hardware dashboard:
-- **High Contrast**: Clean delineation between background, elevated surfaces, and interactive elements.
-- **Intentional Accents**: Color is reserved strictly for status, telemetry, and primary actions.
-- **Anti-Slop Directives**: No purple gradients, no nested card madness, no emoji buttons, no bouncy elastic easing, no text clipping.
+## 1. Visual Philosophy: "Calm Before the Storm"
+A deeply modern, relaxed, and cool atmosphere (Midnight Blue to Oceanic Slate with frosted glassmorphism over an interactive fluid simulation) intentionally interrupted by a violently striking, high-energy disruptive accent.
 
 ## 2. Color Palette & Semantic Tokens
 
-### Ground & Surfaces
-- **Ground / Base (Dark)**: `#0f1115` (`--base: 15 17 21`) — Deep slate-black canvas.
-- **Elevated Surface (Cards / Panels)**: `#1e2128` (`--surface: 30 33 40`) — Clean dark slate container with subtle 1px border.
-- **Ground / Base (Light)**: `#ffffff` (`--base: 255 255 255`)
-- **Elevated Surface (Light)**: `#f8fafc` (`--surface: 248 250 252`)
+### Cool & Relaxed Base
+- **Midnight Base (`--base`)**: `#0a0f1c` (`10 15 28`) — Deep Midnight Blue ground canvas.
+- **Oceanic Surface (`--surface`)**: `#111827` (`17 24 39`) — Oceanic Slate elevated surface.
+- **Frosted Glass Surface**: `bg-white/[0.04]` to `bg-white/[0.08]` with `backdrop-blur-md` / `backdrop-blur-xl` and `border-white/10`.
 
 ### Typography
-- **Primary Text (Dark)**: `#f8fafc` (`text-slate-100` / `theme-text-primary`) — Crisp white-slate.
-- **Secondary Text (Dark)**: `#cbd5e1` (`text-slate-300` / `theme-text-secondary`) — High contrast readability.
-- **Muted / Subtitle (Dark)**: `#94a3b8` (`text-slate-400` / `--muted: 148 163 184`)
-- **Primary Text (Light)**: `#0f172a` (`text-slate-900`)
-- **Secondary Text (Light)**: `#334155` (`text-slate-700`)
+- **Primary Text (`--primary`)**: `#f8fafc` (`248 250 252`) — Frosty White (>15:1 contrast over `#0a0f1c`).
+- **Secondary Text (`--muted`)**: `#94a3b8` (`148 163 184`) — Muted Cool Gray (>7:1 contrast over `#0a0f1c`).
 
-### Interactive Accents
-- **Industrial Orange**: `#FF7A00` (`--orange: 255 122 0`, `text-orange`, `bg-orange`)
-  - Semantic use: Hardware status, terminal prompt (`>`), primary action triggers, telemetry interlocks.
-- **Electric Blue**: `#0052FF` (`--blue: 0 82 255`, `text-blue-600 dark:text-blue-400`, `bg-blue-600`)
-  - Semantic use: Active states, network links, data stream indicators, bash shell badges.
-- **Telemetry Emerald**: `#10b981` / `#34d399` (`text-emerald-500`, `bg-emerald-400`)
-  - Semantic use: Online status, 0ms latency, active heartbeat.
+### The Disruptive Accents
+- **Electric Chartreuse (`--accent` / `chartreuse`)**: `#CCFF00` (`204 255 0`)
+  - Primary high-energy disruptive accent for primary CTA buttons (16.8:1 AAA contrast with `#0a0f1c` text), active states, and custom cursor core.
+- **Hyper-Neon Pink (`--neon-pink` / `neonPink`)**: `#FF007F` (`255 0 127`)
+  - Secondary disruptive energy accent used in fluid velocity wakes, active telemetry highlights, and cursor ring pulse.
+- **Deep Cyber Blue (`--blue`)**: `#0052FF` (`0 82 255`)
+  - Ambient fluid currents and network topology links.
 
-## 3. Typography & Hierarchy
-- **Font Stack**:
-  - Headings & Body: Inter / System UI (`font-sans`)
-  - Code, Commands & Tags: JetBrains Mono / SF Mono / Consolas (`font-mono`)
-- **Hierarchy**:
-  - Hero `H1`: `text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12]`
-  - Role Sub-headline: `text-xl sm:text-2xl lg:text-3xl font-bold font-mono text-orange`
-  - Section Headings: `text-2xl sm:text-3xl font-extrabold tracking-tight`
-  - Body Text: `text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-xl`
-  - Tech Tags & Badges: `text-xs font-mono font-semibold px-2.5 py-1`
+## 3. Component & Motion Architecture
+- **Interactive Liquid Background (`LiquidBackground.tsx`)**:
+  - Fixed viewport-filling HTML5 Canvas (`z-[-1]`, `pointer-events-none`) running a 60fps interactive fluid wave & vortex solver that reacts to `mousemove` and `touchmove` with ripples and disruptive color wakes.
+- **Physics-Based Magnetic Interactions (`MagneticButton.tsx`)**:
+  - Spring-driven magnetic pull (`stiffness: 180, damping: 15`) toward cursor position on desktop viewports.
+- **Custom Cursor (`CustomCursor.tsx`)**:
+  - Replaces default OS cursor on fine-pointer devices with an Electric Chartreuse dot and a spring-physics Neon Pink / Chartreuse translucent expansion ring on interactive targets.
+- **Floating Pill Glass NavBar & Slide-In Mobile Drawer (`NavBar.tsx`)**:
+  - Pill-shaped frosted glass header (`backdrop-blur-xl bg-[#0a0f1c]/75 border-white/10 rounded-full`).
+  - Side slide-in mobile drawer (`backdrop-blur-2xl bg-[#0a0f1c]/90`) with zero horizontal overflow.
 
-## 4. Interaction & Accessibility Standards (WCAG 2.1 AA / AAA)
-- **Minimum Touch Target**: 44x44px across all mobile buttons, links, toggles, and drawer controls.
-- **Focus Rings**: `focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none` for full keyboard accessibility.
-- **Transitions**: 150ms-250ms `ease-out` on transforms, opacity, and border colors. Never use bounce or elastic easing.
-- **Responsiveness**: Zero horizontal overflow on any viewport width from 320px up to 4K ultra-wide (`w-full overflow-x-hidden`).
-- **Icons**: Crisp SVG icons with explicit `aria-hidden="true"`; buttons have explicit `aria-label` and `aria-expanded` attributes.
+## 4. Accessibility & Quality Constraints
+- **Zero Layout Shift / Overflow**: Canvas is strictly viewport-bound (`fixed inset-0 overflow-hidden`); `html, body` enforce `overflow-x: clip`.
+- **WCAG Contrast Compliance**: All text over glassmorphism layers maintains a dark translucent backing (`#0a0f1c/75+`) guaranteeing >= 7:1 AA/AAA readability.
+- **Touch & Reduced Motion**: Custom cursor and magnetic pulls auto-disable on coarse pointers (touchscreens) and respect `prefers-reduced-motion`.

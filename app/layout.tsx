@@ -7,6 +7,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 import NavBar from "@/components/NavBar";
 import Terminal from "@/components/Terminal";
 import AmbientBackground from "@/components/AmbientBackground";
+import CustomCursor from "@/components/CustomCursor";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -54,8 +55,9 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden min-h-screen relative`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {/* Ambient Cyber-Physical Background (animated) */}
+          {/* Ambient Cyber-Physical Liquid Background */}
           <AmbientBackground />
+          <CustomCursor />
           <NavBar />
           {children}
           <Terminal />

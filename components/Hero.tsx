@@ -2,9 +2,30 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import TelemetryBar from "@/components/TelemetryBar";
 import ResumeDownload from "@/components/ResumeDownload";
+import MagneticButton from "@/components/MagneticButton";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.11,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
+};
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
@@ -25,56 +46,52 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-20 lg:pt-28 pb-16 overflow-x-clip">
+    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-16 lg:pt-24 pb-16 overflow-x-clip">
       <div className="max-w-6xl mx-auto w-full">
         {/* Edge Telemetry HUD Bar */}
         <TelemetryBar />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Text Layout */}
+          {/* Left Column: Staggered Upward Text Reveal */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
             className="lg:col-span-7 text-left order-2 lg:order-1"
           >
             {/* Terminal Boot Sequence Prompt */}
-            <div className="inline-flex items-center gap-1.5 font-mono text-xs md:text-sm text-orange-700 dark:text-orange font-semibold tracking-wider bg-orange-50 dark:bg-white/5 border border-orange-200/70 dark:border-white/10 px-3 py-1.5 rounded-lg mb-5 shadow-sm">
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-neonPink dark:text-chartreuse font-semibold tracking-wider bg-white/70 dark:bg-white/[0.04] backdrop-blur-md border border-black/10 dark:border-white/10 px-3.5 py-1.5 rounded-full mb-5 shadow-sm"
+            >
               <span>{typedText}</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange-600 dark:bg-orange" />
-            </div>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-neonPink dark:bg-chartreuse" />
+            </motion.div>
 
             {/* Primary Headline & Role */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="mb-4"
-            >
+            <motion.div variants={itemVariants} className="mb-4">
               <h1 className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-3">
                 Jose Lorenzo Discutido
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
-                <span className="text-orange-600 dark:text-orange">Systems &amp; Data Engineer</span>
+                <span className="text-neonPink dark:text-chartreuse">
+                  Systems &amp; Data Engineer
+                </span>
               </p>
             </motion.div>
 
             {/* Value Proposition (Body Text) */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              variants={itemVariants}
               className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
             >
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
 
-            {/* Tech Stack Quick-Tags */}
+            {/* Tech Stack Quick-Tags (Frosted Glass Badges) */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
-              className="flex flex-wrap items-center gap-2 mb-8"
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-2.5 mb-8"
             >
               {[
                 "[ Python / Next.js ]",
@@ -84,75 +101,77 @@ export default function Hero() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-xs font-semibold px-2.5 py-1.5 rounded-md bg-black/[0.04] dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 shadow-sm hover:border-orange dark:hover:border-orange transition-colors"
+                  className="font-mono text-xs font-semibold px-3 py-1.5 rounded-full bg-white/75 dark:bg-white/[0.05] backdrop-blur-md border border-black/10 dark:border-white/10 text-slate-800 dark:text-frost shadow-sm hover:border-neonPink dark:hover:border-chartreuse transition-colors"
                 >
                   {tag}
                 </span>
               ))}
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* Magnetic CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+              variants={itemVariants}
               className="flex flex-wrap gap-4 items-center justify-start"
             >
-              <motion.a
-                href="#projects"
-                whileHover={{ x: 2, y: 2 }}
-                whileTap={{ x: 4, y: 4, scale: 0.98 }}
-                className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-              >
-                <span className="!text-black font-bold">View Projects</span>
-                <span aria-hidden="true" className="!text-black font-bold">&rarr;</span>
-              </motion.a>
+              <MagneticButton strength={0.3}>
+                <a
+                  href="#projects"
+                  data-magnetic="true"
+                  className="min-h-[44px] inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-chartreuse !text-[#0a0f1c] font-extrabold text-sm sm:text-base border border-chartreuse shadow-[0_0_24px_rgba(204,255,0,0.35)] hover:shadow-[0_0_32px_rgba(255,0,127,0.5)] hover:bg-neonPink hover:!text-white hover:border-neonPink active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                >
+                  <span>View Projects</span>
+                  <span aria-hidden="true" className="font-bold">
+                    &rarr;
+                  </span>
+                </a>
+              </MagneticButton>
 
-              <motion.a
-                href="#contact"
-                whileHover={{ x: 2, y: 2 }}
-                whileTap={{ x: 4, y: 4, scale: 0.98 }}
-                className="min-h-[44px] theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue-600 dark:hover:!text-blue-400 hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-              >
-                <span className="text-black dark:text-white font-bold">Contact Me</span>
-              </motion.a>
+              <MagneticButton strength={0.25}>
+                <a
+                  href="#contact"
+                  data-magnetic="true"
+                  className="min-h-[44px] bg-white/80 dark:bg-white/[0.06] backdrop-blur-xl text-slate-900 dark:text-frost border border-black/15 dark:border-white/15 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-neonPink dark:hover:border-chartreuse hover:text-neonPink dark:hover:text-chartreuse active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                >
+                  <span>Contact Me</span>
+                </a>
+              </MagneticButton>
 
               <div className="md:hidden">
-                <ResumeDownload className="min-h-[44px] px-5 py-3 rounded-xl bg-slate-100 dark:bg-[#1e2128] border-2 border-black dark:border-white/30 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+                <ResumeDownload className="min-h-[44px] px-6 py-3.5 rounded-full bg-white/80 dark:bg-white/[0.06] backdrop-blur-xl border border-black/15 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Image Layout */}
+          {/* Right Column: Frosted Glass Image Layout */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
-            <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
-              {/* Hard black offset shadow backdrop */}
+            <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
+              {/* Subtle Ambient Glow Backdrop */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-black dark:bg-black rounded-2xl translate-x-3 translate-y-3 sm:translate-x-3.5 sm:translate-y-3.5 border-2 border-black dark:border-black"
+                className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-chartreuse/20 via-blue/15 to-neonPink/20 blur-xl opacity-75"
               />
 
-              {/* Main Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border-2 border-black dark:border-white/20 bg-surface shadow-2xl z-[1]">
+              {/* Main Frosted Glass Image Frame */}
+              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/15 bg-surface/80 backdrop-blur-xl shadow-2xl z-[1]">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
                     alt="Jose Lorenzo Discutido"
                     fill
-                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 360px, 400px"
+                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 384px, 448px"
                     className="w-full h-full object-cover object-top"
                     onError={() => setImageError(true)}
                     priority
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center theme-text-primary bg-slate-100 dark:bg-surface p-6">
-                    <span className="font-extrabold text-3xl tracking-tighter text-blue-600 dark:text-blue-400">
-                      JL<span className="text-orange-600 dark:text-orange">D</span>
+                    <span className="font-extrabold text-3xl tracking-tighter text-blue-600 dark:text-chartreuse">
+                      JL<span className="text-neonPink">D</span>
                     </span>
                     <span className="text-xs uppercase font-mono theme-text-secondary tracking-widest mt-2">
                       Jose Lorenzo Discutido
@@ -161,20 +180,20 @@ export default function Hero() {
                 )}
 
                 {/* Availability status badge */}
-                <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
+                <div className="absolute top-3 right-3 bg-[#0a0f1c]/80 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-chartreuse opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-chartreuse" />
                   </span>
-                  <span className="text-[11px] font-mono font-medium text-emerald-400">
+                  <span className="text-[11px] font-mono font-medium text-frost">
                     Available
                   </span>
                 </div>
               </div>
 
-              {/* Tilted "aka @lorenzdiscutido" pill badge at bottom-left */}
-              <div className="theme-badge absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 -rotate-3 px-4 py-1.5 rounded-xl border-2 shadow-[3px_3px_0px_0px_#000000] font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
-                <span className="text-orange-700 dark:text-orange font-semibold">aka</span>
+              {/* Frosted Glass "@lorenzdiscutido" pill badge at bottom-left */}
+              <div className="theme-badge absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full backdrop-blur-xl border shadow-lg font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
+                <span className="text-neonPink dark:text-chartreuse font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>
             </div>
