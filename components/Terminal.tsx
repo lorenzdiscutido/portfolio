@@ -592,15 +592,15 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2.5 rounded-full bg-midnight/90 text-frost backdrop-blur-md border border-white/15 text-xs font-mono hover:border-chartreuse hover:text-chartreuse transition-all cursor-pointer flex items-center gap-2.5 group"
+        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 text-slate-900 dark:text-frost backdrop-blur-xl border border-black/10 dark:border-white/15 text-xs font-mono hover:border-neonPink dark:hover:border-chartreuse hover:text-neonPink dark:hover:text-chartreuse shadow-2xl transition-all cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonPink dark:bg-chartreuse opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-neonPink dark:bg-chartreuse shadow-[0_0_8px_#FF007F] dark:shadow-[0_0_8px_#CCFF00]"></span>
         </span>
         <span className="font-bold">&gt;_ Terminal</span>
-        <span className="hidden sm:inline text-[10px] text-slate-400 bg-white/10 px-1.5 py-0.5 rounded">
+        <span className="hidden sm:inline text-[10px] text-slate-500 dark:text-slate-400 bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded border border-black/5 dark:border-white/5">
           Ctrl+`
         </span>
       </button>
@@ -611,21 +611,21 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all overflow-hidden"
+      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all overflow-hidden"
     >
       <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
         <span className="text-slate-300 font-bold">
           jld-sys terminal (Ctrl + ` to toggle)
         </span>
         <div className="flex items-center gap-3">
-          <span className="text-blue-600 dark:text-blue-400 font-bold">bash</span>
+          <span className="text-neonPink dark:text-chartreuse font-bold">bash</span>
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 hover:text-orange text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 hover:text-neonPink dark:hover:text-chartreuse text-slate-400 transition-colors cursor-pointer font-bold font-mono text-xs"
             aria-label="Close Terminal"
           >
             [x]
