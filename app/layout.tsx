@@ -57,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-x-hidden min-h-screen relative`}>
+      <body className={`${inter.className} overflow-x-hidden min-h-screen relative text-[#f8fafc]`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {/* Ambient Cyber-Physical Liquid Background (Dynamic Client Component with SSR: false) */}
           <AmbientBackground />
