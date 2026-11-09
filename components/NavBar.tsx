@@ -37,14 +37,14 @@ export default function NavBar() {
         <MagneticButton strength={0.2}>
           <Link
             href="/"
-            className="text-slate-900 dark:text-frost font-extrabold text-lg sm:text-xl tracking-tight hover:text-neonPink dark:hover:text-chartreuse transition-colors py-1.5 flex items-center gap-2 group"
+            className="text-slate-900 dark:text-frost font-extrabold text-base sm:text-lg lg:text-xl tracking-tight hover:text-neonPink dark:hover:text-chartreuse transition-colors py-1 flex items-center gap-2 group shrink-0"
             aria-label="Lorenz Homepage"
           >
-            <span className="text-neonPink dark:text-chartreuse font-mono font-bold text-xl sm:text-2xl transition-transform group-hover:translate-x-0.5">
+            <span className="text-neonPink dark:text-chartreuse font-mono font-bold text-lg sm:text-xl transition-transform group-hover:translate-x-0.5">
               &gt;
             </span>
             <span className="font-extrabold tracking-tight">Lorenz</span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold tracking-wider">
+            <span className="hidden lg:inline-flex items-center gap-1.5 ml-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold tracking-wider">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               SYS:ACTIVE
             </span>
@@ -52,12 +52,12 @@ export default function NavBar() {
         </MagneticButton>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-1.5 lg:gap-2.5 xl:gap-3 shrink-0">
           {navLinks.map((link) => (
             <MagneticButton key={link.href} strength={0.25}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-neonPink dark:hover:text-chartreuse transition-colors px-2 py-1 rounded-full"
+                className="text-xs lg:text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-neonPink dark:hover:text-chartreuse transition-colors px-2 lg:px-2.5 py-1 rounded-full whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -70,12 +70,16 @@ export default function NavBar() {
               type="button"
               onClick={handleOpenCommandPalette}
               data-testid="navbar-cmdk-button"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-800 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+              className="inline-flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-800 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse shrink-0"
               title="Open Command Palette (Ctrl + K)"
               aria-label="Open Command Palette"
             >
-              <span>Search</span>
-              <kbd className="text-xs font-mono text-neonPink dark:text-chartreuse bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded-full border border-black/5 dark:border-white/5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0 text-slate-500 dark:text-slate-400">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <span className="hidden xl:inline">Search</span>
+              <kbd className="text-[10px] lg:text-xs font-mono text-neonPink dark:text-chartreuse bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded-full border border-black/5 dark:border-white/5">
                 Ctrl+K
               </kbd>
             </button>
@@ -86,22 +90,27 @@ export default function NavBar() {
             <button
               type="button"
               onClick={handleOpenTerminal}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-800 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+              className="inline-flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-800 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse shrink-0"
               title="Open Interactive Terminal (Ctrl + `)"
               aria-label="Open Interactive Terminal"
             >
               <span className="text-neonPink dark:text-chartreuse font-bold font-mono group-hover:translate-x-0.5 transition-transform">
                 &gt;_
               </span>
-              <span>Terminal</span>
+              <span className="hidden lg:inline">Terminal</span>
             </button>
           </MagneticButton>
 
-          <MagneticButton strength={0.22}>
-            <ResumeDownload className="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse" />
-          </MagneticButton>
+          {/* Resume Download CTA (visible on larger screens to prevent pill overflow) */}
+          <div className="hidden lg:block shrink-0">
+            <MagneticButton strength={0.22}>
+              <ResumeDownload className="whitespace-nowrap px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse" />
+            </MagneticButton>
+          </div>
 
-          <ThemeToggle />
+          <MagneticButton strength={0.22}>
+            <ThemeToggle />
+          </MagneticButton>
         </div>
 
         {/* Mobile Viewport Header Controls (All >= 2.75rem touch targets) */}

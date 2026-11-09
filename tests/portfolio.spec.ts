@@ -75,4 +75,40 @@ test.describe("Portfolio Interactive Fluid & Glassmorphism UI E2E", () => {
     expect(overflowMetrics.scrollWidth).toBeLessThanOrEqual(overflowMetrics.clientWidth);
     expect(pageErrors).toHaveLength(0);
   });
+
+  test("Desktop & Tablet viewports (768px, 850px, 1024px, 1280px): NavBar items stay strictly within pill bounds without overflow", async ({
+    page,
+  }) => {
+    for (const width of [768, 850, 1024, 1280]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto("/");
+
+      const nav = page.locator('nav[aria-label="Main Navigation"]');
+      await expect(nav).toBeVisible();
+
+      const metrics = await page.evaluate(() => {
+        const navEl = document.querySelector('nav[aria-label="Main Navigation"]');
+        if (!navEl) return null;
+        const navRect = navEl.getBoundingClientRect();
+        const children = Array.from(navEl.querySelectorAll("*"));
+        let maxRight = navRect.left;
+        for (const child of children) {
+          const r = child.getBoundingClientRect();
+          if (r.width > 0 && r.height > 0) {
+            maxRight = Math.max(maxRight, r.right);
+          }
+        }
+        return {
+          navRight: navRect.right,
+          maxChildRight: maxRight,
+          docScrollWidth: document.documentElement.scrollWidth,
+          docClientWidth: document.documentElement.clientWidth,
+        };
+      });
+
+      expect(metrics).not.toBeNull();
+      expect(metrics!.maxChildRight).toBeLessThanOrEqual(metrics!.navRight + 1);
+      expect(metrics!.docScrollWidth).toBeLessThanOrEqual(metrics!.docClientWidth);
+    }
+  });
 });
