@@ -104,36 +104,41 @@ export default function LiquidBackground() {
     let width = (canvas.width = window.innerWidth || 1280);
     let height = (canvas.height = window.innerHeight || 800);
 
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const nodes: AmbientWaveNode[] = [
       {
         x: width * 0.2,
         y: height * 0.25,
-        vx: 0.35,
-        vy: 0.22,
+        vx: prefersReducedMotion ? 0 : 0.35,
+        vy: prefersReducedMotion ? 0 : 0.22,
         radius: Math.max(width, height) * 0.38,
         colorType: "electricBlue",
       },
       {
         x: width * 0.78,
         y: height * 0.68,
-        vx: -0.28,
-        vy: -0.25,
+        vx: prefersReducedMotion ? 0 : -0.28,
+        vy: prefersReducedMotion ? 0 : -0.25,
         radius: Math.max(width, height) * 0.42,
         colorType: "ambientSlate",
       },
       {
         x: width * 0.52,
         y: height * 0.45,
-        vx: -0.2,
-        vy: 0.3,
+        vx: prefersReducedMotion ? 0 : -0.2,
+        vy: prefersReducedMotion ? 0 : 0.3,
         radius: Math.max(width, height) * 0.32,
         colorType: "electricBlueSecondary",
       },
       {
         x: width * 0.35,
         y: height * 0.75,
-        vx: 0.25,
-        vy: -0.18,
+        vx: prefersReducedMotion ? 0 : 0.25,
+        vy: prefersReducedMotion ? 0 : -0.18,
         radius: Math.max(width, height) * 0.3,
         colorType: "vibrantOrange",
       },
@@ -271,6 +276,20 @@ export default function LiquidBackground() {
       animationFrameId = window.requestAnimationFrame(render);
     };
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (animationFrameId) {
+          window.cancelAnimationFrame(animationFrameId);
+          animationFrameId = 0;
+        }
+      } else {
+        if (!animationFrameId) {
+          animationFrameId = window.requestAnimationFrame(render);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     animationFrameId = window.requestAnimationFrame(render);
 
     return () => {
@@ -278,6 +297,7 @@ export default function LiquidBackground() {
       window.removeEventListener("mousemove", handleWindowMouseMove);
       window.removeEventListener("touchmove", handleWindowTouchMove);
       window.removeEventListener("liquid-bullet-time", handleBulletTime);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       if (animationFrameId) {
         window.cancelAnimationFrame(animationFrameId);
       }

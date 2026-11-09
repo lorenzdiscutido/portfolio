@@ -3,10 +3,6 @@
 import React, { useState } from "react";
 
 export default function Footer() {
-  const WEB3FORMS_KEY =
-    process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-    "cd29e663-f247-43a8-9213-58dd39d0449f";
-
   const [name, setName] = useState("");
   const [senderEmail, setSenderEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -34,26 +30,23 @@ export default function Footer() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
           name: name.trim(),
           email: senderEmail.trim(),
-          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
+          subject: subject.trim() || undefined,
           message: message.trim(),
-          from_name: "Lorenz Portfolio Contact Form",
-          botcheck: website.trim(),
         }),
       });
 
       const result = await response.json();
 
-      if (response.ok && result.success) {
+      if (response.ok && (result.success || !result.error)) {
         setStatus("sent");
         setName("");
         setSenderEmail("");
@@ -62,7 +55,7 @@ export default function Footer() {
         setWebsite("");
       } else {
         setStatus("error");
-        setErrorMessage(result.message || "Failed to send message. Please try again.");
+        setErrorMessage(result.error || "Failed to send message. Please try again.");
       }
     } catch {
       setStatus("error");

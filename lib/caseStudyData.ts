@@ -245,7 +245,7 @@ export const caseStudies: CaseStudy[] = [
     overview:
       "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.",
     problem:
-      "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.",
+      "Barangay municipal announcements, service requests, and emergency incident advisories relied entirely on physical cork bulletin boards, manual paper logbooks, and in-person hall queues. This caused severe communication latency (often 48+ hours), zero tracking transparency for citizen grievances, and a complete lack of real-time municipal telemetry.",
     architecture:
       "Executed a complete migration to a mobile-first architecture utilizing Dart and Flutter. Engineered real-time resident feedback interfaces and interactive administrator dashboards. Leveraged Firebase for secure user authentication and real-time database state management.",
     outcome:
