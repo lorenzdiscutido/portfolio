@@ -6,6 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import TelemetryBar from "@/components/TelemetryBar";
 import ResumeDownload from "@/components/ResumeDownload";
 import MagneticButton from "@/components/MagneticButton";
+import MagneticTechNodes from "@/components/MagneticTechNodes";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -62,7 +63,7 @@ export default function Hero() {
             {/* Terminal Boot Sequence Prompt */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-neonPink dark:text-chartreuse font-semibold tracking-wider bg-white/70 dark:bg-white/[0.04] backdrop-blur-md border border-black/10 dark:border-white/10 px-3.5 py-1.5 rounded-full mb-5 shadow-sm"
+              className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-neonPink dark:text-chartreuse font-semibold tracking-wider bg-white/70 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 px-3.5 py-1.5 rounded-full mb-5 shadow-sm"
             >
               <span>{typedText}</span>
               <span className="animate-pulse inline-block w-1.5 h-3.5 bg-neonPink dark:bg-chartreuse" />
@@ -70,7 +71,7 @@ export default function Hero() {
 
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
-              <h1 className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-3">
+              <h1 className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3">
                 Jose Lorenzo Discutido
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
@@ -88,24 +89,9 @@ export default function Hero() {
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
 
-            {/* Tech Stack Quick-Tags (Frosted Glass Badges) */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap items-center gap-2.5 mb-8"
-            >
-              {[
-                "[ Python / Next.js ]",
-                "[ Dart / Flutter ]",
-                "[ Firebase / MySQL ]",
-                "[ C++ / IoT ]",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-xs font-semibold px-3 py-1.5 rounded-full bg-white/75 dark:bg-white/[0.05] backdrop-blur-md border border-black/10 dark:border-white/10 text-slate-800 dark:text-frost shadow-sm hover:border-neonPink dark:hover:border-chartreuse transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
+            {/* 3D Shader-Driven Magnetic Tech Nodes */}
+            <motion.div variants={itemVariants}>
+              <MagneticTechNodes />
             </motion.div>
 
             {/* Magnetic CTA Buttons */}
@@ -117,7 +103,7 @@ export default function Hero() {
                 <a
                   href="#projects"
                   data-magnetic="true"
-                  className="min-h-[44px] inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-chartreuse !text-[#0a0f1c] font-extrabold text-sm sm:text-base border border-chartreuse shadow-[0_0_24px_rgba(204,255,0,0.35)] hover:shadow-[0_0_32px_rgba(255,0,127,0.5)] hover:bg-neonPink hover:!text-white hover:border-neonPink active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                  className="min-h-11 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-chartreuse !text-midnight font-extrabold text-sm sm:text-base border border-chartreuse shadow-lg hover:bg-neonPink hover:!text-white hover:border-neonPink active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
                 >
                   <span>View Projects</span>
                   <span aria-hidden="true" className="font-bold">
@@ -130,14 +116,14 @@ export default function Hero() {
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-[44px] bg-white/80 dark:bg-white/[0.06] backdrop-blur-xl text-slate-900 dark:text-frost border border-black/15 dark:border-white/15 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-neonPink dark:hover:border-chartreuse hover:text-neonPink dark:hover:text-chartreuse active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                  className="min-h-11 bg-white/80 dark:bg-white/5 backdrop-blur-xl text-slate-900 dark:text-frost border border-black/15 dark:border-white/15 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-neonPink dark:hover:border-chartreuse hover:text-neonPink dark:hover:text-chartreuse active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
                 >
                   <span>Contact Me</span>
                 </a>
               </MagneticButton>
 
               <div className="md:hidden">
-                <ResumeDownload className="min-h-[44px] px-6 py-3.5 rounded-full bg-white/80 dark:bg-white/[0.06] backdrop-blur-xl border border-black/15 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/15 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
               </div>
             </motion.div>
           </motion.div>
@@ -157,7 +143,7 @@ export default function Hero() {
               />
 
               {/* Main Frosted Glass Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/15 bg-surface/80 backdrop-blur-xl shadow-2xl z-[1]">
+              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/15 bg-surface/80 backdrop-blur-xl shadow-2xl z-10">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -180,19 +166,19 @@ export default function Hero() {
                 )}
 
                 {/* Availability status badge */}
-                <div className="absolute top-3 right-3 bg-[#0a0f1c]/80 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
+                <div className="absolute top-3 right-3 bg-midnight/80 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-chartreuse opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-chartreuse" />
                   </span>
-                  <span className="text-[11px] font-mono font-medium text-frost">
+                  <span className="text-xs font-mono font-medium text-frost">
                     Available
                   </span>
                 </div>
               </div>
 
               {/* Frosted Glass "@lorenzdiscutido" pill badge at bottom-left */}
-              <div className="theme-badge absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full backdrop-blur-xl border shadow-lg font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-10 hover:rotate-0 transition-transform">
+              <div className="theme-badge absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full backdrop-blur-xl border shadow-lg font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-20 hover:rotate-0 transition-transform">
                 <span className="text-neonPink dark:text-chartreuse font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>

@@ -25,6 +25,7 @@ interface AmbientWaveNode {
 export default function LiquidBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const ripplesRef = useRef<FluidRipple[]>([]);
+  const timeScaleRef = useRef<number>(1);
   const pointerRef = useRef<{ x: number; y: number; lastX: number; lastY: number; active: boolean }>({
     x: 0,
     y: 0,
@@ -131,9 +132,19 @@ export default function LiquidBackground() {
       }
     };
 
+    const handleBulletTime = (e: Event) => {
+      const custom = e as CustomEvent<{ active?: boolean; timeScale?: number }>;
+      if (custom.detail && typeof custom.detail.timeScale === "number") {
+        timeScaleRef.current = custom.detail.timeScale;
+      } else {
+        timeScaleRef.current = custom.detail?.active ? 0.15 : 1;
+      }
+    };
+
     window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("mousemove", handleWindowMouseMove, { passive: true });
     window.addEventListener("touchmove", handleWindowTouchMove, { passive: true });
+    window.addEventListener("liquid-bullet-time", handleBulletTime);
 
     const getRippleColor = (hueType: FluidRipple["hueType"], alpha: number) => {
       if (hueType === "chartreuse") return `rgba(204, 255, 0, ${alpha.toFixed(3)})`;
@@ -144,12 +155,13 @@ export default function LiquidBackground() {
     const render = () => {
       if (!ctx) return;
 
+      const dt = timeScaleRef.current;
       ctx.clearRect(0, 0, width, height);
 
-      // Ambient autonomous oceanic fluid currents
+      // Ambient autonomous oceanic fluid currents (modulated by bullet-time scale)
       for (const node of nodes) {
-        node.x += node.vx;
-        node.y += node.vy;
+        node.x += node.vx * dt;
+        node.y += node.vy * dt;
 
         if (node.x < -node.radius * 0.3 || node.x > width + node.radius * 0.3) node.vx *= -1;
         if (node.y < -node.radius * 0.3 || node.y > height + node.radius * 0.3) node.vy *= -1;
@@ -168,12 +180,12 @@ export default function LiquidBackground() {
       const ripples = ripplesRef.current;
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
-        r.x += r.vx;
-        r.y += r.vy;
-        r.vx *= 0.94;
-        r.vy *= 0.94;
-        r.radius += (r.maxRadius - r.radius) * 0.06;
-        r.alpha *= 0.96;
+        r.x += r.vx * dt;
+        r.y += r.vy * dt;
+        r.vx *= 1 - 0.06 * dt;
+        r.vy *= 1 - 0.06 * dt;
+        r.radius += (r.maxRadius - r.radius) * 0.06 * dt;
+        r.alpha *= 1 - 0.04 * dt;
 
         if (r.alpha <= 0.004) {
           ripples.splice(i, 1);
@@ -200,6 +212,7 @@ export default function LiquidBackground() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleWindowMouseMove);
       window.removeEventListener("touchmove", handleWindowTouchMove);
+      window.removeEventListener("liquid-bullet-time", handleBulletTime);
       if (animationFrameId) {
         window.cancelAnimationFrame(animationFrameId);
       }

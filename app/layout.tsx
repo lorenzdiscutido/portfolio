@@ -8,6 +8,8 @@ import NavBar from "@/components/NavBar";
 import Terminal from "@/components/Terminal";
 import AmbientBackground from "@/components/AmbientBackground";
 import CustomCursor from "@/components/CustomCursor";
+import CommandPalette from "@/components/CommandPalette";
+import LiveTelemetryPill from "@/components/LiveTelemetryPill";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -58,8 +60,10 @@ export default function RootLayout({
           {/* Ambient Cyber-Physical Liquid Background */}
           <AmbientBackground />
           <CustomCursor />
+          <CommandPalette />
           <NavBar />
           {children}
+          <LiveTelemetryPill />
           <Terminal />
         </ThemeProvider>
         <Analytics />

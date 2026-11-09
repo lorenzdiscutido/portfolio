@@ -592,7 +592,7 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-40 min-h-[44px] px-4 py-2.5 rounded-xl bg-[#1e2128]/95 text-slate-200 backdrop-blur-md border border-white/20 shadow-xl text-xs font-mono hover:border-orange hover:text-orange transition-all cursor-pointer flex items-center gap-2.5 group"
+        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2.5 rounded-full bg-midnight/90 text-frost backdrop-blur-md border border-white/15 text-xs font-mono hover:border-chartreuse hover:text-chartreuse transition-all cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative">
