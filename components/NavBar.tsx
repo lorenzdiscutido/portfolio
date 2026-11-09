@@ -98,7 +98,7 @@ export default function NavBar() {
           </MagneticButton>
 
           <MagneticButton strength={0.22}>
-            <ResumeDownload className="px-4 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse" />
+            <ResumeDownload className="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost text-xs font-mono font-semibold transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse" />
           </MagneticButton>
 
           <ThemeToggle />
