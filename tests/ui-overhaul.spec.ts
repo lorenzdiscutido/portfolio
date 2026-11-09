@@ -40,6 +40,9 @@ test.describe("Phase 1-3 App-Like UI Overhaul E2E Verification", () => {
   }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/");
+    await page.waitForLoadState("domcontentloaded");
+    await expect(page.locator("nav")).toBeVisible();
+    await page.waitForTimeout(600);
 
     const initialScrollWidth = await page.evaluate(
       () => document.documentElement.scrollWidth
