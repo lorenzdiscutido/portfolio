@@ -19,7 +19,6 @@ const config: Config = {
         base: "rgb(var(--primary) / 0.08)",
       },
       colors: {
-        base: "rgb(var(--base) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
