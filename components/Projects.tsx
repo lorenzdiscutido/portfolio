@@ -54,7 +54,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       style={{ rotateX: tiltX, rotateY: tiltY }}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-3rem" }}
+      viewport={{ once: true, margin: "-48px" }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
       className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 transition-colors duration-300 flex flex-col ${spanClass}`}
     >
