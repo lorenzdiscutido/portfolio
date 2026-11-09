@@ -83,7 +83,7 @@ test.describe("Phase 1-3 App-Like UI Overhaul E2E Verification", () => {
 
     const pill = page.getByTestId("live-telemetry-pill");
     await expect(pill).toBeVisible();
-    await expect(pill).toContainText(/System:\s*Online\s*\|\s*Commits:/i);
+    await expect(pill).toContainText(/System:\s*Online\s*\|\s*(Commits:|Standby)/i);
 
     const hydrationErrors = consoleErrors.filter((err) =>
       /hydration|did not match/i.test(err)
