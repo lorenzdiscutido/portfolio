@@ -15,7 +15,7 @@ export default function ResumeDownload({ className, label }: ResumeDownloadProps
   const displayLabel = label || "Download Resume";
 
   const defaultClasses =
-    "px-5 py-2 rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60";
+    "px-5 py-2 min-h-[44px] rounded-lg bg-slate-100 dark:bg-[#1e2128] border border-black/10 dark:border-white/10 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white transition-colors text-sm font-medium inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
 
   if (!mounted) {
     return (

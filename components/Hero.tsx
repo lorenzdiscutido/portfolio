@@ -25,12 +25,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-6 pt-24 lg:pt-32 pb-20">
+    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-20 lg:pt-28 pb-16 overflow-x-clip">
       <div className="max-w-6xl mx-auto w-full">
         {/* Edge Telemetry HUD Bar */}
         <TelemetryBar />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Text Layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,9 +39,9 @@ export default function Hero() {
             className="lg:col-span-7 text-left order-2 lg:order-1"
           >
             {/* Terminal Boot Sequence Prompt */}
-            <div className="inline-flex items-center gap-1.5 font-mono text-xs md:text-sm text-orange-700 dark:text-orange font-semibold tracking-wider bg-orange-50 dark:bg-white/5 border border-orange-200/70 dark:border-white/10 px-3 py-1 rounded-md mb-4">
+            <div className="inline-flex items-center gap-1.5 font-mono text-xs md:text-sm text-orange-700 dark:text-orange font-semibold tracking-wider bg-orange-50 dark:bg-white/5 border border-orange-200/70 dark:border-white/10 px-3 py-1.5 rounded-lg mb-5 shadow-sm">
               <span>{typedText}</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange-600 dark:bg-orange"></span>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-orange-600 dark:bg-orange" />
             </div>
 
             {/* Primary Headline & Role */}
@@ -64,7 +64,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-6 max-w-xl leading-relaxed"
+              className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
             >
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
@@ -84,7 +84,7 @@ export default function Hero() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 shadow-sm"
+                  className="font-mono text-xs font-semibold px-2.5 py-1.5 rounded-md bg-black/[0.04] dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 shadow-sm hover:border-orange dark:hover:border-orange transition-colors"
                 >
                   {tag}
                 </span>
@@ -102,7 +102,7 @@ export default function Hero() {
                 href="#projects"
                 whileHover={{ x: 2, y: 2 }}
                 whileTap={{ x: 4, y: 4, scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer"
+                className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange !text-black font-bold text-sm sm:text-base border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 <span className="!text-black font-bold">View Projects</span>
                 <span aria-hidden="true" className="!text-black font-bold">&rarr;</span>
@@ -112,13 +112,13 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ x: 2, y: 2 }}
                 whileTap={{ x: 4, y: 4, scale: 0.98 }}
-                className="theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3.5 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue-600 dark:hover:!text-blue-400 hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base"
+                className="min-h-[44px] theme-btn-white bg-white dark:bg-[#1e2128] text-black dark:text-white border-black dark:border-white/30 inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 shadow-[4px_4px_0px_0px_#000000] hover:bg-slate-100 dark:hover:bg-[#282c37] hover:!text-blue-600 dark:hover:!text-blue-400 hover:shadow-[2px_2px_0px_0px_#000000] active:shadow-none transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 <span className="text-black dark:text-white font-bold">Contact Me</span>
               </motion.a>
 
               <div className="md:hidden">
-                <ResumeDownload className="px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-[#1e2128] border-2 border-black dark:border-white/30 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+                <ResumeDownload className="min-h-[44px] px-5 py-3 rounded-xl bg-slate-100 dark:bg-[#1e2128] border-2 border-black dark:border-white/30 hover:border-orange dark:hover:border-orange text-slate-900 dark:text-white font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
               </div>
             </motion.div>
           </motion.div>
@@ -130,7 +130,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px]">
+            <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
               {/* Hard black offset shadow backdrop */}
               <div
                 aria-hidden="true"
@@ -144,7 +144,7 @@ export default function Hero() {
                     src="/profile.jpg"
                     alt="Jose Lorenzo Discutido"
                     fill
-                    sizes="(max-width: 640px) 340px, (max-width: 1024px) 380px, 420px"
+                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 360px, 400px"
                     className="w-full h-full object-cover object-top"
                     onError={() => setImageError(true)}
                     priority
@@ -163,8 +163,8 @@ export default function Hero() {
                 {/* Availability status badge */}
                 <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                   </span>
                   <span className="text-[11px] font-mono font-medium text-emerald-400">
                     Available

@@ -611,7 +611,7 @@ export default function Terminal() {
     <div
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 right-4 md:bottom-10 md:right-10 w-[calc(100vw-32px)] max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all"
+      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#15181e]/95 text-slate-200 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl flex flex-col font-mono text-sm p-4 z-50 cursor-text transition-all overflow-hidden"
     >
       <div className="mb-3 pb-2 border-b border-white/10 flex justify-between items-center text-xs">
         <span className="text-slate-300 font-bold">
@@ -668,23 +668,37 @@ export default function Terminal() {
           <button
             type="button"
             onClick={() => handleCommand("projects")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
-            <span>📁</span> View Projects
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-orange">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+            </svg>
+            <span>View Projects</span>
           </button>
           <button
             type="button"
             onClick={() => handleCommand("resume")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-blue-400/20 border border-white/15 hover:border-blue-400 text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-blue-400/20 border border-white/15 hover:border-blue-400 text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
-            <span>📄</span> Read Resume
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-blue-400">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+            <span>Read Resume</span>
           </button>
           <button
             type="button"
             onClick={() => handleCommand("contact")}
-            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+            className="min-h-[44px] px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 active:bg-orange/20 border border-white/15 hover:border-orange text-slate-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
-            <span>✉️</span> Contact Me
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-orange">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span>Contact Me</span>
           </button>
         </div>
       </div>
