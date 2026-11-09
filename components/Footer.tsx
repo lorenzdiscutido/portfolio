@@ -30,6 +30,7 @@ export default function Footer() {
     setErrorMessage("");
 
     try {
+      // 1. Primary: internal Next.js API route with rate-limiting & server dispatch
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -53,9 +54,37 @@ export default function Footer() {
         setSubject("");
         setMessage("");
         setWebsite("");
+        return;
+      }
+
+      // 2. Resilient Client Fallback: If Vercel env keys are unset (503/500), dispatch via Web3Forms
+      const fallbackRes = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "cd29e663-f247-43a8-9213-58dd39d0449f",
+          name: name.trim(),
+          email: senderEmail.trim(),
+          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
+          message: message.trim(),
+          from_name: "Lorenz Portfolio Contact Form",
+        }),
+      });
+
+      const fallbackResult = await fallbackRes.json();
+      if (fallbackRes.ok && fallbackResult.success) {
+        setStatus("sent");
+        setName("");
+        setSenderEmail("");
+        setSubject("");
+        setMessage("");
+        setWebsite("");
       } else {
         setStatus("error");
-        setErrorMessage(result.error || "Failed to send message. Please try again.");
+        setErrorMessage(result.error || fallbackResult.message || "Failed to send message. Please try again.");
       }
     } catch {
       setStatus("error");
