@@ -60,22 +60,35 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left order-2 lg:order-1"
           >
-            {/* Terminal Boot Sequence Prompt */}
+            {/* Authentic Terminal Prompt Window */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-neonPink dark:text-chartreuse font-semibold tracking-wider bg-white/70 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 px-3.5 py-1.5 rounded-full mb-5 shadow-sm"
+              className="w-full max-w-lg mb-6 rounded-xl bg-[#0f1115] border border-white/5 overflow-hidden shadow-none"
             >
-              <span>{typedText}</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-neonPink dark:bg-chartreuse" />
+              {/* Solid Top Bar with standard OS dots */}
+              <div className="bg-[#1e2128] px-3.5 py-2 border-b border-white/5 flex items-center justify-between text-xs font-mono">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#eab308]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" />
+                </div>
+                <span className="text-slate-400 text-[11px] font-mono">guest@jld-sys: ~ (zsh)</span>
+                <span className="text-[10px] font-mono text-[#0052FF] font-semibold">ssh</span>
+              </div>
+              {/* Terminal Body with #f8fafc text and #FF7A00 blinking cursor */}
+              <div className="p-3.5 font-mono text-xs md:text-sm text-[#f8fafc] flex items-center gap-2">
+                <span>{typedText}</span>
+                <span className="animate-pulse inline-block w-2 h-4 bg-[#FF7A00]" />
+              </div>
             </motion.div>
 
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
-              <h1 className="theme-text-primary text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3">
+              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3 text-slate-900 dark:text-[#f8fafc]">
                 Jose Lorenzo Discutido
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
-                <span className="text-neonPink dark:text-chartreuse">
+                <span className="text-[#0052FF]">
                   Systems &amp; Data Engineer
                 </span>
               </p>
@@ -84,7 +97,7 @@ export default function Hero() {
             {/* Value Proposition (Body Text) */}
             <motion.p
               variants={itemVariants}
-              className="text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
+              className="font-sans text-slate-700 dark:text-slate-300 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
             >
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>
@@ -103,7 +116,7 @@ export default function Hero() {
                 <a
                   href="#projects"
                   data-magnetic="true"
-                  className="min-h-11 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-chartreuse !text-midnight font-extrabold text-sm sm:text-base border border-chartreuse shadow-lg hover:bg-neonPink hover:!text-white hover:border-neonPink active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                  className="min-h-11 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#0052FF] text-white font-extrabold text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>View Projects</span>
                   <span aria-hidden="true" className="font-bold">
@@ -116,19 +129,19 @@ export default function Hero() {
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-11 bg-white/80 dark:bg-white/5 backdrop-blur-xl text-slate-900 dark:text-frost border border-black/15 dark:border-white/15 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-neonPink dark:hover:border-chartreuse hover:text-neonPink dark:hover:text-chartreuse active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse"
+                  className="min-h-11 bg-white/80 dark:bg-[#1e2128]/80 backdrop-blur-md text-slate-900 dark:text-[#f8fafc] border border-black/15 dark:border-white/5 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-all cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>Contact Me</span>
                 </a>
               </MagneticButton>
 
               <div className="md:hidden">
-                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/15 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse text-slate-900 dark:text-frost font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
+                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-white/80 dark:bg-[#1e2128]/80 backdrop-blur-md border border-black/15 dark:border-white/5 hover:border-[#0052FF]/50 text-slate-900 dark:text-[#f8fafc] font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-all" />
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Frosted Glass Image Layout */}
+          {/* Right Column: Matte Frosted Glass Image Layout */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -136,14 +149,14 @@ export default function Hero() {
             className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
             <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-              {/* Subtle Ambient Glow Backdrop */}
+              {/* Subtle Ambient Blueprint Glow */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-chartreuse/20 via-blue/15 to-neonPink/20 blur-xl opacity-75"
+                className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#0052FF]/20 via-transparent to-[#FF7A00]/10 blur-xl opacity-60"
               />
 
-              {/* Main Frosted Glass Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/15 bg-surface/80 backdrop-blur-xl shadow-2xl z-10">
+              {/* Main Matte Frosted Glass Image Frame */}
+              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/15 dark:border-white/5 bg-[#1e2128]/80 backdrop-blur-md shadow-none z-10">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -155,31 +168,31 @@ export default function Hero() {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center theme-text-primary bg-slate-100 dark:bg-surface p-6">
-                    <span className="font-extrabold text-3xl tracking-tighter text-blue-600 dark:text-chartreuse">
-                      JL<span className="text-neonPink">D</span>
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-[#1e2128] p-6 text-[#f8fafc]">
+                    <span className="font-extrabold text-3xl tracking-tighter text-[#0052FF]">
+                      JL<span>D</span>
                     </span>
-                    <span className="text-xs uppercase font-mono theme-text-secondary tracking-widest mt-2">
+                    <span className="text-xs uppercase font-mono text-slate-400 tracking-widest mt-2">
                       Jose Lorenzo Discutido
                     </span>
                   </div>
                 )}
 
                 {/* Availability status badge */}
-                <div className="absolute top-3 right-3 bg-midnight/80 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full flex items-center gap-2 shadow-md">
+                <div className="absolute top-3 right-3 bg-[#0f1115]/90 backdrop-blur-md border border-white/5 px-3 py-1 rounded-full flex items-center gap-2 shadow-none">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-chartreuse opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-chartreuse" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00]" />
                   </span>
-                  <span className="text-xs font-mono font-medium text-frost">
+                  <span className="text-xs font-mono font-medium text-[#f8fafc]">
                     Available
                   </span>
                 </div>
               </div>
 
               {/* Frosted Glass "@lorenzdiscutido" pill badge at bottom-left */}
-              <div className="theme-badge absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full backdrop-blur-xl border shadow-lg font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-20 hover:rotate-0 transition-transform">
-                <span className="text-neonPink dark:text-chartreuse font-semibold">aka</span>
+              <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full bg-[#1e2128]/90 backdrop-blur-md border border-white/5 text-[#f8fafc] shadow-none font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-20 hover:rotate-0 transition-transform">
+                <span className="text-[#0052FF] font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>
             </div>

@@ -71,18 +71,18 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-black/10 dark:border-white/15">
+    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-white/5">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-frost mb-6">
-          Let&apos;s <span className="text-neonPink dark:text-chartreuse">Connect</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#f8fafc] mb-6">
+          Let&apos;s <span className="text-[#0052FF]">Connect</span>
         </h2>
-        <p className="text-slate-700 dark:text-slate-300 text-lg mb-10 max-w-xl mx-auto">
+        <p className="text-[#94a3b8] text-base md:text-lg mb-10 max-w-xl mx-auto">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto mb-16 text-left bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-6 md:p-8 rounded-2xl space-y-4"
+          className="max-w-xl mx-auto mb-16 text-left bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none p-6 md:p-8 rounded-2xl space-y-4"
         >
           {/* Honeypot field to trap automated bots */}
           <div className="hidden" aria-hidden="true">
@@ -102,7 +102,7 @@ export default function Footer() {
             <div>
               <label
                 htmlFor="contact-name"
-                className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-xs font-mono font-semibold uppercase tracking-wider text-[#94a3b8] mb-2"
               >
                 Your Name
               </label>
@@ -113,14 +113,14 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/15 focus:border-neonPink dark:focus:border-chartreuse text-slate-900 dark:text-frost placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-[#0f1115] border border-white/10 focus:border-[#0052FF] text-[#f8fafc] placeholder:text-[#94a3b8]/50 outline-none transition-colors text-sm font-mono"
               />
             </div>
 
             <div>
               <label
                 htmlFor="contact-email"
-                className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-xs font-mono font-semibold uppercase tracking-wider text-[#94a3b8] mb-2"
               >
                 Your Email
               </label>
@@ -131,7 +131,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/15 focus:border-neonPink dark:focus:border-chartreuse text-slate-900 dark:text-frost placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-[#0f1115] border border-white/10 focus:border-[#0052FF] text-[#f8fafc] placeholder:text-[#94a3b8]/50 outline-none transition-colors text-sm font-mono"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function Footer() {
           <div>
             <label
               htmlFor="contact-subject"
-              className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
+              className="block text-xs font-mono font-semibold uppercase tracking-wider text-[#94a3b8] mb-2"
             >
               Subject
             </label>
@@ -149,14 +149,14 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/15 focus:border-neonPink dark:focus:border-chartreuse text-slate-900 dark:text-frost placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-[#0f1115] border border-white/10 focus:border-[#0052FF] text-[#f8fafc] placeholder:text-[#94a3b8]/50 outline-none transition-colors text-sm font-mono"
             />
           </div>
 
           <div>
             <label
               htmlFor="contact-message"
-              className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2"
+              className="block text-xs font-mono font-semibold uppercase tracking-wider text-[#94a3b8] mb-2"
             >
               Message
             </label>
@@ -167,7 +167,7 @@ export default function Footer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message here..."
-              className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-black/30 border border-black/10 dark:border-white/15 focus:border-neonPink dark:focus:border-chartreuse text-slate-900 dark:text-frost placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none transition-colors text-sm resize-y"
+              className="w-full px-4 py-3 rounded-xl bg-[#0f1115] border border-white/10 focus:border-[#0052FF] text-[#f8fafc] placeholder:text-[#94a3b8]/50 outline-none transition-colors text-sm font-mono resize-y"
             />
           </div>
 
@@ -175,36 +175,36 @@ export default function Footer() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 rounded-full bg-chartreuse !text-midnight font-bold hover:bg-neonPink hover:!text-white transition-all disabled:opacity-50 cursor-pointer shadow-lg"
+              className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#0052FF] text-[#f8fafc] font-bold hover:bg-[#0052FF]/90 transition-all disabled:opacity-50 cursor-pointer shadow-none"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "sent" && (
-              <span className="text-sm font-medium font-mono text-neonPink dark:text-chartreuse">
+              <span className="text-sm font-medium font-mono text-[#0052FF]">
                 ✓ Message sent! I&apos;ll get back to you soon.
               </span>
             )}
 
             {status === "error" && (
-              <span className="text-sm font-medium text-red-500 dark:text-red-400">
+              <span className="text-sm font-medium font-mono text-[#FF7A00]">
                 {errorMessage}
               </span>
             )}
           </div>
         </form>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-8 text-xs font-mono text-slate-600 dark:text-slate-400">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-8 text-xs font-mono text-[#94a3b8]">
           <a
             href="mailto:lorenzdiscutido@gmail.com"
-            className="hover:text-neonPink dark:hover:text-chartreuse transition-colors"
+            className="hover:text-[#0052FF] transition-colors"
           >
             ✉ lorenzdiscutido@gmail.com
           </a>
           <span className="hidden sm:inline">•</span>
           <a
             href="tel:+639693399434"
-            className="hover:text-neonPink dark:hover:text-chartreuse transition-colors"
+            className="hover:text-[#0052FF] transition-colors"
           >
             ☎ +63 969 339 9434
           </a>
@@ -220,7 +220,7 @@ export default function Footer() {
             aria-label="GitHub Profile"
             className="flex flex-col items-center gap-2 group cursor-pointer"
           >
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 group-hover:border-neonPink dark:group-hover:border-chartreuse text-slate-700 dark:text-frost group-hover:text-neonPink dark:group-hover:text-chartreuse group-hover:scale-105 transition-all duration-200 shadow-xl">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 group-hover:border-[#0052FF]/50 text-[#f8fafc] group-hover:text-[#0052FF] group-hover:scale-105 transition-all duration-200 shadow-none">
               <span className="sr-only">GitHub</span>
               <svg
                 className="w-8 h-8 sm:w-9 sm:h-9 fill-current"
@@ -234,7 +234,7 @@ export default function Footer() {
                 />
               </svg>
             </div>
-            <span className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-400 group-hover:text-neonPink dark:group-hover:text-chartreuse transition-colors">
+            <span className="text-xs font-mono font-semibold text-[#94a3b8] group-hover:text-[#0052FF] transition-colors">
               GitHub
             </span>
           </a>
@@ -245,7 +245,7 @@ export default function Footer() {
             aria-label="LinkedIn Profile"
             className="flex flex-col items-center gap-2 group cursor-pointer"
           >
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 group-hover:border-neonPink dark:group-hover:border-chartreuse text-slate-700 dark:text-frost group-hover:text-neonPink dark:group-hover:text-chartreuse group-hover:scale-105 transition-all duration-200 shadow-xl">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#1e2128]/80 backdrop-blur-md border border-white/5 group-hover:border-[#0052FF]/50 text-[#f8fafc] group-hover:text-[#0052FF] group-hover:scale-105 transition-all duration-200 shadow-none">
               <span className="sr-only">LinkedIn</span>
               <svg
                 className="w-8 h-8 sm:w-9 sm:h-9 fill-current"
@@ -255,13 +255,13 @@ export default function Footer() {
                 <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.32a1.62 1.62 0 0 0-1.62 1.62c0 .9.72 1.63 1.62 1.63s1.62-.73 1.62-1.63c0-.9-.72-1.62-1.62-1.62Z" />
               </svg>
             </div>
-            <span className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-400 group-hover:text-neonPink dark:group-hover:text-chartreuse transition-colors">
+            <span className="text-xs font-mono font-semibold text-[#94a3b8] group-hover:text-[#0052FF] transition-colors">
               LinkedIn
             </span>
           </a>
         </div>
 
-        <p className="text-slate-500 dark:text-slate-400 text-sm">
+        <p className="text-[#94a3b8] text-xs font-mono">
           © {new Date().getFullYear()} Jose Lorenzo Discutido. Built with Next.js and Tailwind CSS.
         </p>
       </div>

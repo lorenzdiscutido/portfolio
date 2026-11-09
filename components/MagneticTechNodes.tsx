@@ -10,11 +10,11 @@ interface TechNodeSpec {
 }
 
 const TECH_NODES: TechNodeSpec[] = [
-  { id: "python-next", label: "[ Python / Next.js ]", glyph: "PY//NX" },
-  { id: "dart-flutter", label: "[ Dart / Flutter ]", glyph: "DT//FL" },
-  { id: "firebase-mysql", label: "[ Firebase / MySQL ]", glyph: "FB//SQL" },
-  { id: "cpp-iot", label: "[ C++ / IoT ]", glyph: "MCU//IO" },
-  { id: "odoo-cloud", label: "[ Odoo / Cloud ]", glyph: "ERP//CL" },
+  { id: "python-next", label: "Python / Next.js", glyph: "PY//NX" },
+  { id: "dart-flutter", label: "Dart / Flutter", glyph: "DT//FL" },
+  { id: "firebase-mysql", label: "Firebase / MySQL", glyph: "FB//SQL" },
+  { id: "cpp-iot", label: "C++ / IoT", glyph: "MCU//IO" },
+  { id: "odoo-cloud", label: "Odoo / Cloud", glyph: "ERP//CL" },
 ];
 
 function InteractivePlaneNode({
@@ -98,22 +98,22 @@ function InteractivePlaneNode({
             ease: "easeInOut",
           },
         }}
-        className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border ${
+        className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border shadow-none ${
           isSnapped
-            ? "bg-neonPink/15 dark:bg-chartreuse/15 border-neonPink dark:border-chartreuse text-slate-900 dark:text-frost shadow-[0_0_20px_rgba(255,0,127,0.45)] dark:shadow-[0_0_20px_rgba(204,255,0,0.45)]"
-            : "bg-white/75 dark:bg-white/5 border-black/10 dark:border-white/10 text-slate-800 dark:text-frost"
+            ? "bg-[#0052FF]/15 border-[#0052FF] text-[#f8fafc]"
+            : "bg-[#1e2128]/80 border-white/5 text-[#f8fafc] hover:border-[#0052FF]/50"
         }`}
       >
-        {/* Shader-like Edge Pulse Indicator */}
+        {/* Node Status Dot */}
         <span
           aria-hidden="true"
           className={`w-1.5 h-1.5 rounded-full transition-transform duration-200 ${
             isSnapped
-              ? "bg-neonPink dark:bg-chartreuse scale-150 shadow-[0_0_8px_#FF007F]"
-              : "bg-blue-600 dark:bg-slate-400 scale-100"
+              ? "bg-[#FF7A00] scale-150 shadow-[0_0_8px_#FF7A00]"
+              : "bg-[#0052FF] scale-100"
           }`}
         />
-        <span className="text-[10px] uppercase tracking-wider text-neonPink dark:text-chartreuse font-bold">
+        <span className="text-[10px] uppercase tracking-wider text-[#0052FF] font-bold">
           {node.glyph}
         </span>
         <span>{node.label}</span>

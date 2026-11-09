@@ -18,17 +18,17 @@ export default function BlogPage() {
       <div className="max-w-5xl mx-auto">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-400 hover:text-neonPink dark:hover:text-chartreuse transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-[#94a3b8] hover:text-[#0052FF] transition-colors mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
 
         <div className="mb-12 text-left">
-          <p className="text-neonPink dark:text-chartreuse font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm font-mono">
+          <p className="text-[#0052FF] font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm font-mono">
             Engineering Dispatches
           </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Technical <span className="text-neonPink dark:text-chartreuse">Blog</span>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#f8fafc] tracking-tight">
+            Technical <span className="text-[#0052FF]">Blog</span>
           </h1>
         </div>
 
@@ -37,22 +37,22 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-8 border border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse transition-all duration-300 flex flex-col shadow-2xl group"
+              className="bg-[#1e2128]/80 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-[#0052FF]/50 transition-all duration-300 flex flex-col shadow-none group"
             >
               <div className="flex items-center justify-between gap-2 mb-3">
-                <p className="text-neonPink dark:text-chartreuse text-xs font-mono font-semibold tracking-widest uppercase">
+                <p className="text-[#0052FF] text-xs font-mono font-semibold tracking-widest uppercase">
                   {post.date}
                 </p>
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span className="text-xs font-mono text-[#94a3b8]">
                   {post.readTime}
                 </span>
               </div>
 
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-neonPink dark:group-hover:text-chartreuse transition-colors">
+              <h2 className="text-2xl font-bold text-[#f8fafc] mb-4 group-hover:text-[#0052FF] transition-colors">
                 {post.title}
               </h2>
 
-              <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-8 flex-grow text-sm sm:text-base">
+              <p className="text-[#94a3b8] leading-relaxed mb-8 flex-grow text-sm sm:text-base">
                 {post.excerpt}
               </p>
 
@@ -60,7 +60,7 @@ export default function BlogPage() {
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="font-mono text-xs font-medium text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/15"
+                    className="font-mono text-xs font-medium text-[#f8fafc] bg-[#1e2128] px-3 py-1 rounded-full border border-white/5"
                   >
                     {tag}
                   </span>

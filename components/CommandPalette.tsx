@@ -174,21 +174,21 @@ export default function CommandPalette() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-midnight/60 backdrop-blur-md"
+            className="fixed inset-0 bg-[#0f1115]/75 backdrop-blur-md"
             aria-hidden="true"
           />
 
-          {/* Command Palette Modal Container (backdrop-blur-3xl, bg-slate-900/40, zero hard shadow) */}
+          {/* Command Palette Modal Container (Matte frosted glass: bg-[#1e2128]/80 backdrop-blur-md border border-white/5) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: -12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -12 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="relative z-10 w-full max-w-xl rounded-2xl bg-slate-900/40 backdrop-blur-3xl border border-white/15 shadow-none overflow-hidden"
+            className="relative z-10 w-full max-w-xl rounded-2xl bg-[#1e2128]/90 backdrop-blur-md border border-white/5 shadow-none overflow-hidden"
           >
-            {/* Search Header with Solid Disruptive Block Cursor */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
-              <span className="font-mono text-sm font-bold text-neonPink dark:text-chartreuse select-none">
+            {/* Search Header with Electric Blue prompt and Vibrant Orange block cursor */}
+            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5">
+              <span className="font-mono text-sm font-bold text-[#0052FF] select-none">
                 &gt;_
               </span>
               <div className="relative flex-1 flex items-center">
@@ -201,22 +201,22 @@ export default function CommandPalette() {
                   placeholder="Type a command or search system nodes..."
                   aria-label="Command Palette Search Input"
                   data-testid="command-palette-input"
-                  className="w-full bg-transparent text-frost placeholder:text-slate-400 font-mono text-sm outline-none border-none caret-neonPink"
+                  className="w-full bg-transparent text-[#f8fafc] placeholder:text-[#94a3b8] font-mono text-sm outline-none border-none caret-[#FF7A00]"
                 />
-                {/* Solid Disruptive Accent Block Caret Indicator */}
+                {/* Vibrant Orange Accent Block Caret Indicator */}
                 <span
                   aria-hidden="true"
-                  className="inline-block w-2.5 h-4 bg-neonPink dark:bg-chartreuse animate-pulse ml-2 shrink-0"
+                  className="inline-block w-2.5 h-4 bg-[#FF7A00] animate-pulse ml-2 shrink-0"
                 />
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-chartreuse bg-chartreuse/10 border border-chartreuse/30 px-2 py-0.5 rounded-full">
-                Bullet-Time: ON
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#0052FF] bg-[#0052FF]/10 border border-[#0052FF]/30 px-2 py-0.5 rounded-full">
+                BULLET-TIME
               </span>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Command Palette"
-                className="text-xs font-mono text-slate-400 hover:text-frost px-2 py-1 rounded border border-white/10"
+                className="text-xs font-mono text-[#94a3b8] hover:text-[#f8fafc] px-2 py-1 rounded border border-white/10"
               >
                 ESC
               </button>
@@ -229,7 +229,7 @@ export default function CommandPalette() {
               className="max-h-72 overflow-y-auto py-2 divide-y divide-white/5"
             >
               {filteredCommands.length === 0 ? (
-                <p className="px-4 py-6 text-center font-mono text-xs text-slate-400">
+                <p className="px-4 py-6 text-center font-mono text-xs text-[#94a3b8]">
                   No matching system routes found for &ldquo;{query}&rdquo;
                 </p>
               ) : (
@@ -250,20 +250,20 @@ export default function CommandPalette() {
                       }}
                       className={`w-full text-left px-4 py-3 flex items-center justify-between transition-all cursor-pointer ${
                         isActive
-                          ? "border-l-2 border-neonPink dark:border-chartreuse bg-neonPink/10 dark:bg-chartreuse/10 text-frost"
-                          : "border-l-2 border-transparent text-slate-300 hover:text-frost"
+                          ? "border-l-2 border-[#0052FF] bg-[#0052FF]/15 text-[#f8fafc]"
+                          : "border-l-2 border-transparent text-[#94a3b8] hover:text-[#f8fafc]"
                       }`}
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-frost">
+                        <span className="text-sm font-semibold text-[#f8fafc]">
                           {item.label}
                         </span>
-                        <span className="text-[11px] font-mono text-slate-300">
+                        <span className="text-[11px] font-mono text-[#94a3b8]">
                           {item.category}
                         </span>
                       </div>
                       {item.shortcut && (
-                        <kbd className="font-mono text-[11px] text-slate-300 bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                        <kbd className="font-mono text-[11px] text-[#94a3b8] bg-[#0f1115] px-2 py-0.5 rounded border border-white/10">
                           {item.shortcut}
                         </kbd>
                       )}

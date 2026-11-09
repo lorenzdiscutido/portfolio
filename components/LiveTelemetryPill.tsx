@@ -80,10 +80,10 @@ export default async function LiveTelemetryPill() {
       <aside
         aria-label="Live System Telemetry"
         data-testid="live-telemetry-pill"
-        className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-2xl transition-all"
+        className="fixed bottom-4 right-4 z-50 w-52 h-10 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 flex items-center justify-center gap-2 px-3.5 select-none pointer-events-auto shadow-none transition-all"
       >
         <LiveTelemetryDot />
-        <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">
+        <span className="font-mono text-[10px] font-semibold tracking-tight text-[#f8fafc] truncate">
           System: Online | Standby
         </span>
       </aside>
@@ -94,10 +94,10 @@ export default async function LiveTelemetryPill() {
     <aside
       aria-label="Live System Telemetry"
       data-testid="live-telemetry-pill"
-      className="fixed bottom-4 right-4 z-50 w-48 h-10 rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 flex items-center justify-center gap-2 px-3 select-none pointer-events-auto shadow-2xl transition-all"
+      className="fixed bottom-4 right-4 z-50 w-52 h-10 rounded-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 flex items-center justify-center gap-2 px-3.5 select-none pointer-events-auto shadow-none transition-all"
     >
       <LiveTelemetryDot />
-      <span className="font-mono text-[10px] font-semibold tracking-tight text-slate-900 dark:text-frost truncate">
+      <span className="font-mono text-[10px] font-semibold tracking-tight text-[#f8fafc] truncate">
         System: Online | Commits: {commitsCount}
       </span>
     </aside>

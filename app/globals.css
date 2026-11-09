@@ -9,25 +9,27 @@
   html:not(.dark) {
     --base: 248 250 252;    /* #f8fafc */
     --surface: 255 255 255; /* #ffffff */
-    --primary: 10 15 28;    /* #0a0f1c - midnight slate */
+    --primary: 15 17 21;    /* #0f1115 - slate black */
     --muted: 71 85 105;     /* #475569 - slate-600 */
-    --accent: 255 0 127;    /* #FF007F - Hyper-Neon Pink for light contrast */
+    --accent: 0 82 255;     /* #0052FF - Electric Blue */
+    --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
     color-scheme: light;
   }
 
   .dark,
   html.dark {
-    --base: 10 15 28;       /* #0a0f1c - Deep Midnight Blue */
-    --surface: 17 24 39;    /* #111827 - Oceanic Slate */
-    --primary: 248 250 252; /* #f8fafc - Frosty White */
+    --base: 15 17 21;       /* #0f1115 - Slate Black */
+    --surface: 30 33 40;    /* #1e2128 - Surface Dark */
+    --primary: 248 250 252; /* #f8fafc - Crisp Off-White */
     --muted: 148 163 184;   /* #94a3b8 - Muted Cool Gray */
-    --accent: 204 255 0;    /* #CCFF00 - Electric Chartreuse */
+    --accent: 0 82 255;     /* #0052FF - Electric Blue */
+    --highlight: 255 122 0; /* #FF7A00 - Vibrant Orange */
     color-scheme: dark;
   }
 
   html,
   body {
-    @apply bg-base antialiased transition-colors duration-300 overflow-x-clip;
+    @apply bg-[#0f1115] text-[#f8fafc] antialiased transition-colors duration-300 overflow-x-clip;
     max-width: 100vw;
   }
 }
@@ -73,18 +75,18 @@ html.dark .theme-text-secondary {
   color: #cbd5e1 !important;
 }
 
-/* Frosted Glassmorphism Surface Utilities */
+/* Matte Frosted Glassmorphism Surface Utilities */
 .glass-surface {
-  background-color: rgba(17, 24, 39, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(248, 250, 252, 0.08);
+  background-color: rgba(30, 33, 40, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 html.light .glass-surface,
 html:not(.dark) .glass-surface {
-  background-color: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(10, 15, 28, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 17, 21, 0.08);
 }
 
 /* White / Tactile Button Dual-Theme styling */

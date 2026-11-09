@@ -341,13 +341,13 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
   const activeNode = diagram.nodes[activeIndex];
 
   return (
-    <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-black/10 dark:border-white/15 rounded-2xl p-6 md:p-8 mb-12 shadow-2xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/15">
+    <div className="w-full bg-[#1e2128]/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 md:p-8 mb-12 shadow-none">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/5">
         <div>
-          <span className="text-neonPink dark:text-chartreuse font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
+          <span className="text-[#0052FF] font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
             Interactive Signal Flow &amp; Architecture
           </span>
-          <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
+          <h3 className="text-xl md:text-2xl font-bold text-[#f8fafc]">
             {diagram.topologyTitle}
           </h3>
         </div>
@@ -355,15 +355,15 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
           <button
             type="button"
             onClick={() => setIsSimulating(!isSimulating)}
-            className={`px-3.5 py-1.5 rounded-full font-mono text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
+            className={`px-3.5 py-1.5 rounded-full font-mono text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border border-[#0052FF] shadow-none ${
               isSimulating
-                ? "bg-neonPink dark:bg-chartreuse text-white dark:text-midnight border-transparent shadow-lg shadow-neonPink/25 dark:shadow-chartreuse/25"
-                : "bg-white/80 dark:bg-white/5 text-slate-700 dark:text-slate-300 border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse"
+                ? "bg-[#0052FF] text-[#f8fafc]"
+                : "bg-[#0052FF]/10 text-[#f8fafc] hover:bg-[#0052FF]/20"
             }`}
           >
             <span
               className={`h-2 w-2 rounded-full ${
-                isSimulating ? "bg-white dark:bg-midnight animate-ping" : "bg-neonPink dark:bg-chartreuse"
+                isSimulating ? "bg-[#f8fafc] animate-ping" : "bg-[#0052FF]"
               }`}
             />
             <span>{isSimulating ? "Pause Signal" : "▶ Simulate Flow"}</span>
@@ -371,7 +371,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
         </div>
       </div>
 
-      {/* Interactive Node Pipeline with Animated Signal Flow */}
+      {/* Interactive Node Pipeline with 1px Blueprint Lines */}
       <div className="relative mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {diagram.nodes.map((node, index) => {
@@ -386,17 +386,17 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                 }}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className={`text-left p-4 rounded-xl border transition-all duration-300 relative flex flex-col justify-between cursor-pointer ${
+                className={`text-left p-4 rounded-xl border transition-all duration-300 relative flex flex-col justify-between cursor-pointer shadow-none ${
                   isSelected
-                    ? "bg-white dark:bg-midnight/90 border-neonPink dark:border-chartreuse shadow-[0_0_20px_rgba(255,0,127,0.2)] dark:shadow-[0_0_20px_rgba(204,255,0,0.2)]"
-                    : "bg-white/70 dark:bg-white/5 border-black/10 dark:border-white/10 hover:border-neonPink dark:hover:border-chartreuse"
+                    ? "bg-[#1e2128] border-[#0052FF]"
+                    : "bg-[#0f1115]/60 border-white/5 hover:border-[#0052FF]/50"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-xs font-mono font-bold uppercase ${
-                        isSelected ? "text-neonPink dark:text-chartreuse" : "text-slate-500 dark:text-slate-400"
+                        isSelected ? "text-[#0052FF]" : "text-[#94a3b8]"
                       }`}
                     >
                       Stage 0{index + 1}
@@ -404,29 +404,29 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                     <span className="flex h-2 w-2 relative">
                       {isSelected ? (
                         <>
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonPink dark:bg-chartreuse opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-neonPink dark:bg-chartreuse"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0052FF] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF]"></span>
                         </>
                       ) : (
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-400/40"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white/20"></span>
                       )}
                     </span>
                   </div>
-                  <p className="text-slate-900 dark:text-white font-bold text-sm mb-1">
+                  <p className="text-[#f8fafc] font-bold text-sm mb-1">
                     {node.label}
                   </p>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-snug">
+                  <p className="text-[#94a3b8] text-xs leading-snug">
                     {node.sublabel}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 truncate max-w-[120px]">
+                <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-[#94a3b8] truncate max-w-[120px]">
                     {node.protocol}
                   </span>
                   <span
                     className={`text-xs font-mono font-bold transition-transform ${
-                      isSelected ? "text-neonPink dark:text-chartreuse translate-x-1" : "text-slate-400"
+                      isSelected ? "text-[#0052FF] translate-x-1" : "text-[#94a3b8]"
                     }`}
                   >
                     →
@@ -437,20 +437,20 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
           })}
         </div>
 
-        {/* Animated Glowing Packet Flow Visualizer */}
-        <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+        {/* Blueprint Connection Signal Visualizer */}
+        <div className="hidden md:flex items-center justify-between px-8 mt-4 pt-3 border-t border-[#0052FF]/30 text-[11px] font-mono text-[#94a3b8]">
           <div className="flex items-center gap-2">
-            <span className="text-neonPink dark:text-chartreuse font-bold">Active Signal:</span>
-            <span className="text-neonPink dark:text-chartreuse font-semibold">{activeNode.protocol}</span>
+            <span className="text-[#0052FF] font-bold">Active Signal:</span>
+            <span className="text-[#f8fafc] font-semibold">{activeNode.protocol}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Deterministic State Machine Validated</span>
+          <div className="flex items-center gap-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#0052FF] animate-pulse" />
+            <span className="text-[#f8fafc]">Deterministic State Machine Validated</span>
           </div>
         </div>
       </div>
 
-      {/* Selected Node Inspection Panel */}
+      {/* Selected Node Inspection Panel (Blueprint-Style Flat Panel, Zero Drop Shadows) */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeNode.id}
@@ -458,32 +458,32 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="bg-white/90 dark:bg-midnight/70 backdrop-blur-xl rounded-2xl border border-black/10 dark:border-white/15 p-6 shadow-xl"
+          className="bg-[#0f1115]/90 rounded-2xl border border-white/5 p-6 shadow-none"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
             <div>
-              <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+              <h4 className="text-lg font-bold text-[#f8fafc]">
                 {activeNode.label}{" "}
-                <span className="text-slate-600 dark:text-slate-400 font-normal text-sm">
+                <span className="text-[#94a3b8] font-normal text-sm">
                   — {activeNode.sublabel}
                 </span>
               </h4>
             </div>
-            <span className="text-xs font-mono text-neonPink dark:text-chartreuse bg-neonPink/10 dark:bg-chartreuse/10 px-3 py-1 rounded-full border border-neonPink/20 dark:border-chartreuse/20 self-start md:self-auto font-semibold">
+            <span className="text-xs font-mono text-[#0052FF] bg-[#0052FF]/10 px-3 py-1 rounded-full border border-[#0052FF]/30 self-start md:self-auto font-semibold">
               Protocol: {activeNode.protocol}
             </span>
           </div>
 
-          <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-5">
+          <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
             {activeNode.summary}
           </p>
 
-          <div className="bg-slate-950 text-slate-100 rounded-lg border border-black/20 dark:border-white/10 p-4 overflow-x-auto shadow-inner">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 pb-2 border-b border-white/10">
-              <span className="text-emerald-400 font-semibold">// Implementation / Config Excerpt</span>
-              <span className="text-neonPink dark:text-chartreuse font-mono">readonly</span>
+          <div className="bg-[#0f1115] text-[#f8fafc] rounded-lg border border-white/10 p-4 overflow-x-auto shadow-none">
+            <div className="flex items-center justify-between text-xs font-mono text-[#94a3b8] mb-2 pb-2 border-b border-white/5">
+              <span className="text-[#0052FF] font-semibold">// Implementation / Config Excerpt</span>
+              <span className="text-[#94a3b8] font-mono">readonly</span>
             </div>
-            <pre className="font-mono text-xs leading-relaxed text-slate-200">
+            <pre className="font-mono text-xs leading-relaxed text-[#f8fafc]">
               <code>{activeNode.configSnippet}</code>
             </pre>
           </div>

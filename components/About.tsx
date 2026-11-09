@@ -126,10 +126,10 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-frost mb-6">
-              Engineering <span className="text-neonPink dark:text-chartreuse">Background</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#f8fafc] mb-6">
+              Engineering <span className="text-[#0052FF]">Background</span>
             </h2>
-            <div className="space-y-6 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+            <div className="space-y-6 text-base md:text-lg text-[#94a3b8] leading-relaxed">
               <p>
                 Graduated with a BS in Computer Engineering (Big Data Analytics) from the Polytechnic University of the Philippines (PUP).
               </p>
@@ -147,11 +147,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-8 rounded-2xl"
+            className="bg-[#1e2128]/80 backdrop-blur-md border border-white/5 shadow-none p-8 rounded-2xl"
           >
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-frost">Technical Stack</h3>
-              <span className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10 dark:border-white/15">
+              <h3 className="text-2xl font-extrabold tracking-tight text-[#f8fafc]">Technical Stack</h3>
+              <span className="text-xs font-mono text-[#94a3b8] bg-[#0f1115] px-3 py-1 rounded-full border border-white/5">
                 Hover or click for context
               </span>
             </div>
@@ -159,7 +159,7 @@ export default function About() {
             <div className="space-y-8">
               {techStack.map((group, index) => (
                 <div key={index}>
-                  <h4 className="text-neonPink dark:text-chartreuse text-xs font-mono font-semibold tracking-widest uppercase mb-3">
+                  <h4 className="text-[#0052FF] text-xs font-mono font-semibold tracking-widest uppercase mb-3">
                     {group.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -176,10 +176,10 @@ export default function About() {
                           }
                           onMouseEnter={() => setHoveredSkill(skill)}
                           onMouseLeave={() => setHoveredSkill(null)}
-                          className={`text-left text-sm font-medium px-4 py-2 rounded-xl border transition-all cursor-pointer ${
+                          className={`text-left text-xs font-mono font-medium px-3.5 py-2 rounded-xl border transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-neonPink/10 dark:bg-chartreuse/10 text-slate-900 dark:text-frost border-neonPink dark:border-chartreuse shadow-md font-semibold"
-                              : "bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 border-black/10 dark:border-white/15 hover:border-neonPink dark:hover:border-chartreuse"
+                              ? "bg-[#0052FF]/15 text-[#f8fafc] border-[#0052FF] font-semibold"
+                              : "bg-[#0f1115]/60 text-[#f8fafc] border-white/5 hover:border-[#0052FF]/50"
                           }`}
                         >
                           {skill.name}
@@ -192,23 +192,23 @@ export default function About() {
             </div>
 
             {/* Context Tooltip / Callout Panel */}
-            <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/15 min-h-[72px] flex items-center">
+            <div className="mt-8 pt-6 border-t border-white/5 min-h-[72px] flex items-center">
               {activeSkill ? (
-                <div className="w-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/15 shadow-2xl p-5 rounded-xl transition-all">
+                <div className="w-full bg-[#0f1115]/80 border border-white/5 p-5 rounded-xl transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-xs font-bold font-mono text-neonPink dark:text-chartreuse uppercase tracking-wider">
+                    <span className="text-xs font-bold font-mono text-[#FF7A00] uppercase tracking-wider">
                       Production Application
                     </span>
-                    <span className="text-xs font-mono text-slate-900 dark:text-frost font-semibold">
+                    <span className="text-xs font-mono text-[#f8fafc] font-semibold">
                       {activeSkill.name}
                     </span>
                   </div>
-                  <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs md:text-sm text-[#94a3b8] leading-relaxed">
                     {activeSkill.context}
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center w-full">
+                <p className="text-xs text-[#94a3b8] italic text-center w-full">
                   Click or hover any technology above to inspect its real-world implementation in my engineering workflow.
                 </p>
               )}

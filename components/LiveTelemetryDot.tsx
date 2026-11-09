@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 export default function LiveTelemetryDot() {
@@ -15,9 +16,9 @@ export default function LiveTelemetryDot() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute inline-flex w-1.5 h-1.5 rounded-full bg-neonPink dark:bg-chartreuse"
+        className="absolute inline-flex w-1.5 h-1.5 rounded-full bg-[#FF7A00]"
       />
-      <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-neonPink dark:bg-chartreuse shadow-[0_0_8px_#FF007F] dark:shadow-[0_0_8px_#CCFF00]" />
+      <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]" />
     </span>
   );
 }

@@ -10,7 +10,7 @@ interface FluidRipple {
   radius: number;
   maxRadius: number;
   alpha: number;
-  hueType: "chartreuse" | "neonPink" | "cyberBlue";
+  hueType: "electricBlue" | "vibrantOrange" | "stealthSlate";
 }
 
 interface AmbientWaveNode {
@@ -46,8 +46,8 @@ export default function LiquidBackground() {
     p.y = clientY;
     p.active = true;
 
-    const palette: FluidRipple["hueType"][] = ["chartreuse", "neonPink", "cyberBlue"];
-    const hueType = speed > 22 ? "chartreuse" : speed > 10 ? "neonPink" : palette[ripplesRef.current.length % 3];
+    const palette: FluidRipple["hueType"][] = ["electricBlue", "stealthSlate", "electricBlue"];
+    const hueType = speed > 24 ? "vibrantOrange" : speed > 12 ? "electricBlue" : palette[ripplesRef.current.length % 3];
 
     ripplesRef.current.push({
       x: clientX,
@@ -56,7 +56,7 @@ export default function LiquidBackground() {
       vy: dy * 0.12,
       radius: 18 + speed * 0.6,
       maxRadius: 160 + speed * 2.2,
-      alpha: Math.min(0.32, 0.12 + speed * 0.004),
+      alpha: Math.min(0.25, 0.08 + speed * 0.003),
       hueType,
     });
 
@@ -88,7 +88,7 @@ export default function LiquidBackground() {
         vx: 0.35,
         vy: 0.22,
         radius: Math.max(width, height) * 0.38,
-        color: "rgba(0, 82, 255, 0.13)",
+        color: "rgba(0, 82, 255, 0.08)",
       },
       {
         x: width * 0.78,
@@ -96,7 +96,7 @@ export default function LiquidBackground() {
         vx: -0.28,
         vy: -0.25,
         radius: Math.max(width, height) * 0.42,
-        color: "rgba(17, 24, 39, 0.55)",
+        color: "rgba(30, 33, 40, 0.45)",
       },
       {
         x: width * 0.52,
@@ -104,7 +104,7 @@ export default function LiquidBackground() {
         vx: -0.2,
         vy: 0.3,
         radius: Math.max(width, height) * 0.32,
-        color: "rgba(255, 0, 127, 0.06)",
+        color: "rgba(0, 82, 255, 0.05)",
       },
       {
         x: width * 0.35,
@@ -112,7 +112,7 @@ export default function LiquidBackground() {
         vx: 0.25,
         vy: -0.18,
         radius: Math.max(width, height) * 0.3,
-        color: "rgba(204, 255, 0, 0.05)",
+        color: "rgba(255, 122, 0, 0.03)",
       },
     ];
 
@@ -147,8 +147,8 @@ export default function LiquidBackground() {
     window.addEventListener("liquid-bullet-time", handleBulletTime);
 
     const getRippleColor = (hueType: FluidRipple["hueType"], alpha: number) => {
-      if (hueType === "chartreuse") return `rgba(204, 255, 0, ${alpha.toFixed(3)})`;
-      if (hueType === "neonPink") return `rgba(255, 0, 127, ${alpha.toFixed(3)})`;
+      if (hueType === "vibrantOrange") return `rgba(255, 122, 0, ${alpha.toFixed(3)})`;
+      if (hueType === "stealthSlate") return `rgba(30, 33, 40, ${alpha.toFixed(3)})`;
       return `rgba(0, 82, 255, ${alpha.toFixed(3)})`;
     };
 
@@ -158,7 +158,7 @@ export default function LiquidBackground() {
       const dt = timeScaleRef.current;
       ctx.clearRect(0, 0, width, height);
 
-      // Ambient autonomous oceanic fluid currents (modulated by bullet-time scale)
+      // Ambient autonomous fluid currents (modulated by bullet-time scale)
       for (const node of nodes) {
         node.x += node.vx * dt;
         node.y += node.vy * dt;
@@ -168,7 +168,7 @@ export default function LiquidBackground() {
 
         const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius);
         grad.addColorStop(0, node.color);
-        grad.addColorStop(1, "rgba(10, 15, 28, 0)");
+        grad.addColorStop(1, "rgba(15, 17, 21, 0)");
 
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -195,7 +195,7 @@ export default function LiquidBackground() {
         const grad = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
         grad.addColorStop(0, getRippleColor(r.hueType, r.alpha));
         grad.addColorStop(0.55, getRippleColor(r.hueType, r.alpha * 0.4));
-        grad.addColorStop(1, "rgba(10, 15, 28, 0)");
+        grad.addColorStop(1, "rgba(15, 17, 21, 0)");
 
         ctx.fillStyle = grad;
         ctx.beginPath();
