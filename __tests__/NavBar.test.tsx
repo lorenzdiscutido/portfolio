@@ -14,7 +14,7 @@ describe("NavBar Component", () => {
   it("renders the brand logo and navigation links", () => {
     render(<NavBar />);
 
-    expect(screen.getByRole("link", { name: /Lorenz Homepage/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Lorenz/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "About" })).toHaveAttribute("href", "/#about");
     expect(screen.getByRole("link", { name: "Projects" })).toHaveAttribute("href", "/#projects");
     expect(screen.getByRole("link", { name: "Experience" })).toHaveAttribute("href", "/#experience");

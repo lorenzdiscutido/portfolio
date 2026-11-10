@@ -38,7 +38,7 @@ export default function NavBar() {
           <Link
             href="/"
             className="text-primary dark:text-frost font-sans font-medium text-base sm:text-lg lg:text-xl tracking-tight hover:text-[#0052FF] dark:hover:text-[#38bdf8] transition-colors duration-200 py-1 flex items-center gap-2 group shrink-0"
-            aria-label="Lorenz Homepage"
+            aria-label="Lorenz - Available for Roles"
           >
             <span aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-bold text-lg sm:text-xl transition-transform duration-200 group-hover:translate-x-0.5">
               &gt;
@@ -71,7 +71,7 @@ export default function NavBar() {
               data-testid="navbar-cmdk-button"
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 text-primary text-xs font-mono font-medium transition-all duration-200 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50 shrink-0"
               title="Open Command Center (Ctrl + K)"
-              aria-label="Open Command Center"
+              aria-label="Command Center (Ctrl+K)"
             >
               <span aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8] font-bold font-mono group-hover:translate-x-0.5 transition-transform duration-200">
                 &gt;_

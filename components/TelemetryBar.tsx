@@ -18,7 +18,7 @@ export default function TelemetryBar() {
         role="button"
         tabIndex={0}
         aria-expanded={expanded}
-        aria-label="Toggle Tailnet Mesh Topology Details"
+        aria-label="System Telemetry - Toggle Tailnet Mesh Topology Details"
         onClick={() => setExpanded(!expanded)}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {

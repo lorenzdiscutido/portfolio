@@ -193,22 +193,31 @@ export default function LiquidBackground() {
 
     let nodes = createNodes(width, height);
 
+    const resumeLoopIfNeeded = () => {
+      if (!animationFrameId && !prefersReducedMotion) {
+        animationFrameId = window.requestAnimationFrame(render);
+      }
+    };
+
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth || 1280;
       height = canvas.height = window.innerHeight || 800;
       nodes = createNodes(width, height);
+      render();
     };
 
     const handleWindowMouseMove = (e: MouseEvent) => {
       if (!prefersReducedMotion) {
         spawnFluidDisturbance(e.clientX, e.clientY);
+        resumeLoopIfNeeded();
       }
     };
 
     const handleWindowTouchMove = (e: TouchEvent) => {
       if (!prefersReducedMotion && e.touches && e.touches.length > 0) {
         spawnFluidDisturbance(e.touches[0].clientX, e.touches[0].clientY);
+        resumeLoopIfNeeded();
       }
     };
 
@@ -219,6 +228,7 @@ export default function LiquidBackground() {
       } else {
         timeScaleRef.current = custom.detail?.active ? 0.2 : 1;
       }
+      resumeLoopIfNeeded();
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
@@ -352,6 +362,12 @@ export default function LiquidBackground() {
 
       if (prefersReducedMotion) return;
 
+      // On mobile screens (< 768px), pause continuous RAF when ripples settle to eliminate TBT and preserve battery
+      if (width < 768 && ripplesRef.current.length === 0) {
+        animationFrameId = 0;
+        return;
+      }
+
       animationFrameId = window.requestAnimationFrame(render);
     };
 
@@ -369,10 +385,23 @@ export default function LiquidBackground() {
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    if (prefersReducedMotion) {
-      render();
-    } else {
-      animationFrameId = window.requestAnimationFrame(render);
+
+    // Initial render: Paint 1st serene frame immediately, then defer continuous RAF until idle on desktop
+    render();
+    if (!prefersReducedMotion && width >= 768) {
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        window.requestIdleCallback(() => {
+          if (!animationFrameId) {
+            animationFrameId = window.requestAnimationFrame(render);
+          }
+        }, { timeout: 300 });
+      } else {
+        setTimeout(() => {
+          if (!animationFrameId) {
+            animationFrameId = window.requestAnimationFrame(render);
+          }
+        }, 100);
+      }
     }
 
     return () => {
