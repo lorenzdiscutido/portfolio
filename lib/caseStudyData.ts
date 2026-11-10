@@ -61,11 +61,11 @@ export const caseStudies: CaseStudy[] = [
     role: "Lead Developer",
     lastModified: "2025-02-15",
     overview:
-      "Engineered a production multimodal AI pipeline leveraging the Google Gemini API to extract defect dimensions from field whiteboard photos. Built with Python and Streamlit, the system automatically logs structured inspection records directly into enterprise SharePoint Excel workbooks, quantifying over 4,750+ facade defects and 5,100+ linear meters of repairs.",
+      "Engineered a production multimodal AI pipeline leveraging the Google Gemini API to extract defect dimensions from field whiteboard photos. Built with Python and Streamlit, the system automatically logs structured inspection records directly into enterprise SharePoint Excel workbooks, quantifying over 4,750+ facade defects and 5,100+ linear meters of repairs. The pipeline utilizes fine-tuned multimodal prompts with structured JSON schema enforcement and robust error-handling algorithms for backlit or blurry field photographs.",
     problem:
-      "Field engineering inspections historically required manual transcription of defect coordinates and dimensions from whiteboard photos into enterprise spreadsheets, causing severe data latency (often 48–72 hours), human transcription errors, and major operational bottlenecks. Field photos suffered from high glare, perspective distortion, and variable handwriting legibility.",
+      "Field engineering inspections historically required manual transcription of defect coordinates and dimensions from whiteboard photos into enterprise spreadsheets, causing severe data latency (often 48–72 hours), human transcription errors, and major operational bottlenecks. Field photos suffered from high glare, perspective distortion, backlighting, and variable handwriting legibility.",
     architecture:
-      "Engineered an automated multimodal ingestion and extraction pipeline utilizing Python, Streamlit, and the Google Gemini API. Structured prompt schemas enforce strict JSON output, validating defect categories, bounding coordinates, and linear measurements directly before writing to enterprise SharePoint Excel workbooks via the Microsoft Graph API.",
+      "Engineered an automated multimodal ingestion and extraction pipeline utilizing Python, Streamlit, and the Google Gemini API. Structured prompt schemas enforce strict JSON output with Pydantic validation, enforcing error handling algorithms for backlit or blurry field photographs, bounding coordinates, and linear measurements directly before writing to enterprise SharePoint Excel workbooks via the Microsoft Graph API.",
     outcome:
       "Eliminated manual data transcription entirely, accelerated field-to-office defect approvals by over 85%, synchronized real-time repair quantities into enterprise Odoo ERP workflows, and cataloged 4,754 verified facade defects across 104 elevation drops.",
     architectureDetails:
@@ -119,11 +119,11 @@ export const caseStudies: CaseStudy[] = [
     role: "QA Tester",
     lastModified: "2026-05-15",
     overview:
-      "A robust Cyber-Physical System engineered for low-resource academic settings, balancing local-first hardware integration with an offline-first server environment. As QA Tester, led end-to-end system validation, automated test cases, and ISO/IEC 25010 empirical software quality evaluation across student and faculty cohorts, validating a 91.4% throughput increase (reducing document cycle time from 315s down to 27s) and achieving an overall 3.70/4.00 'Highly Acceptable' rating.",
+      "A robust Cyber-Physical System engineered for low-resource academic settings, balancing local-first hardware integration (Dell Wyse 5070 + Arduino Uno + 12V Solenoid + Opto-isolated relay) with an offline-first server environment. As QA Tester, led end-to-end system validation, automated test cases, and ISO/IEC 25010 empirical software quality evaluation across student and faculty cohorts, validating a 91.4% throughput increase (reducing document cycle time from 315s down to 27s) and achieving an overall 3.70/4.00 'Highly Acceptable' rating.",
     problem:
       "Academic document management and clearance retrieval relied on manual logbooks and physical queuing, taking an average of 315 seconds per document transaction with frequent tracking errors and custodial bottlenecks.",
     architecture:
-      "Engineered an offline-first Cyber-Physical Terminal combining a local-first software stack with dedicated embedded hardware. Powered by a Dell Wyse 5070 Mini PC running PHP & Laravel with Laragon local database logging, a Node.js real-time serial hardware bridge to an Arduino Uno R3, 2-channel relay modules actuating 12V solenoid dropboxes, HC-SR04 ultrasonic capacity sensors, and a GOOJPRT thermal receipt printer. Outbound security tokens and notifications are dispatched asynchronously via Python and FastAPI hosted on Render.",
+      "Engineered an offline-first Cyber-Physical Terminal combining a local-first software stack with dedicated embedded hardware: Dell Wyse 5070 + Arduino Uno + 12V Solenoid + Opto-isolated relay. Powered by a Dell Wyse 5070 Mini PC running PHP & Laravel with Laragon local database logging, a Node.js real-time serial hardware bridge to an Arduino Uno R3, 2-channel relay modules actuating 12V solenoid dropboxes, HC-SR04 ultrasonic capacity sensors, and a GOOJPRT thermal receipt printer. Outbound security tokens and notifications are dispatched asynchronously via Python and FastAPI hosted on Render.",
     outcome:
       "Achieved a 91.4% increase in processing throughput (reducing cycle times from 315s to 27s), an annualized net administrative savings of ₱77,800.00 (159.3% ROI with 4.63-month capital payback), and passed ISO/IEC 25010 software quality compliance with an overall weighted mean of 3.70 / 4.00 ('Highly Acceptable').",
     architectureDetails:
@@ -243,11 +243,11 @@ export const caseStudies: CaseStudy[] = [
     lastModified: "2024-09-10",
     githubUrl: "https://github.com/lorenzdiscutido/Komunikonek-app",
     overview:
-      "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard.",
+      "Komunikonek was engineered to digitize and streamline local governance. It serves as a centralized, real-time mobile communication hub for barangay residents, transforming slow, paper-based local administration into an accessible digital dashboard with offline SQLite caching and automated Cloud Function push triggers.",
     problem:
-      "Barangay municipal announcements, service requests, and emergency incident advisories relied entirely on physical cork bulletin boards, manual paper logbooks, and in-person hall queues. This caused severe communication latency (often 48+ hours), zero tracking transparency for citizen grievances, and a complete lack of real-time municipal telemetry.",
+      "Barangay announcements and emergency advisories were historically paper notices pinned to corkboards, resulting in days of information latency, lost dispute tickets, and zero audit trails for citizen grievances. In intermittent rural cellular environments, residents were unable to reliably access centralized web services. Solved through an embedded offline-first SQLite synchronization queue and Cloud Function push notification triggers.",
     architecture:
-      "Executed a complete migration to a mobile-first architecture utilizing Dart and Flutter. Engineered real-time resident feedback interfaces and interactive administrator dashboards. Leveraged Firebase for secure user authentication and real-time database state management.",
+      "Executed a complete migration to a mobile-first architecture utilizing Dart and Flutter with offline SQLite caching and Cloud Function push triggers. Engineered real-time resident feedback interfaces and interactive administrator dashboards. Leveraged Firebase for secure user authentication and real-time database state management.",
     outcome:
       "Delivered a highly responsive, cross-platform mobile client that streamlined local data monitoring and improved citizen-to-administrator communication.",
     architectureDetails:

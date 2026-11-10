@@ -94,6 +94,37 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.overview}
         </p>
 
+        {/* IsKiosk 3D CAD & Hardware Blueprint Preview */}
+        {project.slug === "iskiosk-terminal" && (
+          <div className="mb-6 p-3.5 rounded-xl bg-black/[0.04] dark:bg-base/70 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
+            <div className="flex items-center justify-between text-[10px] text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold mb-2.5">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0052FF] dark:bg-[#38bdf8] animate-pulse" />
+                3D CAD &amp; Hardware Schematic Wireframe
+              </span>
+              <span className="text-muted">REV 2.1</span>
+            </div>
+            <div className="grid grid-cols-2 gap-2 text-[11px] text-muted">
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Core:</span>
+                <span className="truncate">Dell Wyse 5070</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">MCU:</span>
+                <span className="truncate">Arduino Uno R3</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Relay:</span>
+                <span className="truncate">Opto-isolated 2-Ch</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Actuator:</span>
+                <span className="truncate">12V Solenoid Drop</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Quantified Metrics Highlight Bar (Rigid tabular columns, strict font-mono) */}
         <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6 p-4 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
           {project.metrics.map((m, mi) => (

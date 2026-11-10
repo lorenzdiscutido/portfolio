@@ -30,24 +30,37 @@ export default function Footer() {
     setErrorMessage("");
 
     try {
-      // 1. Primary: internal Next.js API route with rate-limiting & server dispatch
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: senderEmail.trim(),
-          subject: subject.trim() || undefined,
-          message: message.trim(),
-        }),
-      });
+      let isSuccess = false;
+      let apiErrorMessage = "";
 
-      const result = await response.json();
+      try {
+        // 1. Primary: internal Next.js API route with rate-limiting & server dispatch
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: name.trim(),
+            email: senderEmail.trim(),
+            subject: subject.trim() || undefined,
+            message: message.trim(),
+          }),
+        });
 
-      if (response.ok && (result.success || !result.error)) {
+        const result = await response.json();
+
+        if (response.ok && (result.success || !result.error)) {
+          isSuccess = true;
+        } else {
+          apiErrorMessage = result.error || `Server responded with status ${response.status}`;
+        }
+      } catch (innerErr) {
+        apiErrorMessage = innerErr instanceof Error ? innerErr.message : "Internal route unavailable";
+      }
+
+      if (isSuccess) {
         setStatus("sent");
         setName("");
         setSenderEmail("");
@@ -57,39 +70,43 @@ export default function Footer() {
         return;
       }
 
-      // 2. Resilient Client Fallback: If server route encounters an issue, attempt fallback if configured
+      // 2. Resilient Client Fallback: If internal route returns error (429/500/network), route payload via Web3Forms env key
       const fallbackKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
       if (fallbackKey) {
-        const fallbackRes = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: fallbackKey,
-            name: name.trim(),
-            email: senderEmail.trim(),
-            subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
-            message: message.trim(),
-            from_name: "Lorenz Portfolio Contact Form",
-          }),
-        });
+        try {
+          const fallbackRes = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: fallbackKey,
+              name: name.trim(),
+              email: senderEmail.trim(),
+              subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
+              message: message.trim(),
+              from_name: "Lorenz Portfolio Contact Form",
+            }),
+          });
 
-        const fallbackResult = await fallbackRes.json();
-        if (fallbackRes.ok && fallbackResult.success) {
-          setStatus("sent");
-          setName("");
-          setSenderEmail("");
-          setSubject("");
-          setMessage("");
-          setWebsite("");
-          return;
+          const fallbackResult = await fallbackRes.json();
+          if (fallbackRes.ok && fallbackResult.success) {
+            setStatus("sent");
+            setName("");
+            setSenderEmail("");
+            setSubject("");
+            setMessage("");
+            setWebsite("");
+            return;
+          }
+        } catch {
+          // ignore fallback fetch error and display direct contact info
         }
       }
 
       setStatus("error");
-      setErrorMessage(result.error || "Failed to send message. Please email lorenzdiscutido@gmail.com directly.");
+      setErrorMessage(apiErrorMessage || "Failed to send message. Please email lorenzdiscutido@gmail.com directly.");
     } catch {
       setStatus("error");
       setErrorMessage("Network error: Could not reach the server. Please try again.");
@@ -139,7 +156,7 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 focus:ring-2 focus:ring-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-all duration-200 text-sm font-mono"
               />
             </div>
 
@@ -157,7 +174,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 focus:ring-2 focus:ring-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-all duration-200 text-sm font-mono"
               />
             </div>
           </div>
@@ -175,7 +192,7 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+              className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 focus:ring-2 focus:ring-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-all duration-200 text-sm font-mono"
             />
           </div>
 
@@ -193,7 +210,7 @@ export default function Footer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message here..."
-              className="w-full px-4 py-3 rounded-xl bg-surface/60 border border-black/10 dark:border-white/10 focus:border-[#0052FF] text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono resize-y"
+              className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 focus:ring-2 focus:ring-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-all duration-200 text-sm font-mono resize-y"
             />
           </div>
 
@@ -201,7 +218,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#0052FF] text-white font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 disabled:opacity-50 cursor-pointer shadow-none"
+              className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#0052FF] text-white font-bold hover:bg-[#0052FF]/90 transition-colors duration-200 disabled:opacity-50 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>

@@ -64,42 +64,24 @@ export default function NavBar() {
             </MagneticButton>
           ))}
 
-          {/* Matte Frosted Command Palette (Ctrl+K) Trigger */}
+          {/* Unified Command Center (Ctrl+K) Trigger */}
           <MagneticButton strength={0.22}>
             <button
               type="button"
               onClick={handleOpenCommandPalette}
               data-testid="navbar-cmdk-button"
-              className="inline-flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 text-primary text-xs font-mono font-medium transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] shrink-0"
-              title="Open Command Palette (Ctrl + K)"
-              aria-label="Open Command Palette"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0 text-muted">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <span className="hidden xl:inline font-mono text-[11px] uppercase tracking-wider text-muted">Search</span>
-              <kbd className="text-[10px] lg:text-xs font-mono text-[#0052FF] dark:text-[#38bdf8] bg-black/[0.04] dark:bg-base/60 px-1.5 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-                Ctrl+K
-              </kbd>
-            </button>
-          </MagneticButton>
-
-          {/* Interactive Terminal Quick Trigger */}
-          <MagneticButton strength={0.22}>
-            <button
-              type="button"
-              onClick={handleOpenTerminal}
-              className="inline-flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 text-primary text-xs font-mono font-medium transition-all duration-200 cursor-pointer group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] shrink-0"
-              title="Open Interactive Terminal (Ctrl + `)"
-              aria-label="Open Interactive Terminal"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 text-primary text-xs font-mono font-medium transition-all duration-200 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50 shrink-0"
+              title="Open Command Center (Ctrl + K)"
+              aria-label="Open Command Center"
             >
               <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold font-mono group-hover:translate-x-0.5 transition-transform duration-200">
                 &gt;_
               </span>
-              <span className="hidden xl:inline font-mono text-[11px] uppercase tracking-wider text-muted">Terminal</span>
+              <span className="hidden xl:inline font-mono text-[11px] uppercase tracking-wider text-muted group-hover:text-primary transition-colors">
+                Command
+              </span>
               <kbd className="text-[10px] lg:text-xs font-mono text-[#0052FF] dark:text-[#38bdf8] bg-black/[0.04] dark:bg-base/60 px-1.5 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-                Ctrl+`
+                Ctrl+K
               </kbd>
             </button>
           </MagneticButton>

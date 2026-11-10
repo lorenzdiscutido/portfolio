@@ -124,9 +124,14 @@ export default function TelemetryBar() {
               </div>
 
               <div className="pt-3 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <span className="text-[11px] font-mono tracking-wider text-muted">
-                  Zero public internet ports exposed. Mesh routing enforced via Tailnet ACL policies.
-                </span>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-[11px] font-mono tracking-wider text-muted">
+                    Zero public internet ports exposed. Mesh routing enforced via Tailnet ACL policies.
+                  </span>
+                  <span className="text-[11px] font-mono tracking-wider px-2 py-0.5 rounded bg-black/[0.04] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-slate-600 dark:text-slate-300">
+                    LATEST PUSH: <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">29 COMMITS</span>
+                  </span>
+                </div>
                 <button
                   type="button"
                   onClick={handleLaunchTerminal}

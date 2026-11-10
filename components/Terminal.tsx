@@ -112,24 +112,30 @@ export default function Terminal() {
     const validIPs = ["100.64.0.1", "100.64.0.2", "100.64.0.3", "100.64.0.4"];
     const isValid = validIPs.includes(targetIP);
 
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     setIsExecuting(true);
     isExecutingRef.current = true;
 
     const headerLine = `PING ${targetIP} (${targetIP}) 56(84) bytes of data.`;
+    const delayFactor = prefersReducedMotion ? 0 : 1;
     const sequence: { text: string; delay: number; isStats?: boolean }[] = isValid
       ? [
-          { text: `64 bytes from ${targetIP}: icmp_seq=1 ttl=64 time=18.4 ms`, delay: 550 },
-          { text: `64 bytes from ${targetIP}: icmp_seq=2 ttl=64 time=19.1 ms`, delay: 1100 },
-          { text: `64 bytes from ${targetIP}: icmp_seq=3 ttl=64 time=18.8 ms`, delay: 1650 },
-          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
-          { text: `3 packets transmitted, 3 received, 0% packet loss, time 2003ms`, delay: 2200 },
+          { text: `64 bytes from ${targetIP}: icmp_seq=1 ttl=64 time=18.4 ms`, delay: 550 * delayFactor },
+          { text: `64 bytes from ${targetIP}: icmp_seq=2 ttl=64 time=19.1 ms`, delay: 1100 * delayFactor },
+          { text: `64 bytes from ${targetIP}: icmp_seq=3 ttl=64 time=18.8 ms`, delay: 1650 * delayFactor },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150 * delayFactor, isStats: true },
+          { text: `3 packets transmitted, 3 received, 0% packet loss, time 2003ms`, delay: 2200 * delayFactor },
         ]
       : [
-          { text: `From ${targetIP} icmp_seq=1 Destination Host Unreachable`, delay: 550 },
-          { text: `From ${targetIP} icmp_seq=2 Destination Host Unreachable`, delay: 1100 },
-          { text: `From ${targetIP} icmp_seq=3 Destination Host Unreachable`, delay: 1650 },
-          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
-          { text: `3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms`, delay: 2200 },
+          { text: `From ${targetIP} icmp_seq=1 Destination Host Unreachable`, delay: 550 * delayFactor },
+          { text: `From ${targetIP} icmp_seq=2 Destination Host Unreachable`, delay: 1100 * delayFactor },
+          { text: `From ${targetIP} icmp_seq=3 Destination Host Unreachable`, delay: 1650 * delayFactor },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150 * delayFactor, isStats: true },
+          { text: `3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms`, delay: 2200 * delayFactor },
         ];
 
     const currentLines: { text: string; isStats?: boolean }[] = [{ text: headerLine }];
@@ -616,7 +622,7 @@ export default function Terminal() {
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#0f1115]/90 backdrop-blur-xl text-[#f8fafc] border-[0.5px] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] rounded-2xl flex flex-col font-mono text-sm p-0 z-50 cursor-text transition-all overflow-hidden"
+      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85dvh] bg-[#0f1115]/90 backdrop-blur-xl text-[#f8fafc] border-[0.5px] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] rounded-2xl flex flex-col font-mono text-sm p-0 z-50 cursor-text transition-all overflow-hidden"
     >
       {/* Authentic Terminal Top Bar with 3 OS Dots */}
       <div className="bg-[#1e2128]/80 px-4 py-3 border-b-[0.5px] border-white/10 flex justify-between items-center text-xs select-none">
@@ -690,7 +696,7 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("projects")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
@@ -700,7 +706,7 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("resume")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -714,7 +720,7 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("contact")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -738,8 +744,13 @@ export default function Terminal() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onFocus={() => {
+                  if (typeof inputRef.current?.scrollIntoView === "function") {
+                    inputRef.current.scrollIntoView({ block: "nearest", behavior: "smooth" });
+                  }
+                }}
                 onKeyDown={handleKeyDownInput}
-                className="flex-1 bg-transparent text-[#f8fafc] outline-none border-none caret-[#FF7A00] font-mono"
+                className="flex-1 bg-transparent text-[#f8fafc] outline-none border-none caret-[#FF7A00] font-mono focus-visible:ring-1 focus-visible:ring-electricBlue/50 rounded px-1"
                 aria-label="Terminal command input"
                 autoComplete="off"
                 spellCheck={false}

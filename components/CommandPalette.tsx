@@ -17,7 +17,51 @@ export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [terminalLogs, setTerminalLogs] = useState<{ command: string; output: string }[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const isTerminalMode = query.startsWith(">");
+
+  const executeTerminalCommand = (raw: string) => {
+    const trimmed = raw.replace(/^>/, "").trim();
+    if (!trimmed) return;
+    const parts = trimmed.split(/\s+/);
+    const cmd = parts[0].toLowerCase();
+    const arg = parts.slice(1).join(" ");
+
+    let output = "";
+    if (cmd === "help") {
+      output = "Available commands: help, whoami, ping [ip], projects, resume, contact, clear, exit";
+    } else if (cmd === "whoami") {
+      output = "Jose Lorenzo Discutido — Systems & Data Engineer | PUP Manila | Tailscale Mesh Node (100.64.0.1)";
+    } else if (cmd === "ping") {
+      const target = arg || "100.64.0.1";
+      output = `64 bytes from ${target}: icmp_seq=1 ttl=64 time=18.4 ms [Mesh Latency: OK]`;
+    } else if (cmd === "projects") {
+      output = "Navigating to spotlight bento projects...";
+      router.push("/#projects");
+      setIsOpen(false);
+    } else if (cmd === "contact") {
+      output = "Navigating to secure transmission contact form...";
+      router.push("/#contact");
+      setIsOpen(false);
+    } else if (cmd === "resume") {
+      output = "Opening official engineering resume...";
+      window.open("/resume.pdf", "_blank");
+    } else if (cmd === "clear") {
+      setTerminalLogs([]);
+      setQuery("> ");
+      return;
+    } else if (cmd === "exit") {
+      setIsOpen(false);
+      return;
+    } else {
+      output = `Command not recognized: '${trimmed}'. Type 'help' for available CLI commands.`;
+    }
+
+    setTerminalLogs((prev) => [...prev, { command: trimmed, output }]);
+    setQuery("> ");
+  };
 
   const commands: CommandItem[] = useMemo(
     () => [
@@ -88,7 +132,69 @@ export default function CommandPalette() {
     [router]
   );
 
+  const terminalHelperCommands: CommandItem[] = useMemo(
+    () => [
+      {
+        id: "term-help",
+        label: "> help — Display available terminal shell commands",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("help"),
+      },
+      {
+        id: "term-whoami",
+        label: "> whoami — Print engineer identity & network credentials",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("whoami"),
+      },
+      {
+        id: "term-ping",
+        label: "> ping 100.64.0.1 — Test Tailscale WireGuard mesh packet latency",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("ping 100.64.0.1"),
+      },
+      {
+        id: "term-projects",
+        label: "> projects — Navigate to spotlight bento projects",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("projects"),
+      },
+      {
+        id: "term-resume",
+        label: "> resume — Inspect official curriculum vitae",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("resume"),
+      },
+      {
+        id: "term-contact",
+        label: "> contact — Initiate direct client transmission",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("contact"),
+      },
+      {
+        id: "term-clear",
+        label: "> clear — Clear command palette terminal log",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("clear"),
+      },
+    ],
+    []
+  );
+
   const filteredCommands = useMemo(() => {
+    if (isTerminalMode) {
+      const q = query.slice(1).trim().toLowerCase();
+      if (!q) return terminalHelperCommands;
+      return terminalHelperCommands.filter((cmd) =>
+        cmd.label.toLowerCase().includes(q)
+      );
+    }
     const q = query.trim().toLowerCase();
     if (!q) return commands;
     return commands.filter(
@@ -96,7 +202,7 @@ export default function CommandPalette() {
         cmd.label.toLowerCase().includes(q) ||
         cmd.category.toLowerCase().includes(q)
     );
-  }, [commands, query]);
+  }, [commands, query, isTerminalMode, terminalHelperCommands]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -139,11 +245,22 @@ export default function CommandPalette() {
             ? (prev - 1 + filteredCommands.length) % filteredCommands.length
             : 0
         );
-      } else if (e.key === "Enter" && filteredCommands[activeIndex]) {
+      } else if (e.key === "Enter") {
         e.preventDefault();
-        const selected = filteredCommands[activeIndex];
-        setIsOpen(false);
-        selected.action();
+        if (isTerminalMode) {
+          const rawCmd = query.slice(1).trim();
+          if (rawCmd) {
+            executeTerminalCommand(rawCmd);
+            return;
+          }
+        }
+        if (filteredCommands[activeIndex]) {
+          const selected = filteredCommands[activeIndex];
+          if (!isTerminalMode) {
+            setIsOpen(false);
+          }
+          selected.action();
+        }
       }
     };
 
@@ -210,7 +327,7 @@ export default function CommandPalette() {
                 />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 border-[0.5px] border-[#0052FF]/30 px-2 py-0.5 rounded-full">
-                BULLET-TIME
+                {isTerminalMode ? "CLI ACTIVE" : "BULLET-TIME"}
               </span>
               <button
                 type="button"
@@ -221,6 +338,21 @@ export default function CommandPalette() {
                 ESC
               </button>
             </div>
+
+            {/* Terminal Mode Logs View */}
+            {isTerminalMode && terminalLogs.length > 0 && (
+              <div className="px-4 py-3 bg-black/40 dark:bg-black/60 border-b-[0.5px] border-white/10 space-y-2 max-h-48 overflow-y-auto font-mono text-xs">
+                {terminalLogs.map((log, idx) => (
+                  <div key={idx} className="space-y-0.5">
+                    <div className="flex items-center gap-2 text-[#0052FF] dark:text-[#38bdf8] font-bold">
+                      <span>&gt;_</span>
+                      <span className="text-[#f8fafc]">{log.command}</span>
+                    </div>
+                    <p className="text-slate-300 dark:text-slate-300 pl-4">{log.output}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Command List */}
             <div
