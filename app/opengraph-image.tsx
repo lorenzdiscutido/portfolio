@@ -39,11 +39,11 @@ export default async function Image() {
                 width: "48px",
                 height: "48px",
                 borderRadius: "24px",
-                background: "#FF7A00",
+                background: "#0052FF",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#0f1115",
+                color: "#ffffff",
                 fontWeight: 900,
                 fontSize: "24px",
                 marginRight: "16px",
@@ -53,7 +53,7 @@ export default async function Image() {
             </div>
             <span
               style={{
-                color: "#FF7A00",
+                color: "#38bdf8",
                 fontSize: "22px",
                 fontWeight: 700,
                 letterSpacing: "4px",

@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <main className="min-h-[80vh] flex items-center justify-center px-6">
       <div className="max-w-xl text-center bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 rounded-2xl p-10 shadow-none">
-        <p className="text-[#FF7A00] font-semibold tracking-widest uppercase mb-2 font-mono text-sm">
+        <p className="text-[#0052FF] dark:text-[#38bdf8] font-semibold tracking-widest uppercase mb-2 font-mono text-sm">
           HTTP 404 // ROUTE NOT FOUND
         </p>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-primary mb-4 font-sans">

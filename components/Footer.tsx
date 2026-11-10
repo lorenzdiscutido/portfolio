@@ -230,7 +230,7 @@ export default function Footer() {
             )}
 
             {status === "error" && (
-              <span className="text-sm font-medium font-mono text-[#FF7A00]">
+              <span className="text-sm font-medium font-mono text-rose-500 dark:text-rose-400">
                 {errorMessage}
               </span>
             )}

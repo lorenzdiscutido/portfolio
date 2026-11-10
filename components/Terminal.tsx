@@ -428,7 +428,7 @@ export default function Terminal() {
       case "ping": {
         if (!arg) {
           output = (
-            <p className="font-mono text-xs text-[#FF7A00]">Usage: ping &lt;ip_address&gt;</p>
+            <p className="font-mono text-xs text-rose-400">Usage: ping &lt;ip_address&gt;</p>
           );
           break;
         }
@@ -494,7 +494,7 @@ export default function Terminal() {
         }
 
         output = (
-          <p className="font-mono text-xs text-[#FF7A00]">cd: {arg}: No such file or directory</p>
+          <p className="font-mono text-xs text-rose-400">cd: {arg}: No such file or directory</p>
         );
         break;
       }
@@ -532,7 +532,7 @@ export default function Terminal() {
       case "sudo":
         output = (
           <span className="text-xs font-mono">
-            <span className="text-[#FF7A00]">Permission denied.</span> This incident will be reported.
+            <span className="text-rose-400">Permission denied.</span> This incident will be reported.
           </span>
         );
         break;
@@ -630,10 +630,10 @@ export default function Terminal() {
         aria-label="Open Interactive Terminal"
       >
         <span className="flex h-2 w-2 relative shrink-0 items-center justify-center my-auto">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0052FF] dark:bg-[#38bdf8] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF] dark:bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]"></span>
         </span>
-        <span className="font-semibold tracking-widest">&gt;_ Terminal</span>
+        <span className="font-semibold tracking-widest"><span aria-hidden="true">&gt;_</span> Terminal</span>
         <span className="hidden sm:inline text-[10px] text-muted bg-black/[0.04] dark:bg-base/60 px-1.5 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
           Ctrl+`
         </span>
@@ -761,7 +761,7 @@ export default function Terminal() {
         <div className={`${showMobileInput ? "flex" : "hidden md:flex"} items-center gap-2 pt-3`}>
           {isExecuting ? (
             <div className="flex items-center gap-2 pl-2">
-              <span className="inline-block w-2 h-3.5 bg-[#FF7A00] animate-pulse" />
+              <span className="inline-block w-2 h-3.5 bg-[#0052FF] dark:bg-[#38bdf8] shadow-[0_0_8px_rgba(56,189,248,0.5)] animate-pulse" />
             </div>
           ) : (
             <div className="flex items-center gap-2 w-full">
@@ -777,7 +777,7 @@ export default function Terminal() {
                   }
                 }}
                 onKeyDown={handleKeyDownInput}
-                className="flex-1 bg-transparent text-[#f8fafc] outline-none border-none caret-[#FF7A00] font-mono focus-visible:ring-1 focus-visible:ring-electricBlue/50 rounded px-1"
+                className="flex-1 bg-transparent text-[#f8fafc] outline-none border-none caret-[#0052FF] dark:caret-[#38bdf8] font-mono focus-visible:ring-1 focus-visible:ring-electricBlue/50 rounded px-1"
                 aria-label="Terminal command input"
                 autoComplete="off"
                 spellCheck={false}

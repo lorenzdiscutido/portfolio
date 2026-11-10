@@ -67,7 +67,7 @@ export default function HardwareSchematic() {
           onClick={triggerUnlock}
           className={`self-start sm:self-auto px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider font-mono border transition-colors duration-200 cursor-pointer shadow-none ${
             isUnlocked
-              ? "bg-[#FF7A00] text-black border-[#FF7A00]"
+              ? "bg-amber-500 text-black border-amber-500"
               : "bg-[#0052FF] text-white border-[#0052FF] hover:bg-[#0052FF]/90"
           }`}
         >
@@ -139,14 +139,14 @@ export default function HardwareSchematic() {
             <div className="flex items-center justify-between mb-2">
               <span
                 className={`text-xs font-mono font-bold uppercase ${
-                  isUnlocked ? "text-[#FF7A00]" : "text-muted"
+                  isUnlocked ? "text-amber-500 dark:text-amber-400" : "text-muted"
                 }`}
               >
                 2-Ch Relay &amp; Solenoid
               </span>
               <span
                 className={`h-2.5 w-2.5 rounded-full ${
-                  isUnlocked ? "bg-[#FF7A00] animate-pulse" : "bg-primary/20"
+                  isUnlocked ? "bg-amber-500 animate-pulse" : "bg-primary/20"
                 }`}
               />
             </div>
@@ -161,7 +161,7 @@ export default function HardwareSchematic() {
             <span className="text-slate-600 dark:text-slate-300">Lock State:</span>
             <span
               className={`font-bold ${
-                isUnlocked ? "text-[#FF7A00]" : "text-slate-600 dark:text-slate-300"
+                isUnlocked ? "text-amber-500 dark:text-amber-400" : "text-slate-600 dark:text-slate-300"
               }`}
             >
               {isUnlocked ? "ENERGIZED (OPEN)" : "LATCHED (SECURE)"}

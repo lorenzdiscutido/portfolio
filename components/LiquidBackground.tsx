@@ -117,10 +117,27 @@ export default function LiquidBackground() {
     let width = (canvas.width = window.innerWidth || 1280);
     let height = (canvas.height = window.innerHeight || 800);
 
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mql =
+      typeof window !== "undefined" && typeof window.matchMedia === "function"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null;
+    let prefersReducedMotion = mql ? mql.matches : false;
+
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      prefersReducedMotion = e.matches;
+      if (prefersReducedMotion) {
+        if (animationFrameId) {
+          window.cancelAnimationFrame(animationFrameId);
+          animationFrameId = 0;
+        }
+        render();
+      } else {
+        if (!animationFrameId) {
+          animationFrameId = window.requestAnimationFrame(render);
+        }
+      }
+    };
+    mql?.addEventListener("change", handleMotionChange);
 
     // Organic Liquid Swell Nodes
     const createNodes = (w: number, h: number): FluidCurrentNode[] => [
@@ -360,6 +377,7 @@ export default function LiquidBackground() {
       window.removeEventListener("touchmove", handleWindowTouchMove);
       window.removeEventListener("liquid-bullet-time", handleBulletTime);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      mql?.removeEventListener("change", handleMotionChange);
       if (animationFrameId) {
         window.cancelAnimationFrame(animationFrameId);
       }

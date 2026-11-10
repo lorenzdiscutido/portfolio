@@ -63,7 +63,7 @@ export default function ResumeDownload({ className, label }: ResumeDownloadProps
           <span className="text-white font-mono text-xs">generating...</span>
         </>
       ) : error ? (
-        <span className="text-[#FF7A00] font-mono text-xs">Failed - Retry</span>
+        <span className="text-rose-400 font-mono text-xs">Failed - Retry</span>
       ) : (
         <span className="transition-colors">
           {displayLabel}

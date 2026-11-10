@@ -137,7 +137,8 @@ export default function TelemetryBar() {
                   onClick={handleLaunchTerminal}
                   className="px-3.5 py-1.5 rounded-lg bg-[#0052FF] hover:bg-[#0041cc] text-white font-medium text-[11px] uppercase tracking-wider font-mono transition-colors duration-200 cursor-pointer flex items-center gap-1.5 shadow-none"
                 >
-                  <span>&gt;_ Launch Cluster CLI Terminal</span>
+                  <span aria-hidden="true">&gt;_</span>
+                  <span>Launch Cluster CLI Terminal</span>
                 </button>
               </div>
             </div>

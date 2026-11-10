@@ -6,7 +6,7 @@ export default function Workspace() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
           <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
-            Off-Duty Mechanics
+            Homelab &amp; Prototyping Bench
           </p>
           <h2 className="font-sans text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost">
             Beyond the <span className="text-[#0052FF] dark:text-[#38bdf8]">Screen</span>

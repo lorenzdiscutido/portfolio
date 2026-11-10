@@ -22,7 +22,7 @@
     --primary: 248 250 252;       /* #f8fafc - Frost White */
     --muted: 203 213 225;         /* #cbd5e1 - Slate 300 (Crisp 11.5:1 on dark glass) */
     --electric-blue: 56 189 248;  /* #38bdf8 - Electric Cyan/Sky (9.2:1 contrast on dark) */
-    --alert-orange: 255 122 0;    /* #FF7A00 - Safety Neon Orange (7.8:1 on dark) */
+    --alert-amber: 245 158 11;    /* #f59e0b - Standard Warning Amber */
     color-scheme: dark;
   }
 

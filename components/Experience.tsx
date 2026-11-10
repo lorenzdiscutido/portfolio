@@ -170,7 +170,7 @@ export default function Experience() {
                         item.type === "Work"
                           ? "bg-[#0052FF]/10 dark:bg-[#38bdf8]/10 border-[#0052FF]/30 dark:border-[#38bdf8]/30 text-[#0052FF] dark:text-[#38bdf8] font-medium"
                           : item.type === "Internship"
-                          ? "bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 border-[#ea580c]/30 dark:border-[#FF7A00]/30 text-[#ea580c] dark:text-[#FF7A00] font-medium"
+                          ? "bg-cyan-500/10 dark:bg-[#38bdf8]/10 border-cyan-500/30 dark:border-[#38bdf8]/30 text-cyan-700 dark:text-[#38bdf8] font-medium"
                           : "bg-surface/60 border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium"
                       }`}
                     >

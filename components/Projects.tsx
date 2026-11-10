@@ -82,7 +82,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
             {project.title}
           </h3>
           {isFeatured && (
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#ea580c] dark:text-[#FF7A00] bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 px-3 py-1 rounded-full border-[0.5px] border-[#ea580c]/30 dark:border-[#FF7A00]/30 self-start sm:self-auto font-medium">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 dark:bg-[#38bdf8]/10 px-3 py-1 rounded-full border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 self-start sm:self-auto font-medium">
               Primary Architecture
             </span>
           )}

@@ -384,16 +384,16 @@ export default function CommandPalette() {
                   }
                   aria-label="Command Palette Search Input"
                   data-testid="command-palette-input"
-                  className="w-full bg-transparent text-primary placeholder:text-muted font-mono text-xs sm:text-sm outline-none border-none caret-[#FF7A00]"
+                  className="w-full bg-transparent text-primary placeholder:text-muted font-mono text-xs sm:text-sm outline-none border-none caret-[#0052FF] dark:caret-[#38bdf8]"
                 />
-                {/* Vibrant Orange Accent Block Caret Indicator */}
+                {/* Hairline Electric Blue Accent Block Caret Indicator */}
                 <span
                   aria-hidden="true"
-                  className="inline-block w-2 h-4 bg-[#FF7A00] animate-pulse ml-2 shrink-0"
+                  className="inline-block w-2 h-4 bg-[#0052FF] dark:bg-[#38bdf8] shadow-[0_0_8px_rgba(56,189,248,0.5)] animate-pulse ml-2 shrink-0"
                 />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 border-[0.5px] border-[#0052FF]/30 px-2 py-0.5 rounded-full">
-                {isTerminalMode ? "CLI ACTIVE" : "BULLET-TIME"}
+                {isTerminalMode ? "CLI ACTIVE" : "COMMANDS"}
               </span>
               <button
                 type="button"

@@ -43,7 +43,7 @@ export default function MySQLReplicationPlayground() {
               state === "healthy"
                 ? "bg-[#ef4444] hover:bg-[#dc2626] text-white"
                 : state === "partitioned"
-                ? "bg-[#FF7A00] hover:bg-[#ea580c] text-black"
+                ? "bg-[#f59e0b] hover:bg-[#d97706] text-black"
                 : "bg-[#0052FF] hover:bg-[#0041cc] text-white"
             }`}
           >
@@ -84,7 +84,7 @@ export default function MySQLReplicationPlayground() {
               onClick={() => setState("resyncing")}
               className={`px-2.5 py-1 rounded-lg font-mono text-[10px] uppercase tracking-wider font-medium transition-all ${
                 state === "resyncing"
-                  ? "bg-[#FF7A00] text-black font-semibold"
+                  ? "bg-[#f59e0b] text-black font-semibold"
                   : "text-slate-600 dark:text-slate-300 hover:text-primary"
               }`}
             >
@@ -107,7 +107,7 @@ export default function MySQLReplicationPlayground() {
               state === "healthy"
                 ? "bg-[#0052FF]/20 text-[#0052FF] dark:text-[#38bdf8]"
                 : state === "partitioned"
-                ? "bg-[#FF7A00]/20 text-[#FF7A00]"
+                ? "bg-[#f59e0b]/20 text-[#f59e0b]"
                 : "bg-[#22c55e]/20 text-[#22c55e]"
             }`}
           >
@@ -124,7 +124,7 @@ export default function MySQLReplicationPlayground() {
                 ? "text-[#22c55e]"
                 : state === "partitioned"
                 ? "text-[#ef4444]"
-                : "text-[#FF7A00]"
+                : "text-[#f59e0b]"
             }`}
           >
             {state === "healthy"
@@ -145,7 +145,7 @@ export default function MySQLReplicationPlayground() {
               state === "partitioned"
                 ? "rgba(239, 68, 68, 0.4)"
                 : state === "resyncing"
-                ? "rgba(255, 122, 0, 0.4)"
+                ? "rgba(245, 158, 11, 0.4)"
                 : "rgba(0, 82, 255, 0.3)",
           }}
           transition={{ duration: 0.3 }}
@@ -153,7 +153,7 @@ export default function MySQLReplicationPlayground() {
             state === "partitioned"
               ? "bg-red-500/10 opacity-70"
               : state === "resyncing"
-              ? "bg-[#FF7A00]/10"
+              ? "bg-[#f59e0b]/10"
               : "bg-[#1e2128]/80 dark:bg-[#1e2128]/80 bg-white/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
           }`}
         >
@@ -168,7 +168,7 @@ export default function MySQLReplicationPlayground() {
                     state === "partitioned"
                       ? "bg-[#ef4444]"
                       : state === "resyncing"
-                      ? "bg-[#FF7A00] animate-pulse"
+                      ? "bg-[#f59e0b] animate-pulse"
                       : "bg-[#22c55e]"
                   }`}
                 />
@@ -203,13 +203,13 @@ export default function MySQLReplicationPlayground() {
           animate={{
             borderColor:
               state === "partitioned"
-                ? "rgba(255, 122, 0, 0.5)"
+                ? "rgba(245, 158, 11, 0.5)"
                 : "rgba(34, 197, 94, 0.3)",
           }}
           transition={{ duration: 0.3 }}
           className={`p-4 rounded-xl border-[0.5px] flex flex-col justify-between transition-all duration-300 ${
             state === "partitioned"
-              ? "bg-[#FF7A00]/10 shadow-[0_0_15px_rgba(255,122,0,0.15)]"
+              ? "bg-[#f59e0b]/10 shadow-[0_0_15px_rgba(245,158,11,0.15)]"
               : "bg-[#1e2128]/80 dark:bg-[#1e2128]/80 bg-white/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
           }`}
         >
@@ -343,7 +343,7 @@ export default function MySQLReplicationPlayground() {
               <p className="text-[#ef4444]">
                 &gt; [ALERT] Node 01 (100.64.0.1) unreachable! Heartbeat check failed (Connection Timed Out).
               </p>
-              <p className="text-[#FF7A00]">
+              <p className="text-[#f59e0b]">
                 &gt; [FAILOVER DISPATCHED] Ingress router (100.64.0.3) rerouted 100% of write traffic to Node 02 in 34ms.
               </p>
               <p className="text-slate-300">
@@ -363,7 +363,7 @@ export default function MySQLReplicationPlayground() {
               exit={{ opacity: 0, y: -4 }}
               className="space-y-1"
             >
-              <p className="text-[#FF7A00]">
+              <p className="text-[#f59e0b]">
                 &gt; [RECOVERY] Node 01 (100.64.0.1) rebooted. Handshake established via Tailscale WireGuard tunnel.
               </p>
               <p className="text-[#38bdf8]">

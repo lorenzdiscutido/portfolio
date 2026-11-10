@@ -118,7 +118,7 @@ export default function Hero() {
               {/* Subtle Ambient Blueprint Glow */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#0052FF]/20 via-transparent to-[#FF7A00]/10 blur-xl opacity-60"
+                className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#0052FF]/20 via-transparent to-[#38bdf8]/15 blur-xl opacity-60"
               />
 
               {/* Main Matte Frosted Glass Image Frame */}

@@ -109,7 +109,7 @@ function InteractivePlaneNode({
           aria-hidden="true"
           className={`w-1.5 h-1.5 rounded-full transition-transform duration-200 ${
             isSnapped
-              ? "bg-[#FF7A00] scale-125 shadow-[0_0_8px_#FF7A00]"
+              ? "bg-white scale-125 shadow-[0_0_10px_#38bdf8]"
               : "bg-[#0052FF] dark:bg-[#38bdf8] scale-100"
           }`}
         />

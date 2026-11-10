@@ -196,7 +196,7 @@ export default function About() {
               {activeSkill ? (
                 <div className="w-full bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 p-5 rounded-xl transition-all">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[11px] font-mono font-medium text-[#FF7A00] uppercase tracking-widest">
+                    <span className="text-[11px] font-mono font-medium text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest">
                       Production Application
                     </span>
                     <span className="text-[11px] font-mono text-primary font-medium">

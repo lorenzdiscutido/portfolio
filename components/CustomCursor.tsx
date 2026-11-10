@@ -83,8 +83,8 @@ export default function CustomCursor() {
         animate={{
           width: isHovered ? 44 : 26,
           height: isHovered ? 44 : 26,
-          borderColor: isHovered ? "rgba(255, 122, 0, 0.75)" : "rgba(0, 82, 255, 0.45)",
-          backgroundColor: isHovered ? "rgba(255, 122, 0, 0.08)" : "rgba(0, 82, 255, 0.04)",
+          borderColor: isHovered ? "rgba(56, 189, 248, 0.85)" : "rgba(0, 82, 255, 0.45)",
+          backgroundColor: isHovered ? "rgba(56, 189, 248, 0.08)" : "rgba(0, 82, 255, 0.04)",
         }}
         transition={{ duration: 0.18, ease: "easeOut" }}
         className="fixed top-0 left-0 rounded-full border backdrop-blur-[1px] shadow-[0_0_12px_rgba(0,82,255,0.15)]"
