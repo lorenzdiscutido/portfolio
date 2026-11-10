@@ -127,9 +127,9 @@ export default function About() {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <h2 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-6">
-              Engineering <span className="text-[#0052FF]">Background</span>
+              Engineering <span className="text-[#0052FF] dark:text-[#38bdf8]">Background</span>
             </h2>
-            <div className="space-y-6 text-base md:text-lg text-muted leading-relaxed font-sans">
+            <div className="space-y-6 text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
               <p>
                 Graduated with a BS in Computer Engineering (Big Data Analytics) from the Polytechnic University of the Philippines (PUP).
               </p>
@@ -151,7 +151,7 @@ export default function About() {
           >
             <div className="flex items-center justify-between mb-8">
               <h3 className="font-sans text-2xl font-extrabold tracking-tight text-primary">Technical Stack</h3>
-              <span className="text-xs font-mono text-muted bg-surface/60 px-3 py-1 rounded-full border border-black/5 dark:border-white/5">
+              <span className="text-xs font-mono text-slate-600 dark:text-slate-300 bg-black/[0.04] dark:bg-surface/60 px-3 py-1 rounded-full border border-black/5 dark:border-white/5">
                 Hover or click for context
               </span>
             </div>
@@ -159,7 +159,7 @@ export default function About() {
             <div className="space-y-8">
               {techStack.map((group, index) => (
                 <div key={index}>
-                  <h4 className="text-[#0052FF] text-xs font-mono font-semibold tracking-widest uppercase mb-3">
+                  <h4 className="text-[#0052FF] dark:text-[#38bdf8] text-xs font-mono font-semibold tracking-widest uppercase mb-3">
                     {group.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">

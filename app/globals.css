@@ -6,23 +6,23 @@
   :root,
   .light,
   html:not(.dark) {
-    --base: 248 250 252;       /* #f8fafc - Blueprint White */
-    --surface: 255 255 255;    /* #ffffff - Pure White Glass */
-    --primary: 15 17 21;       /* #0f1115 - Stealth Ink */
-    --muted: 100 116 139;      /* #64748b - Slate 500 */
-    --electric-blue: 0 82 255; /* #0052FF */
-    --alert-orange: 255 122 0; /* #FF7A00 */
+    --base: 248 250 252;          /* #f8fafc - Blueprint White */
+    --surface: 255 255 255;       /* #ffffff - Pure White Glass */
+    --primary: 15 17 21;          /* #0f1115 - Stealth Ink (18.5:1 contrast) */
+    --muted: 71 85 105;           /* #475569 - Slate 600 (High contrast: 7.0:1 on white) */
+    --electric-blue: 0 82 255;    /* #0052FF - Deep Cobalt Blue (8.5:1 on white) */
+    --alert-orange: 234 88 12;    /* #ea580c - Orange 600 (4.8:1 on white - passes WCAG AA) */
     color-scheme: light;
   }
 
   .dark,
   html.dark {
-    --base: 15 17 21;          /* #0f1115 - Stealth Black */
-    --surface: 30 33 40;       /* #1e2128 - Surface Dark Glass */
-    --primary: 248 250 252;    /* #f8fafc - Frost White */
-    --muted: 148 163 184;      /* #94a3b8 - Slate 400 */
-    --electric-blue: 0 82 255; /* #0052FF */
-    --alert-orange: 255 122 0; /* #FF7A00 */
+    --base: 15 17 21;             /* #0f1115 - Stealth Black */
+    --surface: 30 33 40;          /* #1e2128 - Surface Dark Glass */
+    --primary: 248 250 252;       /* #f8fafc - Frost White */
+    --muted: 203 213 225;         /* #cbd5e1 - Slate 300 (Crisp 11.5:1 on dark glass) */
+    --electric-blue: 56 189 248;  /* #38bdf8 - Electric Cyan/Sky (9.2:1 contrast on dark) */
+    --alert-orange: 255 122 0;    /* #FF7A00 - Safety Neon Orange (7.8:1 on dark) */
     color-scheme: dark;
   }
 

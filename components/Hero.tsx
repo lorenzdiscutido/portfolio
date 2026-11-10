@@ -88,7 +88,7 @@ export default function Hero() {
                 Jose Lorenzo Discutido
               </h1>
               <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
-                <span className="text-[#0052FF]">
+                <span className="text-[#0052FF] dark:text-[#38bdf8]">
                   Systems &amp; Data Engineer
                 </span>
               </p>
@@ -97,7 +97,7 @@ export default function Hero() {
             {/* Value Proposition (Body Text) */}
             <motion.p
               variants={itemVariants}
-              className="font-sans text-muted text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
+              className="font-sans text-slate-700 dark:text-slate-200 text-base sm:text-lg mb-7 max-w-xl leading-relaxed"
             >
               I build end-to-end ecosystems. From cyber-physical hardware and real-time mobile dashboards to AI-driven data pipelines, I specialize in architecting scalable infrastructure that bridges the physical and digital divide.
             </motion.p>

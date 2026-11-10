@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Stack, Relay, Vault, Router } from "@/components/ui/hairline";
 
 export default function TelemetryBar() {
   const [expanded, setExpanded] = useState(false);
@@ -65,25 +66,56 @@ export default function TelemetryBar() {
           >
             <div className="mt-2 p-5 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                <div className="p-3 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 space-y-1">
-                  <p className="text-muted text-[11px] font-medium">NODE 01: DATABASE</p>
-                  <p className="font-bold text-primary text-xs">vonotec-cluster-alpha</p>
-                  <p className="text-[11px] text-[#0052FF]">100.64.0.1 (MySQL Master A)</p>
+                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-muted text-[11px] font-medium">NODE 01: DATABASE</p>
+                    <div className="w-9 h-9 shrink-0">
+                      <Stack intensity={0.7} />
+                    </div>
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="font-bold text-primary text-xs">vonotec-cluster-alpha</p>
+                    <p className="text-[11px] text-[#0052FF]">100.64.0.1 (MySQL Master A)</p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 space-y-1">
-                  <p className="text-muted text-[11px] font-medium">NODE 02: IOT GATEWAY</p>
-                  <p className="font-bold text-primary text-xs">iskiosk-mcu-gateway</p>
-                  <p className="text-[11px] text-[#0052FF]">100.64.0.2 (UART Interlock)</p>
+
+                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-muted text-[11px] font-medium">NODE 02: IOT GATEWAY</p>
+                    <div className="w-9 h-9 shrink-0">
+                      <Relay intensity={0.7} />
+                    </div>
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="font-bold text-primary text-xs">iskiosk-mcu-gateway</p>
+                    <p className="text-[11px] text-[#0052FF]">100.64.0.2 (UART Interlock)</p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 space-y-1">
-                  <p className="text-muted text-[11px] font-medium">NODE 03: IDENTITY PROXY</p>
-                  <p className="font-bold text-primary text-xs">entra-id-governance</p>
-                  <p className="text-[11px] text-[#0052FF]">MSAL OAuth 2.0 Client</p>
+
+                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-muted text-[11px] font-medium">NODE 03: IDENTITY PROXY</p>
+                    <div className="w-9 h-9 shrink-0">
+                      <Vault intensity={0.7} />
+                    </div>
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="font-bold text-primary text-xs">entra-id-governance</p>
+                    <p className="text-[11px] text-[#0052FF]">MSAL OAuth 2.0 Client</p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 space-y-1">
-                  <p className="text-muted text-[11px] font-medium">NODE 04: WORKSTATION</p>
-                  <p className="font-bold text-primary text-xs">jld-stealth-rig</p>
-                  <p className="text-[11px] text-[#0052FF]">100.64.0.4 (Local Linux Node)</p>
+
+                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-muted text-[11px] font-medium">NODE 04: WORKSTATION</p>
+                    <div className="w-9 h-9 shrink-0">
+                      <Router intensity={0.7} />
+                    </div>
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="font-bold text-primary text-xs">jld-stealth-rig</p>
+                    <p className="text-[11px] text-[#0052FF]">100.64.0.4 (Local Linux Node)</p>
+                  </div>
                 </div>
               </div>
 

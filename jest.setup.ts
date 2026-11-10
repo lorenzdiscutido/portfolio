@@ -46,3 +46,24 @@ if (typeof window !== "undefined" && !("IntersectionObserver" in window)) {
   (window as unknown as { IntersectionObserver: typeof MockIntersectionObserver }).IntersectionObserver =
     MockIntersectionObserver;
 }
+
+// Mock @lucasmarkes/hairline/react for Jest test runs (pure ESM package)
+jest.mock("@lucasmarkes/hairline/react", () => {
+  const React = require("react");
+  return new Proxy(
+    {},
+    {
+      get: (_target, prop) => {
+        const MockComponent = (props: Record<string, unknown>) =>
+          React.createElement("div", {
+            "data-testid": `hairline-${String(prop).toLowerCase()}`,
+            ...props,
+          });
+        MockComponent.displayName = `Hairline.${String(prop)}`;
+        return MockComponent;
+      },
+    }
+  );
+});
+
+

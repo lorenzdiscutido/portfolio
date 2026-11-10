@@ -72,7 +72,7 @@ export default async function CaseStudyPage({
         {/* Navigation */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-400 hover:text-[#0052FF] transition-colors duration-200 mb-10 group"
+          className="inline-flex items-center gap-2 text-sm font-semibold font-mono text-slate-600 dark:text-slate-300 hover:text-[#0052FF] dark:hover:text-[#38bdf8] transition-colors duration-200 mb-10 group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Portfolio
         </Link>
@@ -94,19 +94,19 @@ export default async function CaseStudyPage({
           <h1 className="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight mb-4 font-sans">
             {study.title}
           </h1>
-          <p className="text-[#0052FF] font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
+          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono text-sm sm:text-base font-bold tracking-wider uppercase mb-6">
             {study.role}
           </p>
 
           {/* Tech Stack Tags in font-mono */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-muted mr-2">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mr-2">
               Tech Stack:
             </span>
             {study.techStack.map((tech) => (
               <span
                 key={tech}
-                className="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-surface/60 border border-black/10 dark:border-white/5 text-primary"
+                className="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-black/[0.04] dark:bg-surface/60 border border-black/10 dark:border-white/10 text-primary"
               >
                 {tech}
               </span>
@@ -185,14 +185,14 @@ export default async function CaseStudyPage({
               className="p-5 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none flex flex-col justify-between"
             >
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#0052FF] font-mono block tracking-tight mb-1">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#0052FF] dark:text-[#38bdf8] font-mono block tracking-tight mb-1">
                   {metric.value}
                 </span>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary block mb-2">
                   {metric.label}
                 </span>
               </div>
-              <p className="text-xs text-muted leading-relaxed pt-2 border-t border-black/10 dark:border-white/5 font-sans">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-2 border-t border-black/10 dark:border-white/5 font-sans">
                 {metric.detail}
               </p>
             </div>
@@ -288,12 +288,12 @@ export default async function CaseStudyPage({
         {/* The Problem Section */}
         <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
+            <span className="h-2 w-2 rounded-full bg-[#0052FF] dark:bg-[#38bdf8]" />
             <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Problem
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-muted leading-relaxed font-sans">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
             {study.problem}
           </p>
         </section>
@@ -301,12 +301,12 @@ export default async function CaseStudyPage({
         {/* The Architecture & Solution Section */}
         <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-10">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
+            <span className="h-2 w-2 rounded-full bg-[#0052FF] dark:bg-[#38bdf8]" />
             <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Architecture &amp; Solution
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-muted leading-relaxed mb-8 font-sans">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed mb-8 font-sans">
             {study.architecture}
           </p>
 
@@ -327,7 +327,7 @@ export default async function CaseStudyPage({
             <h3 className="text-sm font-mono uppercase tracking-wider text-primary font-bold mb-3">
               System Integration Details
             </h3>
-            <p className="text-sm sm:text-base text-muted leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
               {study.architectureDetails}
             </p>
           </div>
@@ -336,12 +336,12 @@ export default async function CaseStudyPage({
         {/* The Outcome Section */}
         <section className="p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none mb-12">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
+            <span className="h-2 w-2 rounded-full bg-[#0052FF] dark:bg-[#38bdf8]" />
             <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans uppercase tracking-wide">
               The Outcome
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-muted leading-relaxed mb-6 font-sans">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed mb-6 font-sans">
             {study.outcome}
           </p>
 
@@ -353,9 +353,9 @@ export default async function CaseStudyPage({
               {study.outcomes.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex items-start gap-3 text-muted text-sm leading-relaxed font-sans"
+                  className="flex items-start gap-3 text-slate-700 dark:text-slate-200 text-sm leading-relaxed font-sans"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0052FF] shrink-0" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0052FF] dark:bg-[#38bdf8] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}

@@ -96,9 +96,9 @@ export default function Footer() {
     <footer id="contact" className="pt-20 pb-10 px-6 border-t border-black/10 dark:border-white/5">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-6 font-sans">
-          Let&apos;s <span className="text-[#0052FF]">Connect</span>
+          Let&apos;s <span className="text-[#0052FF] dark:text-[#38bdf8]">Connect</span>
         </h2>
-        <p className="text-muted text-base md:text-lg mb-10 max-w-xl mx-auto font-sans">
+        <p className="text-slate-700 dark:text-slate-200 text-base md:text-lg mb-10 max-w-xl mx-auto font-sans">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 

@@ -344,7 +344,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
     <div className="w-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 rounded-2xl p-6 md:p-8 mb-12 shadow-none">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/5">
         <div>
-          <span className="text-[#0052FF] font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
+          <span className="text-[#0052FF] dark:text-[#38bdf8] font-mono text-xs uppercase tracking-widest block mb-1 font-semibold">
             Interactive Signal Flow &amp; Architecture
           </span>
           <h3 className="text-xl md:text-2xl font-bold text-primary">
@@ -397,7 +397,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-xs font-mono font-bold uppercase ${
-                        isSelected ? "text-[#0052FF]" : "text-muted"
+                        isSelected ? "text-[#0052FF] dark:text-[#38bdf8]" : "text-slate-600 dark:text-slate-300"
                       }`}
                     >
                       Stage 0{index + 1}
@@ -405,8 +405,8 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                     <span className="flex h-2 w-2 relative">
                       {isSelected ? (
                         <>
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0052FF] opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF]"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0052FF] dark:bg-[#38bdf8] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0052FF] dark:bg-[#38bdf8]"></span>
                         </>
                       ) : (
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary/20"></span>
@@ -416,18 +416,18 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
                   <p className="text-primary font-bold text-sm mb-1 font-sans">
                     {node.label}
                   </p>
-                  <p className="text-muted text-xs leading-snug font-sans">
+                  <p className="text-slate-700 dark:text-slate-200 text-xs leading-snug font-sans">
                     {node.sublabel}
                   </p>
                 </div>
 
                 <div className="mt-4 pt-2 border-t border-black/10 dark:border-white/5 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-muted truncate max-w-[120px]">
+                  <span className="text-[11px] font-mono text-slate-600 dark:text-slate-300 truncate max-w-[120px]">
                     {node.protocol}
                   </span>
                   <span
                     className={`text-xs font-mono font-bold transition-transform ${
-                      isSelected ? "text-[#0052FF] translate-x-1" : "text-muted"
+                      isSelected ? "text-[#0052FF] dark:text-[#38bdf8] translate-x-1" : "text-slate-600 dark:text-slate-300"
                     }`}
                   >
                     →
@@ -475,7 +475,7 @@ export default function ArchitectureDiagram({ slug }: { slug: string }) {
             </span>
           </div>
 
-          <p className="text-muted text-sm leading-relaxed mb-5 font-sans">
+          <p className="text-slate-700 dark:text-slate-200 text-sm leading-relaxed mb-5 font-sans">
             {activeNode.summary}
           </p>
 
