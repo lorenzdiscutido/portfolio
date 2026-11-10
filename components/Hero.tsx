@@ -57,7 +57,7 @@ export default function Hero() {
 
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
-              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-3 text-primary dark:text-frost">
+              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-3 text-primary dark:text-frost">
                 Jose Lorenzo Discutido
               </h1>
               <div className="flex flex-wrap items-center gap-2.5">
@@ -176,23 +176,23 @@ export default function Hero() {
                   {/* Left Melt Gradient: seamlessly blends portrait studio background into obsidian page atmosphere */}
                   <div
                     aria-hidden="true"
-                    className="hidden lg:block absolute inset-y-0 left-0 w-36 xl:w-52 bg-gradient-to-r from-[#f8fafc] dark:from-[#07090d] via-[#f8fafc]/75 dark:via-[#07090d]/75 to-transparent pointer-events-none z-10"
+                    className="hidden lg:block absolute inset-y-0 left-0 w-36 xl:w-56 bg-gradient-to-r from-[#07090d] via-[#07090d]/80 to-transparent pointer-events-none z-10"
                   />
 
                   {/* Bottom Melt Gradient: dissolves the portrait baseline cleanly into the background */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-x-0 bottom-0 h-32 sm:h-44 bg-gradient-to-t from-[#f8fafc] dark:from-[#07090d] via-[#f8fafc]/85 dark:via-[#07090d]/85 to-transparent pointer-events-none z-10"
+                    className="absolute inset-x-0 bottom-0 h-36 sm:h-48 bg-gradient-to-t from-[#07090d] via-[#07090d]/85 to-transparent pointer-events-none z-10"
                   />
 
                   {/* Subtle Top & Right Feather Gradients */}
                   <div
                     aria-hidden="true"
-                    className="hidden lg:block absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-[#f8fafc]/40 dark:from-[#07090d]/40 to-transparent pointer-events-none z-10"
+                    className="hidden lg:block absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-[#07090d]/40 to-transparent pointer-events-none z-10"
                   />
                   <div
                     aria-hidden="true"
-                    className="hidden lg:block absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#f8fafc]/40 dark:from-[#07090d]/40 to-transparent pointer-events-none z-10"
+                    className="hidden lg:block absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#07090d]/40 to-transparent pointer-events-none z-10"
                   />
 
                   {/* Docked Tailnet Telemetry Badge (Direction C Specular HUD) */}
