@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface HistoryEntry {
   id: string;
@@ -592,15 +593,15 @@ export default function Terminal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary text-xs font-mono hover:border-[#0052FF]/50 transition-colors duration-200 shadow-none cursor-pointer flex items-center gap-2.5 group"
+        className="fixed bottom-16 right-4 z-40 min-h-11 px-4 py-2 rounded-full bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary text-[11px] font-mono uppercase tracking-wider hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_15px_rgba(0,82,255,0.12)] transition-all duration-200 cursor-pointer flex items-center gap-2.5 group"
         aria-label="Open Interactive Terminal"
       >
-        <span className="flex h-2 w-2 relative">
+        <span className="flex h-2 w-2 relative shrink-0 items-center justify-center my-auto">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
         </span>
-        <span className="font-bold">&gt;_ Terminal</span>
-        <span className="hidden sm:inline text-[10px] text-muted bg-base/80 px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10">
+        <span className="font-semibold tracking-widest">&gt;_ Terminal</span>
+        <span className="hidden sm:inline text-[10px] text-muted bg-black/[0.04] dark:bg-base/60 px-1.5 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
           Ctrl+`
         </span>
       </button>
@@ -608,13 +609,17 @@ export default function Terminal() {
   }
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96, y: 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.96, y: 10 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       ref={containerRef}
       onClick={() => !isExecuting && inputRef.current?.focus()}
-      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#0f1115] text-[#f8fafc] border border-white/10 rounded-2xl shadow-none flex flex-col font-mono text-sm p-0 z-50 cursor-text transition-all overflow-hidden"
+      className="dark fixed bottom-4 inset-x-4 md:inset-x-auto md:bottom-10 md:right-10 w-auto md:w-full md:max-w-lg max-h-[85vh] bg-[#0f1115]/90 backdrop-blur-xl text-[#f8fafc] border-[0.5px] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] rounded-2xl flex flex-col font-mono text-sm p-0 z-50 cursor-text transition-all overflow-hidden"
     >
       {/* Authentic Terminal Top Bar with 3 OS Dots */}
-      <div className="bg-[#1e2128] px-4 py-3 border-b border-white/5 flex justify-between items-center text-xs select-none">
+      <div className="bg-[#1e2128]/80 px-4 py-3 border-b-[0.5px] border-white/10 flex justify-between items-center text-xs select-none">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
             <button
@@ -629,19 +634,19 @@ export default function Terminal() {
             <span className="w-3 h-3 rounded-full bg-[#eab308]" />
             <span className="w-3 h-3 rounded-full bg-[#22c55e]" />
           </div>
-          <span className="text-slate-400 text-xs font-mono ml-2">
+          <span className="text-muted text-[11px] font-mono uppercase tracking-widest ml-2">
             guest@jld-stealth-rig: ~
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[11px] text-slate-400">bash</span>
+          <span className="text-[11px] font-mono text-muted uppercase tracking-wider">bash</span>
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="text-slate-400 hover:text-[#f8fafc] text-xs font-mono px-1 transition-colors duration-200 cursor-pointer"
+            className="text-muted hover:text-frost text-xs font-mono px-1 transition-colors duration-200 cursor-pointer"
             aria-label="Close Terminal"
           >
             ✕
@@ -685,9 +690,9 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("projects")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
               </svg>
               <span>View Projects</span>
@@ -695,9 +700,9 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("resume")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <polyline points="14 2 14 8 20 8" />
                 <line x1="16" y1="13" x2="8" y2="13" />
@@ -709,9 +714,9 @@ export default function Terminal() {
             <button
               type="button"
               onClick={() => handleCommand("contact")}
-              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/80 backdrop-blur-md border border-white/5 hover:border-[#0052FF]/50 text-[#f8fafc] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+              className="min-h-[40px] px-3 py-2 rounded-lg bg-[#1e2128]/60 border-[0.5px] border-white/10 hover:border-electricBlue/50 hover:shadow-[0_0_12px_rgba(0,82,255,0.15)] text-[#f8fafc] font-mono text-[11px] uppercase tracking-wider font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8]">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               </svg>
               <span>Contact Me</span>
@@ -744,6 +749,6 @@ export default function Terminal() {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

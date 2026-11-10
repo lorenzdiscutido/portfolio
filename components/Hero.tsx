@@ -24,7 +24,7 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 400, damping: 25 },
+    transition: { type: "spring", stiffness: 400, damping: 30 },
   },
 };
 
@@ -32,7 +32,7 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-16 lg:pt-24 pb-16 overflow-x-clip">
+    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-x-clip">
       <div className="max-w-6xl mx-auto w-full">
         {/* Edge Telemetry HUD Bar */}
         <TelemetryBar />
@@ -47,13 +47,11 @@ export default function Hero() {
           >
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
-              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3 text-primary">
+              <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-tight mb-3 text-primary dark:text-frost">
                 Jose Lorenzo Discutido
               </h1>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono">
-                <span className="text-[#0052FF] dark:text-[#38bdf8]">
-                  Systems &amp; Data Engineer
-                </span>
+              <p className="text-xl sm:text-2xl lg:text-3xl font-mono text-[#0052FF] dark:text-[#38bdf8] font-medium tracking-tight">
+                Systems &amp; Data Engineer
               </p>
             </motion.div>
 
@@ -73,16 +71,16 @@ export default function Hero() {
             {/* Magnetic CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-3.5 items-center justify-start mt-6"
+              className="flex flex-wrap gap-3 items-center justify-start mt-6"
             >
               <MagneticButton strength={0.3}>
                 <a
                   href="#projects"
                   data-magnetic="true"
-                  className="min-h-11 inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#0052FF] text-white font-extrabold text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-11 inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#0052FF] text-white font-medium text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>View Projects</span>
-                  <span aria-hidden="true" className="font-bold">
+                  <span aria-hidden="true" className="font-medium">
                     &rarr;
                   </span>
                 </a>
@@ -92,14 +90,14 @@ export default function Hero() {
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-11 bg-surface/80 backdrop-blur-md text-primary border border-black/10 dark:border-white/5 inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-colors duration-200 cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-11 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full hover:border-electricBlue/50 hover:text-[#0052FF] dark:hover:text-[#38bdf8] active:scale-95 transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>Contact Me</span>
                 </a>
               </MagneticButton>
 
               <MagneticButton strength={0.2}>
-                <ResumeDownload className="min-h-11 px-6 py-3 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 hover:border-[#0052FF]/50 text-primary font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200" />
+                <ResumeDownload className="min-h-11 px-6 py-3 rounded-full bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 text-primary font-medium text-xs font-mono uppercase tracking-wider inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200" />
               </MagneticButton>
             </motion.div>
           </motion.div>
@@ -108,7 +106,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.1 }}
             className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
             <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
@@ -119,7 +117,7 @@ export default function Hero() {
               />
 
               {/* Main Matte Frosted Glass Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/5 bg-surface/80 backdrop-blur-md shadow-none z-10">
+              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] z-10">
                 {!imageError ? (
                   <Image
                     src="/profile.jpg"
@@ -132,30 +130,30 @@ export default function Hero() {
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-surface p-6 text-primary">
-                    <span className="font-extrabold text-3xl tracking-tighter text-[#0052FF]">
+                    <span className="font-medium text-3xl tracking-tighter text-[#0052FF]">
                       JL<span>D</span>
                     </span>
-                    <span className="text-xs uppercase font-mono text-muted tracking-widest mt-2">
+                    <span className="text-[11px] uppercase font-mono text-muted tracking-widest mt-2">
                       Jose Lorenzo Discutido
                     </span>
                   </div>
                 )}
 
                 {/* Availability status badge */}
-                <div className="absolute top-3 right-3 bg-surface/90 backdrop-blur-md border border-black/10 dark:border-white/5 px-3 py-1 rounded-full flex items-center gap-2 shadow-none">
+                <div className="absolute top-3 right-3 bg-[#1e2128]/70 dark:bg-[#1e2128]/70 bg-white/80 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] px-3 py-1 rounded-full flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00]" />
                   </span>
-                  <span className="text-xs font-mono font-medium text-primary">
+                  <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-primary">
                     Available
                   </span>
                 </div>
               </div>
 
               {/* Frosted Glass "@lorenzdiscutido" pill badge at bottom-left */}
-              <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none font-mono text-xs sm:text-sm font-bold flex items-center gap-1.5 z-20 hover:rotate-0 transition-transform">
-                <span className="text-[#0052FF] font-semibold">aka</span>
+              <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-3 -rotate-2 px-4 py-1.5 rounded-full bg-[#1e2128]/70 dark:bg-[#1e2128]/70 bg-white/80 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary font-mono text-xs sm:text-sm font-medium flex items-center gap-1.5 z-20 hover:rotate-0 transition-transform">
+                <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">aka</span>
                 <span>@lorenzdiscutido</span>
               </div>
             </div>

@@ -32,17 +32,14 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
   };
 
   // Asymmetric Bento Grid spans:
-  // Card 0: Full 12-col flagship hero card
-  // Card 1: 7-col wide card
-  // Card 2: 5-col compact card
-  // Card 3+: 12-col wide card
+  // Card 0: 8-col feature showcase
+  // Card 1: 4-col tight data card
+  // Card 2+: 12-col locked showcase
   const spanClass =
     index === 0
-      ? "md:col-span-12"
+      ? "md:col-span-8"
       : index === 1
-      ? "md:col-span-7"
-      : index === 2
-      ? "md:col-span-5"
+      ? "md:col-span-4"
       : "md:col-span-12";
 
   const isFeatured = index === 0;
@@ -55,8 +52,8 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
-      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 hover:border-[#0052FF]/50 transition-colors duration-200 flex flex-col ${spanClass}`}
+      transition={{ type: "spring", stiffness: 400, damping: 30, delay: index * 0.05 }}
+      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_20px_rgba(0,82,255,0.15)] dark:hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 flex flex-col col-span-12 ${spanClass}`}
     >
       {/* Flashlight Surface Glow Overlay (Visible only on group-hover) */}
       <motion.div
@@ -66,30 +63,30 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"
       />
 
-      {/* Flashlight Border Mask (Electric Blue glow along hovered edge) */}
+      {/* Flashlight Border Mask (Subtle hairline highlight along hovered edge) */}
       <motion.div
         aria-hidden="true"
         style={{
           WebkitMaskImage: spotlightBorderMask,
           maskImage: spotlightBorderMask,
         }}
-        className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-[#0052FF] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        className="pointer-events-none absolute inset-0 rounded-2xl border-[0.5px] border-[#0052FF] dark:border-[#38bdf8] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
       />
 
       {/* Card Content */}
       <div className="relative z-10 flex flex-col flex-grow">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-          <h3 className="font-sans text-xl sm:text-2xl font-bold text-primary">
+          <h3 className="font-sans text-xl sm:text-2xl font-medium tracking-tight text-primary dark:text-frost">
             {project.title}
           </h3>
           {isFeatured && (
-            <span className="text-xs font-mono uppercase tracking-wider text-[#ea580c] dark:text-[#FF7A00] bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 px-3 py-1 rounded-full border border-[#ea580c]/30 dark:border-[#FF7A00]/30 self-start sm:self-auto font-bold">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#ea580c] dark:text-[#FF7A00] bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 px-3 py-1 rounded-full border-[0.5px] border-[#ea580c]/30 dark:border-[#FF7A00]/30 self-start sm:self-auto font-medium">
               Primary Architecture
             </span>
           )}
         </div>
 
-        <p className="text-[#0052FF] dark:text-[#38bdf8] text-xs sm:text-sm font-mono font-semibold tracking-wider uppercase mb-4">
+        <p className="text-[#0052FF] dark:text-[#38bdf8] text-[11px] font-mono font-medium tracking-widest uppercase mb-4">
           {project.role}
         </p>
 
@@ -98,13 +95,13 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         </p>
 
         {/* Quantified Metrics Highlight Bar (Rigid tabular columns, strict font-mono) */}
-        <div className="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-black/[0.03] dark:bg-base/40 border border-black/10 dark:border-white/5">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6 p-4 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]">
           {project.metrics.map((m, mi) => (
             <div key={mi} className="text-center sm:text-left">
-              <span className="block text-sm sm:text-base font-extrabold text-[#0052FF] dark:text-[#38bdf8] tracking-tight font-mono">
+              <span className="block text-sm sm:text-base font-semibold text-[#0052FF] dark:text-[#38bdf8] tracking-tight font-mono">
                 {m.value}
               </span>
-              <span className="block text-xs font-mono text-slate-600 dark:text-slate-300 font-medium leading-tight">
+              <span className="block text-[11px] font-mono uppercase tracking-wider text-muted font-medium leading-tight mt-0.5">
                 {m.label}
               </span>
             </div>
@@ -115,7 +112,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.techStack.map((tech, i) => (
             <span
               key={i}
-              className="font-mono text-xs font-semibold text-primary bg-black/[0.04] dark:bg-surface/60 px-3 py-1 rounded-full border border-black/10 dark:border-white/10 group-hover:border-[#0052FF]/50 dark:group-hover:border-[#38bdf8]/50 transition-colors duration-200"
+              className="font-mono text-[11px] uppercase tracking-wider font-medium text-primary bg-black/[0.04] dark:bg-surface/60 px-2.5 py-1 rounded-full border-[0.5px] border-white/10 dark:border-white/10 border-black/5 group-hover:border-electricBlue/50 transition-colors duration-200"
             >
               {tech}
             </span>
@@ -125,7 +122,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
         <div>
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold font-mono text-[#0052FF] dark:text-[#38bdf8] hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] rounded-md"
+            className="inline-flex items-center gap-1.5 text-xs font-medium font-mono text-[#0052FF] dark:text-[#38bdf8] hover:text-primary dark:hover:text-frost transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF] rounded-md uppercase tracking-wider"
           >
             <span>View Architecture &amp; Case Study</span>
             <span aria-hidden="true">&rarr;</span>
@@ -138,13 +135,13 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 overflow-x-clip">
+    <section id="projects" className="py-24 lg:py-32 px-4 sm:px-6 overflow-x-clip">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
             Selected Works
           </p>
-          <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
+          <h2 className="font-sans text-3xl md:text-4xl font-medium text-primary dark:text-frost tracking-tight">
             Spotlight <span className="text-[#0052FF] dark:text-[#38bdf8]">Bento Grid</span>
           </h2>
         </div>

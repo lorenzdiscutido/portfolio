@@ -51,16 +51,16 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 border-t border-black/10 dark:border-white/5">
+    <section id="experience" className="py-24 lg:py-32 px-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 text-left">
-          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-semibold tracking-widest uppercase mb-2 text-xs md:text-sm">
+          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
             Career Timeline
           </p>
-          <h2 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-2">
+          <h2 className="font-sans text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-2">
             Experience &amp; <span className="text-[#0052FF] dark:text-[#38bdf8]">Education</span>
           </h2>
-          <p className="font-sans text-slate-700 dark:text-slate-200 font-medium text-sm md:text-base mt-2 max-w-xl">
+          <p className="font-sans text-slate-700 dark:text-slate-200 font-normal text-sm md:text-base mt-2 max-w-xl leading-relaxed">
             From Big Data Analytics at PUP and enterprise cloud training at PHINMA to full-stack systems and AI/IoT engineering at Vonotec.
           </p>
         </div>
@@ -69,32 +69,32 @@ export default function Experience() {
           {/* Vertical rail */}
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 bottom-2 w-0.5 -translate-x-1/2 bg-black/10 dark:bg-white/10"
+            className="absolute left-0 top-2 bottom-2 w-[0.5px] -translate-x-1/2 bg-black/10 dark:bg-white/10"
           />
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
               {/* Timeline node marker */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base ring-2 ring-[#0052FF]/30 dark:ring-[#38bdf8]/30 bg-[#0052FF] dark:bg-[#38bdf8] group-hover:bg-[#FF7A00] group-hover:scale-125 transition-transform duration-200" />
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-base ring-2 ring-[#0052FF]/20 dark:ring-[#38bdf8]/20 bg-[#0052FF] dark:bg-[#38bdf8] group-hover:bg-[#FF7A00] transition-colors duration-200" />
 
-              <div className="bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none p-6 md:p-8 rounded-2xl hover:border-[#0052FF]/50 dark:hover:border-[#38bdf8]/50 transition-colors duration-200">
+              <div className="bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] p-6 md:p-8 rounded-2xl hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_15px_rgba(0,82,255,0.12)] transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono font-bold text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono font-medium text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest">
                     {item.period}
                   </span>
                   <span
-                    className={`text-xs font-mono px-2.5 py-0.5 rounded-full border self-start sm:self-auto ${
+                    className={`text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border-[0.5px] self-start sm:self-auto ${
                       item.type === "Work"
-                        ? "bg-[#0052FF]/10 dark:bg-[#38bdf8]/10 border-[#0052FF]/30 dark:border-[#38bdf8]/30 text-[#0052FF] dark:text-[#38bdf8] font-bold"
+                        ? "bg-[#0052FF]/10 dark:bg-[#38bdf8]/10 border-[#0052FF]/30 dark:border-[#38bdf8]/30 text-[#0052FF] dark:text-[#38bdf8] font-medium"
                         : item.type === "Internship"
-                        ? "bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 border-[#ea580c]/30 dark:border-[#FF7A00]/30 text-[#ea580c] dark:text-[#FF7A00] font-bold"
-                        : "bg-surface/60 border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-200 font-semibold"
+                        ? "bg-[#ea580c]/10 dark:bg-[#FF7A00]/10 border-[#ea580c]/30 dark:border-[#FF7A00]/30 text-[#ea580c] dark:text-[#FF7A00] font-medium"
+                        : "bg-surface/60 border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium"
                     }`}
                   >
                     {item.type}
                   </span>
                 </div>
 
-                <h3 className="font-sans text-xl md:text-2xl font-extrabold tracking-tight text-primary mb-1">
+                <h3 className="font-sans text-xl md:text-2xl font-medium tracking-tight text-primary dark:text-frost mb-1">
                   {item.role}
                 </h3>
 

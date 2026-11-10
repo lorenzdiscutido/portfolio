@@ -9,23 +9,23 @@ export default function MySQLReplicationPlayground() {
   const [state, setState] = useState<TopologyState>("healthy");
 
   return (
-    <div className="w-full my-8 p-6 md:p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-black/10 dark:border-white/5">
+    <div className="w-full my-8 p-6 md:p-8 rounded-2xl bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b-[0.5px] border-white/10 dark:border-white/10 border-black/5">
         <div>
-          <span className="text-xs font-mono font-semibold tracking-widest uppercase text-[#0052FF] dark:text-[#38bdf8] block mb-1">
+          <span className="text-[11px] font-mono font-medium tracking-widest uppercase text-[#0052FF] dark:text-[#38bdf8] block mb-1">
             Interactive Architecture Playground
           </span>
-          <h3 className="text-xl md:text-2xl font-bold text-primary font-sans">
+          <h3 className="text-xl md:text-2xl font-medium tracking-tight text-primary dark:text-frost font-sans">
             Circular Master-Master Failover &amp; GTID Catch-Up
           </h3>
         </div>
 
         {/* State Selection Tabs */}
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-black/[0.04] dark:bg-base/60 border border-black/10 dark:border-white/5">
+        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-black/[0.04] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
           <button
             type="button"
             onClick={() => setState("healthy")}
-            className={`px-3 py-1.5 rounded-lg font-mono text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg font-mono text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
               state === "healthy"
                 ? "bg-[#0052FF] text-white shadow-sm"
                 : "text-slate-600 dark:text-slate-300 hover:text-primary"
@@ -36,7 +36,7 @@ export default function MySQLReplicationPlayground() {
           <button
             type="button"
             onClick={() => setState("partitioned")}
-            className={`px-3 py-1.5 rounded-lg font-mono text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg font-mono text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
               state === "partitioned"
                 ? "bg-[#ef4444] text-white shadow-sm"
                 : "text-slate-600 dark:text-slate-300 hover:text-primary"
@@ -47,9 +47,9 @@ export default function MySQLReplicationPlayground() {
           <button
             type="button"
             onClick={() => setState("resyncing")}
-            className={`px-3 py-1.5 rounded-lg font-mono text-xs font-semibold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg font-mono text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
               state === "resyncing"
-                ? "bg-[#FF7A00] text-black font-bold shadow-sm"
+                ? "bg-[#FF7A00] text-black font-semibold shadow-sm"
                 : "text-slate-600 dark:text-slate-300 hover:text-primary"
             }`}
           >
@@ -59,17 +59,17 @@ export default function MySQLReplicationPlayground() {
       </div>
 
       {/* Schematic Nodes Viewport */}
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-6 rounded-xl bg-black/[0.02] dark:bg-base/40 border border-black/5 dark:border-white/5 mb-6">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-6 rounded-xl bg-black/[0.02] dark:bg-base/40 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 mb-6">
         {/* Node A (Master 1) */}
         <div
-          className={`p-5 rounded-xl border transition-all duration-300 ${
+          className={`p-5 rounded-xl border-[0.5px] transition-all duration-300 ${
             state === "partitioned"
               ? "bg-red-500/5 border-red-500/30 opacity-70"
-              : "bg-surface/90 border-black/10 dark:border-white/10"
+              : "bg-[#1e2128]/80 dark:bg-[#1e2128]/80 bg-white/90 border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
           }`}
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="font-mono text-xs font-bold uppercase text-[#0052FF] dark:text-[#38bdf8]">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8]">
               Node A // Primary Master
             </span>
             <span className="flex items-center gap-1.5 text-[11px] font-mono">
@@ -104,14 +104,14 @@ export default function MySQLReplicationPlayground() {
         </div>
 
         {/* Node B (Master 2) */}
-        <div className="p-5 rounded-xl bg-surface/90 border border-black/10 dark:border-white/10 transition-all duration-300">
+        <div className="p-5 rounded-xl bg-[#1e2128]/80 dark:bg-[#1e2128]/80 bg-white/90 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
-            <span className="font-mono text-xs font-bold uppercase text-[#0052FF] dark:text-[#38bdf8]">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8]">
               Node B // Secondary Master
             </span>
             <span className="flex items-center gap-1.5 text-[11px] font-mono">
               <span className="h-2 w-2 rounded-full bg-[#22c55e]" />
-              <span className="font-semibold text-primary">
+              <span className="font-medium text-primary">
                 {state === "partitioned" ? "BUFFERING WRITES" : "ONLINE"}
               </span>
             </span>
@@ -130,10 +130,10 @@ export default function MySQLReplicationPlayground() {
       </div>
 
       {/* Dynamic Simulated Telemetry Terminal */}
-      <div className="p-4 rounded-xl bg-surfaceDark text-white font-mono text-xs overflow-x-auto border border-black/20">
-        <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-[11px] text-slate-400">
-          <span>// WireGuard Overlay Stream Status</span>
-          <span className="text-[#38bdf8]">gtid_mode=ON</span>
+      <div className="p-4 rounded-xl bg-[#0f1115]/90 text-white font-mono text-xs overflow-x-auto border-[0.5px] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+        <div className="flex items-center justify-between pb-2 mb-2 border-b-[0.5px] border-white/10 text-[11px] text-muted">
+          <span className="uppercase tracking-wider">// WireGuard Overlay Stream Status</span>
+          <span className="text-[#38bdf8] font-semibold">gtid_mode=ON</span>
         </div>
 
         <AnimatePresence mode="wait">

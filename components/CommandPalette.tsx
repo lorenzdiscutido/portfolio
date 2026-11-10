@@ -183,12 +183,12 @@ export default function CommandPalette() {
             initial={{ opacity: 0, scale: 0.96, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="relative z-10 w-full max-w-xl rounded-2xl bg-surface/90 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none overflow-hidden"
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className="relative z-10 w-full max-w-xl rounded-2xl bg-[#1e2128]/70 dark:bg-[#1e2128]/70 bg-white/85 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] overflow-hidden"
           >
             {/* Search Header with Electric Blue prompt and Vibrant Orange block cursor */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-black/10 dark:border-white/5">
-              <span className="font-mono text-sm font-bold text-[#0052FF] select-none">
+            <div className="flex items-center gap-3 px-4 py-3.5 border-b-[0.5px] border-white/10 dark:border-white/10 border-black/5">
+              <span className="font-mono text-sm font-bold text-[#0052FF] dark:text-[#38bdf8] select-none">
                 &gt;_
               </span>
               <div className="relative flex-1 flex items-center">
@@ -201,22 +201,22 @@ export default function CommandPalette() {
                   placeholder="Type a command or search system nodes..."
                   aria-label="Command Palette Search Input"
                   data-testid="command-palette-input"
-                  className="w-full bg-transparent text-primary placeholder:text-muted font-mono text-sm outline-none border-none caret-[#FF7A00]"
+                  className="w-full bg-transparent text-primary placeholder:text-muted font-mono text-xs sm:text-sm outline-none border-none caret-[#FF7A00]"
                 />
                 {/* Vibrant Orange Accent Block Caret Indicator */}
                 <span
                   aria-hidden="true"
-                  className="inline-block w-2.5 h-4 bg-[#FF7A00] animate-pulse ml-2 shrink-0"
+                  className="inline-block w-2 h-4 bg-[#FF7A00] animate-pulse ml-2 shrink-0"
                 />
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#0052FF] bg-[#0052FF]/10 border border-[#0052FF]/30 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 border-[0.5px] border-[#0052FF]/30 px-2 py-0.5 rounded-full">
                 BULLET-TIME
               </span>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Command Palette"
-                className="text-xs font-mono text-muted hover:text-primary px-2 py-1 rounded border border-black/10 dark:border-white/10 hover:border-[#0052FF]/50 transition-colors duration-200"
+                className="text-[11px] font-mono text-muted hover:text-primary px-2 py-1 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5 hover:border-electricBlue/50 transition-colors duration-200"
               >
                 ESC
               </button>
@@ -226,7 +226,7 @@ export default function CommandPalette() {
             <div
               role="listbox"
               aria-label="Available Commands"
-              className="max-h-72 overflow-y-auto py-2 divide-y divide-black/5 dark:divide-white/5"
+              className="max-h-72 overflow-y-auto py-2 divide-y-[0.5px] divide-white/10 dark:divide-white/10 divide-black/5"
             >
               {filteredCommands.length === 0 ? (
                 <p className="px-4 py-6 text-center font-mono text-xs text-muted">
@@ -250,20 +250,20 @@ export default function CommandPalette() {
                       }}
                       className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors duration-200 cursor-pointer ${
                         isActive
-                          ? "border-l-2 border-[#0052FF] bg-[#0052FF]/15 text-primary"
-                          : "border-l-2 border-transparent text-muted hover:text-primary hover:bg-surface/50"
+                          ? "border-l-2 border-[#0052FF] dark:border-[#38bdf8] bg-[#0052FF]/15 text-primary"
+                          : "border-l-2 border-transparent text-muted hover:text-primary hover:bg-black/[0.02] dark:hover:bg-white/[0.02]"
                       }`}
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold font-sans text-primary">
+                        <span className="text-sm font-medium font-sans text-primary dark:text-frost">
                           {item.label}
                         </span>
-                        <span className="text-[11px] font-mono text-muted">
+                        <span className="text-[11px] font-mono uppercase tracking-widest text-muted">
                           {item.category}
                         </span>
                       </div>
                       {item.shortcut && (
-                        <kbd className="font-mono text-[11px] text-muted bg-base/80 px-2 py-0.5 rounded border border-black/10 dark:border-white/10">
+                        <kbd className="font-mono text-[11px] text-muted bg-black/[0.04] dark:bg-base/60 px-2 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
                           {item.shortcut}
                         </kbd>
                       )}

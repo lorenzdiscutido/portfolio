@@ -26,34 +26,34 @@ export default function TelemetryBar() {
             setExpanded((prev) => !prev);
           }
         }}
-        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none hover:border-[#0052FF]/50 dark:hover:border-[#38bdf8]/50 transition-colors duration-200 focus-visible:ring-1 focus-visible:ring-[#0052FF] outline-none cursor-pointer select-none"
+        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_15px_rgba(0,82,255,0.12)] transition-all duration-200 focus-visible:ring-1 focus-visible:ring-[#0052FF] outline-none cursor-pointer select-none"
       >
         <div data-testid="live-telemetry-pill" className="flex items-center gap-3 flex-wrap">
-          <span className="flex h-2 w-2 relative">
+          <span className="flex h-2 w-2 relative shrink-0 items-center justify-center my-auto">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
           </span>
-          <span className="font-bold text-primary uppercase tracking-wider">
+          <span className="font-mono text-[11px] font-semibold tracking-widest uppercase text-muted">
             TELEMETRY STREAM
           </span>
           <span className="text-primary/20">|</span>
-          <span className="text-slate-600 dark:text-slate-300">
+          <span className="font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
             System: Online | <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">Commits: 29</span>
           </span>
           <span className="hidden sm:inline text-primary/20">|</span>
-          <span className="hidden sm:inline text-slate-600 dark:text-slate-300">
+          <span className="hidden sm:inline font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
             TAILNET: <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">4 NODES</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-4 text-slate-600 dark:text-slate-300">
+        <div className="flex items-center gap-4 font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
           <span className="hidden md:inline">
             GTID LAG: <span className="text-primary font-semibold">0ms</span>
           </span>
           <span className="hidden lg:inline">
             INTERLOCKS: <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">ARMED</span>
           </span>
-          <span className="text-xs text-slate-600 dark:text-slate-300 hover:text-primary font-semibold transition-colors duration-200">
+          <span className="text-[11px] uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-frost font-semibold transition-colors duration-200">
             {expanded ? "▲ COLLAPSE" : "▼ INSPECT TOPOLOGY"}
           </span>
         </div>
@@ -65,72 +65,72 @@ export default function TelemetryBar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className="overflow-hidden"
           >
-            <div className="mt-2 p-5 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none">
+            <div className="mt-2 p-5 rounded-xl bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                <div className="p-3.5 rounded-lg bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col justify-between hover:border-electricBlue/50 transition-colors duration-200">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-muted text-[11px] font-medium">NODE 01: DATABASE</p>
+                    <p className="text-muted text-[11px] font-mono uppercase tracking-widest">NODE 01: DATABASE</p>
                     <div className="w-9 h-9 shrink-0">
                       <Stack intensity={0.7} />
                     </div>
                   </div>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-primary text-xs">vonotec-cluster-alpha</p>
-                    <p className="text-[11px] text-[#0052FF]">100.64.0.1 (MySQL Master A)</p>
+                    <p className="font-sans font-medium text-primary text-xs">vonotec-cluster-alpha</p>
+                    <p className="text-[11px] font-mono text-[#0052FF] dark:text-[#38bdf8]">100.64.0.1 (MySQL Master A)</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                <div className="p-3.5 rounded-lg bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col justify-between hover:border-electricBlue/50 transition-colors duration-200">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-muted text-[11px] font-medium">NODE 02: IOT GATEWAY</p>
+                    <p className="text-muted text-[11px] font-mono uppercase tracking-widest">NODE 02: IOT GATEWAY</p>
                     <div className="w-9 h-9 shrink-0">
                       <Relay intensity={0.7} />
                     </div>
                   </div>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-primary text-xs">iskiosk-mcu-gateway</p>
-                    <p className="text-[11px] text-[#0052FF]">100.64.0.2 (UART Interlock)</p>
+                    <p className="font-sans font-medium text-primary text-xs">iskiosk-mcu-gateway</p>
+                    <p className="text-[11px] font-mono text-[#0052FF] dark:text-[#38bdf8]">100.64.0.2 (UART Interlock)</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                <div className="p-3.5 rounded-lg bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col justify-between hover:border-electricBlue/50 transition-colors duration-200">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-muted text-[11px] font-medium">NODE 03: IDENTITY PROXY</p>
+                    <p className="text-muted text-[11px] font-mono uppercase tracking-widest">NODE 03: IDENTITY PROXY</p>
                     <div className="w-9 h-9 shrink-0">
                       <Vault intensity={0.7} />
                     </div>
                   </div>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-primary text-xs">entra-id-governance</p>
-                    <p className="text-[11px] text-[#0052FF]">MSAL OAuth 2.0 Client</p>
+                    <p className="font-sans font-medium text-primary text-xs">entra-id-governance</p>
+                    <p className="text-[11px] font-mono text-[#0052FF] dark:text-[#38bdf8]">MSAL OAuth 2.0 Client</p>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-lg bg-base/60 border border-black/10 dark:border-white/5 flex flex-col justify-between">
+                <div className="p-3.5 rounded-lg bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col justify-between hover:border-electricBlue/50 transition-colors duration-200">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-muted text-[11px] font-medium">NODE 04: WORKSTATION</p>
+                    <p className="text-muted text-[11px] font-mono uppercase tracking-widest">NODE 04: WORKSTATION</p>
                     <div className="w-9 h-9 shrink-0">
                       <Router intensity={0.7} />
                     </div>
                   </div>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-primary text-xs">jld-stealth-rig</p>
-                    <p className="text-[11px] text-[#0052FF]">100.64.0.4 (Local Linux Node)</p>
+                    <p className="font-sans font-medium text-primary text-xs">jld-stealth-rig</p>
+                    <p className="text-[11px] font-mono text-[#0052FF] dark:text-[#38bdf8]">100.64.0.4 (Local Linux Node)</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-black/10 dark:border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <span className="text-[11px] text-muted">
+              <div className="pt-3 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <span className="text-[11px] font-mono tracking-wider text-muted">
                   Zero public internet ports exposed. Mesh routing enforced via Tailnet ACL policies.
                 </span>
                 <button
                   type="button"
                   onClick={handleLaunchTerminal}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#0052FF] text-white font-bold text-xs uppercase tracking-wider font-mono hover:bg-[#0041cc] transition-colors duration-200 cursor-pointer flex items-center gap-1.5 shadow-none"
+                  className="px-3.5 py-1.5 rounded-lg bg-[#0052FF] hover:bg-[#0041cc] text-white font-medium text-[11px] uppercase tracking-wider font-mono transition-colors duration-200 cursor-pointer flex items-center gap-1.5 shadow-none"
                 >
                   <span>&gt;_ Launch Cluster CLI Terminal</span>
                 </button>

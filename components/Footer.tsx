@@ -97,18 +97,18 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-10 px-6 border-t border-black/10 dark:border-white/5">
+    <footer id="contact" className="pt-24 lg:pt-32 pb-16 px-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-6 font-sans">
+        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-6 font-sans">
           Let&apos;s <span className="text-[#0052FF] dark:text-[#38bdf8]">Connect</span>
         </h2>
-        <p className="text-slate-700 dark:text-slate-200 text-base md:text-lg mb-10 max-w-xl mx-auto font-sans">
+        <p className="text-slate-700 dark:text-slate-200 text-base md:text-lg mb-10 max-w-xl mx-auto font-sans font-normal leading-relaxed">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto mb-16 text-left bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none p-6 md:p-8 rounded-2xl space-y-4"
+          className="max-w-xl mx-auto mb-16 text-left bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] p-6 md:p-8 rounded-2xl space-y-4"
         >
           {/* Honeypot field to trap automated bots */}
           <div className="hidden" aria-hidden="true">
@@ -128,7 +128,7 @@ export default function Footer() {
             <div>
               <label
                 htmlFor="contact-name"
-                className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted mb-2"
+                className="block text-[11px] font-mono font-medium uppercase tracking-widest text-muted mb-2"
               >
                 Your Name
               </label>
@@ -139,14 +139,14 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Doe"
-                className="w-full px-4 py-3 rounded-xl bg-surface/60 border border-black/10 dark:border-white/10 focus:border-[#0052FF] text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
               />
             </div>
 
             <div>
               <label
                 htmlFor="contact-email"
-                className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted mb-2"
+                className="block text-[11px] font-mono font-medium uppercase tracking-widest text-muted mb-2"
               >
                 Your Email
               </label>
@@ -157,7 +157,7 @@ export default function Footer() {
                 value={senderEmail}
                 onChange={(e) => setSenderEmail(e.target.value)}
                 placeholder="jane@company.com"
-                className="w-full px-4 py-3 rounded-xl bg-surface/60 border border-black/10 dark:border-white/10 focus:border-[#0052FF] text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+                className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
               />
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function Footer() {
           <div>
             <label
               htmlFor="contact-subject"
-              className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted mb-2"
+              className="block text-[11px] font-mono font-medium uppercase tracking-widest text-muted mb-2"
             >
               Subject
             </label>
@@ -175,14 +175,14 @@ export default function Footer() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Systems Engineering / Project Inquiry"
-              className="w-full px-4 py-3 rounded-xl bg-surface/60 border border-black/10 dark:border-white/10 focus:border-[#0052FF] text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
+              className="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 focus:border-electricBlue/50 text-primary placeholder:text-muted/50 outline-none transition-colors duration-200 text-sm font-mono"
             />
           </div>
 
           <div>
             <label
               htmlFor="contact-message"
-              className="block text-xs font-mono font-semibold uppercase tracking-wider text-muted mb-2"
+              className="block text-[11px] font-mono font-medium uppercase tracking-widest text-muted mb-2"
             >
               Message
             </label>

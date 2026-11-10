@@ -32,10 +32,10 @@ function InteractivePlaneNode({
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
 
-  const x = useSpring(rawX, { stiffness: 400, damping: 25 });
-  const y = useSpring(rawY, { stiffness: 400, damping: 25 });
-  const rotateX = useSpring(rawRotateX, { stiffness: 400, damping: 25 });
-  const rotateY = useSpring(rawRotateY, { stiffness: 400, damping: 25 });
+  const x = useSpring(rawX, { stiffness: 400, damping: 30 });
+  const y = useSpring(rawY, { stiffness: 400, damping: 30 });
+  const rotateX = useSpring(rawRotateX, { stiffness: 400, damping: 30 });
+  const rotateY = useSpring(rawRotateY, { stiffness: 400, damping: 30 });
 
   useEffect(() => {
     const handlePointerMove = (e: MouseEvent) => {
@@ -98,10 +98,10 @@ function InteractivePlaneNode({
             ease: "easeInOut",
           },
         }}
-        className={`relative select-none font-mono text-xs font-semibold px-3.5 py-2 rounded-xl backdrop-blur-md transition-colors duration-200 flex items-center gap-2 border shadow-none cursor-pointer ${
+        className={`relative select-none font-mono text-[11px] uppercase tracking-wider font-semibold px-3 py-1.5 rounded-xl backdrop-blur-xl transition-all duration-200 flex items-center gap-2 border-[0.5px] cursor-pointer ${
           isSnapped
-            ? "bg-[#0052FF]/15 border-[#0052FF] text-primary"
-            : "bg-surface/80 border-black/10 dark:border-white/5 text-primary hover:border-[#0052FF]/50"
+            ? "bg-[#0052FF]/15 border-electricBlue/60 text-primary shadow-[0_0_12px_rgba(0,82,255,0.2)]"
+            : "bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary hover:border-electricBlue/50 hover:shadow-[0_0_10px_rgba(0,82,255,0.12)]"
         }`}
       >
         {/* Node Status Dot */}
@@ -109,14 +109,14 @@ function InteractivePlaneNode({
           aria-hidden="true"
           className={`w-1.5 h-1.5 rounded-full transition-transform duration-200 ${
             isSnapped
-              ? "bg-[#FF7A00] scale-150 shadow-[0_0_8px_#FF7A00]"
-              : "bg-[#0052FF] scale-100"
+              ? "bg-[#FF7A00] scale-125 shadow-[0_0_8px_#FF7A00]"
+              : "bg-[#0052FF] dark:bg-[#38bdf8] scale-100"
           }`}
         />
-        <span className="text-[10px] uppercase tracking-wider text-[#0052FF] font-bold">
+        <span className="text-[10px] uppercase tracking-wider text-[#0052FF] dark:text-[#38bdf8] font-bold">
           {node.glyph}
         </span>
-        <span>{node.label}</span>
+        <span className="tracking-normal font-sans font-medium text-xs text-primary">{node.label}</span>
       </motion.div>
     </div>
   );
@@ -126,7 +126,7 @@ export default function MagneticTechNodes() {
   return (
     <div
       data-testid="magnetic-tech-nodes"
-      className="flex flex-wrap items-center gap-3 mb-8"
+      className="flex flex-wrap items-center gap-2 mb-8"
     >
       {TECH_NODES.map((node, index) => (
         <InteractivePlaneNode key={node.id} node={node} index={index} />
