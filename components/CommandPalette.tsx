@@ -31,22 +31,45 @@ export default function CommandPalette() {
 
     let output = "";
     if (cmd === "help") {
-      output = "Available commands: help, whoami, ping [ip], projects, resume, contact, clear, exit";
+      output = "Available commands: ping <ip>, ssh <host>, tailscale, neofetch, whoami, skills, experience, education, projects, resume, contact, clear, exit";
     } else if (cmd === "whoami") {
-      output = "Jose Lorenzo Discutido — Systems & Data Engineer | PUP Manila | Tailscale Mesh Node (100.64.0.1)";
+      output = "Engr. Jose Lorenzo Miguel Discutido — Digital Data & Systems Engineer @ Vonotec (Batangas, PH / Tailscale: 100.64.0.1)";
+    } else if (cmd === "skills" || cmd === "stack") {
+      output = "Core: Python, TypeScript, Next.js, Flutter | Cyber-Physical: C/C++, Arduino Uno, Relays, Solenoids | Infra: MySQL GTID, WireGuard, Tailscale, Linux, MS Entra ID";
+    } else if (cmd === "experience") {
+      output = "Current: Digital Data & Systems Engineer @ Vonotec | Previous: Systems & Network Intern @ PHINMA Properties | Education: PUP Manila";
+    } else if (cmd === "education") {
+      output = "Bachelor of Science in Computer Engineering — Polytechnic University of the Philippines (PUP) Manila";
+    } else if (cmd === "tailscale" || cmd === "mesh" || cmd === "status") {
+      output = "Tailnet 4/4 Nodes Meshed: 100.64.0.1 (vonotec-alpha: Master A), 100.64.0.2 (iskiosk-gateway: Master B), 100.64.0.3 (cloud-gateway: Ingress), 100.64.0.4 (jld-stealth-rig: Linux)";
+    } else if (cmd === "neofetch" || cmd === "fastfetch") {
+      output = "OS: Linux 6.6 / Windows 11 (WSL2) | Chassis: Zero-RGB Stealth Build (<22 dBA) | Tailnet: 4 Nodes Meshed (Direct WireGuard) | GTID Lag: 0ms";
     } else if (cmd === "ping") {
       const target = arg || "100.64.0.1";
-      output = `64 bytes from ${target}: icmp_seq=1 ttl=64 time=18.4 ms [Mesh Latency: OK]`;
-    } else if (cmd === "projects") {
+      if (target === "100.64.0.1") {
+        output = `PING 100.64.0.1: 64 bytes from vonotec-cluster-alpha: icmp_seq=1 ttl=64 time=12.4 ms [Direct WireGuard Link OK]`;
+      } else if (target === "100.64.0.2") {
+        output = `PING 100.64.0.2: 64 bytes from iskiosk-mcu-gateway: icmp_seq=1 ttl=64 time=14.2 ms [Hardware Interlock Armed]`;
+      } else if (target === "100.64.0.3") {
+        output = `PING 100.64.0.3: 64 bytes from cloud-gateway: icmp_seq=1 ttl=64 time=18.6 ms [Tailscale Subnet Proxy OK]`;
+      } else if (target === "100.64.0.4") {
+        output = `PING 100.64.0.4: 64 bytes from jld-stealth-rig: icmp_seq=1 ttl=64 time=0.4 ms (Localhost Loopback)`;
+      } else {
+        output = `PING ${target}: 64 bytes from ${target}: icmp_seq=1 ttl=64 time=19.8 ms [Mesh Packet Acknowledged]`;
+      }
+    } else if (cmd === "ssh") {
+      const host = arg || "100.64.0.1";
+      output = `Authenticated via Tailnet WireGuard keypair [ed25519-sha256]. Connected to ${host} (Ubuntu 24.04 LTS x86_64). Cluster interlocks armed.`;
+    } else if (cmd === "projects" || cmd === "cd projects") {
       output = "Navigating to spotlight bento projects...";
       router.push("/#projects");
       setIsOpen(false);
-    } else if (cmd === "contact") {
+    } else if (cmd === "contact" || cmd === "mail") {
       output = "Navigating to secure transmission contact form...";
       router.push("/#contact");
       setIsOpen(false);
-    } else if (cmd === "resume") {
-      output = "Opening official engineering resume...";
+    } else if (cmd === "resume" || cmd === "cv" || cmd === "cat resume.pdf") {
+      output = "Opening official engineering curriculum vitae...";
       window.open("/resume.pdf", "_blank");
     } else if (cmd === "clear") {
       setTerminalLogs([]);
@@ -135,11 +158,32 @@ export default function CommandPalette() {
   const terminalHelperCommands: CommandItem[] = useMemo(
     () => [
       {
-        id: "term-help",
-        label: "> help — Display available terminal shell commands",
+        id: "term-ping",
+        label: "> ping 100.64.0.1 — Test Tailscale WireGuard mesh packet latency",
         category: "Terminal CLI",
         shortcut: "ENTER",
-        action: () => executeTerminalCommand("help"),
+        action: () => executeTerminalCommand("ping 100.64.0.1"),
+      },
+      {
+        id: "term-ssh",
+        label: "> ssh 100.64.0.1 — Connect to cluster over encrypted Tailscale overlay",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("ssh 100.64.0.1"),
+      },
+      {
+        id: "term-tailscale",
+        label: "> tailscale — Inspect active 4-node WireGuard VPN mesh topology",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("tailscale"),
+      },
+      {
+        id: "term-neofetch",
+        label: "> neofetch — Print stealth workstation specs & kernel telemetry",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("neofetch"),
       },
       {
         id: "term-whoami",
@@ -149,11 +193,18 @@ export default function CommandPalette() {
         action: () => executeTerminalCommand("whoami"),
       },
       {
-        id: "term-ping",
-        label: "> ping 100.64.0.1 — Test Tailscale WireGuard mesh packet latency",
+        id: "term-skills",
+        label: "> skills — Enumerate cyber-physical and systems engineering stack",
         category: "Terminal CLI",
         shortcut: "ENTER",
-        action: () => executeTerminalCommand("ping 100.64.0.1"),
+        action: () => executeTerminalCommand("skills"),
+      },
+      {
+        id: "term-help",
+        label: "> help — Display available terminal shell commands",
+        category: "Terminal CLI",
+        shortcut: "ENTER",
+        action: () => executeTerminalCommand("help"),
       },
       {
         id: "term-projects",
@@ -315,7 +366,11 @@ export default function CommandPalette() {
                   autoFocus
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Type a command or search system nodes..."
+                  placeholder={
+                    isTerminalMode
+                      ? "Terminal CLI: type 'ping 100.64.0.1', 'ssh', 'tailscale', 'help'..."
+                      : "Type a command or search system nodes (type '>' for Terminal CLI)..."
+                  }
                   aria-label="Command Palette Search Input"
                   data-testid="command-palette-input"
                   className="w-full bg-transparent text-primary placeholder:text-muted font-mono text-xs sm:text-sm outline-none border-none caret-[#FF7A00]"

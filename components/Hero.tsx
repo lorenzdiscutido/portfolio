@@ -68,35 +68,40 @@ export default function Hero() {
               <MagneticTechNodes />
             </motion.div>
 
-            {/* Magnetic CTA Buttons */}
+            {/* Streamlined Conversion CTA Group */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-3 items-center justify-start mt-6"
+              className="flex flex-wrap items-center gap-3 mt-6"
             >
-              <MagneticButton strength={0.3}>
-                <a
-                  href="#projects"
-                  data-magnetic="true"
-                  className="min-h-11 inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#0052FF] text-white font-medium text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
-                >
-                  <span>View Projects</span>
-                  <span aria-hidden="true" className="font-medium">
-                    &rarr;
-                  </span>
-                </a>
-              </MagneticButton>
-
+              {/* Primary Authoritative Conversion Action: Resume */}
               <MagneticButton strength={0.25}>
-                <ResumeDownload className="min-h-11 px-6 sm:px-7 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-medium text-sm sm:text-base border border-slate-800 dark:border-slate-200 shadow-sm hover:opacity-90 active:scale-95 inline-flex items-center justify-center gap-2 cursor-pointer transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50" />
+                <ResumeDownload
+                  label="Download Curriculum Vitae (PDF)"
+                  className="min-h-12 px-6 sm:px-7 py-3 rounded-full bg-[#0052FF] hover:bg-[#0041cc] text-white font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider inline-flex items-center justify-center gap-2.5 transition-all duration-200 cursor-pointer shadow-[0_0_20px_rgba(0,82,255,0.25)] hover:shadow-[0_0_25px_rgba(0,82,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
+                />
               </MagneticButton>
 
+              {/* Secondary Conversion Action: Contact Me */}
               <MagneticButton strength={0.2}>
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-11 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full hover:border-electricBlue/50 hover:text-[#0052FF] dark:hover:text-[#38bdf8] active:scale-95 transition-all duration-200 cursor-pointer font-medium text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-12 px-6 sm:px-7 py-3 rounded-full bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl text-primary font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 hover:text-[#0052FF] dark:hover:text-[#38bdf8] inline-flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/50"
                 >
                   <span>Contact Me</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </MagneticButton>
+
+              {/* Exploration Anchor: View Projects */}
+              <MagneticButton strength={0.15}>
+                <a
+                  href="#projects"
+                  data-magnetic="true"
+                  className="min-h-12 px-5 py-3 rounded-full text-muted hover:text-primary font-mono text-xs uppercase tracking-widest inline-flex items-center gap-1.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-electricBlue/50"
+                >
+                  <span>View Projects</span>
+                  <span aria-hidden="true">&darr;</span>
                 </a>
               </MagneticButton>
             </motion.div>
