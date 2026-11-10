@@ -57,35 +57,39 @@ export default function Footer() {
         return;
       }
 
-      // 2. Resilient Client Fallback: If Vercel env keys are unset (503/500), dispatch via Web3Forms
-      const fallbackRes = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: "cd29e663-f247-43a8-9213-58dd39d0449f",
-          name: name.trim(),
-          email: senderEmail.trim(),
-          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
-          message: message.trim(),
-          from_name: "Lorenz Portfolio Contact Form",
-        }),
-      });
+      // 2. Resilient Client Fallback: If server route encounters an issue, attempt fallback if configured
+      const fallbackKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (fallbackKey) {
+        const fallbackRes = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: fallbackKey,
+            name: name.trim(),
+            email: senderEmail.trim(),
+            subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
+            message: message.trim(),
+            from_name: "Lorenz Portfolio Contact Form",
+          }),
+        });
 
-      const fallbackResult = await fallbackRes.json();
-      if (fallbackRes.ok && fallbackResult.success) {
-        setStatus("sent");
-        setName("");
-        setSenderEmail("");
-        setSubject("");
-        setMessage("");
-        setWebsite("");
-      } else {
-        setStatus("error");
-        setErrorMessage(result.error || fallbackResult.message || "Failed to send message. Please try again.");
+        const fallbackResult = await fallbackRes.json();
+        if (fallbackRes.ok && fallbackResult.success) {
+          setStatus("sent");
+          setName("");
+          setSenderEmail("");
+          setSubject("");
+          setMessage("");
+          setWebsite("");
+          return;
+        }
       }
+
+      setStatus("error");
+      setErrorMessage(result.error || "Failed to send message. Please email lorenzdiscutido@gmail.com directly.");
     } catch {
       setStatus("error");
       setErrorMessage("Network error: Could not reach the server. Please try again.");

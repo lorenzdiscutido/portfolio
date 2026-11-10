@@ -18,15 +18,20 @@ export default function Workspace() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-4">
                 <h3 className="text-primary text-2xl font-bold font-sans">
-                  The Hardware Loadout
+                  The Stealth Rig &amp; Homelab
                 </h3>
                 <div className="w-14 h-14 shrink-0">
                   <Cabinet intensity={0.7} />
                 </div>
               </div>
-              <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
-                My personal workstation follows a strict, low-profile philosophy: an all-black, zero-RGB hardware build engineered for silence, thermal efficiency, and distraction-free focus. Built to handle sustained multi-container workloads, virtualized network nodes, and local database clusters, every component is selected purely for reliability and throughput rather than visual flash.
+              <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-sans mb-4">
+                My personal workstation adheres to a strict zero-RGB, low-noise industrial philosophy: engineered for thermal stability under heavy compute workloads. Alongside my primary workstation, I maintain a compact local homelab running isolated Linux containers and a Tailscale WireGuard subnet router. This private sandbox enables me to benchmark active-active MySQL replication topologies, simulate IoT packet drops, and test zero-trust security postures offline before deploying to production.
               </p>
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-black/10 dark:border-white/5">
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">Tailscale Subnet Router</span>
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">Docker Linux Cluster</span>
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">MySQL GTID Sandbox</span>
+              </div>
             </div>
           </div>
 
@@ -34,15 +39,20 @@ export default function Workspace() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-4">
                 <h3 className="text-primary text-2xl font-bold font-sans">
-                  System Mechanics &amp; Analytics
+                  System Mechanics &amp; Discrete Modeling
                 </h3>
                 <div className="w-14 h-14 shrink-0">
                   <Rebuild intensity={0.7} />
                 </div>
               </div>
-              <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
-                Off-duty, I gravitate toward dissecting complex combat systems in action RPGs like Zenless Zone Zero—analyzing core skill passives, attribute anomaly buildup, frame windows, and team rotation synergies. Theorycrafting optimal squad compositions and resource loops exercises the exact same analytical mindset required to eliminate bottlenecks and tune high-efficiency enterprise workflows.
+              <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-sans mb-4">
+                Off-duty, I dissect complex real-time combat engines (e.g. Zenless Zone Zero) through the lens of discrete state machines and frame-data modeling. Calculating frame-window tolerances, anomaly buildup thresholds, and resource throughput models exercises the exact mathematical rigor needed to diagnose distributed network latency, resolve concurrency bottlenecks, and tune high-throughput enterprise pipelines.
               </p>
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-black/10 dark:border-white/5">
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">State Machine Modeling</span>
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">Throughput Optimization</span>
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border border-black/10 dark:border-white/10">Concurrency Profiling</span>
+              </div>
             </div>
           </div>
         </div>

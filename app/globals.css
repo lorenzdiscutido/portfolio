@@ -34,15 +34,10 @@
   }
 }
 
-/* Custom Cursor Hide for Desktop Fine Pointers */
+/* Ambient Halo Custom Cursor for Fine Pointers (Hardware cursor preserved for zero latency) */
 @media (pointer: fine) {
-  html.custom-cursor-enabled,
-  html.custom-cursor-enabled body,
-  html.custom-cursor-enabled a,
-  html.custom-cursor-enabled button,
-  html.custom-cursor-enabled [role="button"],
-  html.custom-cursor-enabled input {
-    cursor: none;
+  html.custom-cursor-enabled {
+    cursor: default;
   }
 }
 

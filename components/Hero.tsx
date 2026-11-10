@@ -30,21 +30,6 @@ const itemVariants: Variants = {
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
-  const fullText = "> guest@jld-sys:~$ initiating profile...";
-  const [typedText, setTypedText] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i <= fullText.length) {
-        setTypedText(fullText.slice(0, i));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 28);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-16 lg:pt-24 pb-16 overflow-x-clip">
@@ -60,28 +45,6 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 text-left order-2 lg:order-1"
           >
-            {/* Authentic Terminal Prompt Window */}
-            <motion.div
-              variants={itemVariants}
-              className="w-full max-w-lg mb-6 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 overflow-hidden shadow-none"
-            >
-              {/* Solid Top Bar with standard OS dots */}
-              <div className="bg-surface/90 px-3.5 py-2 border-b border-black/10 dark:border-white/5 flex items-center justify-between text-xs font-mono">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#eab308]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" />
-                </div>
-                <span className="text-muted text-[11px] font-mono">guest@jld-sys: ~ (zsh)</span>
-                <span className="text-[10px] font-mono text-[#0052FF] font-semibold">ssh</span>
-              </div>
-              {/* Terminal Body with text-primary and #FF7A00 blinking cursor */}
-              <div className="p-3.5 font-mono text-xs md:text-sm text-primary flex items-center gap-2">
-                <span>{typedText}</span>
-                <span className="animate-pulse inline-block w-2 h-4 bg-[#FF7A00]" />
-              </div>
-            </motion.div>
-
             {/* Primary Headline & Role */}
             <motion.div variants={itemVariants} className="mb-4">
               <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-3 text-primary">
@@ -110,13 +73,13 @@ export default function Hero() {
             {/* Magnetic CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 items-center justify-start"
+              className="flex flex-wrap gap-3.5 items-center justify-start mt-6"
             >
               <MagneticButton strength={0.3}>
                 <a
                   href="#projects"
                   data-magnetic="true"
-                  className="min-h-11 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#0052FF] text-white font-extrabold text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-11 inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#0052FF] text-white font-extrabold text-sm sm:text-base border border-[#0052FF] shadow-none hover:bg-[#0041cc] active:scale-95 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>View Projects</span>
                   <span aria-hidden="true" className="font-bold">
@@ -129,15 +92,15 @@ export default function Hero() {
                 <a
                   href="#contact"
                   data-magnetic="true"
-                  className="min-h-11 bg-surface/80 backdrop-blur-md text-primary border border-black/10 dark:border-white/5 inline-flex items-center justify-center px-7 py-3.5 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-colors duration-200 cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
+                  className="min-h-11 bg-surface/80 backdrop-blur-md text-primary border border-black/10 dark:border-white/5 inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full hover:border-[#0052FF]/50 hover:text-[#0052FF] active:scale-95 transition-colors duration-200 cursor-pointer font-bold text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0052FF]"
                 >
                   <span>Contact Me</span>
                 </a>
               </MagneticButton>
 
-              <div className="md:hidden">
-                <ResumeDownload className="min-h-11 px-6 py-3.5 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 hover:border-[#0052FF]/50 text-primary font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200" />
-              </div>
+              <MagneticButton strength={0.2}>
+                <ResumeDownload className="min-h-11 px-6 py-3 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 hover:border-[#0052FF]/50 text-primary font-bold text-sm inline-flex items-center justify-center gap-2 cursor-pointer transition-colors duration-200" />
+              </MagneticButton>
             </motion.div>
           </motion.div>
 

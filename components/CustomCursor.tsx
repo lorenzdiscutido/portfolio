@@ -54,22 +54,7 @@ export default function CustomCursor() {
       data-testid="custom-cursor"
       className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block"
     >
-      {/* Core Stealth Electric Blue Dot */}
-      <motion.div
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          scale: isHovered ? 0.6 : 1,
-        }}
-        transition={{ duration: 0.15 }}
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-[#0052FF] shadow-[0_0_10px_#0052FF]"
-      />
-
-      {/* Translucent Expanding Ring */}
+      {/* Ambient Translucent Magnetic Spring Halo (Native hardware pointer is preserved) */}
       <motion.div
         style={{
           x: ringX,
@@ -78,13 +63,13 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: isHovered ? 40 : 22,
-          height: isHovered ? 40 : 22,
-          borderColor: isHovered ? "rgba(255, 122, 0, 0.8)" : "rgba(0, 82, 255, 0.4)",
-          backgroundColor: isHovered ? "rgba(255, 122, 0, 0.08)" : "rgba(0, 82, 255, 0.03)",
+          width: isHovered ? 44 : 26,
+          height: isHovered ? 44 : 26,
+          borderColor: isHovered ? "rgba(255, 122, 0, 0.75)" : "rgba(0, 82, 255, 0.45)",
+          backgroundColor: isHovered ? "rgba(255, 122, 0, 0.08)" : "rgba(0, 82, 255, 0.04)",
         }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="fixed top-0 left-0 rounded-full border backdrop-blur-[1px]"
+        transition={{ duration: 0.18, ease: "easeOut" }}
+        className="fixed top-0 left-0 rounded-full border backdrop-blur-[1px] shadow-[0_0_12px_rgba(0,82,255,0.15)]"
       />
     </div>
   );

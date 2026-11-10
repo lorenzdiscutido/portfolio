@@ -150,17 +150,33 @@ export default function LiquidBackground() {
       height = canvas.height = window.innerHeight || 800;
     };
 
+    let isIdle = false;
+    let lastActivityTime = Date.now();
+
+    const wakeAnimation = () => {
+      lastActivityTime = Date.now();
+      if (isIdle && !document.hidden && !prefersReducedMotion) {
+        isIdle = false;
+        animationFrameId = window.requestAnimationFrame(render);
+      }
+    };
+
     const handleWindowMouseMove = (e: MouseEvent) => {
-      spawnRipple(e.clientX, e.clientY);
+      wakeAnimation();
+      if (!prefersReducedMotion) {
+        spawnRipple(e.clientX, e.clientY);
+      }
     };
 
     const handleWindowTouchMove = (e: TouchEvent) => {
-      if (e.touches && e.touches.length > 0) {
+      wakeAnimation();
+      if (!prefersReducedMotion && e.touches && e.touches.length > 0) {
         spawnRipple(e.touches[0].clientX, e.touches[0].clientY);
       }
     };
 
     const handleBulletTime = (e: Event) => {
+      wakeAnimation();
       const custom = e as CustomEvent<{ active?: boolean; timeScale?: number }>;
       if (custom.detail && typeof custom.detail.timeScale === "number") {
         timeScaleRef.current = custom.detail.timeScale;
@@ -228,11 +244,13 @@ export default function LiquidBackground() {
 
       // Ambient autonomous fluid currents (modulated by bullet-time scale & theme mode)
       for (const node of nodes) {
-        node.x += node.vx * dt;
-        node.y += node.vy * dt;
+        if (!prefersReducedMotion) {
+          node.x += node.vx * dt;
+          node.y += node.vy * dt;
 
-        if (node.x < -node.radius * 0.3 || node.x > width + node.radius * 0.3) node.vx *= -1;
-        if (node.y < -node.radius * 0.3 || node.y > height + node.radius * 0.3) node.vy *= -1;
+          if (node.x < -node.radius * 0.3 || node.x > width + node.radius * 0.3) node.vx *= -1;
+          if (node.y < -node.radius * 0.3 || node.y > height + node.radius * 0.3) node.vy *= -1;
+        }
 
         const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius);
         grad.addColorStop(0, getNodeColor(node.colorType, isLight));
@@ -272,6 +290,19 @@ export default function LiquidBackground() {
         ctx.fill();
       }
       ctx.globalCompositeOperation = "source-over";
+
+      // Prefers-reduced-motion: draw once, no animation frame loop
+      if (prefersReducedMotion) {
+        return;
+      }
+
+      // 3-Second Idle Pause: If no interaction occurs and all ripples have faded, pause loop to save battery
+      const now = Date.now();
+      if (now - lastActivityTime > 3000 && ripples.length === 0) {
+        isIdle = true;
+        animationFrameId = 0;
+        return;
+      }
 
       animationFrameId = window.requestAnimationFrame(render);
     };

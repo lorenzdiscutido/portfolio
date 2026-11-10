@@ -10,8 +10,6 @@ import Terminal from "@/components/Terminal";
 import AmbientBackground from "@/components/AmbientBackground";
 import CustomCursor from "@/components/CustomCursor";
 import CommandPalette from "@/components/CommandPalette";
-import LiveTelemetryPill from "@/components/LiveTelemetryPill";
-import LiveTelemetryDot from "@/components/LiveTelemetryDot";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -65,22 +63,6 @@ export default function RootLayout({
           <CommandPalette />
           <NavBar />
           {children}
-          <Suspense
-            fallback={
-              <aside
-                aria-label="Live System Telemetry"
-                data-testid="live-telemetry-pill"
-                className="fixed bottom-4 right-4 z-50 w-52 h-10 rounded-full bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 flex items-center justify-center gap-2 px-3.5 select-none pointer-events-auto shadow-none transition-all"
-              >
-                <LiveTelemetryDot />
-                <span className="font-mono text-[10px] font-semibold tracking-tight text-primary truncate">
-                  System: Online | Connecting...
-                </span>
-              </aside>
-            }
-          >
-            <LiveTelemetryPill />
-          </Suspense>
           <Terminal />
         </ThemeProvider>
         <Analytics />

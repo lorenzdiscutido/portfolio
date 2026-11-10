@@ -26,9 +26,9 @@ export default function TelemetryBar() {
             setExpanded((prev) => !prev);
           }
         }}
-        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none hover:border-[#0052FF]/50 transition-colors duration-200 focus-visible:ring-1 focus-visible:ring-[#0052FF] outline-none cursor-pointer select-none"
+        className="w-full inline-flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 text-primary shadow-none hover:border-[#0052FF]/50 dark:hover:border-[#38bdf8]/50 transition-colors duration-200 focus-visible:ring-1 focus-visible:ring-[#0052FF] outline-none cursor-pointer select-none"
       >
-        <div className="flex items-center gap-3">
+        <div data-testid="live-telemetry-pill" className="flex items-center gap-3 flex-wrap">
           <span className="flex h-2 w-2 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
@@ -37,19 +37,23 @@ export default function TelemetryBar() {
             TELEMETRY STREAM
           </span>
           <span className="text-primary/20">|</span>
-          <span className="text-muted">
-            TAILNET: <span className="text-[#0052FF] font-bold">4 NODES MESHED</span>
+          <span className="text-slate-600 dark:text-slate-300">
+            System: Online | <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">Commits: 29</span>
+          </span>
+          <span className="hidden sm:inline text-primary/20">|</span>
+          <span className="hidden sm:inline text-slate-600 dark:text-slate-300">
+            TAILNET: <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">4 NODES</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-4 text-muted">
+        <div className="flex items-center gap-4 text-slate-600 dark:text-slate-300">
           <span className="hidden md:inline">
             GTID LAG: <span className="text-primary font-semibold">0ms</span>
           </span>
           <span className="hidden lg:inline">
-            INTERLOCKS: <span className="text-[#0052FF] font-semibold">ARMED</span>
+            INTERLOCKS: <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">ARMED</span>
           </span>
-          <span className="text-xs text-muted hover:text-primary font-semibold transition-colors duration-200">
+          <span className="text-xs text-slate-600 dark:text-slate-300 hover:text-primary font-semibold transition-colors duration-200">
             {expanded ? "▲ COLLAPSE" : "▼ INSPECT TOPOLOGY"}
           </span>
         </div>

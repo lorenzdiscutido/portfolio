@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { blogPosts } from "@/lib/blogData";
 import { SITE_URL } from "@/lib/site";
+import MySQLReplicationPlayground from "@/components/MySQLReplicationPlayground";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -92,34 +94,37 @@ export default async function BlogPostPage({
 
         <div className="space-y-8">
           {post.sections.map((section, idx) => (
-            <section
-              key={idx}
-              className="p-6 sm:p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none space-y-4"
-            >
-              <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans">
-                {section.heading}
-              </h2>
+            <Fragment key={idx}>
+              <section className="p-6 sm:p-8 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none space-y-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary font-sans">
+                  {section.heading}
+                </h2>
 
-              <div className="space-y-4 text-muted text-base sm:text-lg leading-relaxed font-sans">
-                {section.paragraphs.map((paragraph, pIdx) => (
-                  <p key={pIdx}>{paragraph}</p>
-                ))}
-              </div>
-
-              {section.codeSnippet && (
-                <div className="mt-4 bg-surface/60 text-primary rounded-lg border border-black/10 dark:border-white/10 p-4 overflow-x-auto shadow-none">
-                  <div className="flex items-center justify-between text-xs font-mono text-muted mb-2 pb-2 border-b border-black/5 dark:border-white/5">
-                    <span className="text-[#0052FF] font-semibold">
-                      // {section.codeSnippet.label}
-                    </span>
-                    <span className="text-muted font-mono">config</span>
-                  </div>
-                  <pre className="font-mono text-xs leading-relaxed text-primary">
-                    <code>{section.codeSnippet.code}</code>
-                  </pre>
+                <div className="space-y-4 text-muted text-base sm:text-lg leading-relaxed font-sans">
+                  {section.paragraphs.map((paragraph, pIdx) => (
+                    <p key={pIdx}>{paragraph}</p>
+                  ))}
                 </div>
+
+                {section.codeSnippet && (
+                  <div className="mt-4 bg-surface/60 text-primary rounded-lg border border-black/10 dark:border-white/10 p-4 overflow-x-auto shadow-none">
+                    <div className="flex items-center justify-between text-xs font-mono text-muted mb-2 pb-2 border-b border-black/5 dark:border-white/5">
+                      <span className="text-[#0052FF] font-semibold">
+                        // {section.codeSnippet.label}
+                      </span>
+                      <span className="text-muted font-mono">config</span>
+                    </div>
+                    <pre className="font-mono text-xs leading-relaxed text-primary">
+                      <code>{section.codeSnippet.code}</code>
+                    </pre>
+                  </div>
+                )}
+              </section>
+
+              {post.slug === "master-master-mysql-replication-over-tailscale" && idx === 1 && (
+                <MySQLReplicationPlayground />
               )}
-            </section>
+            </Fragment>
           ))}
         </div>
 
