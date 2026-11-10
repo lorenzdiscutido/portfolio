@@ -110,4 +110,63 @@ describe("Terminal Component", () => {
 
     expect(mockPush).toHaveBeenCalledWith("/#projects");
   });
+
+  it("executes ping with prefers-reduced-motion: reduce instantly without timers", () => {
+    // Mock matchMedia for prefers-reduced-motion: reduce
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === "(prefers-reduced-motion: reduce)",
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
+
+    render(<Terminal />);
+    fireEvent.click(screen.getByRole("button", { name: /Open Interactive Terminal/i }));
+
+    const input = screen.getByRole("textbox", { name: /Terminal command input/i });
+    fireEvent.change(input, { target: { value: "ping 100.64.0.1" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+
+    // With prefers-reduced-motion, all lines are rendered instantly without timer advancement
+    expect(screen.getByText(/PING 100\.64\.0\.1 \(100\.64\.0\.1\) 56\(84\) bytes of data\./i)).toBeInTheDocument();
+    expect(screen.getByText(/3 packets transmitted, 3 received, 0% packet loss/i)).toBeInTheDocument();
+  });
+
+  it("executes ping sequentially with timers when motion is not reduced", () => {
+    // Mock matchMedia for no reduced motion
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
+
+    render(<Terminal />);
+    fireEvent.click(screen.getByRole("button", { name: /Open Interactive Terminal/i }));
+
+    const input = screen.getByRole("textbox", { name: /Terminal command input/i });
+    fireEvent.change(input, { target: { value: "ping 100.64.0.1" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+
+    // Initial header rendered
+    expect(screen.getByText(/PING 100\.64\.0\.1 \(100\.64\.0\.1\) 56\(84\) bytes of data\./i)).toBeInTheDocument();
+
+    // Stats should not be visible yet
+    expect(screen.queryByText(/3 packets transmitted, 3 received, 0% packet loss/i)).not.toBeInTheDocument();
+
+    // Advance timers past completion (2500ms)
+    act(() => {
+      jest.advanceTimersByTime(2500);
+    });
+
+    expect(screen.getByText(/3 packets transmitted, 3 received, 0% packet loss/i)).toBeInTheDocument();
+  });
 });

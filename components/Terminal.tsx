@@ -117,26 +117,43 @@ export default function Terminal() {
       typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    setIsExecuting(true);
-    isExecutingRef.current = true;
-
     const headerLine = `PING ${targetIP} (${targetIP}) 56(84) bytes of data.`;
-    const delayFactor = prefersReducedMotion ? 0 : 1;
     const sequence: { text: string; delay: number; isStats?: boolean }[] = isValid
       ? [
-          { text: `64 bytes from ${targetIP}: icmp_seq=1 ttl=64 time=18.4 ms`, delay: 550 * delayFactor },
-          { text: `64 bytes from ${targetIP}: icmp_seq=2 ttl=64 time=19.1 ms`, delay: 1100 * delayFactor },
-          { text: `64 bytes from ${targetIP}: icmp_seq=3 ttl=64 time=18.8 ms`, delay: 1650 * delayFactor },
-          { text: `--- ${targetIP} ping statistics ---`, delay: 2150 * delayFactor, isStats: true },
-          { text: `3 packets transmitted, 3 received, 0% packet loss, time 2003ms`, delay: 2200 * delayFactor },
+          { text: `64 bytes from ${targetIP}: icmp_seq=1 ttl=64 time=18.4 ms`, delay: 550 },
+          { text: `64 bytes from ${targetIP}: icmp_seq=2 ttl=64 time=19.1 ms`, delay: 1100 },
+          { text: `64 bytes from ${targetIP}: icmp_seq=3 ttl=64 time=18.8 ms`, delay: 1650 },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
+          { text: `3 packets transmitted, 3 received, 0% packet loss, time 2003ms`, delay: 2200 },
         ]
       : [
-          { text: `From ${targetIP} icmp_seq=1 Destination Host Unreachable`, delay: 550 * delayFactor },
-          { text: `From ${targetIP} icmp_seq=2 Destination Host Unreachable`, delay: 1100 * delayFactor },
-          { text: `From ${targetIP} icmp_seq=3 Destination Host Unreachable`, delay: 1650 * delayFactor },
-          { text: `--- ${targetIP} ping statistics ---`, delay: 2150 * delayFactor, isStats: true },
-          { text: `3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms`, delay: 2200 * delayFactor },
+          { text: `From ${targetIP} icmp_seq=1 Destination Host Unreachable`, delay: 550 },
+          { text: `From ${targetIP} icmp_seq=2 Destination Host Unreachable`, delay: 1100 },
+          { text: `From ${targetIP} icmp_seq=3 Destination Host Unreachable`, delay: 1650 },
+          { text: `--- ${targetIP} ping statistics ---`, delay: 2150, isStats: true },
+          { text: `3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 3014ms`, delay: 2200 },
         ];
+
+    // If reduced motion is requested, bypass typing delays completely to prevent vestibular triggering
+    if (prefersReducedMotion) {
+      const allLines = [{ text: headerLine }, ...sequence];
+      const entryId = `ping-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+      setHistory((prev) => [
+        ...prev,
+        {
+          id: entryId,
+          command: rawCmd,
+          output: renderPingOutput(allLines),
+        },
+      ]);
+      activeExecutionRef.current = null;
+      setIsExecuting(false);
+      isExecutingRef.current = false;
+      return;
+    }
+
+    setIsExecuting(true);
+    isExecutingRef.current = true;
 
     const currentLines: { text: string; isStats?: boolean }[] = [{ text: headerLine }];
     const entryId = `ping-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -180,6 +197,16 @@ export default function Terminal() {
   };
 
   const scheduleNavigation = (path: string) => {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      router.push(path);
+      return;
+    }
+
     const timer = setTimeout(() => {
       router.push(path);
     }, 500);
