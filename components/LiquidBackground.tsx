@@ -369,7 +369,11 @@ export default function LiquidBackground() {
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    animationFrameId = window.requestAnimationFrame(render);
+    if (prefersReducedMotion) {
+      render();
+    } else {
+      animationFrameId = window.requestAnimationFrame(render);
+    }
 
     return () => {
       window.removeEventListener("resize", handleResize);

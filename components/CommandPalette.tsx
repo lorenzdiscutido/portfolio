@@ -362,9 +362,9 @@ export default function CommandPalette() {
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className="relative z-10 w-full max-w-xl rounded-2xl bg-[#1e2128]/70 dark:bg-[#1e2128]/70 bg-white/85 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] overflow-hidden"
           >
-            {/* Search Header with Electric Blue prompt and Vibrant Orange block cursor */}
+            {/* Search Header with Electric Blue prompt and Specular Cyan block cursor */}
             <div className="flex items-center gap-3 px-4 py-3.5 border-b-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-              <span className="font-mono text-sm font-bold text-[#0052FF] dark:text-[#38bdf8] select-none">
+              <span aria-hidden="true" className="font-mono text-sm font-bold text-[#0052FF] dark:text-[#38bdf8] select-none">
                 &gt;_
               </span>
               <div className="relative flex-1 flex items-center">
@@ -393,7 +393,7 @@ export default function CommandPalette() {
                 />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 border-[0.5px] border-[#0052FF]/30 px-2 py-0.5 rounded-full">
-                {isTerminalMode ? "CLI ACTIVE" : "COMMANDS"}
+                {isTerminalMode ? "CLI ACTIVE" : "SYSTEM NAV"}
               </span>
               <button
                 type="button"

@@ -44,7 +44,7 @@ export default function NavBar() {
               &gt;
             </span>
             <span className="font-sans font-medium tracking-tight">Lorenz</span>
-            <span className="hidden xl:inline-flex items-center gap-1.5 ml-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border-[0.5px] border-emerald-500/20 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold tracking-wider">
+            <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full text-xs font-mono font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               Available for Roles
             </span>
@@ -196,7 +196,7 @@ export default function NavBar() {
                     type="button"
                     onClick={() => setMobileMenuOpen(false)}
                     aria-label="Dismiss drawer"
-                    className="min-w-12 min-h-12 flex items-center justify-center rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary hover:border-electricBlue/50 transition-colors duration-200"
+                    className="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-full bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary hover:border-electricBlue/50 transition-colors duration-200"
                   >
                     ✕
                   </button>
@@ -208,7 +208,7 @@ export default function NavBar() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-sm font-sans font-medium text-primary dark:text-frost hover:text-[#0052FF] dark:hover:text-[#38bdf8] min-h-12 flex items-center px-4 py-3 rounded-xl bg-surface/40 border-[0.5px] border-transparent hover:border-white/10 dark:hover:border-white/10 transition-colors duration-200"
+                      className="text-sm font-sans font-medium text-primary dark:text-frost hover:text-[#0052FF] dark:hover:text-[#38bdf8] min-h-[48px] min-w-[48px] flex items-center px-4 py-3 rounded-xl bg-surface/40 border-[0.5px] border-transparent hover:border-white/10 dark:hover:border-white/10 transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -220,7 +220,7 @@ export default function NavBar() {
                   <button
                     type="button"
                     onClick={handleOpenCommandPalette}
-                    className="w-full min-h-12 flex items-center justify-between px-4 py-3 rounded-xl bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary font-mono text-xs font-medium hover:border-electricBlue/50 transition-colors duration-200 cursor-pointer"
+                    className="w-full min-h-[48px] min-w-[48px] flex items-center justify-between px-4 py-3 rounded-xl bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary font-mono text-xs font-medium hover:border-electricBlue/50 transition-colors duration-200 cursor-pointer"
                   >
                     <span>Command Palette</span>
                     <kbd className="text-xs font-mono text-[#0052FF] dark:text-[#38bdf8] bg-black/[0.04] dark:bg-base/60 px-2 py-0.5 rounded border-[0.5px] border-white/10 dark:border-white/10 border-black/5">
@@ -231,7 +231,7 @@ export default function NavBar() {
                   <button
                     type="button"
                     onClick={handleOpenTerminal}
-                    className="w-full min-h-12 flex items-center justify-between px-4 py-3 rounded-xl bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary font-mono text-xs font-medium hover:border-electricBlue/50 transition-colors duration-200 cursor-pointer"
+                    className="w-full min-h-[48px] min-w-[48px] flex items-center justify-between px-4 py-3 rounded-xl bg-[#1e2128]/40 dark:bg-[#1e2128]/40 bg-black/[0.03] border-[0.5px] border-white/10 dark:border-white/10 border-black/5 text-primary font-mono text-xs font-medium hover:border-electricBlue/50 transition-colors duration-200 cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
                       <span aria-hidden="true" className="text-[#0052FF] dark:text-[#38bdf8] font-bold font-mono text-sm">
@@ -247,7 +247,7 @@ export default function NavBar() {
               </div>
 
               <div className="pt-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-                <ResumeDownload className="w-full min-h-12 text-center text-xs font-mono font-semibold uppercase tracking-wider py-3 px-4 rounded-full bg-[#0052FF] text-white hover:bg-[#0041cc] shadow-none transition-colors duration-200 flex items-center justify-center cursor-pointer" />
+                <ResumeDownload className="w-full min-h-[48px] min-w-[48px] text-center text-xs font-mono font-semibold uppercase tracking-wider py-3 px-4 rounded-full bg-[#0052FF] text-white hover:bg-[#0041cc] shadow-none transition-colors duration-200 flex items-center justify-center cursor-pointer" />
               </div>
             </motion.aside>
           </>
