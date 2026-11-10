@@ -1,10 +1,16 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import CommandPalette from "@/components/CommandPalette";
-import CustomCursor from "@/components/CustomCursor";
 
 const Terminal = dynamic(() => import("@/components/Terminal"), {
+  ssr: false,
+});
+
+const CommandPalette = dynamic(() => import("@/components/CommandPalette"), {
+  ssr: false,
+});
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), {
   ssr: false,
 });
 

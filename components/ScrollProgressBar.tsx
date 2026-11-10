@@ -1,10 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function ScrollProgressBar() {
   const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 40,
+    restDelta: 0.001,
+  });
 
   return (
     <div
@@ -16,7 +21,7 @@ export default function ScrollProgressBar() {
       {/* Dynamic Electric Blue Progress Fill */}
       <motion.div
         data-testid="scroll-progress-bar"
-        style={{ scaleX: scrollYProgress }}
+        style={{ scaleX }}
         className="h-full w-full bg-gradient-to-r from-[#0052FF] via-[#38bdf8] to-[#0052FF] origin-left shadow-[0_0_10px_rgba(0,82,255,0.8),0_0_20px_rgba(56,189,248,0.5)]"
       />
     </div>
