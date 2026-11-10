@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -94,17 +95,34 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.overview}
         </p>
 
-        {/* IsKiosk 3D CAD & Hardware Blueprint Preview */}
+        {/* IsKiosk 3D CAD & Hardware Blueprint Hero Asset */}
         {project.slug === "iskiosk-terminal" && (
-          <div className="mb-6 p-3.5 rounded-xl bg-black/[0.04] dark:bg-base/70 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
-            <div className="flex items-center justify-between text-[10px] text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold mb-2.5">
+          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
+            {/* Header Telemetry */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/[0.03] dark:bg-black/40 border-b-[0.5px] border-white/10 text-[10px] text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold">
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#0052FF] dark:bg-[#38bdf8] animate-pulse" />
-                3D CAD &amp; Hardware Schematic Wireframe
+                3D CAD Schematic &amp; Hardware Hero Asset
               </span>
-              <span className="text-muted">REV 2.1</span>
+              <span className="text-muted">REV 2.1 // 94CM CHASSIS</span>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-[11px] text-muted">
+
+            {/* Hero 3D CAD Wireframe Image Preview */}
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-white/95 dark:bg-[#0f1115]/80">
+              <Image
+                src="/projects/iskiosk-cad-model.jpg"
+                alt="IsKiosk 3D CAD Schematic and Chassis Wireframe"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
+                15&quot; Touchscreen + Dual Solenoid Compartments
+              </div>
+            </div>
+
+            {/* Pinout & Hardware Architecture Spec Grid */}
+            <div className="p-3 grid grid-cols-2 gap-2 text-[11px] text-muted">
               <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
                 <span className="text-primary font-medium">Core:</span>
                 <span className="truncate">Dell Wyse 5070</span>

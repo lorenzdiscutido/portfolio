@@ -61,11 +61,11 @@ export const caseStudies: CaseStudy[] = [
     role: "Lead Developer",
     lastModified: "2025-02-15",
     overview:
-      "Engineered a production multimodal AI pipeline leveraging the Google Gemini API to extract defect dimensions from field whiteboard photos. Built with Python and Streamlit, the system automatically logs structured inspection records directly into enterprise SharePoint Excel workbooks, quantifying over 4,750+ facade defects and 5,100+ linear meters of repairs. The pipeline utilizes fine-tuned multimodal prompts with structured JSON schema enforcement and robust error-handling algorithms for backlit or blurry field photographs.",
+      "Engineered a production multimodal AI pipeline leveraging the Google Gemini API tuned specifically for high-accuracy OCR and dimensional extraction from physical whiteboard photographs. Built with Python and Streamlit, the system automatically logs structured inspection records directly into enterprise SharePoint Excel workbooks, quantifying over 4,750+ facade defects and 5,100+ linear meters of repairs. The pipeline enforces strict structured JSON schema enforcement with Pydantic type validation and incorporates resilient error handling algorithms for backlit or blurry field photographs.",
     problem:
-      "Field engineering inspections historically required manual transcription of defect coordinates and dimensions from whiteboard photos into enterprise spreadsheets, causing severe data latency (often 48–72 hours), human transcription errors, and major operational bottlenecks. Field photos suffered from high glare, perspective distortion, backlighting, and variable handwriting legibility.",
+      "Field engineering inspections historically required manual transcription of defect coordinates and dimensions from whiteboard photos into enterprise spreadsheets, causing severe data latency (often 48–72 hours), human transcription errors, and major operational bottlenecks. Inspection photos taken on scaffolding suffered from extreme sun backlighting, lens blur, perspective tilt, and variable handwritten marker legibility.",
     architecture:
-      "Engineered an automated multimodal ingestion and extraction pipeline utilizing Python, Streamlit, and the Google Gemini API. Structured prompt schemas enforce strict JSON output with Pydantic validation, enforcing error handling algorithms for backlit or blurry field photographs, bounding coordinates, and linear measurements directly before writing to enterprise SharePoint Excel workbooks via the Microsoft Graph API.",
+      "Engineered an automated multimodal ingestion and extraction pipeline utilizing Python, Streamlit, and the Google Gemini API. Multimodal prompts were carefully engineered and tuned for OCR and dimensional extraction from physical reference scales, paired with structured JSON schema enforcement to ensure deterministic output. Built-in error handling algorithms for backlit or blurry field photographs execute contrast normalization and perspective correction prior to serializing bounding coordinates and metric measurements into enterprise SharePoint Excel workbooks via the Microsoft Graph API.",
     outcome:
       "Eliminated manual data transcription entirely, accelerated field-to-office defect approvals by over 85%, synchronized real-time repair quantities into enterprise Odoo ERP workflows, and cataloged 4,754 verified facade defects across 104 elevation drops.",
     architectureDetails:
@@ -74,9 +74,11 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: "https://vonotec-whiteboard-sharepoint-clean.streamlit.app/",
     outcomes: [
       "Eliminated manual transcription between field inspection imagery and enterprise SharePoint spreadsheets.",
-      "Standardized dimensional defect classification using structured JSON output from Gemini API.",
+      "Tuned Gemini multimodal prompts for high-accuracy OCR and dimensional extraction from physical scales.",
+      "Applied structured JSON schema enforcement to guarantee deterministic, type-safe defect payloads.",
+      "Engineered robust error handling algorithms for backlit or blurry field photographs taken on scaffolding.",
       "Integrated service-to-service authentication through Microsoft Entra ID and Microsoft Graph API.",
-      "Optimized field approval workflows and synchronized operational status within the Odoo ERP environment.",
+      "Synchronized real-time repair quantities into enterprise Odoo ERP workflows.",
     ],
     metrics: [
       {
@@ -210,19 +212,9 @@ export const caseStudies: CaseStudy[] = [
     logoUrl: "/projects/iskiosk-logo.png",
     screenshots: [
       {
-        src: "/projects/iskiosk-flowchart.jpg",
-        caption: "System User Flowchart: Decision tree mapping the student authentication pathway (barcode school ID scan vs manual fallback entry) leading to automated document dispatch.",
-        aspect: "wide",
-      },
-      {
         src: "/projects/iskiosk-cad-model.jpg",
-        caption: "3D CAD & Dimensional Modeling: Full architectural schematic specifying the 94 cm chassis height, 15\" capacitive touchscreen angled mount (26 cm × 45 cm), and dual 40 cm × 35 cm slide-out compartments.",
+        caption: "3D CAD Schematic & Mechanical Blueprints: Primary engineering schematic specifying the 94 cm chassis height, 15\" capacitive touchscreen angled mount (26 cm × 45 cm), opto-isolated relay bays, and dual 40 cm × 35 cm solenoid-locked drop compartments.",
         aspect: "wide",
-      },
-      {
-        src: "/projects/iskiosk-logo.png",
-        caption: "Official IsKiosk: Document Management System project identity & brand emblem.",
-        aspect: "standard",
       },
       {
         src: "/projects/iskiosk-deployed-chassis.jpg",
@@ -233,6 +225,16 @@ export const caseStudies: CaseStudy[] = [
         src: "/projects/iskiosk-internal-controller.jpg",
         caption: "Internal embedded hardware control unit: Arduino Uno microcontroller, 2-channel relay module, DC-DC step-down buck converter with voltage telemetry readout, and custom harness.",
         aspect: "tall",
+      },
+      {
+        src: "/projects/iskiosk-flowchart.jpg",
+        caption: "System User Flowchart: Decision tree mapping the student authentication pathway (barcode school ID scan vs manual fallback entry) leading to automated document dispatch.",
+        aspect: "wide",
+      },
+      {
+        src: "/projects/iskiosk-logo.png",
+        caption: "Official IsKiosk: Document Management System project identity & brand emblem.",
+        aspect: "standard",
       },
     ],
   },

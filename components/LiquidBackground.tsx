@@ -308,15 +308,14 @@ export default function LiquidBackground() {
     };
 
     const handleVisibilityChange = () => {
-      if (document.hidden) {
+      if (document.hidden || document.visibilityState === "hidden") {
         if (animationFrameId) {
           window.cancelAnimationFrame(animationFrameId);
           animationFrameId = 0;
         }
+        isIdle = true;
       } else {
-        if (!animationFrameId) {
-          animationFrameId = window.requestAnimationFrame(render);
-        }
+        wakeAnimation();
       }
     };
 
