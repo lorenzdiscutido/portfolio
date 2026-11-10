@@ -44,7 +44,7 @@ export default function NavBar() {
               &gt;
             </span>
             <span className="font-sans font-medium tracking-tight">Lorenz</span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 px-2 py-1 rounded-full text-xs font-mono">
+            <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-1 rounded-full text-xs font-mono">
               ● Available for Roles
             </span>
           </Link>

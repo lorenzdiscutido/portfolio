@@ -159,7 +159,7 @@ export default function KomunikonekPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* SCREEN 01: Document Request Flow */}
             <div className="flex flex-col items-center">
-              <div className="w-full aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
+              <div className="w-full max-w-[320px] mx-auto aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
                 {/* Smartphone Top Notch & Status Bar */}
                 <div className="w-full flex items-center justify-between px-2 pt-1 pb-2 text-[10px] font-mono text-slate-400">
                   <span>09:41</span>
@@ -264,7 +264,7 @@ export default function KomunikonekPage() {
 
             {/* SCREEN 02: Civic Complaint Ticketing */}
             <div className="flex flex-col items-center">
-              <div className="w-full aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
+              <div className="w-full max-w-[320px] mx-auto aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
                 {/* Smartphone Top Notch & Status Bar */}
                 <div className="w-full flex items-center justify-between px-2 pt-1 pb-2 text-[10px] font-mono text-slate-400">
                   <span>10:15</span>
@@ -343,7 +343,7 @@ export default function KomunikonekPage() {
 
             {/* SCREEN 03: Community Polling & Voting */}
             <div className="flex flex-col items-center">
-              <div className="w-full aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
+              <div className="w-full max-w-[320px] mx-auto aspect-[9/18.5] rounded-3xl border border-white/10 dark:border-white/10 border-black/10 bg-[#0d1117] text-white p-3.5 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-[#0052FF]/50 transition-all duration-300">
                 {/* Smartphone Top Notch & Status Bar */}
                 <div className="w-full flex items-center justify-between px-2 pt-1 pb-2 text-[10px] font-mono text-slate-400">
                   <span>14:30</span>
