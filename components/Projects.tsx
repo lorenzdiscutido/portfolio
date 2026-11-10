@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -44,6 +44,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       : "md:col-span-12";
 
   const isFeatured = index === 0;
+  const [vonotecTab, setVonotecTab] = useState<"dual" | "intake" | "analytics" | "sharepoint">("dual");
 
   return (
     <motion.div
@@ -91,64 +92,206 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.role}
         </p>
 
-        <p className="font-sans text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed mb-6 flex-grow">
+        <p className="font-sans text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed mb-4">
           {project.overview}
         </p>
 
         {/* Vonotec Automated Defect Logger Web App & Dashboard Showcase */}
         {(project.slug === "vonotec-defect-logger" || project.slug === "gemini-defect-logger") && (
-          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
-            {/* Header Telemetry */}
-            <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/[0.03] dark:bg-black/40 border-b-[0.5px] border-white/10 text-[10px] text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold">
-              <span className="flex items-center gap-1.5">
+          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono flex-grow flex flex-col">
+            {/* Header Telemetry & Interactive Tab Controller */}
+            <div className="flex flex-wrap items-center justify-between px-3.5 py-2.5 bg-black/[0.03] dark:bg-black/40 border-b-[0.5px] border-white/10 text-[10px] gap-2">
+              <span className="flex items-center gap-1.5 text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#0052FF] dark:bg-[#38bdf8] animate-pulse" />
-                Live Web Application &amp; Analytics Dashboard
+                Live Web Application Studio
               </span>
-              <span className="text-muted">GEMINI 1.5 MULTIMODAL + SHAREPOINT SYNC</span>
+              <div className="flex items-center gap-1 bg-black/10 dark:bg-white/5 p-0.5 rounded-lg border-[0.5px] border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("dual")}
+                  className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                    vonotecTab === "dual"
+                      ? "bg-[#0052FF] dark:bg-[#38bdf8] text-white dark:text-black font-semibold shadow-sm"
+                      : "text-muted hover:text-primary dark:hover:text-frost"
+                  }`}
+                >
+                  Dual View
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("intake")}
+                  className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                    vonotecTab === "intake"
+                      ? "bg-[#0052FF] dark:bg-[#38bdf8] text-white dark:text-black font-semibold shadow-sm"
+                      : "text-muted hover:text-primary dark:hover:text-frost"
+                  }`}
+                >
+                  Streamlit Intake
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("analytics")}
+                  className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                    vonotecTab === "analytics"
+                      ? "bg-[#0052FF] dark:bg-[#38bdf8] text-white dark:text-black font-semibold shadow-sm"
+                      : "text-muted hover:text-primary dark:hover:text-frost"
+                  }`}
+                >
+                  Analytics BI
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("sharepoint")}
+                  className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                    vonotecTab === "sharepoint"
+                      ? "bg-[#0052FF] dark:bg-[#38bdf8] text-white dark:text-black font-semibold shadow-sm"
+                      : "text-muted hover:text-primary dark:hover:text-frost"
+                  }`}
+                >
+                  SharePoint Sync
+                </button>
+              </div>
             </div>
 
-            {/* Dual Preview Grid: Streamlit Intake Web App + Facade Analytics Dashboard */}
-            <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/40 dark:bg-black/20">
-              {/* Asset 1: Streamlit Ingestion UI */}
-              <div className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col">
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src="/projects/vonotec-defect-extraction-ui.jpg"
-                    alt="Streamlit Ingestion Web App Interface"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
-                  />
-                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
-                    Streamlit Intake UI
+            {/* Showcase Viewport */}
+            {vonotecTab === "dual" && (
+              <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-grow bg-white/40 dark:bg-black/20">
+                {/* Asset 1: Streamlit Ingestion UI */}
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("intake")}
+                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+                >
+                  <div className="relative flex-grow min-h-[220px] sm:min-h-[280px] w-full overflow-hidden">
+                    <Image
+                      src="/projects/vonotec-defect-extraction-ui.jpg"
+                      alt="Streamlit Ingestion Web App Interface"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
+                      className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                      Streamlit Intake UI
+                    </div>
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] text-[#38bdf8] font-mono border-[0.5px] border-white/10 opacity-0 group-hover/item:opacity-100 transition-opacity">
+                      Zoom &rarr;
+                    </div>
                   </div>
-                </div>
-                <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
-                  <span className="text-primary font-medium truncate">Batch Image Ingestion</span>
-                  <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">Gemini OCR</span>
-                </div>
-              </div>
+                  <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                    <span className="text-primary font-medium truncate">Batch Image Ingestion</span>
+                    <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">Gemini OCR</span>
+                  </div>
+                </button>
 
-              {/* Asset 2: Facade Analytics Dashboard */}
-              <div className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col">
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src="/projects/vonotec-analytics-dashboard.jpg"
-                    alt="Facade Defect Analytics Dashboard Interface"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
-                  />
-                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
-                    Analytics Dashboard
+                {/* Asset 2: Facade Analytics Dashboard */}
+                <button
+                  type="button"
+                  onClick={() => setVonotecTab("analytics")}
+                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+                >
+                  <div className="relative flex-grow min-h-[220px] sm:min-h-[280px] w-full overflow-hidden">
+                    <Image
+                      src="/projects/vonotec-analytics-dashboard.jpg"
+                      alt="Facade Defect Analytics Dashboard Interface"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
+                      className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                      Analytics Dashboard
+                    </div>
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] text-[#38bdf8] font-mono border-[0.5px] border-white/10 opacity-0 group-hover/item:opacity-100 transition-opacity">
+                      Zoom &rarr;
+                    </div>
+                  </div>
+                  <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                    <span className="text-primary font-medium truncate">Telemetry &amp; Quantities</span>
+                    <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">4,754 Defects</span>
+                  </div>
+                </button>
+              </div>
+            )}
+
+            {vonotecTab === "intake" && (
+              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
+                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+                    <Image
+                      src="/projects/vonotec-defect-extraction-ui.jpg"
+                      alt="Streamlit Ingestion Web App Interface"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 900px"
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
+                      Streamlit Intake Web App // Multimodal Whiteboard Ingestion
+                    </div>
+                  </div>
+                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-700 dark:text-slate-300">
+                      Field whiteboard photo intake with auto-rectification &amp; structured JSON extraction
+                    </span>
+                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                      Gemini 1.5 Multimodal OCR
+                    </span>
                   </div>
                 </div>
-                <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
-                  <span className="text-primary font-medium truncate">Telemetry &amp; Quantities</span>
-                  <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">4,754 Defects</span>
+              </div>
+            )}
+
+            {vonotecTab === "analytics" && (
+              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
+                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+                    <Image
+                      src="/projects/vonotec-analytics-dashboard.jpg"
+                      alt="Facade Defect Analytics Dashboard Interface"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 900px"
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
+                      Facade Defect Analytics &amp; Repair Quantities BI Dashboard
+                    </div>
+                  </div>
+                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-700 dark:text-slate-300">
+                      Live telemetry monitoring 4,754 defects, 5,102.50 LM linear repair volume, &amp; categories
+                    </span>
+                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                      Altair + Streamlit Analytics
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {vonotecTab === "sharepoint" && (
+              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
+                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+                    <Image
+                      src="/projects/vonotec-sharepoint-excel-log.jpg"
+                      alt="Enterprise SharePoint Online Excel Master Database"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 900px"
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
+                      Enterprise SharePoint Online Excel Master Database
+                    </div>
+                  </div>
+                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-700 dark:text-slate-300">
+                      Automated schema sync directly into enterprise SharePoint Online Excel master sheet
+                    </span>
+                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                      Office 365 Graph API
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
