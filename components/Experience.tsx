@@ -110,9 +110,9 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-24 lg:py-32 px-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-12 text-left">
+    <section id="experience" className="py-14 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8 md:mb-10 text-left">
           <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
             Career Timeline
           </p>
@@ -150,8 +150,8 @@ export default function Experience() {
             />
           </div>
 
-          {/* Cards container with isolated space-y-12 */}
-          <div className="space-y-12">
+          {/* Cards container with isolated space-y-8 md:space-y-10 */}
+          <div className="space-y-8 md:space-y-10">
             {timeline.map((item, index) => (
               <div key={index} className="relative group pl-8 md:pl-12">
                 {/* Timeline Milestone Marker (Glowing blue pulse node) */}

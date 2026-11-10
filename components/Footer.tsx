@@ -114,18 +114,18 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="pt-24 lg:pt-32 pb-16 px-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-6 font-sans">
+    <footer id="contact" className="pt-14 md:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-4 font-sans">
           Let&apos;s <span className="text-[#0052FF] dark:text-[#38bdf8]">Connect</span>
         </h2>
-        <p className="text-slate-700 dark:text-slate-200 text-base md:text-lg mb-10 max-w-xl mx-auto font-sans font-normal leading-relaxed">
+        <p className="text-slate-700 dark:text-slate-200 text-base md:text-lg mb-8 max-w-xl mx-auto font-sans font-normal leading-relaxed">
           Whether you need a pragmatic systems engineer for your next enterprise deployment or want to talk about hardware and IoT integrations, send me a message directly below.
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto mb-16 text-left bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] p-6 md:p-8 rounded-2xl space-y-4"
+          className="max-w-2xl mx-auto mb-10 text-left bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] p-6 md:p-8 rounded-2xl space-y-4"
         >
           {/* Honeypot field to trap automated bots */}
           <div className="hidden" aria-hidden="true">

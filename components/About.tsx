@@ -117,16 +117,16 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 lg:py-32 px-6 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="about" className="py-14 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-48px" }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
           >
-            <h2 className="font-sans text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-6">
+            <h2 className="font-sans text-3xl md:text-4xl font-medium tracking-tight text-primary dark:text-frost mb-5">
               Engineering <span className="text-[#0052FF] dark:text-[#38bdf8]">Background</span>
             </h2>
             <div className="space-y-6 text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-sans font-normal">

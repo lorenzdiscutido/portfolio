@@ -32,8 +32,8 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-x-clip">
-      <div className="max-w-6xl mx-auto w-full">
+    <section className="min-h-[80vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 lg:pt-28 pb-12 md:pb-14 lg:pb-16 overflow-x-clip">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Edge Telemetry HUD Bar */}
         <TelemetryBar />
 
