@@ -690,7 +690,7 @@ export default function Terminal() {
       <div className="p-4 flex flex-col flex-1 overflow-hidden">
         <div className="space-y-3 overflow-y-auto max-h-56 pr-1">
           <p className="text-xs text-slate-400 font-mono">
-            &gt; jld-sys telemetry console initialized. Type &apos;<span className="text-[#0052FF] font-semibold">help</span>&apos; for available commands.
+            <span aria-hidden="true">&gt;</span> jld-sys telemetry console initialized. Type &apos;<span className="text-[#0052FF] font-semibold">help</span>&apos; for available commands.
           </p>
 
           {history.map((entry) => (

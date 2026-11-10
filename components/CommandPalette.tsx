@@ -411,7 +411,7 @@ export default function CommandPalette() {
                 {terminalLogs.map((log, idx) => (
                   <div key={idx} className="space-y-0.5">
                     <div className="flex items-center gap-2 text-[#0052FF] dark:text-[#38bdf8] font-bold">
-                      <span>&gt;_</span>
+                      <span aria-hidden="true">&gt;_</span>
                       <span className="text-[#f8fafc]">{log.command}</span>
                     </div>
                     <p className="text-slate-300 dark:text-slate-300 pl-4">{log.output}</p>
