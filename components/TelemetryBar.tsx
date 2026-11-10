@@ -30,11 +30,11 @@ export default function TelemetryBar() {
       >
         <div data-testid="live-telemetry-pill" className="flex items-center gap-3 flex-wrap">
           <span className="flex h-2 w-2 relative shrink-0 items-center justify-center my-auto">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF7A00] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF7A00] shadow-[0_0_8px_#FF7A00]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
           </span>
           <span className="font-mono text-[11px] font-semibold tracking-widest uppercase text-muted">
-            TELEMETRY STREAM
+            SYSTEM TELEMETRY
           </span>
           <span className="text-primary/20">|</span>
           <span className="font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
@@ -48,10 +48,10 @@ export default function TelemetryBar() {
 
         <div className="flex items-center gap-4 font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
           <span className="hidden md:inline">
-            GTID LAG: <span className="text-primary font-semibold">0ms</span>
+            LATENCY: <span className="text-primary font-semibold">&lt;5ms</span>
           </span>
           <span className="hidden lg:inline">
-            INTERLOCKS: <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">ARMED</span>
+            TOPOLOGY: <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">MESHED</span>
           </span>
           <span className="text-[11px] uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-frost font-semibold transition-colors duration-200">
             {expanded ? "▲ COLLAPSE" : "▼ INSPECT TOPOLOGY"}

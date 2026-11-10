@@ -341,23 +341,23 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
               </div>
             </div>
 
-            {/* Pinout & Hardware Architecture Spec Grid */}
-            <div className="p-3 grid grid-cols-2 gap-2 text-[11px] text-muted">
-              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
-                <span className="text-primary font-medium">Core:</span>
-                <span className="truncate">Dell Wyse 5070</span>
+            {/* Pinout & Hardware Architecture Spec Rows (Un-truncated, clean hierarchy) */}
+            <div className="p-3 flex flex-col gap-1.5 text-[11px] text-muted border-t-[0.5px] border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+              <div className="flex items-center justify-between px-2.5 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Compute</span>
+                <span className="font-mono text-[10px] text-slate-800 dark:text-slate-200">Dell Wyse 5070 (x86)</span>
               </div>
-              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
-                <span className="text-primary font-medium">MCU:</span>
-                <span className="truncate">Arduino Uno R3</span>
+              <div className="flex items-center justify-between px-2.5 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Controller</span>
+                <span className="font-mono text-[10px] text-slate-800 dark:text-slate-200">Arduino Uno R3</span>
               </div>
-              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
-                <span className="text-primary font-medium">Relay:</span>
-                <span className="truncate">Opto-isolated 2-Ch</span>
+              <div className="flex items-center justify-between px-2.5 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Relay</span>
+                <span className="font-mono text-[10px] text-slate-800 dark:text-slate-200">Opto-isolated 2-Ch</span>
               </div>
-              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
-                <span className="text-primary font-medium">Actuator:</span>
-                <span className="truncate">12V Solenoid Drop</span>
+              <div className="flex items-center justify-between px-2.5 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Actuator</span>
+                <span className="font-mono text-[10px] text-slate-800 dark:text-slate-200">12V Solenoid Drop</span>
               </div>
             </div>
           </div>

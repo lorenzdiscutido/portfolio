@@ -10,11 +10,11 @@ interface TechNodeSpec {
 }
 
 const TECH_NODES: TechNodeSpec[] = [
-  { id: "python-next", label: "Python / Next.js", glyph: "PY//NX" },
-  { id: "dart-flutter", label: "Dart / Flutter", glyph: "DT//FL" },
-  { id: "firebase-mysql", label: "Firebase / MySQL", glyph: "FB//SQL" },
-  { id: "cpp-iot", label: "C++ / IoT", glyph: "MCU//IO" },
-  { id: "odoo-cloud", label: "Odoo / Cloud", glyph: "ERP//CL" },
+  { id: "python-next", label: "Python • Next.js", glyph: "Full-Stack" },
+  { id: "dart-flutter", label: "Dart • Flutter", glyph: "Mobile" },
+  { id: "firebase-mysql", label: "Tailscale • MySQL", glyph: "Distributed" },
+  { id: "cpp-iot", label: "C++ • Microcontrollers", glyph: "Embedded" },
+  { id: "odoo-cloud", label: "Entra ID • Intune", glyph: "Enterprise" },
 ];
 
 function InteractivePlaneNode({

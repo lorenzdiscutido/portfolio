@@ -122,17 +122,30 @@ export default function Hero() {
               />
 
               {/* Main Matte Frosted Glass Image Frame */}
-              <div className="relative aspect-[4/4.6] w-full rounded-2xl overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] z-10">
+              <div className="relative aspect-[4/4.8] w-full rounded-2xl overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] z-10 group">
                 {!imageError ? (
-                  <Image
-                    src="/profile.jpg"
-                    alt="Jose Lorenzo Discutido"
-                    fill
-                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 384px, 448px"
-                    className="w-full h-full object-cover object-top"
-                    onError={() => setImageError(true)}
-                    priority
-                  />
+                  <>
+                    <Image
+                      src="/profile.jpg"
+                      alt="Jose Lorenzo Discutido"
+                      fill
+                      sizes="(max-width: 640px) 320px, (max-width: 1024px) 384px, 448px"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      onError={() => setImageError(true)}
+                      priority
+                    />
+                    {/* Subtle Architectural Gradient to melt the bottom into the background */}
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none z-10" />
+
+                    {/* Minimalist Engineer Identity Plate */}
+                    <div className="absolute bottom-3 left-3 right-3 z-20 px-3 py-2 rounded-xl bg-black/60 dark:bg-[#0e1117]/80 backdrop-blur-md border-[0.5px] border-white/15 text-[11px] font-mono flex items-center justify-between shadow-lg">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                        <span className="text-white font-medium truncate">Jose Lorenzo Discutido</span>
+                      </div>
+                      <span className="text-[#38bdf8] text-[10px] shrink-0 font-medium">BS CpE • PUP</span>
+                    </div>
+                  </>
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-surface p-6 text-primary">
                     <span className="font-medium text-3xl tracking-tighter text-[#0052FF]">

@@ -39,19 +39,19 @@ export default function Workspace() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-4">
                 <h3 className="text-primary dark:text-frost text-2xl font-medium font-sans tracking-tight">
-                  System Mechanics &amp; Discrete Modeling
+                  Cyber-Physical Bench &amp; Prototyping
                 </h3>
                 <div className="w-14 h-14 shrink-0">
                   <Rebuild intensity={0.7} />
                 </div>
               </div>
               <p className="text-slate-700 dark:text-slate-200 leading-relaxed font-sans font-normal mb-4">
-                Off-duty, I dissect complex real-time combat engines (e.g. Zenless Zone Zero) through the lens of discrete state machines and frame-data modeling. Calculating frame-window tolerances, anomaly buildup thresholds, and resource throughput models exercises the exact mathematical rigor needed to diagnose distributed network latency, resolve concurrency bottlenecks, and tune high-throughput enterprise pipelines.
+                At my physical hardware bench, I prototype and stress-test cyber-physical systems using logic analyzers, digital oscilloscopes, and regulated bench power supplies. Before deploying automated kiosks or IoT field loggers to production, I verify serial UART packet integrity under load, evaluate inductive back-EMF suppression on 12V solenoids, and fabricate custom 3D chassis brackets to guarantee zero physical failure in real-world environments.
               </p>
               <div className="flex flex-wrap gap-2 pt-2 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5">
-                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">State Machine Modeling</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">Throughput Optimization</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">Concurrency Profiling</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">Oscilloscope Diagnostics</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">UART Protocol Sniffing</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider font-medium px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-surface/60 text-primary border-[0.5px] border-white/10 dark:border-white/10 border-black/5">Rapid 3D Chassis CAD</span>
               </div>
             </div>
           </div>
