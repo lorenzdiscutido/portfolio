@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface MagneticButtonProps {
@@ -9,11 +9,27 @@ interface MagneticButtonProps {
   strength?: number;
 }
 
-export default function MagneticButton({
+function subscribePointer(callback: () => void) {
+  if (typeof window === "undefined" || !window.matchMedia) return () => {};
+  const mql = window.matchMedia("(pointer: fine)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function getPointerSnapshot() {
+  if (typeof window === "undefined" || !window.matchMedia) return false;
+  return window.matchMedia("(pointer: fine)").matches;
+}
+
+function MagneticButtonActive({
   children,
-  className = "inline-block",
-  strength = 0.28,
-}: MagneticButtonProps) {
+  className,
+  strength,
+}: {
+  children: React.ReactNode;
+  className: string;
+  strength: number;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -46,5 +62,23 @@ export default function MagneticButton({
     >
       {children}
     </motion.div>
+  );
+}
+
+export default function MagneticButton({
+  children,
+  className = "inline-block",
+  strength = 0.28,
+}: MagneticButtonProps) {
+  const isFine = useSyncExternalStore(subscribePointer, getPointerSnapshot, () => false);
+
+  if (!isFine) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <MagneticButtonActive className={className} strength={strength}>
+      {children}
+    </MagneticButtonActive>
   );
 }

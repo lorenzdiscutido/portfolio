@@ -21,7 +21,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
   const mouseY = useMotionValue(0);
 
   // Transform cursor coordinates into radial spotlight masks & glows
-  const spotlightBackground = useMotionTemplate`radial-gradient(420px circle at ${mouseX}px ${mouseY}px, rgba(0, 82, 255, 0.15), rgba(255, 122, 0, 0.05) 50%, transparent 80%)`;
+  const spotlightBackground = useMotionTemplate`radial-gradient(420px circle at ${mouseX}px ${mouseY}px, rgba(0, 82, 255, 0.15), rgba(56, 189, 248, 0.08) 50%, transparent 80%)`;
   const spotlightBorderMask = useMotionTemplate`radial-gradient(280px circle at ${mouseX}px ${mouseY}px, black, transparent)`;
   const tiltX = useTransform(mouseY, [0, 400], [1.2, -1.2]);
   const tiltY = useTransform(mouseX, [0, 600], [-1.2, 1.2]);
