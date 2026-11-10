@@ -404,9 +404,9 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-14 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t-[0.5px] border-white/10 dark:border-white/10 border-black/5 overflow-x-clip">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-8 md:mb-10 text-left">
+    <section id="projects" className="py-24 lg:py-32 px-4 sm:px-6 overflow-x-clip">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 text-left">
           <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
             Selected Works
           </p>

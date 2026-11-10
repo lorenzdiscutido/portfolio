@@ -5,9 +5,11 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeProvider from "@/components/ThemeProvider";
 import NavBar from "@/components/NavBar";
+import Terminal from "@/components/Terminal";
 import AmbientBackground from "@/components/AmbientBackground";
+import CustomCursor from "@/components/CustomCursor";
+import CommandPalette from "@/components/CommandPalette";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
-import ClientModals from "@/components/ClientModals";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -59,9 +61,11 @@ export default function RootLayout({
           <ScrollProgressBar />
           {/* Ambient Cyber-Physical Liquid Background (Dynamic Client Component with SSR: false) */}
           <AmbientBackground />
-          <ClientModals />
+          <CustomCursor />
+          <CommandPalette />
           <NavBar />
           {children}
+          <Terminal />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
