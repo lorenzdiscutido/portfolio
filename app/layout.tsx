@@ -9,6 +9,7 @@ import Terminal from "@/components/Terminal";
 import AmbientBackground from "@/components/AmbientBackground";
 import CustomCursor from "@/components/CustomCursor";
 import CommandPalette from "@/components/CommandPalette";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -56,6 +57,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden min-h-screen relative text-primary`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {/* Global Electric Blue Scroll Progress Indicator */}
+          <ScrollProgressBar />
           {/* Ambient Cyber-Physical Liquid Background (Dynamic Client Component with SSR: false) */}
           <AmbientBackground />
           <CustomCursor />

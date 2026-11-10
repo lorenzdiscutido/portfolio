@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 interface TimelineItem {
   period: string;
@@ -10,6 +13,22 @@ interface TimelineItem {
 }
 
 export default function Experience() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 75%", "end 55%"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 350,
+    damping: 35,
+    restDelta: 0.001,
+  });
+
+  // Calculate top coordinate percentage for the traveling tracer head
+  const tracerTop = useTransform(scaleY, (val) => `${Math.max(0, Math.min(100, val * 100))}%`);
+
   const timeline: TimelineItem[] = [
     {
       period: "2024 – Present",
@@ -65,16 +84,31 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="relative ml-4 md:ml-8 space-y-12">
-          {/* Vertical rail */}
+        <div ref={containerRef} className="relative ml-4 md:ml-8 space-y-12">
+          {/* Static Background Vertical Rail Track */}
           <div
             aria-hidden="true"
-            className="absolute left-0 top-2 bottom-2 w-[0.5px] -translate-x-1/2 bg-black/10 dark:bg-white/10"
+            className="absolute left-0 top-3 bottom-3 w-[1.5px] -translate-x-1/2 bg-black/10 dark:bg-white/10"
           />
+
+          {/* Active Animated Electric Blue Progress Fill */}
+          <motion.div
+            aria-hidden="true"
+            style={{ scaleY }}
+            className="absolute left-0 top-3 bottom-3 w-[2.5px] -translate-x-1/2 bg-gradient-to-b from-[#0052FF] via-[#38bdf8] to-[#0052FF] shadow-[0_0_12px_rgba(0,82,255,0.8),0_0_20px_rgba(56,189,248,0.5)] origin-top z-10"
+          />
+
+          {/* Glowing Electric Blue Tracer Head that moves along with scroll */}
+          <motion.div
+            aria-hidden="true"
+            style={{ top: tracerTop }}
+            className="absolute left-0 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white ring-4 ring-[#0052FF] dark:ring-[#38bdf8] shadow-[0_0_14px_#38bdf8,0_0_24px_rgba(0,82,255,0.8)] z-20 pointer-events-none"
+          />
+
           {timeline.map((item, index) => (
             <div key={index} className="relative group pl-8 md:pl-12">
-              {/* Timeline node marker */}
-              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-base ring-2 ring-[#0052FF]/20 dark:ring-[#38bdf8]/20 bg-[#0052FF] dark:bg-[#38bdf8] group-hover:bg-[#FF7A00] transition-colors duration-200" />
+              {/* Timeline Milestone Marker (Glowing blue pulse node) */}
+              <div className="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-base bg-[#0052FF] dark:bg-[#38bdf8] ring-4 ring-[#0052FF]/20 dark:ring-[#38bdf8]/30 shadow-[0_0_10px_rgba(0,82,255,0.6)] group-hover:scale-125 group-hover:shadow-[0_0_16px_#38bdf8] transition-all duration-300 z-10" />
 
               <div className="bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] p-6 md:p-8 rounded-2xl hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_15px_rgba(0,82,255,0.12)] transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
