@@ -98,7 +98,7 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
 
         {/* Vonotec Automated Defect Logger Web App & Dashboard Showcase */}
         {(project.slug === "vonotec-defect-logger" || project.slug === "gemini-defect-logger") && (
-          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono flex-grow flex flex-col">
+          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono flex flex-col">
             {/* Header Telemetry & Interactive Tab Controller */}
             <div className="flex flex-wrap items-center justify-between px-3.5 py-2.5 bg-black/[0.03] dark:bg-black/40 border-b-[0.5px] border-white/10 text-[10px] gap-2">
               <span className="flex items-center gap-1.5 text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold">
@@ -155,31 +155,31 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
 
             {/* Showcase Viewport */}
             {vonotecTab === "dual" && (
-              <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-grow bg-white/40 dark:bg-black/20">
+              <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/40 dark:bg-black/20">
                 {/* Asset 1: Streamlit Ingestion UI */}
                 <button
                   type="button"
                   onClick={() => setVonotecTab("intake")}
-                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#070e21] flex flex-col text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
                 >
-                  <div className="relative flex-grow min-h-[220px] sm:min-h-[280px] w-full overflow-hidden">
+                  <div className="relative aspect-[16/10.5] w-full overflow-hidden bg-[#070e21] p-1.5 flex items-center justify-center">
                     <Image
                       src="/projects/vonotec-defect-extraction-ui.jpg"
                       alt="Streamlit Ingestion Web App Interface"
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
-                      className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                      className="object-contain transition-transform duration-300 group-hover/item:scale-[1.02]"
                     />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
                       Streamlit Intake UI
                     </div>
-                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] text-[#38bdf8] font-mono border-[0.5px] border-white/10 opacity-0 group-hover/item:opacity-100 transition-opacity">
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-[#0052FF]/80 backdrop-blur-md text-[9px] text-white font-mono opacity-0 group-hover/item:opacity-100 transition-opacity">
                       Zoom &rarr;
                     </div>
                   </div>
-                  <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
-                    <span className="text-primary font-medium truncate">Batch Image Ingestion</span>
-                    <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">Gemini OCR</span>
+                  <div className="p-2.5 bg-black/40 border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                    <span className="text-white/90 font-medium truncate">Batch Image Ingestion</span>
+                    <span className="text-[#38bdf8] shrink-0 font-semibold">Gemini OCR</span>
                   </div>
                 </button>
 
@@ -187,51 +187,51 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
                 <button
                   type="button"
                   onClick={() => setVonotecTab("analytics")}
-                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
+                  className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#070e21] flex flex-col text-left cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0052FF]"
                 >
-                  <div className="relative flex-grow min-h-[220px] sm:min-h-[280px] w-full overflow-hidden">
+                  <div className="relative aspect-[16/10.5] w-full overflow-hidden bg-[#070e21] p-1.5 flex items-center justify-center">
                     <Image
                       src="/projects/vonotec-analytics-dashboard.jpg"
                       alt="Facade Defect Analytics Dashboard Interface"
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
-                      className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                      className="object-contain transition-transform duration-300 group-hover/item:scale-[1.02]"
                     />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
                       Analytics Dashboard
                     </div>
-                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md text-[9px] text-[#38bdf8] font-mono border-[0.5px] border-white/10 opacity-0 group-hover/item:opacity-100 transition-opacity">
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-[#0052FF]/80 backdrop-blur-md text-[9px] text-white font-mono opacity-0 group-hover/item:opacity-100 transition-opacity">
                       Zoom &rarr;
                     </div>
                   </div>
-                  <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
-                    <span className="text-primary font-medium truncate">Telemetry &amp; Quantities</span>
-                    <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">4,754 Defects</span>
+                  <div className="p-2.5 bg-black/40 border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                    <span className="text-white/90 font-medium truncate">Telemetry &amp; Quantities</span>
+                    <span className="text-[#38bdf8] shrink-0 font-semibold">4,754 Defects</span>
                   </div>
                 </button>
               </div>
             )}
 
             {vonotecTab === "intake" && (
-              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
-                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
-                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+              <div className="p-3 flex flex-col bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#070e21] flex flex-col">
+                  <div className="relative aspect-[16/10.5] w-full overflow-hidden bg-[#070e21] p-2 flex items-center justify-center">
                     <Image
                       src="/projects/vonotec-defect-extraction-ui.jpg"
                       alt="Streamlit Ingestion Web App Interface"
                       fill
                       sizes="(max-width: 1024px) 100vw, 900px"
-                      className="object-cover object-top"
+                      className="object-contain"
                     />
                     <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
                       Streamlit Intake Web App // Multimodal Whiteboard Ingestion
                     </div>
                   </div>
-                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
-                    <span className="text-slate-700 dark:text-slate-300">
+                  <div className="p-3 bg-black/40 border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-200">
                       Field whiteboard photo intake with auto-rectification &amp; structured JSON extraction
                     </span>
-                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                    <span className="text-[#38bdf8] font-semibold shrink-0">
                       Gemini 1.5 Multimodal OCR
                     </span>
                   </div>
@@ -240,25 +240,25 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
             )}
 
             {vonotecTab === "analytics" && (
-              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
-                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
-                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+              <div className="p-3 flex flex-col bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#070e21] flex flex-col">
+                  <div className="relative aspect-[16/10.5] w-full overflow-hidden bg-[#070e21] p-2 flex items-center justify-center">
                     <Image
                       src="/projects/vonotec-analytics-dashboard.jpg"
                       alt="Facade Defect Analytics Dashboard Interface"
                       fill
                       sizes="(max-width: 1024px) 100vw, 900px"
-                      className="object-cover object-top"
+                      className="object-contain"
                     />
                     <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
                       Facade Defect Analytics &amp; Repair Quantities BI Dashboard
                     </div>
                   </div>
-                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
-                    <span className="text-slate-700 dark:text-slate-300">
+                  <div className="p-3 bg-black/40 border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-200">
                       Live telemetry monitoring 4,754 defects, 5,102.50 LM linear repair volume, &amp; categories
                     </span>
-                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                    <span className="text-[#38bdf8] font-semibold shrink-0">
                       Altair + Streamlit Analytics
                     </span>
                   </div>
@@ -267,31 +267,51 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
             )}
 
             {vonotecTab === "sharepoint" && (
-              <div className="p-3 flex flex-col flex-grow bg-white/40 dark:bg-black/20">
-                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col flex-grow">
-                  <div className="relative flex-grow min-h-[280px] sm:min-h-[360px] md:min-h-[420px] w-full overflow-hidden">
+              <div className="p-3 flex flex-col bg-white/40 dark:bg-black/20">
+                <div className="relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-[#070e21] flex flex-col">
+                  <div className="relative aspect-[16/6] w-full overflow-hidden bg-[#070e21] p-2 flex items-center justify-center">
                     <Image
                       src="/projects/vonotec-sharepoint-excel-log.jpg"
                       alt="Enterprise SharePoint Online Excel Master Database"
                       fill
                       sizes="(max-width: 1024px) 100vw, 900px"
-                      className="object-cover object-top"
+                      className="object-contain"
                     />
                     <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] text-white font-mono border-[0.5px] border-white/20">
                       Enterprise SharePoint Online Excel Master Database
                     </div>
                   </div>
-                  <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
-                    <span className="text-slate-700 dark:text-slate-300">
+                  <div className="p-3 bg-black/40 border-t-[0.5px] border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px]">
+                    <span className="text-slate-200">
                       Automated schema sync directly into enterprise SharePoint Online Excel master sheet
                     </span>
-                    <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold shrink-0">
+                    <span className="text-[#38bdf8] font-semibold shrink-0">
                       Office 365 Graph API
                     </span>
                   </div>
                 </div>
               </div>
             )}
+
+            {/* Pipeline Architecture Spec Grid (Matches IsKiosk hardware spec symmetry) */}
+            <div className="p-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-muted border-t-[0.5px] border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Vision:</span>
+                <span className="truncate">Gemini 1.5</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Schema:</span>
+                <span className="truncate">Pydantic v2</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Sync:</span>
+                <span className="truncate">SharePoint</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-1.5 rounded bg-black/[0.02] dark:bg-white/[0.03] border-[0.5px] border-white/5">
+                <span className="text-primary font-medium">Engine:</span>
+                <span className="truncate">Streamlit</span>
+              </div>
+            </div>
           </div>
         )}
 
