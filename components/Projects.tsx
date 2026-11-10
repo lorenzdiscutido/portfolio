@@ -95,6 +95,63 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
           {project.overview}
         </p>
 
+        {/* Vonotec Automated Defect Logger Web App & Dashboard Showcase */}
+        {(project.slug === "vonotec-defect-logger" || project.slug === "gemini-defect-logger") && (
+          <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
+            {/* Header Telemetry */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/[0.03] dark:bg-black/40 border-b-[0.5px] border-white/10 text-[10px] text-[#0052FF] dark:text-[#38bdf8] uppercase tracking-widest font-semibold">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0052FF] dark:bg-[#38bdf8] animate-pulse" />
+                Live Web Application &amp; Analytics Dashboard
+              </span>
+              <span className="text-muted">GEMINI 1.5 MULTIMODAL + SHAREPOINT SYNC</span>
+            </div>
+
+            {/* Dual Preview Grid: Streamlit Intake Web App + Facade Analytics Dashboard */}
+            <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/40 dark:bg-black/20">
+              {/* Asset 1: Streamlit Ingestion UI */}
+              <div className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src="/projects/vonotec-defect-extraction-ui.jpg"
+                    alt="Streamlit Ingestion Web App Interface"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                  />
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                    Streamlit Intake UI
+                  </div>
+                </div>
+                <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                  <span className="text-primary font-medium truncate">Batch Image Ingestion</span>
+                  <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">Gemini OCR</span>
+                </div>
+              </div>
+
+              {/* Asset 2: Facade Analytics Dashboard */}
+              <div className="group/item relative rounded-lg overflow-hidden border-[0.5px] border-white/10 dark:border-white/10 border-black/5 bg-white/95 dark:bg-[#0f1115]/90 flex flex-col">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src="/projects/vonotec-analytics-dashboard.jpg"
+                    alt="Facade Defect Analytics Dashboard Interface"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    className="object-cover object-top transition-transform duration-300 group-hover/item:scale-105"
+                  />
+                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md text-[9px] text-white font-mono border-[0.5px] border-white/20">
+                    Analytics Dashboard
+                  </div>
+                </div>
+                <div className="p-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t-[0.5px] border-white/10 flex items-center justify-between text-[10px]">
+                  <span className="text-primary font-medium truncate">Telemetry &amp; Quantities</span>
+                  <span className="text-[#0052FF] dark:text-[#38bdf8] shrink-0 font-semibold">4,754 Defects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* IsKiosk 3D CAD & Hardware Blueprint Hero Asset */}
         {project.slug === "iskiosk-terminal" && (
           <div className="mb-6 rounded-xl overflow-hidden bg-black/[0.04] dark:bg-base/80 border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] font-mono">
