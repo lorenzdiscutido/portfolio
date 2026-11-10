@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import TelemetryBar from "@/components/TelemetryBar";
 import ResumeDownload from "@/components/ResumeDownload";

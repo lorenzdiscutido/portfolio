@@ -304,7 +304,7 @@ export default function MySQLReplicationPlayground() {
       {/* Dynamic Simulated Telemetry Terminal */}
       <div className="p-4 rounded-xl bg-[#0f1115]/90 text-white font-mono text-xs overflow-x-auto border-[0.5px] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
         <div className="flex items-center justify-between pb-2 mb-2 border-b-[0.5px] border-white/10 text-[11px] text-muted">
-          <span className="uppercase tracking-wider">// Tailscale WireGuard Overlay Event Log</span>
+          <span className="uppercase tracking-wider">{"// Tailscale WireGuard Overlay Event Log"}</span>
           <span className="text-[#38bdf8] font-semibold">gtid_mode=ON | enforce_gtid_consistency=ON</span>
         </div>
 

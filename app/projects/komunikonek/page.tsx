@@ -88,7 +88,7 @@ export default function KomunikonekPage() {
         {/* Header Section */}
         <header className="mb-12">
           <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#0052FF] mb-3">
-            // CASE STUDY: 02
+            {"// CASE STUDY: 02"}
           </p>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight mb-4 font-sans">
             Komunikonek: Barangay Digital Hub

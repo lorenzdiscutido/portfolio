@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface HistoryEntry {
   id: string;
@@ -49,7 +49,7 @@ export default function Terminal() {
     </div>
   );
 
-  const cancelExecution = () => {
+  const cancelExecution = useCallback(() => {
     timerIdsRef.current.forEach((t) => clearTimeout(t));
     timerIdsRef.current = [];
     if (activeExecutionRef.current) {
@@ -67,7 +67,7 @@ export default function Terminal() {
     setIsExecuting(false);
     isExecutingRef.current = false;
     setTimeout(() => inputRef.current?.focus(), 50);
-  };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -94,7 +94,7 @@ export default function Terminal() {
       timerIdsRef.current.forEach((t) => clearTimeout(t));
       timerIdsRef.current = [];
     };
-  }, []);
+  }, [cancelExecution]);
 
   useEffect(() => {
     if (isOpen && !isExecuting) {

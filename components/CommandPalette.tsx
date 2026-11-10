@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -22,7 +22,7 @@ export default function CommandPalette() {
 
   const isTerminalMode = query.startsWith(">");
 
-  const executeTerminalCommand = (raw: string) => {
+  const executeTerminalCommand = useCallback((raw: string) => {
     const trimmed = raw.replace(/^>/, "").trim();
     if (!trimmed) return;
     const parts = trimmed.split(/\s+/);
@@ -84,7 +84,7 @@ export default function CommandPalette() {
 
     setTerminalLogs((prev) => [...prev, { command: trimmed, output }]);
     setQuery("> ");
-  };
+  }, [router]);
 
   const commands: CommandItem[] = useMemo(
     () => [
@@ -235,7 +235,7 @@ export default function CommandPalette() {
         action: () => executeTerminalCommand("clear"),
       },
     ],
-    []
+    [executeTerminalCommand]
   );
 
   const filteredCommands = useMemo(() => {
@@ -255,9 +255,11 @@ export default function CommandPalette() {
     );
   }, [commands, query, isTerminalMode, terminalHelperCommands]);
 
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [query, isOpen]);
+  // Clamp activeIndex to valid bounds without triggering cascading renders in an effect
+  const safeActiveIndex =
+    filteredCommands.length > 0 && activeIndex >= filteredCommands.length
+      ? 0
+      : activeIndex;
 
   // Dispatch Bullet-Time signal to LiquidBackground Canvas when modal opens/closes
   useEffect(() => {
@@ -275,7 +277,10 @@ export default function CommandPalette() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setIsOpen((prev) => !prev);
+        setIsOpen((prev) => {
+          if (!prev) setActiveIndex(0);
+          return !prev;
+        });
         return;
       }
 
@@ -305,8 +310,8 @@ export default function CommandPalette() {
             return;
           }
         }
-        if (filteredCommands[activeIndex]) {
-          const selected = filteredCommands[activeIndex];
+        if (filteredCommands[safeActiveIndex]) {
+          const selected = filteredCommands[safeActiveIndex];
           if (!isTerminalMode) {
             setIsOpen(false);
           }
@@ -315,7 +320,10 @@ export default function CommandPalette() {
       }
     };
 
-    const handleCustomOpen = () => setIsOpen(true);
+    const handleCustomOpen = () => {
+      setActiveIndex(0);
+      setIsOpen(true);
+    };
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("open-command-palette", handleCustomOpen);
@@ -323,7 +331,7 @@ export default function CommandPalette() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("open-command-palette", handleCustomOpen);
     };
-  }, [isOpen, filteredCommands, activeIndex]);
+  }, [isOpen, filteredCommands, safeActiveIndex, isTerminalMode, query, executeTerminalCommand]);
 
   return (
     <AnimatePresence>
@@ -365,7 +373,10 @@ export default function CommandPalette() {
                   type="text"
                   autoFocus
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setActiveIndex(0);
+                  }}
                   placeholder={
                     isTerminalMode
                       ? "Terminal CLI: type 'ping 100.64.0.1', 'ssh', 'tailscale', 'help'..."
@@ -421,7 +432,7 @@ export default function CommandPalette() {
                 </p>
               ) : (
                 filteredCommands.map((item, idx) => {
-                  const isActive = idx === activeIndex;
+                  const isActive = idx === safeActiveIndex;
                   return (
                     <button
                       key={item.id}

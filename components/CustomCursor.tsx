@@ -1,10 +1,34 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
+function subscribeFinePointer(callback: () => void) {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return () => {};
+  }
+  const mql = window.matchMedia("(pointer: fine)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function getFinePointerSnapshot(): boolean {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return false;
+  }
+  return window.matchMedia("(pointer: fine)").matches;
+}
+
+function getFinePointerServerSnapshot(): boolean {
+  return false;
+}
+
 export default function CustomCursor() {
-  const [enabled, setEnabled] = useState(false);
+  const enabled = useSyncExternalStore(
+    subscribeFinePointer,
+    getFinePointerSnapshot,
+    getFinePointerServerSnapshot
+  );
   const [isHovered, setIsHovered] = useState(false);
 
   const cursorX = useMotionValue(-100);
@@ -14,14 +38,8 @@ export default function CustomCursor() {
   const ringY = useSpring(cursorY, { stiffness: 320, damping: 26, mass: 0.3 });
 
   useEffect(() => {
-    const canUseFinePointer =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(pointer: fine)").matches;
+    if (!enabled) return;
 
-    if (!canUseFinePointer) return;
-
-    setEnabled(true);
     document.documentElement.classList.add("custom-cursor-enabled");
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -44,7 +62,7 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove);
       document.documentElement.classList.remove("custom-cursor-enabled");
     };
-  }, [cursorX, cursorY]);
+  }, [enabled, cursorX, cursorY]);
 
   if (!enabled) return null;
 

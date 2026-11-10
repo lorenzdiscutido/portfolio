@@ -49,6 +49,7 @@ if (typeof window !== "undefined" && !("IntersectionObserver" in window)) {
 
 // Mock @lucasmarkes/hairline/react for Jest test runs (pure ESM package)
 jest.mock("@lucasmarkes/hairline/react", () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const React = require("react");
   return new Proxy(
     {},

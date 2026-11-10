@@ -110,7 +110,7 @@ export default async function BlogPostPage({
                   <div className="mt-4 bg-surface/60 text-primary rounded-lg border border-black/10 dark:border-white/10 p-4 overflow-x-auto shadow-none">
                     <div className="flex items-center justify-between text-xs font-mono text-muted mb-2 pb-2 border-b border-black/5 dark:border-white/5">
                       <span className="text-[#0052FF] font-semibold">
-                        // {section.codeSnippet.label}
+                        {"//"} {section.codeSnippet.label}
                       </span>
                       <span className="text-muted font-mono">config</span>
                     </div>
