@@ -1,31 +1,72 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-interface TechNodeSpec {
+export interface TechNodeSpec {
   id: string;
   label: string;
   glyph: string;
+  filterCategory: "all" | "ai-vision" | "cyber-physical" | "mobile" | "distributed" | "enterprise";
+  targetSlug?: string;
+  targetAnchor?: string;
+  actionHint: string;
 }
 
-const TECH_NODES: TechNodeSpec[] = [
-  { id: "python-next", label: "Python • Next.js", glyph: "Full-Stack" },
-  { id: "dart-flutter", label: "Dart • Flutter", glyph: "Mobile" },
-  { id: "firebase-mysql", label: "Tailscale • MySQL", glyph: "Distributed" },
-  { id: "cpp-iot", label: "C++ • Microcontrollers", glyph: "Embedded" },
-  { id: "odoo-cloud", label: "Entra ID • Intune", glyph: "Enterprise" },
+export const TECH_NODES: TechNodeSpec[] = [
+  {
+    id: "python-next",
+    label: "Python • Next.js",
+    glyph: "Full-Stack",
+    filterCategory: "ai-vision",
+    targetSlug: "vonotec-defect-logger",
+    actionHint: "Filter: AI Vision & Pipelines",
+  },
+  {
+    id: "dart-flutter",
+    label: "Dart • Flutter",
+    glyph: "Mobile",
+    filterCategory: "mobile",
+    targetSlug: "komunikonek",
+    actionHint: "Filter: Mobile & Offline Sync",
+  },
+  {
+    id: "firebase-mysql",
+    label: "Tailscale • MySQL",
+    glyph: "Distributed",
+    filterCategory: "distributed",
+    actionHint: "Filter: Zero-Trust Mesh & GTID",
+  },
+  {
+    id: "cpp-iot",
+    label: "C++ • Microcontrollers",
+    glyph: "Embedded",
+    filterCategory: "cyber-physical",
+    targetSlug: "iskiosk-terminal",
+    actionHint: "Filter: Cyber-Physical Kiosks",
+  },
+  {
+    id: "odoo-cloud",
+    label: "Entra ID • Intune",
+    glyph: "Enterprise",
+    filterCategory: "enterprise",
+    targetSlug: "vonotec-defect-logger",
+    actionHint: "Filter: Enterprise Governance",
+  },
 ];
 
 function InteractivePlaneNode({
   node,
   index,
+  onSelectNode,
 }: {
   node: TechNodeSpec;
   index: number;
+  onSelectNode: (node: TechNodeSpec) => void;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isSnapped, setIsSnapped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
@@ -75,10 +116,28 @@ function InteractivePlaneNode({
     };
   }, [rawX, rawY, rawRotateX, rawRotateY]);
 
+  const handleClick = () => {
+    onSelectNode(node);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onSelectNode(node);
+    }
+  };
+
   return (
     <div className="[perspective:800px] inline-block">
       <motion.div
         ref={ref}
+        role="button"
+        tabIndex={0}
+        aria-label={`${node.glyph}: ${node.label} — ${node.actionHint}`}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         data-testid={`magnetic-node-${node.id}`}
         data-snapped={isSnapped}
         style={{
@@ -98,38 +157,81 @@ function InteractivePlaneNode({
             ease: "easeInOut",
           },
         }}
-        className={`relative select-none font-mono text-[11px] uppercase tracking-wider font-semibold px-3 py-1.5 rounded-xl backdrop-blur-xl transition-all duration-200 flex items-center gap-2 border-[0.5px] cursor-pointer ${
-          isSnapped
-            ? "bg-[#0052FF]/15 border-electricBlue/60 text-primary shadow-[0_0_12px_rgba(0,82,255,0.2)]"
+        className={`group relative select-none font-mono text-[11px] uppercase tracking-wider font-semibold px-3 py-1.5 rounded-xl backdrop-blur-xl transition-all duration-200 flex items-center gap-2 border-[0.5px] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-electricBlue/70 active:scale-95 ${
+          isSnapped || isHovered
+            ? "bg-[#0052FF]/15 border-electricBlue/60 text-primary shadow-[0_0_14px_rgba(0,82,255,0.25)]"
             : "bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] text-primary hover:border-electricBlue/50 hover:shadow-[0_0_10px_rgba(0,82,255,0.12)]"
         }`}
       >
         {/* Node Status Dot */}
         <span
           aria-hidden="true"
-          className={`w-1.5 h-1.5 rounded-full transition-transform duration-200 ${
-            isSnapped
-              ? "bg-white scale-125 shadow-[0_0_10px_#38bdf8]"
+          className={`w-1.5 h-1.5 rounded-full transition-all duration-200 shrink-0 ${
+            isSnapped || isHovered
+              ? "bg-[#38bdf8] scale-125 shadow-[0_0_10px_#38bdf8]"
               : "bg-[#0052FF] dark:bg-[#38bdf8] scale-100"
           }`}
         />
-        <span className="text-[10px] uppercase tracking-wider text-[#0052FF] dark:text-[#38bdf8] font-bold">
+        <span className="text-[10px] uppercase tracking-wider text-[#0052FF] dark:text-[#38bdf8] font-bold shrink-0">
           {node.glyph}
         </span>
         <span className="tracking-normal font-sans font-medium text-xs text-primary">{node.label}</span>
+
+        {/* Dynamic Action Arrow on Hover */}
+        <span
+          aria-hidden="true"
+          className={`text-[10px] font-mono text-[#0052FF] dark:text-[#38bdf8] transition-all duration-200 ${
+            isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-1"
+          }`}
+        >
+          &rarr;
+        </span>
       </motion.div>
     </div>
   );
 }
 
 export default function MagneticTechNodes() {
+  const handleSelectNode = useCallback((node: TechNodeSpec) => {
+    // Dispatch custom event for project filter
+    window.dispatchEvent(
+      new CustomEvent("filter-projects", {
+        detail: {
+          category: node.filterCategory,
+          slug: node.targetSlug,
+          label: node.label,
+        },
+      })
+    );
+
+    // Smoothly scroll to the Projects section
+    const targetElement = document.getElementById("projects");
+    if (targetElement) {
+      const navOffset = 90; // account for sticky floating navbar
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
   return (
     <div
       data-testid="magnetic-tech-nodes"
       className="flex flex-wrap items-center gap-2 mb-8"
+      role="group"
+      aria-label="Filter portfolio projects by technology node"
     >
       {TECH_NODES.map((node, index) => (
-        <InteractivePlaneNode key={node.id} node={node} index={index} />
+        <InteractivePlaneNode
+          key={node.id}
+          node={node}
+          index={index}
+          onSelectNode={handleSelectNode}
+        />
       ))}
     </div>
   );

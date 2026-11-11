@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -14,9 +14,10 @@ import { caseStudies, type CaseStudy } from "@/lib/caseStudyData";
 interface SpotlightBentoCardProps {
   project: CaseStudy;
   index: number;
+  isTargeted?: boolean;
 }
 
-function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
+function SpotlightBentoCard({ project, index, isTargeted = false }: SpotlightBentoCardProps) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -55,7 +56,11 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{ type: "spring", stiffness: 400, damping: 30, delay: index * 0.05 }}
-      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_20px_rgba(0,82,255,0.15)] dark:hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 flex flex-col col-span-12 ${spanClass}`}
+      className={`group relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] hover:border-electricBlue/50 dark:hover:border-electricBlue/50 hover:shadow-[0_0_20px_rgba(0,82,255,0.15)] dark:hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 flex flex-col col-span-12 ${spanClass} ${
+        isTargeted
+          ? "ring-2 ring-[#0052FF] dark:ring-[#38bdf8] shadow-[0_0_25px_rgba(0,82,255,0.35)] scale-[1.01]"
+          : ""
+      }`}
     >
       {/* Flashlight Surface Glow Overlay (Visible only on group-hover) */}
       <motion.div
@@ -402,26 +407,224 @@ function SpotlightBentoCard({ project, index }: SpotlightBentoCardProps) {
   );
 }
 
+export type ProjectCategory =
+  | "all"
+  | "ai-vision"
+  | "cyber-physical"
+  | "mobile"
+  | "distributed"
+  | "enterprise";
+
+interface FilterTab {
+  id: ProjectCategory;
+  label: string;
+  count?: number;
+}
+
+const FILTER_TABS: FilterTab[] = [
+  { id: "all", label: "All Architectures", count: 3 },
+  { id: "ai-vision", label: "AI Vision & Pipelines", count: 1 },
+  { id: "cyber-physical", label: "Cyber-Physical & IoT", count: 1 },
+  { id: "mobile", label: "Mobile & Offline Sync", count: 1 },
+  { id: "distributed", label: "Distributed Mesh & MySQL", count: 1 },
+];
+
 export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+  const [targetedSlug, setTargetedSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleFilter = (e: Event) => {
+      const detail = (e as CustomEvent<{ category?: ProjectCategory; slug?: string }>).detail;
+      if (detail?.category) {
+        setActiveCategory(detail.category);
+      }
+      if (detail?.slug) {
+        setTargetedSlug(detail.slug);
+        const timer = setTimeout(() => {
+          setTargetedSlug((prev) => (prev === detail.slug ? null : prev));
+        }, 3500);
+        return () => clearTimeout(timer);
+      }
+    };
+
+    window.addEventListener("filter-projects", handleFilter);
+    return () => {
+      window.removeEventListener("filter-projects", handleFilter);
+    };
+  }, []);
+
+  const filteredProjects = caseStudies.filter((project) => {
+    if (activeCategory === "all") return true;
+    if (activeCategory === "ai-vision")
+      return project.slug === "vonotec-defect-logger" || project.slug === "gemini-defect-logger";
+    if (activeCategory === "cyber-physical") return project.slug === "iskiosk-terminal";
+    if (activeCategory === "mobile") return project.slug === "komunikonek";
+    if (activeCategory === "enterprise")
+      return project.slug === "vonotec-defect-logger" || project.slug === "iskiosk-terminal";
+    return false;
+  });
+
   return (
     <section id="projects" className="py-24 lg:py-32 px-4 sm:px-6 overflow-x-clip">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-12 text-left">
-          <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
-            Selected Works
-          </p>
-          <h2 className="font-sans text-3xl md:text-4xl font-medium text-primary dark:text-frost tracking-tight">
-            Spotlight <span className="text-[#0052FF] dark:text-[#38bdf8]">Bento Grid</span>
-          </h2>
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="text-left">
+            <p className="text-[#0052FF] dark:text-[#38bdf8] font-mono font-medium tracking-widest uppercase mb-2 text-[11px]">
+              Selected Works
+            </p>
+            <h2 className="font-sans text-3xl md:text-4xl font-medium text-primary dark:text-frost tracking-tight">
+              Spotlight <span className="text-[#0052FF] dark:text-[#38bdf8]">Bento Grid</span>
+            </h2>
+          </div>
+
+          {/* Interactive Category Filter Pills */}
+          <div
+            role="tablist"
+            aria-label="Filter projects by engineering domain"
+            className="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl bg-[#1e2128]/40 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5"
+          >
+            {FILTER_TABS.map((tab) => {
+              const isActive = activeCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => {
+                    setActiveCategory(tab.id);
+                    setTargetedSlug(null);
+                  }}
+                  className={`relative px-3 py-1.5 rounded-xl font-mono text-xs transition-all duration-200 cursor-pointer flex items-center gap-1.5 select-none ${
+                    isActive
+                      ? "bg-[#0052FF] text-white shadow-[0_0_15px_rgba(0,82,255,0.3)] font-semibold"
+                      : "text-muted hover:text-primary dark:hover:text-frost hover:bg-white/5"
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  {tab.count !== undefined && (
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
+                        isActive
+                          ? "bg-white/20 text-white"
+                          : "bg-black/10 dark:bg-white/10 text-muted"
+                      }`}
+                    >
+                      {tab.count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Active Filter Status & Reset Pill */}
+        {activeCategory !== "all" && (
+          <div className="mb-6 flex items-center justify-between text-xs font-mono text-muted bg-[#0052FF]/5 dark:bg-[#38bdf8]/5 border border-[#0052FF]/20 px-4 py-2 rounded-xl">
+            <span>
+              Filtering by:{" "}
+              <strong className="text-[#0052FF] dark:text-[#38bdf8]">
+                {FILTER_TABS.find((t) => t.id === activeCategory)?.label}
+              </strong>
+            </span>
+            <button
+              onClick={() => setActiveCategory("all")}
+              className="text-[#0052FF] dark:text-[#38bdf8] hover:underline cursor-pointer font-semibold"
+            >
+              Reset to All Works &times;
+            </button>
+          </div>
+        )}
 
         <div
           data-testid="bento-grid"
           className="grid grid-cols-1 md:grid-cols-12 gap-6"
         >
-          {caseStudies.map((project, index) => (
-            <SpotlightBentoCard key={project.slug} project={project} index={index} />
-          ))}
+          {activeCategory === "distributed" ? (
+            /* Dedicated Distributed Infrastructure Showcase Card */
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className="col-span-12 rounded-2xl p-6 sm:p-8 bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <h3 className="font-sans text-xl sm:text-2xl font-medium tracking-tight text-primary dark:text-frost">
+                    Distributed Master-Master MySQL GTID Replication
+                  </h3>
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#0052FF] dark:text-[#38bdf8] bg-[#0052FF]/10 dark:bg-[#38bdf8]/10 px-3 py-1 rounded-full border-[0.5px] border-[#0052FF]/30 dark:border-[#38bdf8]/30 font-medium">
+                    Zero-Trust WireGuard Mesh
+                  </span>
+                </div>
+                <p className="text-[#0052FF] dark:text-[#38bdf8] text-[11px] font-mono font-medium tracking-widest uppercase mb-4">
+                  Systems &amp; Database Architect
+                </p>
+                <p className="font-sans text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed mb-6 max-w-3xl">
+                  Architected circular multi-master GTID replication across geographically distributed Linux hosts over an encrypted Tailscale WireGuard mesh with zero public port exposure. Utilizes deterministic auto-increment partitioning (odd/even key sets) to guarantee zero split-brain collisions during simultaneous writes.
+                </p>
+
+                {/* Empirical Distributed Metrics */}
+                <div className="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-black/[0.03] dark:bg-base/60 border-[0.5px] border-white/10 dark:border-white/10 border-black/5 max-w-xl">
+                  <div>
+                    <span className="block text-base font-semibold text-[#0052FF] dark:text-[#38bdf8] font-mono tabular-nums">
+                      0ms
+                    </span>
+                    <span className="block text-[10px] font-mono uppercase tracking-wider text-muted font-medium mt-0.5">
+                      Split-Brain Failover
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-base font-semibold text-[#0052FF] dark:text-[#38bdf8] font-mono tabular-nums">
+                      100%
+                    </span>
+                    <span className="block text-[10px] font-mono uppercase tracking-wider text-muted font-medium mt-0.5">
+                      Encrypted Overlay
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-base font-semibold text-[#0052FF] dark:text-[#38bdf8] font-mono tabular-nums">
+                      4 Nodes
+                    </span>
+                    <span className="block text-[10px] font-mono uppercase tracking-wider text-muted font-medium mt-0.5">
+                      Circular Topology
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Tailscale WireGuard", "MySQL 8.0 GTID", "Docker Compose", "Ubuntu Linux", "Zero-Trust ACLs"].map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[11px] uppercase tracking-wider font-medium text-primary bg-black/[0.04] dark:bg-surface/60 px-2.5 py-1 rounded-full border-[0.5px] border-white/10 dark:border-white/10 border-black/5"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <Link
+                  href="/blog/master-master-mysql-replication-over-tailscale"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0052FF] hover:bg-[#0041cc] text-white font-mono text-xs uppercase tracking-wider font-semibold transition-all shadow-[0_0_15px_rgba(0,82,255,0.25)]"
+                >
+                  <span>Launch Interactive Simulator &amp; Read Architecture</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
+            </motion.div>
+          ) : (
+            filteredProjects.map((project, index) => (
+              <SpotlightBentoCard
+                key={project.slug}
+                project={project}
+                index={index}
+                isTargeted={targetedSlug === project.slug}
+              />
+            ))
+          )}
         </div>
       </div>
     </section>
