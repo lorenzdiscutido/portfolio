@@ -28,7 +28,7 @@ export default function NavBar() {
   };
 
   return (
-    <header className="sticky top-3 z-50 w-full px-3 sm:px-6 transition-all duration-200">
+    <header className="sticky top-3 [top:calc(0.75rem+env(safe-area-inset-top,0px))] z-50 w-full px-3 sm:px-6 transition-all duration-200">
       <nav
         aria-label="Main Navigation"
         className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 rounded-full bg-[#1e2128]/60 dark:bg-[#1e2128]/60 bg-white/70 backdrop-blur-xl border-[0.5px] border-white/10 dark:border-white/10 border-black/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] flex items-center justify-between transition-colors duration-200"
@@ -56,7 +56,7 @@ export default function NavBar() {
             <MagneticButton key={link.href} strength={0.25}>
               <Link
                 href={link.href}
-                className="text-xs lg:text-sm font-sans font-medium text-muted hover:text-primary dark:hover:text-frost transition-colors duration-200 px-2 lg:px-2.5 py-1 rounded-full whitespace-nowrap"
+                className="relative text-xs lg:text-sm font-sans font-medium text-muted hover:text-primary dark:hover:text-frost transition-colors duration-200 px-2 lg:px-2.5 py-1 rounded-full whitespace-nowrap after:absolute after:-inset-y-2 after:inset-x-0 after:content-['']"
               >
                 {link.label}
               </Link>

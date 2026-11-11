@@ -38,17 +38,17 @@ export default function TelemetryBar() {
           </span>
           <span className="text-primary/20">|</span>
           <span className="font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
-            System: Online | <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">Commits: 29</span>
+            System: Online | <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold tabular-nums">Commits: 29</span>
           </span>
           <span className="hidden sm:inline text-primary/20">|</span>
           <span className="hidden sm:inline font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
-            TAILNET: <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold">4 NODES</span>
+            TAILNET: <span className="text-[#0052FF] dark:text-[#38bdf8] font-bold tabular-nums">4 NODES</span>
           </span>
         </div>
 
         <div className="flex items-center gap-4 font-mono text-[11px] tracking-wider text-slate-600 dark:text-slate-300">
           <span className="hidden md:inline">
-            LATENCY: <span className="text-primary font-semibold">&lt;5ms</span>
+            LATENCY: <span className="text-primary font-semibold tabular-nums">&lt;5ms</span>
           </span>
           <span className="hidden lg:inline">
             TOPOLOGY: <span className="text-[#0052FF] dark:text-[#38bdf8] font-semibold">MESHED</span>

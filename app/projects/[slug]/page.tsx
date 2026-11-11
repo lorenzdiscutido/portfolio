@@ -185,7 +185,7 @@ export default async function CaseStudyPage({
               className="p-5 rounded-2xl bg-surface/80 backdrop-blur-md border border-black/10 dark:border-white/5 shadow-none flex flex-col justify-between"
             >
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#0052FF] dark:text-[#38bdf8] font-mono block tracking-tight mb-1">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#0052FF] dark:text-[#38bdf8] font-mono block tracking-tight mb-1 tabular-nums">
                   {metric.value}
                 </span>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary block mb-2">

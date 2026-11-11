@@ -372,6 +372,11 @@ export default function CommandPalette() {
                   ref={inputRef}
                   type="text"
                   autoFocus
+                  role="combobox"
+                  aria-expanded={isOpen}
+                  aria-autocomplete="list"
+                  aria-controls="command-palette-listbox"
+                  aria-activedescendant={filteredCommands[safeActiveIndex] ? `cmd-item-${filteredCommands[safeActiveIndex].id}` : undefined}
                   value={query}
                   onChange={(e) => {
                     setQuery(e.target.value);
@@ -422,6 +427,7 @@ export default function CommandPalette() {
 
             {/* Command List */}
             <div
+              id="command-palette-listbox"
               role="listbox"
               aria-label="Available Commands"
               className="max-h-72 overflow-y-auto py-2 divide-y-[0.5px] divide-white/10 dark:divide-white/10 divide-black/5"
